@@ -1,0 +1,66 @@
+body {
+}
+
+.page-content {
+    position: relative;
+}
+
+
+.hero {
+    .hero__container {
+        background: $color_white;
+        // width: calc(40% + 8rem);
+        min-height: calc(100vh - 4rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 4rem;
+    }
+}
+
+
+.page-content .lesson-modules {
+    background: $color_white;
+    width: 50%;
+    padding: 2rem 4rem;
+    box-shadow: 0 3px 20px rgba(33,38,45,.15), -1px 1px 10px rgba(0,0,0,.05);
+    z-index: 10;
+}
+
+.page-content .visualization-module {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 70vh;
+    background: #ccc;
+}
+
+
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {
+    .page-content,
+    .site-footer {
+        margin-left: 1rem;
+    }
+    .page-content {
+        margin-top: 1rem;
+    }
+    .site-footer {
+        margin-bottom: 1rem;
+    }
+}

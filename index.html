@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="lesson-modules">
+
+{% assign lessons = site.posts | sort:"order" %}
+{% for lesson in lessons %}
+  <section class="lesson">
+    <span class="lesson__indicator">{{ lesson.subtitle }}</span>
+    <h2 class="lesson__title">
+      {{ lesson.title }}
+    </h2>
+    <div class="lesson__meta">Last updated: {{ lesson.updated_at | date: "%b %-d, %Y" }}</div>
+
+    {{ lesson.content }}
+    {% assign nextIndex = forloop.index + 1 %}
+    {% assign nextLesson = lessons[nextIndex] %}
+    {% if nextLesson %}
+      <button class="button button--next-lesson">
+        <span class="button__subtitle">Next Lesson</span>
+        <span class="button__title">{{nextLesson.title}} {% include icon-down-arrow.svg %}</span>
+      </button>
+    {% endif %}
+  </section>
+{% endfor %}
+</div>
+
+<div class="visualization-module">
+
+</div>

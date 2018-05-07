@@ -1,0 +1,87 @@
+.hero__title {
+    font-size: $base-font-size * $type-ratio * $type-ratio * $type-ratio * $type-ratio;
+    max-width: 45rem;
+    span {
+        color: darken($color_blue, 4%);
+    }
+}
+
+.button--next-lesson {
+    width: calc(100% + 8rem);
+    margin: 0 -4rem 0;
+    border-radius: 0;
+    height: auto;
+    padding: 2rem 2rem;
+    text-align: left;
+    border: 0;
+    background: $color_yellow-pale;
+    color: $color_black;
+    box-shadow: none;
+
+    .button__subtitle {
+        display: block;
+        line-height: 2;
+        letter-spacing: 0.2em;
+        padding-left: 2px; // offset for type sizing
+    }
+    .button__title {
+        text-transform: none;
+        font-size: $base-font-size * $type-ratio * $type-ratio;
+        letter-spacing: 0;
+    }
+    svg {
+        height: 2rem;
+        width: 2rem;
+        margin-left: 1rem;
+    }
+}
+
+
+
+.button--next-lesson {
+    margin-top: 10rem;
+}
+
+.lesson,
+.lesson > * {
+    position: relative;
+}
+
+.lesson__indicator {
+    white-space: nowrap;
+    font-size: 10rem;
+    position: absolute;
+    top: 1rem;
+    left: -3.5rem;
+    font-weight: 600;
+    // color: $color_white;
+    color: lighten($color_blue, 40%);
+    z-index: 0;
+    text-transform: uppercase;
+    // text-shadow:
+    //    -1px -1px 0 $color_blue,
+    //     1px -1px 0 $color_blue,
+    //     -1px 1px 0 $color_blue,
+    //      1px 1px 0 $color_blue;
+}
+
+.lesson__title {
+    margin-bottom: 0;
+}
+
+.lesson__meta {
+    color: lighten($color_black, 40%);
+    font-size: $base-font-size * 0.8;
+    margin-bottom: 2rem;
+}
+
+.lesson > *:not(.lesson__indicator) {
+    z-index: 1;
+}
+
+.lesson {
+    padding-top: 10rem;
+    h2 {
+        font-weight: 600;
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "files": [
+    "_typescript/main.ts"
+  ],
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "target": "es5"
+  }
+}
