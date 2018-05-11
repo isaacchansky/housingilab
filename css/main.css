@@ -627,7 +627,11 @@ img {
   right: 0;
   width: 50%;
   height: 70vh;
-  background: #ccc; }
+  background: #ccc;
+  z-index: -1; }
+
+.page-content.is-scrolled .visualization-module {
+  position: fixed; }
 
 /* Larger than mobile */
 /* Larger than phablet (also point when grid becomes active) */
