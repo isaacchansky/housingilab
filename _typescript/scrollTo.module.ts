@@ -1,5 +1,5 @@
 
-export default function (to, duration) {
+export default function (to: any, duration: number) {
         const
             element = document.scrollingElement || document.documentElement,
             start = element.scrollTop,
@@ -9,7 +9,7 @@ export default function (to, duration) {
             // b = start value
             // c = change in value
             // d = duration
-            easeInOutQuad = function (t, b, c, d) {
+            easeInOutQuad = function (t: any, b: any, c: any, d: any) {
                 t /= d / 2;
                 if (t < 1) return c / 2 * t * t + b;
                 t--;
