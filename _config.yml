@@ -9,7 +9,7 @@
 title: Understanding Housing Development
 description: > # this means to ignore newlines until "baseurl:"
   In this online toolkit, you will find a series of lesson modules and interactive exercises on housing development. You will be able to examine a variety of scenarios and analyze the tradeoffs that the City, community groups, advocates and developers take-on every day. At the end of the session, we will provide you with suggestions on how you can get involved in shaping the vision for your neighborhood.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/housingilab" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'package.json', 'webpack.config.js', 'tsconfig.json', 'deploy-to-gh-pages.sh', 'node_modules']
