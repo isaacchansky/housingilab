@@ -12,7 +12,7 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "/housingilab" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'package.json', 'webpack.config.js', 'tsconfig.json', 'deploy-to-gh-pages.sh', 'node_modules']
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'package.json', 'webpack.config.js', 'tsconfig.json', 'deploy-to-gh-pages.sh', 'node_modules', 'tsd.json']
 
 
 # Build settings
