@@ -92,10 +92,22 @@ var throttle = function (func, limit) {
         }
     };
 };
+function isScrolledIntoView(el) {
+    var rect = el.getBoundingClientRect();
+    var elemTop = rect.top;
+    var elemBottom = rect.bottom;
+    // Partially visible elements return true:
+    var isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+    return isVisible;
+}
+function nodelistToArray(nodelist) {
+    return Array.prototype.slice.call(nodelist);
+}
 // To be called after DOMContentLoaded
 function scrollEventHandling() {
     var pageContent = document.querySelector('.page-content');
     // fire once then listen
+    var lessonSections = nodelistToArray(document.querySelectorAll('.lesson-modules [data-lesson]'));
     handleScroll();
     window.addEventListener('scroll', throttle(handleScroll, 10));
     function handleScroll() {
@@ -105,6 +117,18 @@ function scrollEventHandling() {
         else {
             pageContent.classList.remove('is-scrolled');
         }
+        lessonSections.forEach(function (lessonModule) {
+            if (isScrolledIntoView(lessonModule)) {
+                var inputOptions = nodelistToArray(document.querySelectorAll('.visualization-module__options [data-lesson]'));
+                inputOptions.forEach(function (el) {
+                    el.classList.remove('is-visible');
+                    el.classList.add('is-hidden');
+                });
+                var currentOption = document.querySelector(".visualization-module__options [data-lesson=\"" + lessonModule.dataset.lesson + "\"]");
+                currentOption.classList.remove('is-hidden');
+                currentOption.classList.add('is-visible');
+            }
+        });
     }
 }
 // To be called after DOMContentLoaded
@@ -113,7 +137,7 @@ function clickEventHandling() {
     button.addEventListener('click', function () {
         scrollTo_module_1.default(getScrollOffset(document.querySelector('.lesson-modules')), 600);
     });
-    var nextLessonBtns = Array.prototype.slice.call(document.querySelectorAll('.button--next-lesson'));
+    var nextLessonBtns = nodelistToArray(document.querySelectorAll('.button--next-lesson'));
     nextLessonBtns.forEach(function (element) {
         element.addEventListener('click', function () {
             scrollTo_module_1.default(getScrollOffset(element.parentElement.nextElementSibling), 600);
@@ -121,25 +145,16 @@ function clickEventHandling() {
     });
 }
 function initThree() {
-    var vizSpace = document.querySelector('.visualization-module');
+    var vizSpace = document.querySelector('.visualization-module__canvas');
     // create the camera
     var camera = new THREE.PerspectiveCamera(75, vizSpace.clientWidth / vizSpace.clientHeight, 1, 1000);
     // create the scene
     var scene = new THREE.Scene();
     scene.background = new THREE.Color(0xffffff);
     // CONTROLS
-    var controls = new three_orbitcontrols_ts_1.OrbitControls(camera);
+    var controls = new three_orbitcontrols_ts_1.OrbitControls(camera, vizSpace);
     controls.maxPolarAngle = 0.9 * Math.PI / 2;
     controls.enableZoom = true;
-    // // LIGHTS
-    // let light = new THREE.DirectionalLight(0xffffff, 0.8);
-    // light.position.x = 0;
-    // light.position.y = 10;
-    // light.position.z = 10;
-    // light.castShadow = true;
-    // scene.add(light);
-    // var skylight = new THREE.HemisphereLight(0x5f5f5f, 0x080820, 0.8);
-    // scene.add(skylight);
     var ambient = new THREE.AmbientLight(0xffffff, .75);
     scene.add(ambient);
     var spotLight = new THREE.SpotLight(0xffffff, 0.5);
@@ -154,18 +169,6 @@ function initThree() {
     spotLight.shadow.camera.near = 10;
     spotLight.shadow.camera.far = 200;
     scene.add(spotLight);
-    // let spotLight2 = new THREE.SpotLight(0xffffff, 0.25);
-    // spotLight2.position.set(10, 40, 35);
-    // spotLight2.angle = Math.PI / 8;
-    // spotLight2.penumbra = 0.05;
-    // spotLight2.decay = 2;
-    // spotLight2.distance = 300;
-    // spotLight2.castShadow = true;
-    // spotLight2.shadow.mapSize.width = 1024;
-    // spotLight2.shadow.mapSize.height = 1024;
-    // spotLight2.shadow.camera.near = 10;
-    // spotLight2.shadow.camera.far = 200;
-    // scene.add(spotLight2);
     var renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.shadowMap.enabled = true;

@@ -1,0 +1,27 @@
+<div class="visualization-module">
+    <div class="visualization-module__canvas"></div>
+    <div class="visualization-module__options">
+        {% for lessonOption in site.data.lessonOptions %}
+            <div data-lesson="{{lessonOption.section}}">
+
+                <h2>{{lessonOption.title}}</h2>
+                <div>
+                    {% for field in lessonOption.fields %}
+                        {% assign fieldID = 'field-' +forloop.index  %}
+                        <div>
+                            <label for="{{fieldID}}">{{field.label}}</label>
+                            {% if field.type == 'select' %}
+                                <select name="{{field.label}}" id="{{fieldID}}">
+                                    {% for option in field.options %}
+                                        <option value="{{option}}">{{option}}</option>
+                                    {% endfor %}
+                                </select>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>

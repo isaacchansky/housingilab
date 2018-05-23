@@ -6,7 +6,7 @@ layout: default
 
 {% assign lessons = site.posts | sort:"order" %}
 {% for lesson in lessons %}
-  <section class="lesson">
+  <section class="lesson" data-lesson="{{lesson.order}}">
     <span class="lesson__indicator">{{ lesson.subtitle }}</span>
     <h2 class="lesson__title">
       {{ lesson.title }}
@@ -26,6 +26,4 @@ layout: default
 {% endfor %}
 </div>
 
-<div class="visualization-module">
-
-</div>
+{% include visualization.html %}

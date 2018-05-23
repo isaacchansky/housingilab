@@ -4,7 +4,7 @@ import { OrbitControls } from 'three-orbitcontrols-ts';
 
 import scrollTo from './scrollTo.module';
 
-function getScrollOffset(element:Element) {
+function getScrollOffset(element:any) {
     let scrolledAmt = document.documentElement.scrollTop;
     return scrolledAmt + element.getBoundingClientRect().top;
 }
@@ -23,12 +23,28 @@ const throttle = (func: Function , limit: Number) => {
     }
 }
 
+function isScrolledIntoView(el: any) {
+    var rect = el.getBoundingClientRect();
+    var elemTop = rect.top;
+    var elemBottom = rect.bottom;
+
+    // Partially visible elements return true:
+    let isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+    return isVisible;
+}
+
+function nodelistToArray(nodelist: NodeList) {
+    return Array.prototype.slice.call(nodelist);
+}
 
 
 // To be called after DOMContentLoaded
 function scrollEventHandling() {
     let pageContent = document.querySelector('.page-content');
     // fire once then listen
+
+    let lessonSections = nodelistToArray(document.querySelectorAll('.lesson-modules [data-lesson]'));
+
     handleScroll();
     window.addEventListener('scroll', throttle(handleScroll, 10));
 
@@ -38,6 +54,18 @@ function scrollEventHandling() {
         } else {
             pageContent.classList.remove('is-scrolled');
         }
+        lessonSections.forEach( (lessonModule: any) => {
+            if ( isScrolledIntoView(lessonModule)) {
+                let inputOptions = nodelistToArray(document.querySelectorAll('.visualization-module__options [data-lesson]'));
+                inputOptions.forEach( (el: any) => {
+                    el.classList.remove('is-visible');
+                    el.classList.add('is-hidden');
+                });
+                let currentOption = document.querySelector(`.visualization-module__options [data-lesson="${lessonModule.dataset.lesson}"]`);
+                currentOption.classList.remove('is-hidden');
+                currentOption.classList.add('is-visible');
+            }
+        });
     }
 }
 
@@ -48,7 +76,7 @@ function clickEventHandling() {
         scrollTo(getScrollOffset(document.querySelector('.lesson-modules')), 600);
     });
 
-    let nextLessonBtns = Array.prototype.slice.call(document.querySelectorAll('.button--next-lesson'));
+    let nextLessonBtns = nodelistToArray(document.querySelectorAll('.button--next-lesson'));
     nextLessonBtns.forEach((element: any) => {
         element.addEventListener('click', () => {
             scrollTo(getScrollOffset(element.parentElement.nextElementSibling), 600);
@@ -59,7 +87,7 @@ function clickEventHandling() {
 
 function initThree() {
 
-    let vizSpace = document.querySelector('.visualization-module')
+    let vizSpace = <HTMLCanvasElement> document.querySelector('.visualization-module__canvas')
 
 
     // create the camera
@@ -72,22 +100,10 @@ function initThree() {
 
 
     // CONTROLS
-    let controls = new OrbitControls(camera);
+    let controls = new OrbitControls(camera, vizSpace);
     controls.maxPolarAngle = 0.9 * Math.PI / 2;
     controls.enableZoom = true;
 
-
-    // // LIGHTS
-    // let light = new THREE.DirectionalLight(0xffffff, 0.8);
-    // light.position.x = 0;
-    // light.position.y = 10;
-    // light.position.z = 10;
-    // light.castShadow = true;
-    // scene.add(light);
-
-
-    // var skylight = new THREE.HemisphereLight(0x5f5f5f, 0x080820, 0.8);
-    // scene.add(skylight);
 
     let ambient = new THREE.AmbientLight(0xffffff, .75);
     scene.add(ambient);
@@ -105,19 +121,6 @@ function initThree() {
     spotLight.shadow.camera.far = 200;
     scene.add(spotLight);
 
-
-    // let spotLight2 = new THREE.SpotLight(0xffffff, 0.25);
-    // spotLight2.position.set(10, 40, 35);
-    // spotLight2.angle = Math.PI / 8;
-    // spotLight2.penumbra = 0.05;
-    // spotLight2.decay = 2;
-    // spotLight2.distance = 300;
-    // spotLight2.castShadow = true;
-    // spotLight2.shadow.mapSize.width = 1024;
-    // spotLight2.shadow.mapSize.height = 1024;
-    // spotLight2.shadow.camera.near = 10;
-    // spotLight2.shadow.camera.far = 200;
-    // scene.add(spotLight2);
 
     let renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);

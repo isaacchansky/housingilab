@@ -1,0 +1,51 @@
+- title: 'What are the basics?'
+  section: 1
+  fields:
+    - type: select
+      label: 'Floors'
+      options:
+        - 3
+        - 4
+        - 6
+    - type: select
+      label: 'Parking Ratio'
+      options:
+        - '0 parking'
+        - '0.5 parking'
+        - '1-1 parking'
+    - type: select
+      label: 'Rents'
+      options:
+        - '100% Market'
+        - '13% @ 70AMI'
+        - '30-30-30'
+
+- title: 'Balance the budget'
+  section: 2
+  fields:
+    - type: select
+      label: 'Rents'
+      options:
+        - '100% Market'
+        - '13% @ 70AMI'
+        - '30-30-30'
+
+- title: 'How does parking work?'
+  section: 3
+  fields:
+    - type: select
+      label: 'Parking Ratio'
+      options:
+        - '0 parking'
+        - '0.5 parking'
+        - '1-1 parking'
+
+- title: 'Making housing affordable'
+  section: 4
+  fields:
+    - type: select
+      label: 'Parking Ratio'
+      options:
+        - '0 parking'
+        - '0.5 parking'
+        - '1-1 parking'
