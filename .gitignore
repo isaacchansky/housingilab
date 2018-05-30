@@ -1,5 +1,6 @@
 node_modules/
 .sass-cache/
 .DS_STORE
+.vscode/
 yarn-error.log
 yarn.lock

@@ -34,6 +34,12 @@ config = {
                 test: /\.tsx?$/,
                 use: 'ts-loader'
             }
+        ],
+        loaders: [
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
+            }
         ]
     },
     plugins: getPlugin()
