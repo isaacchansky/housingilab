@@ -603,7 +603,16 @@ img {
     font-weight: 600; }
 
 .visualization-module__options {
-  padding: 1rem; }
+  padding: 1rem 1rem 1rem 2rem; }
+
+.visualization-module__outcomes,
+.visualization-module__option-fields {
+  display: inline-block;
+  width: calc(50% - 1rem);
+  vertical-align: top; }
+  .visualization-module__outcomes p,
+  .visualization-module__option-fields p {
+    margin: 0; }
 
 .page-content {
   position: relative; }
@@ -640,6 +649,13 @@ img {
   right: 0;
   width: 100%;
   height: 70%; }
+
+.visualization-module__buttons {
+  position: absolute;
+  top: 1rem;
+  right: 1rem; }
+  .visualization-module__buttons button {
+    background: white; }
 
 .visualization-module__options {
   position: absolute;

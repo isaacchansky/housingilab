@@ -1,13 +1,15 @@
 <div class="visualization-module">
     <div class="visualization-module__canvas"></div>
-    <div class="visualization-module__options">
+    <div class="visualization-module__buttons">
         <button class="visualization-module__zoom-in">zoom +</button>
         <button class="visualization-module__zoom-out">zoom -</button>
+    </div>
+    <div class="visualization-module__options">
         {% for lessonOption in site.data.lessonOptions %}
             <div data-lesson="{{lessonOption.section}}">
 
                 <h2>{{lessonOption.title}}</h2>
-                <div>
+                <div class="visualization-module__option-fields">
                     {% for field in lessonOption.fields %}
                         {% assign fieldID = 'field-' +forloop.index  %}
                         <div>
@@ -21,6 +23,9 @@
                             {% endif %}
                         </div>
                     {% endfor %}
+                </div>
+                <div class="visualization-module__outcomes">
+
                 </div>
             </div>
         {% endfor %}

@@ -22,6 +22,8 @@ export class BuildingRender {
     controls: any;
     lights: any[] = [];
 
+    activeBuildingGroup: any = new THREE.Group();
+
     cameraZoom: number = 25;
     nextCameraZoom: number;
 
@@ -180,8 +182,50 @@ export class BuildingRender {
 
     addBuilding() {
         let group = new THREE.Group();
+        this.activeBuildingGroup = group;
 
-        largeSixHalf.geoms.forEach((item: any) => {
+        largeSixHalf.geoms
+          .forEach((item: any) => {
+            let geo = this.buildGeometry(item.geom);
+
+            let mat = new THREE.MeshStandardMaterial({
+              color: 0xe0d65d,
+              transparent: true,
+              opacity: 0.5
+            });
+            mat.metalness = 0;
+            let mesh = new THREE.Mesh(geo, mat);
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+            // set up edges
+            let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
+            let eMaterial = new THREE.LineBasicMaterial({
+              color: 0xe0d65d,
+              linewidth: 1
+            });
+            let edges = new THREE.LineSegments(eGeometry, eMaterial);
+            mesh.add(edges);
+            mesh.rotation.x = -Math.PI * 0.5;
+            group.add(mesh);
+          });
+
+        this.scene.add(group);
+    }
+
+    rerenderBuilding(opts: any) {
+        // 1st section slice(0, 6)
+        // 2nd section slice(6, 24)
+        // full section no slicing
+        let geometrySlice = largeSixHalf.geoms;
+        if (opts.size === 'small') {
+            geometrySlice = largeSixHalf.geoms.slice(0, 6);
+        }
+        if (opts.size === 'medium') {
+            geometrySlice = largeSixHalf.geoms.slice(6, 24);
+        }
+        let group = new THREE.Group();
+
+        geometrySlice.forEach((item: any) => {
             let geo = this.buildGeometry(item.geom);
 
             let mat = new THREE.MeshStandardMaterial({ color: 0xe0d65d, transparent: true, opacity: 0.5 });
@@ -191,14 +235,50 @@ export class BuildingRender {
             mesh.receiveShadow = true;
             // set up edges
             let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
-            let eMaterial = new THREE.LineBasicMaterial({color: 0xe0d65d, linewidth: 1});
+            let eMaterial = new THREE.LineBasicMaterial({ color: 0xe0d65d, linewidth: 1 });
             let edges = new THREE.LineSegments(eGeometry, eMaterial);
             mesh.add(edges);
             mesh.rotation.x = -Math.PI * 0.5;
             group.add(mesh);
         });
 
+        this.scene.remove(this.activeBuildingGroup);
         this.scene.add(group);
+        this.activeBuildingGroup = group;
+
+    }
+
+    getOutcomes(opts: any) {
+        let geometrySlice = largeSixHalf.geoms;
+        if (opts.size === "small") {
+          geometrySlice = largeSixHalf.geoms.slice(0, 6);
+        }
+        if (opts.size === "medium") {
+          geometrySlice = largeSixHalf.geoms.slice(6, 24);
+        }
+
+        let typeMap: any = {};
+        let types: string[] = [];
+        let totalArea = 0
+        let totalUnits = geometrySlice.length;
+        geometrySlice.forEach((geom:any) => {
+            totalArea += parseInt(geom.aptArea.replace('m2', ''), 10);
+            if (typeMap[geom.aptType]) {
+                typeMap[geom.aptType]++;
+            } else {
+                typeMap[geom.aptType] = 1;
+            }
+        });
+
+        Object.keys(typeMap).forEach( (t) => {
+            types.push(`${typeMap[t]} ${t}`);
+        });
+
+        return {
+            types: types.join(', '),
+            totalArea: totalArea,
+            totalUnits: totalUnits
+        }
     }
 
     composeScene() {
@@ -228,6 +308,10 @@ export class BuildingRender {
 
     increaseZoom() {
         this.nextCameraZoom = this.cameraZoom > 2 ? this.cameraZoom - 4 : this.cameraZoom;
+    }
+
+    resetZoom() {
+        this.nextCameraZoom = 25;
     }
 
     render() {

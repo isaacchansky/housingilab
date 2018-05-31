@@ -9,9 +9,11 @@
     "build-watch": " webpack --watch --progress --colors"
   },
   "dependencies": {
+    "@types/jquery": "^3.3.2",
     "@types/three": "latest",
     "css-loader": "^0.28.0",
     "file-loader": "^0.11.1",
+    "jquery": "^3.3.1",
     "json-loader": "^0.5.7",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",

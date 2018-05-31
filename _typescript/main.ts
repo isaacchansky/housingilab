@@ -1,6 +1,9 @@
 import scrollTo from './scrollTo.module';
 import {BuildingRender} from './BuildingRender';
+import * as $ from 'jquery';
 
+
+let br: BuildingRender;
 
 function getScrollOffset(element:any) {
     let scrolledAmt = document.documentElement.scrollTop;
@@ -77,14 +80,24 @@ function clickEventHandling() {
     nextLessonBtns.forEach((element: any) => {
         element.addEventListener('click', () => {
             scrollTo(getScrollOffset(element.parentElement.nextElementSibling), 600);
-
+            br.resetZoom();
+            br.rerenderBuilding({ size: 'large' });
         })
     });
 }
 
+function setOutcomes(outcomes: any) {
+    console.log(outcomes);
+    $(".visualization-module__outcomes").html(`
+        <p><strong>Total Units</strong> ${outcomes.totalUnits}</p>
+        <p><strong>Total Area</strong> ${outcomes.totalArea}m<sup>2</sup></p>
+        <p><strong>Types of Units</strong> ${outcomes.types}</p>
+    `);
+}
+
 function initThree() {
     let vizSpace = <HTMLElement>document.querySelector('.visualization-module__canvas')
-    let br = new BuildingRender(vizSpace);
+    br = new BuildingRender(vizSpace);
     br.init();
 
     // add axis to the scene
@@ -98,7 +111,28 @@ function initThree() {
         br.increaseZoom();
     });
     zoomOut.addEventListener("click", () => {
-      br.decreaseZoom();
+        br.decreaseZoom();
+    });
+
+
+    let $parkingSelect = $('select[name="Parking Ratio"]');
+
+    $parkingSelect.on('change', (event) => {
+        let val = $(event.target).val();
+        let outcomes;
+        if (val === "0 parking") {
+            br.rerenderBuilding({ size: "large" });
+            outcomes = br.getOutcomes({ size: 'large' });
+        }
+        if (val === '0.5 parking') {
+            br.rerenderBuilding({ size: 'medium' });
+            outcomes = br.getOutcomes({ size: "medium" });
+        }
+        if (val === '1-1 parking') {
+            br.rerenderBuilding({ size: 'small' });
+            outcomes = br.getOutcomes({ size: "small" });
+        }
+        setOutcomes(outcomes);
     });
 
 }
@@ -110,6 +144,8 @@ function initThree() {
         scrollEventHandling();
         clickEventHandling();
         initThree();
+
+
     });
 
 

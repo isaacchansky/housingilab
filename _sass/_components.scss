@@ -89,5 +89,16 @@
 
 
 .visualization-module__options {
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 2rem ;
 }
+
+.visualization-module__outcomes,
+.visualization-module__option-fields {
+    display: inline-block;
+    width: calc(50% - 1rem);
+    vertical-align: top;
+    p {
+        margin: 0;
+    }
+}
+
