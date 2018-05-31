@@ -22,7 +22,8 @@ export class BuildingRender {
     controls: any;
     lights: any[] = [];
 
-
+    cameraZoom: number = 25;
+    nextCameraZoom: number;
 
     constructor(element: HTMLElement) {
         this.containerEl = element;
@@ -36,7 +37,9 @@ export class BuildingRender {
 
     createCamera() {
         // create the camera
-        this.camera = new THREE.PerspectiveCamera(30, this.sceneWidth / this.sceneHeight, 1, 10000);
+        this.camera = new THREE.PerspectiveCamera(this.cameraZoom, this.sceneWidth / this.sceneHeight, 1, 10000);
+        this.camera.fov = this.cameraZoom;
+        this.camera.updateProjectionMatrix();
     }
 
     createScene() {
@@ -86,94 +89,67 @@ export class BuildingRender {
 
     }
 
-    createMaterials() {
+    createBackground() {
+        let mat = new THREE.MeshPhongMaterial({
+          color: 0x64cc73,
+          dithering: true
+        });
+        mat.metal = false
+        let geo = new THREE.PlaneBufferGeometry(20000, 20000);
+        let mesh = new THREE.Mesh(geo, mat);
+        mesh.position.set(0, -10, 0);
+        mesh.rotation.x = - Math.PI * 0.5;
+        mesh.receiveShadow = true;
+        this.scene.add(mesh);
+    }
 
-        let material = new THREE.MeshStandardMaterial({ color: 0xffffff })
-        material.metalness = 0;
-        // create a box and add it to the scene
-        let box = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), material)
-        box.castShadow = true
-        box.receiveShadow = false
-        box.position.x = 0
-        box.position.y = 0.5
-        box.rotation.y = 1
-        box.position.z = 0
-        // this.scene.add(box)
+    buildGeometry(geometryData: any): any {
+        const { vertices, faces, guid, type } = geometryData;
 
-        material = new THREE.MeshStandardMaterial({ color: 0xffffff })
-        material.metalness = 0;
-        // create a box and add it to the scene
-        let box2 = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 2), material)
-        box2.castShadow = true
-        box2.receiveShadow = false
-        box2.position.x = 2
-        box2.position.y = 0.5
-        box2.rotation.y = 1
-        box2.position.z = 2
-        // this.scene.add(box2)
+        let group = new THREE.Group();
+        let geo = new THREE.Geometry();
 
+        if (vertices.length === 0 || faces.length === 0) {
+          return null;
+        }
 
-        var fmaterial = new THREE.MeshPhongMaterial({ color: 0xe8e5c6, dithering: true });
-        fmaterial.metal = false
-        var fgeometry = new THREE.PlaneBufferGeometry(20000, 20000);
-        var fmesh = new THREE.Mesh(fgeometry, fmaterial);
-        fmesh.position.set(0, -10, 0);
-        fmesh.rotation.x = - Math.PI * 0.5;
-        fmesh.receiveShadow = true;
-        this.scene.add(fmesh);
+        for (let i = 2; i < vertices.length; i += 3) {
+          geo.vertices.push(new THREE.Vector3(// Add offset to account for position in initial dataset
+              vertices[i - 2], vertices[i - 1], vertices[i]));
+        }
+
+        let k = 0;
+        while (k < faces.length) {
+          // QUAD FACE
+          if (faces[k] === 1) {
+            geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 2], faces[k + 3]));
+            geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 3], faces[k + 4]));
+            k += 5;
+          } else if (faces[k] === 0) {
+            geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 2], faces[k + 3]));
+            k += 4;
+          } else {
+            break;
+          }
+        }
+
+        geo.computeFaceNormals();
+        geo.computeVertexNormals();
+
+        return geo;
     }
 
 
     addGround() {
         let group = new THREE.Group();
 
-        let offset = {
-            x: 0,
-            y: 0,
-            z: 0
-        };
-        let geo = new THREE.Geometry();
-        let {vertices, faces, guid, type} = ground.geoms[0].geom;
-        if (vertices.length === 0 || faces.length === 0) {
-            console.log('something is weird');
-            console.log(ground.geoms[0].geom);
-            return;
-        }
-        for (let i = 2; i < vertices.length; i += 3) {
-            geo.vertices.push(new THREE.Vector3(
-                // Add offset to account for position in initial dataset
-                vertices[i - 2] + offset.x,
-                vertices[i - 1] + offset.y,
-                vertices[i] + offset.z
-            ));
-        }
-
-        let k = 0
-        while (k < faces.length) {
-            // QUAD FACE
-            if (faces[k] === 1) {
-                geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 2], faces[k + 3]))
-                geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 3], faces[k + 4]))
-                k += 5
-            } else if (faces[k] === 0) {
-                geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 2], faces[k + 3]))
-                k += 4
-            } else {
-                break
-            }
-        }
-
-        geo.computeFaceNormals();
-        geo.computeVertexNormals();
+        let geo = this.buildGeometry(ground.geoms[0].geom);
 
         // set up edges
-        let mat = new THREE.MeshStandardMaterial({ color: 0xffffff });
+        let mat = new THREE.MeshStandardMaterial({ color: 0x999999 });
         let mesh = new THREE.Mesh(geo, mat);
-        let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
-        // let edges = new THREE.LineSegments(eGeometry, eMaterial);
-        // mesh.add(edges);
         mesh.castShadow = true
-        mesh.receiveShadow = false
+        mesh.receiveShadow = true
         mesh.rotation.x = - Math.PI * 0.5;
         group.add(mesh);
 
@@ -183,61 +159,44 @@ export class BuildingRender {
     addContext() {
         let group = new THREE.Group();
 
-        let offset = {
-            x: 0,
-            y: 0,
-            z: 0
-        };
         context.geoms.forEach((item: any) => {
-            let geo = new THREE.Geometry();
-            let { vertices, faces, guid, type } = item.geom;
-
-            if (vertices.length === 0 || faces.length === 0) {
-                console.log('something is weird');
-                console.log(ground.geoms[0].geom);
-                return;
-            }
-            for (let i = 2; i < vertices.length; i += 3) {
-                geo.vertices.push(new THREE.Vector3(
-                    // Add offset to account for position in initial dataset
-                    vertices[i - 2] + offset.x,
-                    vertices[i - 1] + offset.y,
-                    vertices[i] + offset.z
-                ));
-            }
-            let k = 0
-            while (k < faces.length) {
-                // QUAD FACE
-                if (faces[k] === 1) {
-                    geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 2], faces[k + 3]))
-                    geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 3], faces[k + 4]))
-                    k += 5
-                } else if (faces[k] === 0) {
-                    geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 2], faces[k + 3]))
-                    k += 4
-                } else {
-                    break
-                }
-            }
-
-            geo.computeFaceNormals();
-            geo.computeVertexNormals();
+            let geo = this.buildGeometry(item.geom);
 
             let mat = new THREE.MeshStandardMaterial({ color: 0xffffff });
             mat.metalness = 0;
             let mesh = new THREE.Mesh(geo, mat);
-            // set up edges
-            let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
             mesh.castShadow = true
-            mesh.receiveShadow = false
+            mesh.receiveShadow = true
+            // set up edges
+            // let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
             // let edges = new THREE.LineSegments(eGeometry, eMaterial);
             // mesh.add(edges);
             mesh.rotation.x = - Math.PI * 0.5;
-            // mesh.material.color.set(0x333333);
             group.add(mesh);
         });
 
+        this.scene.add(group);
+    }
 
+    addBuilding() {
+        let group = new THREE.Group();
+
+        largeSixHalf.geoms.forEach((item: any) => {
+            let geo = this.buildGeometry(item.geom);
+
+            let mat = new THREE.MeshStandardMaterial({ color: 0xe0d65d, transparent: true, opacity: 0.5 });
+            mat.metalness = 0;
+            let mesh = new THREE.Mesh(geo, mat);
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+            // set up edges
+            let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
+            let eMaterial = new THREE.LineBasicMaterial({color: 0xe0d65d, linewidth: 1});
+            let edges = new THREE.LineSegments(eGeometry, eMaterial);
+            mesh.add(edges);
+            mesh.rotation.x = -Math.PI * 0.5;
+            group.add(mesh);
+        });
 
         this.scene.add(group);
     }
@@ -256,11 +215,33 @@ export class BuildingRender {
         this.camera.lookAt(this.scene.position)
     }
 
+    handleWindowResize() {
+        // adjust aspect ratio on resize
+        this.camera.aspect = window.innerWidth / window.innerHeight
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    decreaseZoom() {
+        this.nextCameraZoom = this.cameraZoom < 40 ? this.cameraZoom + 4 : this.cameraZoom;
+    }
+
+    increaseZoom() {
+        this.nextCameraZoom = this.cameraZoom > 2 ? this.cameraZoom - 4 : this.cameraZoom;
+    }
 
     render() {
-        // let timer = 0.00001 * Date.now()
-        // box.position.y = 0.5 + 0.5 * Math.sin(timer)
-        // box.rotation.x += 0.1
+        if (this.nextCameraZoom && this.nextCameraZoom !== this.cameraZoom) {
+            if ( this.nextCameraZoom < this.cameraZoom) {
+                this.cameraZoom = this.cameraZoom - 0.5;
+                console.log("zoomin out", this.cameraZoom);
+            } else {
+                this.cameraZoom = this.cameraZoom + 0.5;
+                console.log("zoomin in", this.cameraZoom);
+            }
+        }
+        this.camera.fov = this.cameraZoom;
+        this.camera.updateProjectionMatrix();
         this.renderer.render(this.scene, this.camera)
     }
 
@@ -276,9 +257,10 @@ export class BuildingRender {
         this.createControls();
         this.createLights();
         this.createRenderer();
-        this.createMaterials();
+        this.createBackground();
         this.addGround();
         this.addContext();
+        this.addBuilding();
         this.composeScene();
         this.animate();
 

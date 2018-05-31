@@ -91,11 +91,15 @@ function initThree() {
     // let axis = new THREE.AxesHelper(10)
     // scene.add(axis)
 
-
-
-
-
-
+    // handle zoom buttons
+    let zoomIn = document.querySelector('.visualization-module__zoom-in');
+    let zoomOut = document.querySelector('.visualization-module__zoom-out');
+    zoomIn.addEventListener('click', () => {
+        br.increaseZoom();
+    });
+    zoomOut.addEventListener("click", () => {
+      br.decreaseZoom();
+    });
 
 }
 
