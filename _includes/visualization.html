@@ -21,6 +21,14 @@
                                     {% endfor %}
                                 </select>
                             {% endif %}
+                            {% if field.type == 'radio' %}
+                                <div>
+                                    {% for option in field.options %}
+                                        <input type="radio" id="{{option | slugify}}" name="{{field.label | slugify}}" value="{{option}}">
+                                        <label for="{{option | slugify}}">{{option}}</label>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>
@@ -29,6 +37,5 @@
                 </div>
             </div>
         {% endfor %}
-
     </div>
 </div>

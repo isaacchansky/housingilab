@@ -93,7 +93,7 @@ export class BuildingRender {
 
     createBackground() {
         let mat = new THREE.MeshPhongMaterial({
-          color: 0x64cc73,
+          color: 0xffffff,
           dithering: true
         });
         mat.metal = false

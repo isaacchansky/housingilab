@@ -135,6 +135,26 @@ function initThree() {
         setOutcomes(outcomes);
     });
 
+    let $parkingRadio = $('input[name="parking-ratio"][type="radio"]');
+
+    $parkingRadio.on("change", event => {
+      let val = $(event.target).val();
+      let outcomes;
+      if (val === "0 parking") {
+        br.rerenderBuilding({ size: "large" });
+        outcomes = br.getOutcomes({ size: "large" });
+      }
+      if (val === "0.5 parking") {
+        br.rerenderBuilding({ size: "medium" });
+        outcomes = br.getOutcomes({ size: "medium" });
+      }
+      if (val === "1-1 parking") {
+        br.rerenderBuilding({ size: "small" });
+        outcomes = br.getOutcomes({ size: "small" });
+      }
+      setOutcomes(outcomes);
+    });
+
 }
 
 (function(){

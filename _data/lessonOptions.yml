@@ -7,7 +7,7 @@
         - 3
         - 4
         - 6
-    - type: select
+    - type: radio
       label: 'Parking Ratio'
       options:
         - '0 parking'
@@ -23,7 +23,7 @@
 - title: 'Balance the budget'
   section: 2
   fields:
-    - type: select
+    - type: radio
       label: 'Parking Ratio'
       options:
         - '0 parking'
@@ -33,7 +33,7 @@
 - title: 'How does parking work?'
   section: 3
   fields:
-    - type: select
+    - type: radio
       label: 'Parking Ratio'
       options:
         - '0 parking'
@@ -43,7 +43,7 @@
 - title: 'Making housing affordable'
   section: 4
   fields:
-    - type: select
+    - type: radio
       label: 'Parking Ratio'
       options:
         - '0 parking'
