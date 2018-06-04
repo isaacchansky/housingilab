@@ -1,30 +1,36 @@
 - title: 'What are the basics?'
   section: 1
   fields:
-    - type: select
+    - type: radio
+      label: 'Size'
+      options:
+        - 'Smaller'
+        - 'Medium'
+        - 'Large'
+    - type: radio
       label: 'Floors'
       options:
         - 3
         - 4
         - 6
     - type: radio
-      label: 'Parking Ratio'
+      label: 'Parking Ratio (Temporary)'
       options:
         - '0 parking'
         - '0.5 parking'
         - '1-1 parking'
-    - type: select
-      label: 'Rents'
-      options:
-        - '100% Market'
-        - '13% @ 70AMI'
-        - '30-30-30'
 
 - title: 'Balance the budget'
   section: 2
   fields:
     - type: radio
-      label: 'Parking Ratio'
+      label: 'Rents'
+      options:
+        - '100% Market'
+        - '13% @ 70AMI'
+        - '30-30-30'
+    - type: radio
+      label: 'Parking Ratio (Temporary)'
       options:
         - '0 parking'
         - '0.5 parking'
@@ -40,11 +46,16 @@
         - '0.5 parking'
         - '1-1 parking'
 
-- title: 'Making housing affordable'
+- title: 'Compact Living'
   section: 4
   fields:
     - type: radio
-      label: 'Parking Ratio'
+      label: 'Compact Units'
+      options:
+        - 'Standard Units'
+        - 'Compact Units'
+    - type: radio
+      label: 'Parking Ratio (Temporary)'
       options:
         - '0 parking'
         - '0.5 parking'
