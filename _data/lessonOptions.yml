@@ -10,9 +10,9 @@
     - type: radio
       label: 'Floors'
       options:
-        - 3
-        - 4
-        - 6
+        - '3'
+        - '4'
+        - '6'
     - type: radio
       label: 'Parking Ratio (Temporary)'
       options:
