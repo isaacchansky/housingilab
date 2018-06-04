@@ -14,7 +14,7 @@
         - '4'
         - '6'
     - type: radio
-      label: 'Parking Ratio (Temporary)'
+      label: 'Parking Ratio'
       options:
         - '0 parking'
         - '0.5 parking'
@@ -30,7 +30,7 @@
         - '13% @ 70AMI'
         - '30-30-30'
     - type: radio
-      label: 'Parking Ratio (Temporary)'
+      label: 'Parking Ratio'
       options:
         - '0 parking'
         - '0.5 parking'
@@ -55,7 +55,7 @@
         - 'Standard Units'
         - 'Compact Units'
     - type: radio
-      label: 'Parking Ratio (Temporary)'
+      label: 'Parking Ratio'
       options:
         - '0 parking'
         - '0.5 parking'
