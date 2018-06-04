@@ -628,7 +628,7 @@ img {
 
 .page-content .lesson-modules {
   background: #FFFFFF;
-  width: 38rem;
+  width: 35rem;
   padding: 2rem 4rem;
   box-shadow: 0 3px 20px rgba(33, 38, 45, 0.15), -1px 1px 10px rgba(0, 0, 0, 0.05);
   z-index: 1;
@@ -638,7 +638,7 @@ img {
   position: absolute;
   top: 0;
   right: 0;
-  width: calc(100% - 38rem);
+  width: calc(100% - 35rem);
   height: 100vh;
   background: #fefefe;
   z-index: 0; }
