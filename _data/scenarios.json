@@ -1,0 +1,247 @@
+{
+  "scenarios": [
+    {
+      "name": "9|3|1.0",
+      "numApts": 9,
+      "numParking": 9,
+      "ratioParking": 9.0,
+      "numFloors": 3,
+      "totNFA": 6747,
+      "totGFA": 7755
+    },
+    {
+      "name": "9|3|0.5",
+      "numApts": 9,
+      "numParking": 5,
+      "ratioParking": 4.5,
+      "numFloors": 3,
+      "totNFA": 6747,
+      "totGFA": 7755
+    },
+    {
+      "name": "9|3|0.0",
+      "numApts": 9,
+      "numParking": 0,
+      "ratioParking": 0.0,
+      "numFloors": 3,
+      "totNFA": 6747,
+      "totGFA": 7755
+    },
+    {
+      "name": "9|4|1.0",
+      "numApts": 9,
+      "numParking": 9,
+      "ratioParking": 9.0,
+      "numFloors": 4,
+      "totNFA": 8662,
+      "totGFA": 9956
+    },
+    {
+      "name": "9|4|0.5",
+      "numApts": 9,
+      "numParking": 5,
+      "ratioParking": 4.5,
+      "numFloors": 4,
+      "totNFA": 8662,
+      "totGFA": 9956
+    },
+    {
+      "name": "9|4|0.0",
+      "numApts": 9,
+      "numParking": 0,
+      "ratioParking": 0.0,
+      "numFloors": 4,
+      "totNFA": 8662,
+      "totGFA": 9956
+    },
+    {
+      "name": "9|6|1.0",
+      "numApts": 9,
+      "numParking": 9,
+      "ratioParking": 9.0,
+      "numFloors": 6,
+      "totNFA": 8094,
+      "totGFA": 9303
+    },
+    {
+      "name": "9|6|0.5",
+      "numApts": 9,
+      "numParking": 5,
+      "ratioParking": 4.5,
+      "numFloors": 6,
+      "totNFA": 8094,
+      "totGFA": 9303
+    },
+    {
+      "name": "9|6|0.0",
+      "numApts": 9,
+      "numParking": 0,
+      "ratioParking": 0.0,
+      "numFloors": 6,
+      "totNFA": 8094,
+      "totGFA": 9303
+    },
+    {
+      "name": "16|3|0.0",
+      "numApts": 16,
+      "numParking": 0,
+      "ratioParking": 0.0,
+      "numFloors": 3,
+      "totNFA": 14090,
+      "totGFA": 16195
+    },
+    {
+      "name": "16|3|0.0",
+      "numApts": 16,
+      "numParking": 0,
+      "ratioParking": 0.0,
+      "numFloors": 3,
+      "totNFA": 14090,
+      "totGFA": 16195
+    },
+    {
+      "name": "16|3|0.0",
+      "numApts": 16,
+      "numParking": 0,
+      "ratioParking": 0.0,
+      "numFloors": 3,
+      "totNFA": 14090,
+      "totGFA": 16195
+    },
+    {
+      "name": "16|4|1.0",
+      "numApts": 16,
+      "numParking": 16,
+      "ratioParking": 16.0,
+      "numFloors": 4,
+      "totNFA": 13045,
+      "totGFA": 14994
+    },
+    {
+      "name": "16|4|0.5",
+      "numApts": 16,
+      "numParking": 8,
+      "ratioParking": 8.0,
+      "numFloors": 4,
+      "totNFA": 13045,
+      "totGFA": 14994
+    },
+    {
+      "name": "16|4|0.0",
+      "numApts": 16,
+      "numParking": 0,
+      "ratioParking": 0.0,
+      "numFloors": 4,
+      "totNFA": 13045,
+      "totGFA": 14994
+    },
+    {
+      "name": "16|6|1.0",
+      "numApts": 16,
+      "numParking": 16,
+      "ratioParking": 16.0,
+      "numFloors": 6,
+      "totNFA": 13420,
+      "totGFA": 15425
+    },
+    {
+      "name": "16|6|0.5",
+      "numApts": 16,
+      "numParking": 8,
+      "ratioParking": 8.0,
+      "numFloors": 6,
+      "totNFA": 13420,
+      "totGFA": 15425
+    },
+    {
+      "name": "16|6|0.0",
+      "numApts": 16,
+      "numParking": 0,
+      "ratioParking": 0.0,
+      "numFloors": 6,
+      "totNFA": 13420,
+      "totGFA": 15425
+    },
+    {
+      "name": "24|3|1.0",
+      "numApts": 24,
+      "numParking": 24,
+      "ratioParking": 24.0,
+      "numFloors": 3,
+      "totNFA": 19369,
+      "totGFA": 22263
+    },
+    {
+      "name": "24|3|0.5",
+      "numApts": 24,
+      "numParking": 12,
+      "ratioParking": 12.0,
+      "numFloors": 3,
+      "totNFA": 19369,
+      "totGFA": 22263
+    },
+    {
+      "name": "24|3|0.0",
+      "numApts": 24,
+      "numParking": 0,
+      "ratioParking": 0.0,
+      "numFloors": 3,
+      "totNFA": 19369,
+      "totGFA": 22263
+    },
+    {
+      "name": "24|4|1.0",
+      "numApts": 24,
+      "numParking": 24,
+      "ratioParking": 24.0,
+      "numFloors": 4,
+      "totNFA": 18467,
+      "totGFA": 21226
+    },
+    {
+      "name": "24|4|0.5",
+      "numApts": 24,
+      "numParking": 12,
+      "ratioParking": 12.0,
+      "numFloors": 4,
+      "totNFA": 18467,
+      "totGFA": 21226
+    },
+    {
+      "name": "24|4|0.0",
+      "numApts": 24,
+      "numParking": 0,
+      "ratioParking": 0.0,
+      "numFloors": 4,
+      "totNFA": 18467,
+      "totGFA": 21226
+    },
+    {
+      "name": "24|6|1.0",
+      "numApts": 24,
+      "numParking": 24,
+      "ratioParking": 24.0,
+      "numFloors": 6,
+      "totNFA": 19649,
+      "totGFA": 22585
+    },
+    {
+      "name": "24|6|0.5",
+      "numApts": 24,
+      "numParking": 12,
+      "ratioParking": 12.0,
+      "numFloors": 6,
+      "totNFA": 19649,
+      "totGFA": 22585
+    },
+    {
+      "name": "24|6|0.0",
+      "numApts": 24,
+      "numParking": 0,
+      "ratioParking": 0.0,
+      "numFloors": 6,
+      "totNFA": 19649,
+      "totGFA": 22585
+    }
+  ]
+}
