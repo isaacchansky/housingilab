@@ -27,6 +27,7 @@ body {
     box-shadow: 0 3px 20px rgba(33,38,45,.15), -1px 1px 10px rgba(0,0,0,.05);
     z-index: 1;
     position: relative;
+    overflow-x: hidden;
 }
 
 .page-content .visualization-module {
@@ -53,6 +54,21 @@ body {
     button {
         background: white;
     }
+    // .visualization-module__buttons {
+
+    //     display: inline-block;
+    //     width: 2rem;
+    //     height: 2rem;
+    //     border-radius: 50%;
+    //     background: lighten($color_black, 10%);
+    //     text-align: center;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     svg {
+    //         stroke: white;
+    //     }
+    // }
 }
 .visualization-module__options {
     position: absolute;

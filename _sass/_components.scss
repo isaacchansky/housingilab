@@ -90,6 +90,12 @@
 
 .visualization-module__options {
     padding: 1rem 1rem 1rem 2rem ;
+    overflow: scroll;
+
+    h2 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
 }
 
 .visualization-module__outcomes,

@@ -2,11 +2,11 @@
   section: 1
   fields:
     - type: radio
-      label: 'Size'
+      label: 'Apartments'
       options:
-        - 'Smaller'
-        - 'Medium'
-        - 'Large'
+        - '9'
+        - '16'
+        - '24'
     - type: radio
       label: 'Floors'
       options:
@@ -16,9 +16,9 @@
     - type: radio
       label: 'Parking Ratio'
       options:
-        - '0 parking'
-        - '0.5 parking'
-        - '1-1 parking'
+        - '0.0'
+        - '0.5'
+        - '1.0'
 
 - title: 'Balance the budget'
   section: 2
@@ -32,9 +32,9 @@
     - type: radio
       label: 'Parking Ratio'
       options:
-        - '0 parking'
-        - '0.5 parking'
-        - '1-1 parking'
+        - '0.0'
+        - '0.5'
+        - '1.0'
 
 - title: 'How does parking work?'
   section: 3
@@ -42,9 +42,9 @@
     - type: radio
       label: 'Parking Ratio'
       options:
-        - '0 parking'
-        - '0.5 parking'
-        - '1-1 parking'
+        - '0.0'
+        - '0.5'
+        - '1.0'
 
 - title: 'Compact Living'
   section: 4
@@ -57,6 +57,6 @@
     - type: radio
       label: 'Parking Ratio'
       options:
-        - '0 parking'
-        - '0.5 parking'
-        - '1-1 parking'
+        - '0.0'
+        - '0.5'
+        - '1.0'

@@ -100,6 +100,7 @@ function initThree() {
     br = new BuildingRender(vizSpace);
     br.init();
 
+
     // add axis to the scene
     // let axis = new THREE.AxesHelper(10)
     // scene.add(axis)
@@ -114,46 +115,40 @@ function initThree() {
         br.decreaseZoom();
     });
 
+    let renderOptions = {
+        parking: '0.0',
+        floors: '3',
+        apts: '9'
+    };
 
-    let $parkingSelect = $('select[name="Parking Ratio"]');
-
+    let $parkingSelect = $('input[name="parking-ratio"]');
     $parkingSelect.on('change', (event) => {
         let val = $(event.target).val();
-        let outcomes;
-        if (val === "0 parking") {
-            br.rerenderBuilding({ size: "large" });
-            outcomes = br.getOutcomes({ size: 'large' });
-        }
-        if (val === '0.5 parking') {
-            br.rerenderBuilding({ size: 'medium' });
-            outcomes = br.getOutcomes({ size: "medium" });
-        }
-        if (val === '1-1 parking') {
-            br.rerenderBuilding({ size: 'small' });
-            outcomes = br.getOutcomes({ size: "small" });
-        }
+        renderOptions.parking = val.toString();
+        let outcomes = br.getOutcomes(renderOptions);
         setOutcomes(outcomes);
+        br.renderScenario(renderOptions);
     });
 
-    let $parkingRadio = $('input[name="parking-ratio"][type="radio"]');
-
-    $parkingRadio.on("change", event => {
-      let val = $(event.target).val();
-      let outcomes;
-      if (val === "0 parking") {
-        br.rerenderBuilding({ size: "large" });
-        outcomes = br.getOutcomes({ size: "large" });
-      }
-      if (val === "0.5 parking") {
-        br.rerenderBuilding({ size: "medium" });
-        outcomes = br.getOutcomes({ size: "medium" });
-      }
-      if (val === "1-1 parking") {
-        br.rerenderBuilding({ size: "small" });
-        outcomes = br.getOutcomes({ size: "small" });
-      }
-      setOutcomes(outcomes);
+    let $floorsSelect = $('input[name="floors"]');
+    $floorsSelect.on('change', (event) => {
+        let val = $(event.target).val();
+        renderOptions.floors = val.toString();
+        let outcomes = br.getOutcomes(renderOptions);
+        setOutcomes(outcomes);
+        br.renderScenario(renderOptions);
     });
+
+    let $apartmentSelect = $('input[name="apartments"]');
+    $apartmentSelect.on('change', (event) => {
+        let val = $(event.target).val();
+        renderOptions.apts = val.toString();
+        let outcomes = br.getOutcomes(renderOptions);
+        setOutcomes(outcomes);
+        br.renderScenario(renderOptions);
+    });
+
+
 
 }
 
