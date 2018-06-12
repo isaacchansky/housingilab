@@ -603,7 +603,11 @@ img {
     font-weight: 600; }
 
 .visualization-module__options {
-  padding: 1rem 1rem 1rem 2rem; }
+  padding: 1rem 1rem 1rem 2rem;
+  overflow: scroll; }
+  .visualization-module__options h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem; }
 
 .visualization-module__outcomes,
 .visualization-module__option-fields {
@@ -632,7 +636,8 @@ img {
   padding: 2rem 4rem;
   box-shadow: 0 3px 20px rgba(33, 38, 45, 0.15), -1px 1px 10px rgba(0, 0, 0, 0.05);
   z-index: 1;
-  position: relative; }
+  position: relative;
+  overflow-x: hidden; }
 
 .page-content .visualization-module {
   position: absolute;
