@@ -50,14 +50,12 @@
 .lesson__indicator {
     white-space: nowrap;
     font-size: 10rem;
-    position: absolute;
-    top: 1rem;
-    left: -3.5rem;
     font-weight: 600;
     // color: $color_white;
     color: lighten($color_blue, 40%);
     z-index: 0;
     text-transform: uppercase;
+    line-height: 0.5;
     // text-shadow:
     //    -1px -1px 0 $color_blue,
     //     1px -1px 0 $color_blue,

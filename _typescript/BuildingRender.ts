@@ -4,17 +4,15 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three-orbitcontrols-ts';
 
 
-const ground: any = require('../_data/ground.json');
-const context: any = require('../_data/context.json');
-const largeSixHalf: any = require('../_data/large6half.json');
+const ground: any = require('./data/ground.json');
+const context: any = require('./data/context.json');
+const largeSixHalf: any = require('./data/large6half.json');
 
-const apts: any = require("../_data/apts.json");
-const cores: any = require("../_data/cores.json");
-const parking: any = require("../_data/parking.json");
+const apts: any = require("./data/apts.json");
+const cores: any = require("./data/cores.json");
+const parking: any = require("./data/parking.json");
 
 const renderData: any = {};
-
-console.log("FUCK");
 
 apts.forEach( (item: any) => {
     if (!renderData[item.name]) {
@@ -137,33 +135,39 @@ export class BuildingRender {
             let group = new THREE.Group();
             let geo = new THREE.Geometry();
 
-            if (geometryData.type !== 'Mesh') {
-                console.log('TODO: implement polyline rendering');
-                return null;
-            }
-            if (!vertices || !faces) {
-                return null;
-            }
-            if (vertices.length === 0 || faces.length === 0) {
-                return null;
-            }
+            // if (geometryData.type === 'Polyline') {
+            //     console.log('TODO: implement polyline rendering');
+            //     console.log(geometryData);
+            //     for (let i = 0; i < geometryData.vertices.length; i += 3) {
+            //       const element = array[i];
+            //     }
+            //     return null;
+            // }
+            // if (!vertices || !faces) {
+            //     return null;
+            // }
+            // if (vertices.length === 0 || faces.length === 0) {
+            //     return null;
+            // }
 
             for (let i = 2; i < vertices.length; i += 3) {
                 geo.vertices.push(new THREE.Vector3(vertices[i - 2], vertices[i - 1], vertices[i])); // Add offset to account for position in initial dataset
             }
 
-            let k = 0;
-            while (k < faces.length) {
-                // QUAD FACE
-                if (faces[k] === 1) {
-                geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 2], faces[k + 3]));
-                geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 3], faces[k + 4]));
-                k += 5;
-                } else if (faces[k] === 0) {
-                geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 2], faces[k + 3]));
-                k += 4;
-                } else {
-                break;
+            if( faces) {
+                let k = 0;
+                while (k < faces.length) {
+                    // QUAD FACE
+                    if (faces[k] === 1) {
+                        geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 2], faces[k + 3]));
+                        geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 3], faces[k + 4]));
+                        k += 5;
+                    } else if (faces[k] === 0) {
+                        geo.faces.push(new THREE.Face3(faces[k + 1], faces[k + 2], faces[k + 3]));
+                        k += 4;
+                    } else {
+                        break;
+                    }
                 }
             }
 
@@ -200,7 +204,7 @@ export class BuildingRender {
                 let geo = this.buildGeometry(item.geom);
 
                 let mat = new THREE.MeshStandardMaterial({
-                color: 0xffffff
+                  color: 0x999999
                 });
                 mat.metalness = 0;
                 let mesh = new THREE.Mesh(geo, mat);
@@ -225,9 +229,9 @@ export class BuildingRender {
                 let geo = this.buildGeometry(item.geom);
 
                 let mat = new THREE.MeshStandardMaterial({
-                color: 0xe0d65d,
-                transparent: true,
-                opacity: 0.5
+                    color: 0xffffff,
+                    transparent: true,
+                    opacity: 1
                 });
                 mat.metalness = 0;
                 let mesh = new THREE.Mesh(geo, mat);
@@ -236,8 +240,8 @@ export class BuildingRender {
                 // set up edges
                 let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
                 let eMaterial = new THREE.LineBasicMaterial({
-                color: 0xe0d65d,
-                linewidth: 1
+                    color: 0xffffff,
+                    linewidth: 1
                 });
                 let edges = new THREE.LineSegments(eGeometry, eMaterial);
                 mesh.add(edges);
@@ -268,9 +272,9 @@ export class BuildingRender {
                             let geo = this.buildGeometry(item.geom);
                             let mat = new THREE.MeshStandardMaterial(
                               {
-                                color: 0xe0d65d,
+                                color: 0xffffff,
                                 transparent: true,
-                                opacity: 0.5
+                                opacity: 1
                               }
                             );
                             mat.metalness = 0;
@@ -282,7 +286,7 @@ export class BuildingRender {
                                 let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
                                 let eMaterial = new THREE.LineBasicMaterial(
                                 {
-                                    color: 0xe0d65d,
+                                    color: 0xffffff,
                                     linewidth: 1
                                 }
                                 );
@@ -333,9 +337,9 @@ export class BuildingRender {
                             let geo = this.buildGeometry(item.geom);
                             let mat = new THREE.MeshStandardMaterial(
                               {
-                                color: 0xe0d65d,
+                                color: 0xeeeeee,
                                 transparent: true,
-                                opacity: 0.75
+                                opacity: 1
                               }
                             );
                             mat.metalness = 0;
@@ -347,7 +351,7 @@ export class BuildingRender {
                                 let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
                                 let eMaterial = new THREE.LineBasicMaterial(
                                     {
-                                        color: 0xe0d65d,
+                                        color: 0xeeeeee,
                                         linewidth: 1
                                     }
                                 );
