@@ -360,6 +360,16 @@ td,
 th {
   padding: 0; }
 
+.visually-hidden {
+  /* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px); }
+
 /* Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* NOTE
@@ -544,8 +554,8 @@ img {
     color: #3193c1; }
 
 .button--next-lesson {
-  width: calc(100% + 8rem);
-  margin: 0 -4rem 0;
+  width: calc(100% + 4rem);
+  margin: 0 -2rem 0;
   border-radius: 0;
   height: auto;
   padding: 2rem 2rem;
@@ -600,21 +610,130 @@ img {
   .lesson h2 {
     font-weight: 600; }
 
-.visualization-module__options {
-  padding: 1rem 1rem 1rem 2rem;
-  overflow: scroll; }
-  .visualization-module__options h2 {
+.visualization-module__outcomes {
+  background: #FFFFFF; }
+  .visualization-module__outcomes h2 {
     font-size: 1rem;
-    margin-bottom: 1rem; }
+    margin: 0;
+    padding: 0.5rem; }
 
-.visualization-module__outcomes,
-.visualization-module__option-fields {
-  display: inline-block;
-  width: calc(50% - 1rem);
-  vertical-align: top; }
-  .visualization-module__outcomes p,
-  .visualization-module__option-fields p {
+.visualization-module__outcomes-content {
+  padding: 0 1rem; }
+  .visualization-module__outcomes-content p {
     margin: 0; }
+
+.table-of-contents {
+  background: white;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  height: 2.5rem; }
+  .table-of-contents .table-of-contents__list {
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 250ms ease-in-out;
+    list-style: none;
+    padding: 2rem; }
+    .table-of-contents .table-of-contents__list a {
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 1rem 0;
+      display: inline-block;
+      color: black; }
+      .table-of-contents .table-of-contents__list a:hover {
+        color: #4d4d4d; }
+  .table-of-contents.is-open {
+    height: 100vh; }
+    .table-of-contents.is-open .table-of-contents__list {
+      z-index: 0;
+      visibility: visible;
+      opacity: 1; }
+    .table-of-contents.is-open .menu__current-item {
+      opacity: 0; }
+  .is-scrolled .table-of-contents {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    width: 30rem; }
+
+.menu-toggle {
+  box-shadow: none;
+  border: none;
+  color: black;
+  position: relative;
+  margin-left: 1rem;
+  transition: all 250ms ease; }
+  .menu-toggle:before {
+    content: '';
+    width: 1rem;
+    height: 3px;
+    background: black;
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 1.5px);
+    left: 0;
+    transition: all 250ms ease; }
+  .menu-toggle:after {
+    content: '';
+    width: 1rem;
+    height: 9px;
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 0.45rem);
+    left: 0;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    transition: all 250ms ease; }
+  .is-open .menu-toggle:before {
+    top: 45%;
+    transform: rotate(45deg); }
+  .is-open .menu-toggle:after {
+    border-top-color: transparent;
+    border-top: 0;
+    height: 0;
+    top: 45%;
+    transform: rotate(-45deg); }
+  .is-open .menu-toggle {
+    color: transparent; }
+
+.message {
+  margin-top: 4rem;
+  border: 1px solid #3A9ECD;
+  color: #3A9ECD;
+  display: inline-block;
+  padding-right: 1rem; }
+  .message:before {
+    content: "i";
+    font-family: 'Courier New', Courier, monospace;
+    display: inline-block;
+    background: #3A9ECD;
+    color: #FFFFFF;
+    padding: 0.25rem 0.5rem;
+    margin-right: 0.5rem; }
+
+.options__field {
+  margin-bottom: 2rem; }
+  .options__field > label {
+    font-weight: bold;
+    color: gray;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
+  .options__field .options__field-description {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #4d4d4d;
+    border-left: 6px solid #f9f5ce;
+    padding-left: 0.5rem; }
+  .options__field input[type=radio] {
+    margin: 0; }
+  .options__field input[type=radio] + label {
+    color: black;
+    font-size: 1rem;
+    padding-left: 0.5rem; }
 
 .page-content {
   position: relative; }
@@ -630,8 +749,8 @@ img {
 
 .page-content .lesson-modules {
   background: #FFFFFF;
-  width: 35rem;
-  padding: 2rem 4rem;
+  width: 30rem;
+  padding: 2rem;
   box-shadow: 0 3px 20px rgba(33, 38, 45, 0.15), -1px 1px 10px rgba(0, 0, 0, 0.05);
   z-index: 1;
   position: relative;
@@ -641,7 +760,7 @@ img {
   position: absolute;
   top: 0;
   right: 0;
-  width: calc(100% - 35rem);
+  width: calc(100% - 30rem);
   height: 100vh;
   background: #fefefe;
   z-index: 0; }
@@ -651,68 +770,48 @@ img {
   top: 0;
   right: 0;
   width: 100%;
-  height: 70%; }
+  height: 100%; }
   .visualization-module__canvas canvas {
     position: absolute;
     right: 0; }
 
 .visualization-module__controls {
   position: absolute;
-  top: 1rem;
+  bottom: 1rem;
   right: 1rem; }
-  .visualization-module__controls button {
-    background: white; }
-  .visualization-module__controls .visualization-module__control-icon {
-    padding: 0.5rem;
-    display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background: #4d4d4d;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-    .visualization-module__controls .visualization-module__control-icon svg {
-      stroke: white; }
-  .visualization-module__controls:hover .visualization-module__control-content {
-    opacity: 1; }
-  .visualization-module__controls .visualization-module__control-content {
-    opacity: 0;
-    transition: opacity 250ms ease-in-out;
-    border-radius: 4px;
-    position: absolute;
-    white-space: nowrap;
-    right: 2.75rem;
-    top: 0;
-    background: white;
-    padding: 0 1rem; }
-    .visualization-module__controls .visualization-module__control-content:after {
-      content: "";
-      border: 8px solid transparent;
-      border-left-color: white;
-      position: absolute;
-      right: -16px;
-      top: calc(50% - 8px); }
-    .visualization-module__controls .visualization-module__control-content button {
-      background: white;
-      display: inline;
-      padding: 0 0.5em;
-      margin: 0;
-      border: none;
-      box-shadow: none;
-      text-transform: none;
-      letter-spacing: 0; }
+  .visualization-module__controls .visualization-module__control-content button {
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    display: inline;
+    margin: 0;
+    color: black;
+    letter-spacing: 1px;
+    box-shadow: none;
+    text-transform: none;
+    letter-spacing: 0; }
 
 .visualization-module__options {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 30%; }
+  top: 0;
+  left: 0;
+  width: 12rem;
+  height: 100%; }
+
+.visualization-module__outcomes {
+  height: 7rem;
+  width: 60%;
+  position: absolute;
+  right: 35%;
+  bottom: -5rem;
+  z-index: 10;
+  transition: all 250ms ease;
+  box-shadow: 0 3px 20px rgba(33, 38, 45, 0.15), -1px 1px 10px rgba(0, 0, 0, 0.05); }
+  .visualization-module__outcomes:hover {
+    bottom: 0; }
 
 .page-content.is-scrolled .visualization-module {
-  position: fixed; }
+  position: fixed;
+  width: calc(100% - 31rem); }
 
 /* Larger than mobile */
 /* Larger than phablet (also point when grid becomes active) */

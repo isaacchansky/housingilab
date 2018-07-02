@@ -1,12 +1,29 @@
 ---
 layout: default
 ---
+{% assign lessons = site.posts | sort:"order" %}
 
 <div class="lesson-modules">
 
-{% assign lessons = site.posts | sort:"order" %}
+  <nav class="table-of-contents">
+    <div class="table-of-contents__bar">
+      <button class="menu-toggle" aria-controls="">
+        LESSONS
+      </button>
+      <span class="menu__current-item">Current Lesson</span>
+    </div>
+
+    <ul class="table-of-contents__list">
+      {% for lesson in lessons %}
+        <li><a href="#lesson-{{lesson.order}}">
+          {{lesson.subtitle}} {{lesson.title}}
+        </a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+
 {% for lesson in lessons %}
-  <section class="lesson" data-lesson="{{lesson.order}}">
+  <section class="lesson" data-lesson="{{lesson.order}}" id="lesson-{{lesson.order}}">
     <span class="lesson__indicator">{{ lesson.subtitle }}</span>
     <h2 class="lesson__title">
       {{ lesson.title }}
@@ -14,8 +31,51 @@ layout: default
     <div class="lesson__meta">Last updated: {{ lesson.updated_at | date: "%b %-d, %Y" }}</div>
 
     {{ lesson.content }}
+
+
+
+    {% assign lessonOptions = site.data.lessonOptions[forloop.index]  %}
+    <div class="options">
+      <p class="message">Adjust the options below to view its impact.</p>
+      <!-- <h3 class="options__title">{{lessonOptions.title}}</h3> -->
+
+      {% for field in lessonOptions.fields %}
+        {% assign fieldID = 'field-' +forloop.index %}
+      <div class="options__field" data-collapsible>
+        <label for="{{fieldID}}">
+          {{field.label}}
+        </label>
+        <p class="options__field-description">
+          {{field.description}}
+        </p>
+        {% if field.type == 'select' %}
+          <div class="options__field-input">
+            <select name="{{field.label}}" id="{{fieldID}}">
+              {% for option in field.options %}
+              <option value="{{option}}">{{option}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endif %}
+        {% if field.type == 'radio' %}
+          {% for option in field.options %}
+            <div class="options__field-input">
+              <input type="radio" id="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option}}" name="{{field.label | slugify}}" value="{{option}}">
+              <label for="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option}}">{{option}}</label>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+
     {% assign nextIndex = forloop.index + 1 %}
     {% assign nextLesson = lessons[nextIndex] %}
+
+
     {% if nextLesson %}
       <button class="button button--next-lesson">
         <span class="button__subtitle">Next Lesson</span>

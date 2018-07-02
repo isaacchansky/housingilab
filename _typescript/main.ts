@@ -4,6 +4,7 @@ import * as $ from 'jquery';
 
 
 let br: BuildingRender;
+let handleActiveRender: any;
 
 function getScrollOffset(element:any) {
     let scrolledAmt = document.documentElement.scrollTop;
@@ -44,7 +45,7 @@ function scrollEventHandling() {
     // fire once then listen
 
     let lessonSections = nodelistToArray(document.querySelectorAll('.lesson-modules [data-lesson]'));
-
+    let currentMenuItem = document.querySelector(".menu__current-item");
     handleScroll();
     window.addEventListener('scroll', throttle(handleScroll, 10));
 
@@ -56,14 +57,13 @@ function scrollEventHandling() {
         }
         lessonSections.forEach( (lessonModule: any) => {
             if ( isScrolledIntoView(lessonModule)) {
+                let title = lessonModule.querySelector('.lesson__title').textContent;
+                currentMenuItem.textContent = title;
                 let inputOptions = nodelistToArray(document.querySelectorAll('.visualization-module__options [data-lesson]'));
                 inputOptions.forEach( (el: any) => {
                     el.classList.remove('is-visible');
                     el.classList.add('is-hidden');
                 });
-                let currentOption = document.querySelector(`.visualization-module__options [data-lesson="${lessonModule.dataset.lesson}"]`);
-                currentOption.classList.remove('is-hidden');
-                currentOption.classList.add('is-visible');
             }
         });
     }
@@ -82,13 +82,29 @@ function clickEventHandling() {
             scrollTo(getScrollOffset(element.parentElement.nextElementSibling), 600);
             br.resetZoom();
             br.rerenderBuilding({ size: 'large' });
+            handleActiveRender();
         })
     });
+
+    let menuToggle = document.querySelector('.menu-toggle');
+    let toc = document.querySelector('.table-of-contents');
+    menuToggle.addEventListener('click', (e) => {
+        toc.classList.toggle('is-open');
+    });
+
+    let menuLinks = document.querySelectorAll(".table-of-contents a");
+    for (let index = 0; index < menuLinks.length; index++) {
+        menuLinks[index].addEventListener('click', (e) => {
+            toc.classList.remove("is-open");
+        });
+    }
+
 }
 
 function setOutcomes(outcomes: any) {
     console.log(outcomes);
-    $(".visualization-module__outcomes").html(`
+    $(".visualization-module__quick-outcome").html(`${outcomes.totalUnits} units, ${outcomes.totalArea}m<sup>2</sup>`);
+    $(".visualization-module__outcomes-content").html(`
         <p><strong>Total Units</strong> ${outcomes.totalUnits}</p>
         <p><strong>Total Area</strong> ${outcomes.totalArea}m<sup>2</sup></p>
         <p><strong>Types of Units</strong> ${outcomes.types}</p>
@@ -100,6 +116,20 @@ function initThree() {
     br = new BuildingRender(vizSpace);
     br.init();
 
+    let animateTimer: any;
+
+    handleActiveRender = throttle(function () {
+        br.isAnimating = true;
+        br.animate();
+        if (animateTimer) {
+            window.clearTimeout(animateTimer);
+        }
+        animateTimer = window.setTimeout(() => {
+            br.isAnimating = false;
+        }, 1000);
+    }, 1000);
+
+    vizSpace.addEventListener('mousemove', handleActiveRender);
 
     // add axis to the scene
     // let axis = new THREE.AxesHelper(10)
@@ -110,9 +140,11 @@ function initThree() {
     let zoomOut = document.querySelector('.visualization-module__zoom-out');
     zoomIn.addEventListener('click', () => {
         br.increaseZoom();
+        handleActiveRender();
     });
     zoomOut.addEventListener("click", () => {
         br.decreaseZoom();
+        handleActiveRender();
     });
 
     let renderOptions = {
@@ -120,6 +152,7 @@ function initThree() {
         floors: '3',
         apts: '9'
     };
+    br.rerenderBuilding({ size: "large" });
 
     let $parkingSelect = $('input[name="parking-ratio"]');
     $parkingSelect.on('change', (event) => {
@@ -159,7 +192,7 @@ function initThree() {
         scrollEventHandling();
         clickEventHandling();
         initThree();
-
+        handleActiveRender();
 
     });
 

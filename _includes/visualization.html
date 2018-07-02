@@ -1,46 +1,18 @@
 <div class="visualization-module">
     <div class="visualization-module__canvas"></div>
     <div class="visualization-module__controls">
-        <div class="visualization-module__control-icon">
-            {% include icon-search.svg %}
-        </div>
         <div class="visualization-module__control-content">
             <button class="visualization-module__zoom-in">zoom in</button>
             <button class="visualization-module__zoom-out">zoom out</button>
         </div>
     </div>
-    <div class="visualization-module__options">
-        {% for lessonOption in site.data.lessonOptions %}
-            <div data-lesson="{{lessonOption.section}}">
 
-                <h2>{{lessonOption.title}}</h2>
-                <div class="visualization-module__option-fields">
-                    {% for field in lessonOption.fields %}
-                        {% assign fieldID = 'field-' +forloop.index  %}
-                        <div>
-                            <label for="{{fieldID}}">{{field.label}}</label>
-                            {% if field.type == 'select' %}
-                                <select name="{{field.label}}" id="{{fieldID}}">
-                                    {% for option in field.options %}
-                                        <option value="{{option}}">{{option}}</option>
-                                    {% endfor %}
-                                </select>
-                            {% endif %}
-                            {% if field.type == 'radio' %}
-                                <div>
-                                    {% for option in field.options %}
-                                        <input type="radio" id="{{option | slugify}}" name="{{field.label | slugify}}" value="{{option}}">
-                                        <label for="{{option | slugify}}">{{option}}</label>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="visualization-module__outcomes">
+    <div class="visualization-module__outcomes is-closed">
+        <h2>Outcomes: <span class="visualization-module__quick-outcome"></span>
+        </h2>
 
-                </div>
-            </div>
-        {% endfor %}
+        <div class="visualization-module__outcomes-content">
+
+        </div>
     </div>
 </div>

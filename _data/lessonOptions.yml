@@ -1,56 +1,63 @@
-- title: 'What are the basics?'
-  section: 1
+1:
+  title: 'What are the basics?'
   fields:
     - type: radio
       label: 'Apartments'
+      description: 'Some description about apartment options'
       options:
         - '9'
         - '16'
         - '24'
     - type: radio
       label: 'Floors'
+      description: 'Some description about floor options'
       options:
         - '3'
         - '4'
         - '6'
     - type: radio
       label: 'Parking Ratio'
+      description: 'Some description about parking options'
       options:
         - '0.0'
         - '0.5'
         - '1.0'
 
-- title: 'Balance the budget'
-  section: 2
+2:
+  title: 'Balance the budget'
   fields:
     - type: radio
       label: 'Rents'
+      description: 'Some description about rent options'
       options:
         - '100% Market'
         - '13% @ 70AMI'
         - '30-30-30'
     - type: radio
       label: 'Parking Ratio'
+      description: 'Some description about parking options'
       options:
         - '0.0'
         - '0.5'
         - '1.0'
 
-- title: 'How does parking work?'
-  section: 3
+3:
+  title: 'How does parking work?'
   fields:
     - type: radio
+      description: 'Some description about parking options'
       label: 'Parking Ratio'
       options:
         - '0.0'
         - '0.5'
         - '1.0'
 
-- title: 'Compact Living'
-  section: 4
+4:
+  title: 'Compact Living'
   fields:
     - type: radio
       label: 'Compact Units'
+      description: 'Some description about compact units options'
       options:
         - 'Standard Units'
         - 'Compact Units'

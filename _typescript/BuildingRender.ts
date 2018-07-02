@@ -54,6 +54,8 @@ export class BuildingRender {
         cameraZoom: number = 25;
         nextCameraZoom: number;
 
+        isAnimating: boolean = false;
+
         constructor(element: HTMLElement) {
             this.containerEl = element;
             this.setDimensionsFromElement(element);
@@ -144,9 +146,11 @@ export class BuildingRender {
             //     return null;
             // }
             // if (!vertices || !faces) {
+            //     console.log('missing vertices or faces', type);
             //     return null;
             // }
             // if (vertices.length === 0 || faces.length === 0) {
+            //     console.log('no vertices or faces', type);
             //     return null;
             // }
 
@@ -154,7 +158,7 @@ export class BuildingRender {
                 geo.vertices.push(new THREE.Vector3(vertices[i - 2], vertices[i - 1], vertices[i])); // Add offset to account for position in initial dataset
             }
 
-            if( faces) {
+            if(faces) {
                 let k = 0;
                 while (k < faces.length) {
                     // QUAD FACE
@@ -173,7 +177,6 @@ export class BuildingRender {
 
             geo.computeFaceNormals();
             geo.computeVertexNormals();
-
             return geo;
         }
 
@@ -184,9 +187,7 @@ export class BuildingRender {
 
             // set up edges
             let mat = new THREE.MeshStandardMaterial({
-                color: 0x999999,
-                transparent: true,
-                opacity: 0.7
+                color: 0x999999
             });
             let mesh = new THREE.Mesh(geo, mat);
             mesh.castShadow = true;
@@ -261,7 +262,6 @@ export class BuildingRender {
             let key = `${opts.apts}|${opts.floors}|${opts.parking}`;
             let data = renderData[key];
 
-            console.log(data);
 
             if (data) {
                 let group = new THREE.Group();
@@ -369,6 +369,11 @@ export class BuildingRender {
                 this.scene.add(group);
                 this.activeBuildingGroup = group;
             }
+            // if is not currently running animate loop,
+            // force one re-render.
+            if (!this.isAnimating) {
+                this.animate();
+            }
         }
 
         rerenderBuilding(opts: any) {
@@ -390,7 +395,7 @@ export class BuildingRender {
                 let mat = new THREE.MeshStandardMaterial({
                     color: 0xe0d65d,
                     transparent: true,
-                    opacity: 0.5
+                    opacity: 0.75
                 });
                 mat.metalness = 0;
                 let mesh = new THREE.Mesh(geo, mat);
@@ -493,9 +498,12 @@ export class BuildingRender {
         }
 
         animate() {
-            requestAnimationFrame(() => {
-                this.animate();
-            });
+            if (this.isAnimating) {
+                console.log('ANIMATE');
+                requestAnimationFrame(() => {
+                    this.animate();
+                });
+            }
             this.render();
         }
 
