@@ -41,30 +41,19 @@ layout: default
 
       {% for field in lessonOptions.fields %}
         {% assign fieldID = 'field-' +forloop.index %}
-      <div class="options__field" data-collapsible>
+      <div class="options__field" data-label="{{field.dataLabel}}">
         <label for="{{fieldID}}">
           {{field.label}}
         </label>
         <p class="options__field-description">
           {{field.description}}
         </p>
-        {% if field.type == 'select' %}
+        {% for option in field.options %}
           <div class="options__field-input">
-            <select name="{{field.label}}" id="{{fieldID}}">
-              {% for option in field.options %}
-              <option value="{{option}}">{{option}}</option>
-              {% endfor %}
-            </select>
+            <input type="radio" id="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option.dataValue}}" name="{{field.label | slugify}}" value="{{option.dataValue}}">
+            <label for="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option.dataValue}}">{{option.displayName}}</label>
           </div>
-        {% endif %}
-        {% if field.type == 'radio' %}
-          {% for option in field.options %}
-            <div class="options__field-input">
-              <input type="radio" id="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option}}" name="{{field.label | slugify}}" value="{{option}}">
-              <label for="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option}}">{{option}}</label>
-            </div>
-          {% endfor %}
-        {% endif %}
+        {% endfor %}
       </div>
       {% endfor %}
     </div>

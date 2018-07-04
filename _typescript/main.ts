@@ -1,122 +1,168 @@
-import scrollTo from './scrollTo.module';
 import {BuildingRender} from './BuildingRender';
+import {throttle, scrollTo, getScrollOffset, isScrolledIntoView, formatCurrency} from './util';
 import * as $ from 'jquery';
 
 
 let br: BuildingRender;
 let handleActiveRender: any;
 
-function getScrollOffset(element:any) {
-    let scrolledAmt = document.documentElement.scrollTop;
-    return scrolledAmt + element.getBoundingClientRect().top;
-}
-
-const throttle = (func: Function , limit: Number) => {
-    let inThrottle: boolean;
-    return function () {
-        const args = arguments
-        const context = this
-        if (!inThrottle) {
-            func.apply(context, args)
-            inThrottle = true
-            setTimeout(() => inThrottle = false, limit)
-        }
-    }
-}
-
-function isScrolledIntoView(el: any) {
-    var rect = el.getBoundingClientRect();
-    var elemTop = rect.top;
-    var elemBottom = rect.bottom;
-
-    // Partially visible elements return true:
-    let isVisible = elemTop < window.innerHeight && elemBottom >= 0;
-    return isVisible;
-}
-
-function nodelistToArray(nodelist: NodeList) {
-    return Array.prototype.slice.call(nodelist);
-}
-
 
 // To be called after DOMContentLoaded
 function scrollEventHandling() {
-    let pageContent = document.querySelector('.page-content');
-    // fire once then listen
-
-    let lessonSections = nodelistToArray(document.querySelectorAll('.lesson-modules [data-lesson]'));
+    let pageContent = $('.page-content');
     let currentMenuItem = document.querySelector(".menu__current-item");
-    handleScroll();
-    window.addEventListener('scroll', throttle(handleScroll, 10));
 
     function handleScroll() {
-        if (pageContent.getBoundingClientRect().top <= 0) {
-            pageContent.classList.add('is-scrolled');
+        if (pageContent[0].getBoundingClientRect().top <= 0) {
+            pageContent.addClass('is-scrolled');
         } else {
-            pageContent.classList.remove('is-scrolled');
+            pageContent.removeClass('is-scrolled');
         }
-        lessonSections.forEach( (lessonModule: any) => {
+        $('.lesson-modules [data-lesson]').each( (i, lessonModule: any) => {
             if ( isScrolledIntoView(lessonModule)) {
                 let title = lessonModule.querySelector('.lesson__title').textContent;
                 currentMenuItem.textContent = title;
-                let inputOptions = nodelistToArray(document.querySelectorAll('.visualization-module__options [data-lesson]'));
-                inputOptions.forEach( (el: any) => {
-                    el.classList.remove('is-visible');
-                    el.classList.add('is-hidden');
-                });
             }
         });
     }
+
+    // fire once then listen
+    handleScroll();
+    window.addEventListener('scroll', throttle(handleScroll, 10));
+
 }
 
 // To be called after DOMContentLoaded
 function clickEventHandling() {
-    let button = document.querySelector('#start');
-    button.addEventListener('click', () => {
-        scrollTo(getScrollOffset(document.querySelector('.lesson-modules')), 600);
+
+    $('#start').on('click', () => {
+        scrollTo(getScrollOffset($('.lesson-modules')[0]), 600);
     });
 
-    let nextLessonBtns = nodelistToArray(document.querySelectorAll('.button--next-lesson'));
-    nextLessonBtns.forEach((element: any) => {
-        element.addEventListener('click', () => {
-            scrollTo(getScrollOffset(element.parentElement.nextElementSibling), 600);
-            br.resetZoom();
-            br.rerenderBuilding({ size: 'large' });
-            handleActiveRender();
-        })
+    $(".visualization-module__toggle").on('click', () => {
+        $(".visualization-module__outcomes").toggleClass('is-closed');
     });
 
-    let menuToggle = document.querySelector('.menu-toggle');
-    let toc = document.querySelector('.table-of-contents');
-    menuToggle.addEventListener('click', (e) => {
-        toc.classList.toggle('is-open');
+    $(".button--next-lesson").on('click', (e) => {
+        scrollTo(getScrollOffset(e.currentTarget.parentElement.nextElementSibling), 600);
+        br.resetZoom();
+        handleActiveRender();
     });
 
-    let menuLinks = document.querySelectorAll(".table-of-contents a");
-    for (let index = 0; index < menuLinks.length; index++) {
-        menuLinks[index].addEventListener('click', (e) => {
-            toc.classList.remove("is-open");
-        });
-    }
+    let toc = $('.table-of-contents');
+    $('.menu-toggle').on('click', (e) => {
+        toc.toggleClass('is-open');
+    });
+
+    $(".table-of-contents a").on('click', (e) => {
+        toc.removeClass("is-open");
+    });
 
 }
 
-function setOutcomes(outcomes: any) {
-    console.log(outcomes);
-    $(".visualization-module__quick-outcome").html(`${outcomes.totalUnits} units, ${outcomes.totalArea}m<sup>2</sup>`);
+
+function setOutcomes(s: any) {
+    $(".visualization-module__quick-outcome").html(`
+        $${formatCurrency(s.constructionPrice)} - ${s.numApts} units, ${s.numFloors} floors
+    `);
     $(".visualization-module__outcomes-content").html(`
-        <p><strong>Total Units</strong> ${outcomes.totalUnits}</p>
-        <p><strong>Total Area</strong> ${outcomes.totalArea}m<sup>2</sup></p>
-        <p><strong>Types of Units</strong> ${outcomes.types}</p>
+        <table>
+            <tr>
+                <th>Apartments</th>
+                <td>${s.calcNumApts}</td>
+            </tr>
+            <tr>
+                <th>Construction Price</th>
+                <td class="t-financial">$${formatCurrency(s.constructionPrice)}</td>
+            </tr>
+            <tr>
+                <th>Construction Type</th>
+                <td>${s.constructionType}</td>
+            </tr>
+            <tr>
+                <th>Debt Amount</th>
+                <td class="t-financial">$${formatCurrency(s.debtAmt)}</td>
+            </tr>
+            <tr>
+                <th>Debt Service Amount</th>
+                <td class="t-financial">$${formatCurrency(s.debtServiceAmt)}</td>
+            </tr>
+            <tr>
+                <th>Developer Fee</th>
+                <td class="t-financial">$${formatCurrency(s.developerFee)}</td>
+            </tr>
+            <tr>
+                <th>Equity Amount</th>
+                <td class="t-financial">$${formatCurrency(s.equityAmt)}</td>
+            </tr>
+            <tr>
+                <th>Expenses Per Apartment</th>
+                <td class="t-financial">$${formatCurrency(s.expensesPerApt)}</td>
+            </tr>
+            <tr>
+                <th>Land Price</th>
+                <td class="t-financial">$${formatCurrency(s.landPrice)}</td>
+            </tr>
+            <tr>
+                <th>Margin</th>
+                <td class="t-financial">$${formatCurrency(s.margin)}</td>
+            </tr>
+            <tr>
+                <th>N.O.I (?)</th>
+                <td class="t-financial">$${formatCurrency(s.noi)}</td>
+            </tr>
+            <tr>
+                <th>N.O.I per apartment (?)</th>
+                <td class="t-financial">$${formatCurrency(s.noiPerApt)}</td>
+            </tr>
+            <tr>
+                <th>N.O.I prop of EGI (?)</th>
+                <td class="t-financial">$${formatCurrency(s.noiPropOfEGI)}</td>
+            </tr>
+            <tr>
+                <th>Parking Price</th>
+                <td class="t-financial">$${formatCurrency(s.parkingPrice)}</td>
+            </tr>
+            <tr>
+                <th>Return on Cost</th>
+                <td>${s.returnOnCost}</td>
+            </tr>
+            <tr>
+                <th>Soft Costs</th>
+                <td class="t-financial">$${formatCurrency(s.softCosts)}</td>
+            </tr>
+            <tr>
+                <th>Surplus</th>
+                <td class="t-financial">$${formatCurrency(s.surplus)}</td>
+            </tr>
+            <tr>
+                <th>tdcPerGSF (?)</th>
+                <td class="t-financial">$${formatCurrency(s.tdcPerGSF)}</td>
+            </tr>
+            <tr>
+                <th>tdcPerUnit (?)</th>
+                <td class="t-financial">$${formatCurrency(s.tdcPerUnit)}</td>
+            </tr>
+            <tr>
+                <th>Total Dev Cost</th>
+                <td class="t-financial">$${formatCurrency(s.totalDevCost)}</td>
+            </tr>
+            <tr>
+                <th>Total Sources</th>
+                <td class="t-financial">$${formatCurrency(s.totalSources)}</td>
+            </tr>
+
+        </table>
     `);
 }
 
 function initThree() {
+    let animateTimer: any;
     let vizSpace = <HTMLElement>document.querySelector('.visualization-module__canvas')
+
     br = new BuildingRender(vizSpace);
     br.init();
 
-    let animateTimer: any;
 
     handleActiveRender = throttle(function () {
         br.isAnimating = true;
@@ -131,60 +177,46 @@ function initThree() {
 
     vizSpace.addEventListener('mousemove', handleActiveRender);
 
-    // add axis to the scene
-    // let axis = new THREE.AxesHelper(10)
-    // scene.add(axis)
-
     // handle zoom buttons
-    let zoomIn = document.querySelector('.visualization-module__zoom-in');
-    let zoomOut = document.querySelector('.visualization-module__zoom-out');
-    zoomIn.addEventListener('click', () => {
+    let zoomIn = $('.visualization-module__zoom-in');
+    let zoomOut = $('.visualization-module__zoom-out');
+    zoomIn.on('click', () => {
         br.increaseZoom();
         handleActiveRender();
     });
-    zoomOut.addEventListener("click", () => {
+    zoomOut.on('click', () => {
         br.decreaseZoom();
         handleActiveRender();
     });
 
-    let renderOptions = {
-        parking: '0.0',
-        floors: '3',
-        apts: '9'
+    let renderOptionDefaults: any = {
+        type: 'Standard',
+        rentScenario: 'deepAffordability',
+        ratioParking: '0.0',
+        numFloors: '3',
+        numApts: '9'
     };
-    br.rerenderBuilding({ size: "large" });
+    let activeRenderOptions: any = {};
 
-    let $parkingSelect = $('input[name="parking-ratio"]');
-    $parkingSelect.on('change', (event) => {
-        let val = $(event.target).val();
-        renderOptions.parking = val.toString();
-        let outcomes = br.getOutcomes(renderOptions);
+    br.renderScenario(renderOptionDefaults);
+
+    let $option = $('.options__field[data-label] input');
+    $option.on('change', (event) => {
+        let val = $(event.currentTarget).val();
+        let dataLabel = $(event.currentTarget).closest('[data-label]').data('label');
+        activeRenderOptions[dataLabel] = val.toString();
+        let options = Object.assign({},renderOptionDefaults, activeRenderOptions);
+
+        let outcomes = br.getOutcomes(options);
         setOutcomes(outcomes);
-        br.renderScenario(renderOptions);
+        br.renderScenario(options);
     });
-
-    let $floorsSelect = $('input[name="floors"]');
-    $floorsSelect.on('change', (event) => {
-        let val = $(event.target).val();
-        renderOptions.floors = val.toString();
-        let outcomes = br.getOutcomes(renderOptions);
-        setOutcomes(outcomes);
-        br.renderScenario(renderOptions);
-    });
-
-    let $apartmentSelect = $('input[name="apartments"]');
-    $apartmentSelect.on('change', (event) => {
-        let val = $(event.target).val();
-        renderOptions.apts = val.toString();
-        let outcomes = br.getOutcomes(renderOptions);
-        setOutcomes(outcomes);
-        br.renderScenario(renderOptions);
-    });
-
-
 
 }
 
+
+
+// Page load initialization
 (function(){
 
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -195,7 +227,6 @@ function initThree() {
         handleActiveRender();
 
     });
-
 
 })();
 

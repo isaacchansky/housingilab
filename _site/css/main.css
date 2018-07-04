@@ -611,16 +611,46 @@ img {
     font-weight: 600; }
 
 .visualization-module__outcomes {
-  background: #FFFFFF; }
-  .visualization-module__outcomes h2 {
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column; }
+  .visualization-module__outcomes .visualization-module__quick-outcome {
     font-size: 1rem;
     margin: 0;
-    padding: 0.5rem; }
+    padding: 0.5rem;
+    font-weight: 300; }
 
 .visualization-module__outcomes-content {
-  padding: 0 1rem; }
+  padding: 0 1rem;
+  height: 100%;
+  overflow: auto; }
   .visualization-module__outcomes-content p {
     margin: 0; }
+
+.visualization-module__toggle {
+  box-shadow: none;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none; }
+  .visualization-module__toggle:before, .visualization-module__toggle:after {
+    content: '';
+    width: 0.75rem;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    border-bottom: 3px solid black; }
+  .visualization-module__toggle:before {
+    transform: rotate(45deg);
+    right: 1.25rem; }
+  .visualization-module__toggle:after {
+    transform: rotate(-45deg);
+    right: 1.25rem; }
+  .is-closed .visualization-module__toggle:before {
+    right: 1.5rem; }
+  .is-closed .visualization-module__toggle:after {
+    right: 1.05rem; }
 
 .table-of-contents {
   background: white;
@@ -735,6 +765,14 @@ img {
     font-size: 1rem;
     padding-left: 0.5rem; }
 
+table tr:nth-child(odd) {
+  background: #fafafa; }
+table th, table td {
+  font-size: 0.85rem;
+  padding: 0.25rem; }
+table .t-financial {
+  text-align: right; }
+
 .page-content {
   position: relative; }
 
@@ -798,16 +836,17 @@ img {
   height: 100%; }
 
 .visualization-module__outcomes {
-  height: 7rem;
-  width: 60%;
+  height: 60vh;
+  top: calc(50% - 30vh);
+  width: calc(100% - 4rem);
   position: absolute;
-  right: 35%;
-  bottom: -5rem;
+  left: 2rem;
   z-index: 10;
   transition: all 250ms ease;
   box-shadow: 0 3px 20px rgba(33, 38, 45, 0.15), -1px 1px 10px rgba(0, 0, 0, 0.05); }
-  .visualization-module__outcomes:hover {
-    bottom: 0; }
+  .visualization-module__outcomes.is-closed {
+    top: 0;
+    height: 2rem; }
 
 .page-content.is-scrolled .visualization-module {
   position: fixed;

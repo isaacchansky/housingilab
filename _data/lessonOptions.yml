@@ -3,43 +3,78 @@
   fields:
     - type: radio
       label: 'Apartments'
+      dataLabel: 'numApts'
       description: 'Some description about apartment options'
       options:
-        - '9'
-        - '16'
-        - '24'
+        -
+          displayName: '9'
+          dataValue: '9'
+        -
+          displayName: '16'
+          dataValue: '16'
+        -
+          displayName: '24'
+          dataValue: '24'
     - type: radio
       label: 'Floors'
+      dataLabel: 'numFloors'
       description: 'Some description about floor options'
       options:
-        - '3'
-        - '4'
-        - '6'
+        -
+          displayName: '3'
+          dataValue: '3'
+        -
+          displayName: '4'
+          dataValue: '4'
+        -
+          displayName: '6'
+          dataValue: '6'
     - type: radio
       label: 'Parking Ratio'
+      dataLabel: 'ratioParking'
       description: 'Some description about parking options'
       options:
-        - '0.0'
-        - '0.5'
-        - '1.0'
+        -
+          displayName: '0.0'
+          dataValue: '0.0'
+        -
+          displayName: '0.5'
+          dataValue: '0.5'
+        -
+          displayName: '1.0'
+          dataValue: '1.0'
 
 2:
   title: 'Balance the budget'
   fields:
     - type: radio
       label: 'Rents'
+      dataLabel: 'rentScenario'
       description: 'Some description about rent options'
       options:
-        - '100% Market'
-        - '13% @ 70AMI'
-        - '30-30-30'
+        -
+          displayName: '100% Market'
+          dataValue: 'deepAffordability'
+        -
+          displayName: '13% @ 70AMI'
+          dataValue: 'idpAmiMix'
+        -
+          displayName: '30-30-30'
+          dataValue: 'thirdThirdThird'
     - type: radio
       label: 'Parking Ratio'
+      dataLabel: 'ratioParking'
       description: 'Some description about parking options'
       options:
-        - '0.0'
-        - '0.5'
-        - '1.0'
+        -
+          displayName: '0.0'
+          dataValue: '0.0'
+        -
+          displayName: '0.5'
+          dataValue: '0.5'
+        -
+          displayName: '1.0'
+          dataValue: '1.0'
 
 3:
   title: 'How does parking work?'
@@ -47,23 +82,42 @@
     - type: radio
       description: 'Some description about parking options'
       label: 'Parking Ratio'
+      dataLabel: 'ratioParking'
       options:
-        - '0.0'
-        - '0.5'
-        - '1.0'
+        -
+          displayName: '0.0'
+          dataValue: '0.0'
+        -
+          displayName: '0.5'
+          dataValue: '0.5'
+        -
+          displayName: '1.0'
+          dataValue: '1.0'
 
 4:
   title: 'Compact Living'
   fields:
     - type: radio
       label: 'Compact Units'
+      dataLabel: 'type'
       description: 'Some description about compact units options'
       options:
-        - 'Standard Units'
-        - 'Compact Units'
+        -
+          displayName: 'Standard Units'
+          dataValue: 'Standard'
+        -
+          displayName: 'Compact Units'
+          dataValue: 'Compact'
     - type: radio
       label: 'Parking Ratio'
+      dataLabel: 'ratioParking'
       options:
-        - '0.0'
-        - '0.5'
-        - '1.0'
+        -
+          displayName: '0.0'
+          dataValue: '0.0'
+        -
+          displayName: '0.5'
+          dataValue: '0.5'
+        -
+          displayName: '1.0'
+          dataValue: '1.0'

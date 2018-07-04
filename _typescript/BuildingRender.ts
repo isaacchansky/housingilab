@@ -12,7 +12,17 @@ const apts: any = require("./data/apts.json");
 const cores: any = require("./data/cores.json");
 const parking: any = require("./data/parking.json");
 
+const financialScenarios: any = require("./data/financialScenarios.json");
+
+
 const renderData: any = {};
+
+financialScenarios.financialScenarios.forEach( (item: any) => {
+    if (!renderData[item.name]) {
+      renderData[item.name] = {};
+    }
+    renderData[item.name].scenario = item;
+});;
 
 apts.forEach( (item: any) => {
     if (!renderData[item.name]) {
@@ -36,7 +46,6 @@ parking.forEach((item: any) => {
     renderData[item.name].parking = item;
 });
 
-console.log(renderData);
 
 export class BuildingRender {
         containerEl: HTMLElement;
@@ -259,7 +268,7 @@ export class BuildingRender {
         //     apts: '16'
         // };
         renderScenario(opts: any) {
-            let key = `${opts.apts}|${opts.floors}|${opts.parking}`;
+            let key = `${opts.numApts}|${opts.numFloors}|${opts.ratioParking}`;
             let data = renderData[key];
 
 
@@ -376,47 +385,6 @@ export class BuildingRender {
             }
         }
 
-        rerenderBuilding(opts: any) {
-            // 1st section slice(0, 6)
-            // 2nd section slice(6, 24)
-            // full section no slicing
-            let geometrySlice = largeSixHalf.geoms;
-            if (opts.size === "small") {
-                geometrySlice = largeSixHalf.geoms.slice(0, 6);
-            }
-            if (opts.size === "medium") {
-                geometrySlice = largeSixHalf.geoms.slice(6, 24);
-            }
-            let group = new THREE.Group();
-
-            geometrySlice.forEach((item: any) => {
-                let geo = this.buildGeometry(item.geom);
-
-                let mat = new THREE.MeshStandardMaterial({
-                    color: 0xe0d65d,
-                    transparent: true,
-                    opacity: 0.75
-                });
-                mat.metalness = 0;
-                let mesh = new THREE.Mesh(geo, mat);
-                mesh.castShadow = true;
-                mesh.receiveShadow = true;
-                // set up edges
-                let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
-                let eMaterial = new THREE.LineBasicMaterial({
-                color: 0xe0d65d,
-                linewidth: 1
-                });
-                let edges = new THREE.LineSegments(eGeometry, eMaterial);
-                mesh.add(edges);
-                mesh.rotation.x = -Math.PI * 0.5;
-                group.add(mesh);
-            });
-
-            this.scene.remove(this.activeBuildingGroup);
-            this.scene.add(group);
-            this.activeBuildingGroup = group;
-        }
 
         // let renderOptions = {
         //     parking: '1.0',
@@ -424,29 +392,8 @@ export class BuildingRender {
         //     apts: '16'
         // };
         getOutcomes(opts: any) {
-            let types: any = {};
-            let typesArray: string[] = [];
-            let totalArea = 0;
-            let totalUnits = 0;
-            let key = `${opts.apts}|${opts.floors}|${opts.parking}`;
-            let data = renderData[key];
-            if(data) {
-                totalUnits = data.apts.geoms.length;
-                data.apts.geoms.forEach( (item: any) => {
-                    totalArea += parseInt(item.aptArea, 10);
-                    if (types[item.aptType]) {
-                        types[item.aptType] += 1;
-                    } else {
-                        types[item.aptType] = 1;
-                    }
-                });
-                Object.keys(types).forEach(t => {
-                    typesArray.push(`${types[t]} ${t}`);
-                });
-
-            }
-
-            return { types: typesArray.join(", "), totalArea: totalArea, totalUnits: totalUnits };
+            let data = renderData[`${opts.numApts}|${opts.numFloors}|${opts.ratioParking}`];
+            return data.scenario;
         }
 
         composeScene() {
@@ -485,11 +432,9 @@ export class BuildingRender {
         render() {
             if (this.nextCameraZoom && this.nextCameraZoom !== this.cameraZoom) {
                 if (this.nextCameraZoom < this.cameraZoom) {
-                this.cameraZoom = this.cameraZoom - 0.5;
-                console.log("zoomin out", this.cameraZoom);
+                    this.cameraZoom = this.cameraZoom - 0.5;
                 } else {
-                this.cameraZoom = this.cameraZoom + 0.5;
-                console.log("zoomin in", this.cameraZoom);
+                    this.cameraZoom = this.cameraZoom + 0.5;
                 }
             }
             this.camera.fov = this.cameraZoom;
@@ -499,7 +444,6 @@ export class BuildingRender {
 
         animate() {
             if (this.isAnimating) {
-                console.log('ANIMATE');
                 requestAnimationFrame(() => {
                     this.animate();
                 });
@@ -508,7 +452,6 @@ export class BuildingRender {
         }
 
         init() {
-            console.log("initialize!");
             this.createScene();
             this.createCamera();
             this.createControls();
