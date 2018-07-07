@@ -36,8 +36,8 @@ layout: default
 
     {% assign lessonOptions = site.data.lessonOptions[forloop.index]  %}
     <div class="options">
-      <p class="message">Adjust the options below to view its impact.</p>
-      <!-- <h3 class="options__title">{{lessonOptions.title}}</h3> -->
+      <h2 class="options__title">{{lessonOptions.title}}</h2>
+      <p class="message">Adjust the options below to view the impact.</p>
 
       {% for field in lessonOptions.fields %}
         {% assign fieldID = 'field-' +forloop.index %}
@@ -51,7 +51,13 @@ layout: default
         {% for option in field.options %}
           <div class="options__field-input">
             <input type="radio" id="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option.dataValue}}" name="{{field.label | slugify}}" value="{{option.dataValue}}">
-            <label for="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option.dataValue}}">{{option.displayName}}</label>
+            <label for="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option.dataValue}}">
+              <span class="label-icon">
+                {% include icon-circle.svg %}
+                {% include icon-circle-checked.svg %}
+              </span>
+              <span class="label-text">{{option.displayName}}</span>
+            </label>
           </div>
         {% endfor %}
       </div>
@@ -66,7 +72,7 @@ layout: default
 
 
     {% if nextLesson %}
-      <button class="button button--next-lesson">
+      <button class="button--next-lesson">
         <span class="button__subtitle">Next Lesson</span>
         <span class="button__title">{{nextLesson.title}} {% include icon-down-arrow.svg %}</span>
       </button>

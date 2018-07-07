@@ -2,8 +2,14 @@
     <div class="visualization-module__canvas"></div>
     <div class="visualization-module__controls">
         <div class="visualization-module__control-content">
-            <button class="visualization-module__zoom-in">zoom in</button>
-            <button class="visualization-module__zoom-out">zoom out</button>
+            <button class="visualization-module__zoom-in">
+                {% include icon-zoom-in.svg %}
+                <span class="visually-hidden">zoom in</span>
+            </button>
+            <button class="visualization-module__zoom-out">
+                {% include icon-zoom-out.svg %}
+                <span class="visually-hidden">zoom out</span>
+            </button>
         </div>
     </div>
 
@@ -11,6 +17,8 @@
         <h2 class="visualization-module__quick-outcome">
         </h2>
         <button class="visualization-module__toggle">
+            {% include icon-maximize.svg %}
+            {% include icon-minimize.svg %}
             <div class="visually-hidden">toggle outcome details</div>
         </button>
         <div class="visualization-module__outcomes-content">

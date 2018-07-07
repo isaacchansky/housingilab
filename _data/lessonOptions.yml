@@ -2,21 +2,21 @@
   title: 'What are the basics?'
   fields:
     - type: radio
-      label: 'Apartments'
+      label: 'Development Size'
       dataLabel: 'numApts'
       description: 'Some description about apartment options'
       options:
         -
-          displayName: '9'
+          displayName: 'Low Urban'
           dataValue: '9'
         -
-          displayName: '16'
+          displayName: 'Moderate Urban'
           dataValue: '16'
         -
-          displayName: '24'
+          displayName: 'Mid-rise Urban'
           dataValue: '24'
     - type: radio
-      label: 'Floors'
+      label: 'Number of Floors'
       dataLabel: 'numFloors'
       description: 'Some description about floor options'
       options:
@@ -29,53 +29,24 @@
         -
           displayName: '6'
           dataValue: '6'
-    - type: radio
-      label: 'Parking Ratio'
-      dataLabel: 'ratioParking'
-      description: 'Some description about parking options'
-      options:
-        -
-          displayName: '0.0'
-          dataValue: '0.0'
-        -
-          displayName: '0.5'
-          dataValue: '0.5'
-        -
-          displayName: '1.0'
-          dataValue: '1.0'
 
 2:
   title: 'Balance the budget'
   fields:
     - type: radio
-      label: 'Rents'
+      label: 'Rent Mix'
       dataLabel: 'rentScenario'
       description: 'Some description about rent options'
       options:
         -
-          displayName: '100% Market'
-          dataValue: 'deepAffordability'
-        -
-          displayName: '13% @ 70AMI'
+          displayName: 'Market Rate (Inclusionary Development Policy)'
           dataValue: 'idpAmiMix'
         -
-          displayName: '30-30-30'
+          displayName: '1/3 1/3 1/3'
           dataValue: 'thirdThirdThird'
-    - type: radio
-      label: 'Parking Ratio'
-      dataLabel: 'ratioParking'
-      description: 'Some description about parking options'
-      options:
         -
-          displayName: '0.0'
-          dataValue: '0.0'
-        -
-          displayName: '0.5'
-          dataValue: '0.5'
-        -
-          displayName: '1.0'
-          dataValue: '1.0'
-
+          displayName: 'Deep Affordability'
+          dataValue: 'deepAffordability'
 3:
   title: 'How does parking work?'
   fields:
@@ -108,6 +79,48 @@
         -
           displayName: 'Compact Units'
           dataValue: 'Compact'
+    - type: radio
+      label: 'Development Size'
+      dataLabel: 'numApts'
+      description: 'Some description about apartment options'
+      options:
+        -
+          displayName: 'Low Urban'
+          dataValue: '9'
+        -
+          displayName: 'Moderate Urban'
+          dataValue: '16'
+        -
+          displayName: 'Mid-rise Urban'
+          dataValue: '24'
+    - type: radio
+      label: 'Number of Floors'
+      dataLabel: 'numFloors'
+      description: 'Some description about floor options'
+      options:
+        -
+          displayName: '3'
+          dataValue: '3'
+        -
+          displayName: '4'
+          dataValue: '4'
+        -
+          displayName: '6'
+          dataValue: '6'
+    - type: radio
+      label: 'Rent Mix'
+      dataLabel: 'rentScenario'
+      description: 'Some description about rent options'
+      options:
+        -
+          displayName: 'Market Rate (Inclusionary Development Policy)'
+          dataValue: 'idpAmiMix'
+        -
+          displayName: '1/3 1/3 1/3'
+          dataValue: 'thirdThirdThird'
+        -
+          displayName: 'Deep Affordability'
+          dataValue: 'deepAffordability'
     - type: radio
       label: 'Parking Ratio'
       dataLabel: 'ratioParking'

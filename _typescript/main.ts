@@ -1,5 +1,6 @@
 import {BuildingRender} from './BuildingRender';
-import {throttle, scrollTo, getScrollOffset, isScrolledIntoView, formatCurrency} from './util';
+import {throttle, scrollTo, getScrollOffset, isScrolledIntoView} from './util';
+import outcomeTemplating from './lesson-outcome-templating';
 import * as $ from 'jquery';
 
 
@@ -13,6 +14,7 @@ function scrollEventHandling() {
     let currentMenuItem = document.querySelector(".menu__current-item");
 
     function handleScroll() {
+        let currentLesson = null;
         if (pageContent[0].getBoundingClientRect().top <= 0) {
             pageContent.addClass('is-scrolled');
         } else {
@@ -22,8 +24,15 @@ function scrollEventHandling() {
             if ( isScrolledIntoView(lessonModule)) {
                 let title = lessonModule.querySelector('.lesson__title').textContent;
                 currentMenuItem.textContent = title;
+                currentLesson = lessonModule;
             }
         });
+
+        if (currentLesson) {
+            let currentLessonNumber = $(currentLesson).data('lesson');
+            // TODO: throttle this.
+            // history.pushState({ lesson: currentLessonNumber }, 'Lesson ${currentLessonNumber}', `${location.origin}${location.pathname}#lesson-${currentLessonNumber}`);
+        }
     }
 
     // fire once then listen
@@ -47,6 +56,7 @@ function clickEventHandling() {
         scrollTo(getScrollOffset(e.currentTarget.parentElement.nextElementSibling), 600);
         br.resetZoom();
         handleActiveRender();
+        $('.page-content').removeClass('has-interaction');
     });
 
     let toc = $('.table-of-contents');
@@ -61,99 +71,11 @@ function clickEventHandling() {
 }
 
 
-function setOutcomes(s: any) {
-    $(".visualization-module__quick-outcome").html(`
-        $${formatCurrency(s.constructionPrice)} - ${s.numApts} units, ${s.numFloors} floors
-    `);
-    $(".visualization-module__outcomes-content").html(`
-        <table>
-            <tr>
-                <th>Apartments</th>
-                <td>${s.calcNumApts}</td>
-            </tr>
-            <tr>
-                <th>Construction Price</th>
-                <td class="t-financial">$${formatCurrency(s.constructionPrice)}</td>
-            </tr>
-            <tr>
-                <th>Construction Type</th>
-                <td>${s.constructionType}</td>
-            </tr>
-            <tr>
-                <th>Debt Amount</th>
-                <td class="t-financial">$${formatCurrency(s.debtAmt)}</td>
-            </tr>
-            <tr>
-                <th>Debt Service Amount</th>
-                <td class="t-financial">$${formatCurrency(s.debtServiceAmt)}</td>
-            </tr>
-            <tr>
-                <th>Developer Fee</th>
-                <td class="t-financial">$${formatCurrency(s.developerFee)}</td>
-            </tr>
-            <tr>
-                <th>Equity Amount</th>
-                <td class="t-financial">$${formatCurrency(s.equityAmt)}</td>
-            </tr>
-            <tr>
-                <th>Expenses Per Apartment</th>
-                <td class="t-financial">$${formatCurrency(s.expensesPerApt)}</td>
-            </tr>
-            <tr>
-                <th>Land Price</th>
-                <td class="t-financial">$${formatCurrency(s.landPrice)}</td>
-            </tr>
-            <tr>
-                <th>Margin</th>
-                <td class="t-financial">$${formatCurrency(s.margin)}</td>
-            </tr>
-            <tr>
-                <th>N.O.I (?)</th>
-                <td class="t-financial">$${formatCurrency(s.noi)}</td>
-            </tr>
-            <tr>
-                <th>N.O.I per apartment (?)</th>
-                <td class="t-financial">$${formatCurrency(s.noiPerApt)}</td>
-            </tr>
-            <tr>
-                <th>N.O.I prop of EGI (?)</th>
-                <td class="t-financial">$${formatCurrency(s.noiPropOfEGI)}</td>
-            </tr>
-            <tr>
-                <th>Parking Price</th>
-                <td class="t-financial">$${formatCurrency(s.parkingPrice)}</td>
-            </tr>
-            <tr>
-                <th>Return on Cost</th>
-                <td>${s.returnOnCost}</td>
-            </tr>
-            <tr>
-                <th>Soft Costs</th>
-                <td class="t-financial">$${formatCurrency(s.softCosts)}</td>
-            </tr>
-            <tr>
-                <th>Surplus</th>
-                <td class="t-financial">$${formatCurrency(s.surplus)}</td>
-            </tr>
-            <tr>
-                <th>tdcPerGSF (?)</th>
-                <td class="t-financial">$${formatCurrency(s.tdcPerGSF)}</td>
-            </tr>
-            <tr>
-                <th>tdcPerUnit (?)</th>
-                <td class="t-financial">$${formatCurrency(s.tdcPerUnit)}</td>
-            </tr>
-            <tr>
-                <th>Total Dev Cost</th>
-                <td class="t-financial">$${formatCurrency(s.totalDevCost)}</td>
-            </tr>
-            <tr>
-                <th>Total Sources</th>
-                <td class="t-financial">$${formatCurrency(s.totalSources)}</td>
-            </tr>
+function setOutcomes(s: any, lesson: number) {
+    let outcomeHTML = outcomeTemplating(s, lesson);
 
-        </table>
-    `);
+    $(".visualization-module__quick-outcome").html(outcomeHTML.summary);
+    $(".visualization-module__outcomes-content").html(outcomeHTML.full);
 }
 
 function initThree() {
@@ -204,12 +126,17 @@ function initThree() {
     $option.on('change', (event) => {
         let val = $(event.currentTarget).val();
         let dataLabel = $(event.currentTarget).closest('[data-label]').data('label');
-        activeRenderOptions[dataLabel] = val.toString();
-        let options = Object.assign({},renderOptionDefaults, activeRenderOptions);
+        let lesson = $(event.currentTarget).closest('[data-lesson]').data('lesson');
 
+        activeRenderOptions[dataLabel] = val.toString();
+
+        let options = Object.assign({},renderOptionDefaults, activeRenderOptions);
         let outcomes = br.getOutcomes(options);
-        setOutcomes(outcomes);
+
+        setOutcomes(outcomes, lesson);
         br.renderScenario(options);
+
+        $('.page-content').addClass('has-interaction');
     });
 
 }
@@ -225,7 +152,6 @@ function initThree() {
         clickEventHandling();
         initThree();
         handleActiveRender();
-
     });
 
 })();

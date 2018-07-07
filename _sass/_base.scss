@@ -381,7 +381,7 @@ input[type="search"]::-webkit-search-decoration {
  */
 
 fieldset {
-  border: 1px solid #c0c0c0;
+  border: 1px solid $color_grey;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
@@ -428,14 +428,4 @@ table {
 td,
 th {
   padding: 0;
-}
-
-
-
-.visually-hidden { /* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
-    position: absolute !important;
-    height: 1px; width: 1px;
-    overflow: hidden;
-    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-    clip: rect(1px, 1px, 1px, 1px);
 }
