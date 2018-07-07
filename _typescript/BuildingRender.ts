@@ -11,7 +11,7 @@ const largeSixHalf: any = require('./data/large6half.json');
 const apts: any = require("./data/apts.json");
 const cores: any = require("./data/cores.json");
 const parking: any = require("./data/parking.json");
-// const balconies: any = require("./data/balconies.json");
+const balconies: any = require("./data/balconies.json");
 
 const financialScenarios: any = require("./data/financialScenarios.json");
 
@@ -48,12 +48,12 @@ parking.forEach((item: any) => {
     renderData[item.name].parking = item;
 });
 
-// balconies.forEach((item: any) => {
-//     if (!renderData[item.name]) {
-//         renderData[item.name] = {};
-//     }
-//     renderData[item.name].balconies = item;
-// });
+balconies.forEach((item: any) => {
+    if (!renderData[item.name]) {
+        renderData[item.name] = {};
+    }
+    renderData[item.name].balconies = item;
+});
 
 
 
@@ -385,39 +385,39 @@ export class BuildingRender {
                         }
                     })
                 }
-                // if (data.balconies.geoms) {
-                //     data.balconies.geoms.forEach((item: any) => {
-                //         if (item.geom && item.geom.type) {
-                //             let geo = this.buildGeometry(item.geom);
-                //             let mat = new THREE.MeshStandardMaterial(
-                //               {
-                //                 color: 0xdddddd,
-                //                 transparent: true,
-                //                 opacity: 1
-                //               }
-                //             );
-                //             mat.metalness = 0;
-                //             if (geo && mat) {
-                //                 let mesh = new THREE.Mesh(geo, mat);
-                //                 mesh.castShadow = true;
-                //                 mesh.receiveShadow = true;
-                //                 // set up edges
-                //                 let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
-                //                 let eMaterial = new THREE.LineBasicMaterial(
-                //                     {
-                //                         color: 0xcccccc,
-                //                         linewidth: 1
-                //                     }
-                //                 );
-                //                 let edges = new THREE.LineSegments(eGeometry, eMaterial);
-                //                 mesh.add(edges);
-                //                 mesh.rotation.x = -Math.PI * 0.5;
-                //                 group.add(mesh);
-                //             }
+                if (data.balconies.geoms) {
+                    data.balconies.geoms.forEach((item: any) => {
+                        if (item.geom && item.geom.type) {
+                            let geo = this.buildGeometry(item.geom);
+                            let mat = new THREE.MeshStandardMaterial(
+                              {
+                                color: 0xdddddd,
+                                transparent: true,
+                                opacity: 1
+                              }
+                            );
+                            mat.metalness = 0;
+                            if (geo && mat) {
+                                let mesh = new THREE.Mesh(geo, mat);
+                                mesh.castShadow = true;
+                                mesh.receiveShadow = true;
+                                // set up edges
+                                let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
+                                let eMaterial = new THREE.LineBasicMaterial(
+                                    {
+                                        color: 0xcccccc,
+                                        linewidth: 1
+                                    }
+                                );
+                                let edges = new THREE.LineSegments(eGeometry, eMaterial);
+                                mesh.add(edges);
+                                mesh.rotation.x = -Math.PI * 0.5;
+                                group.add(mesh);
+                            }
 
-                //         }
-                //     })
-                // }
+                        }
+                    })
+                }
 
                 this.scene.remove(this.activeBuildingGroup);
                 this.scene.add(group);
