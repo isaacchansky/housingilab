@@ -1,12 +1,29 @@
 ---
 layout: default
 ---
+{% assign lessons = site.posts | sort:"order" %}
 
 <div class="lesson-modules">
 
-{% assign lessons = site.posts | sort:"order" %}
+  <nav class="table-of-contents">
+    <div class="table-of-contents__bar">
+      <button class="menu-toggle" aria-controls="">
+        LESSONS
+      </button>
+      <span class="menu__current-item">Current Lesson</span>
+    </div>
+
+    <ul class="table-of-contents__list">
+      {% for lesson in lessons %}
+        <li><a href="#lesson-{{lesson.order}}">
+          {{lesson.subtitle}} {{lesson.title}}
+        </a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+
 {% for lesson in lessons %}
-  <section class="lesson" data-lesson="{{lesson.order}}">
+  <section class="lesson" data-lesson="{{lesson.order}}" id="lesson-{{lesson.order}}">
     <span class="lesson__indicator">{{ lesson.subtitle }}</span>
     <h2 class="lesson__title">
       {{ lesson.title }}
@@ -14,10 +31,48 @@ layout: default
     <div class="lesson__meta">Last updated: {{ lesson.updated_at | date: "%b %-d, %Y" }}</div>
 
     {{ lesson.content }}
+
+
+
+    {% assign lessonOptions = site.data.lessonOptions[forloop.index]  %}
+    <div class="options">
+      <h2 class="options__title">{{lessonOptions.title}}</h2>
+      <p class="message">Adjust the options below to view the impact.</p>
+
+      {% for field in lessonOptions.fields %}
+        {% assign fieldID = 'field-' +forloop.index %}
+      <div class="options__field" data-label="{{field.dataLabel}}">
+        <label for="{{fieldID}}">
+          {{field.label}}
+        </label>
+        <p class="options__field-description">
+          {{field.description}}
+        </p>
+        {% for option in field.options %}
+          <div class="options__field-input">
+            <input type="radio" id="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option.dataValue}}" name="{{field.label | slugify}}" value="{{option.dataValue}}">
+            <label for="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option.dataValue}}">
+              <span class="label-icon">
+                {% include icon-circle.svg %}
+                {% include icon-circle-checked.svg %}
+              </span>
+              <span class="label-text">{{option.displayName}}</span>
+            </label>
+          </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+
     {% assign nextIndex = forloop.index + 1 %}
     {% assign nextLesson = lessons[nextIndex] %}
+
+
     {% if nextLesson %}
-      <button class="button button--next-lesson">
+      <button class="button--next-lesson">
         <span class="button__subtitle">Next Lesson</span>
         <span class="button__title">{{nextLesson.title}} {% include icon-down-arrow.svg %}</span>
       </button>

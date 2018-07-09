@@ -1,162 +1,149 @@
-import scrollTo from './scrollTo.module';
 import {BuildingRender} from './BuildingRender';
+import {throttle, scrollTo, getScrollOffset, isScrolledIntoView} from './util';
+import outcomeTemplating from './lesson-outcome-templating';
 import * as $ from 'jquery';
 
 
 let br: BuildingRender;
-
-function getScrollOffset(element:any) {
-    let scrolledAmt = document.documentElement.scrollTop;
-    return scrolledAmt + element.getBoundingClientRect().top;
-}
-
-const throttle = (func: Function , limit: Number) => {
-    let inThrottle: boolean;
-    return function () {
-        const args = arguments
-        const context = this
-        if (!inThrottle) {
-            func.apply(context, args)
-            inThrottle = true
-            setTimeout(() => inThrottle = false, limit)
-        }
-    }
-}
-
-function isScrolledIntoView(el: any) {
-    var rect = el.getBoundingClientRect();
-    var elemTop = rect.top;
-    var elemBottom = rect.bottom;
-
-    // Partially visible elements return true:
-    let isVisible = elemTop < window.innerHeight && elemBottom >= 0;
-    return isVisible;
-}
-
-function nodelistToArray(nodelist: NodeList) {
-    return Array.prototype.slice.call(nodelist);
-}
+let handleActiveRender: any;
 
 
 // To be called after DOMContentLoaded
 function scrollEventHandling() {
-    let pageContent = document.querySelector('.page-content');
+    let pageContent = $('.page-content');
+    let currentMenuItem = document.querySelector(".menu__current-item");
+
+    function handleScroll() {
+        let currentLesson = null;
+        if (pageContent[0].getBoundingClientRect().top <= 0) {
+            pageContent.addClass('is-scrolled');
+        } else {
+            pageContent.removeClass('is-scrolled');
+        }
+        $('.lesson-modules [data-lesson]').each( (i, lessonModule: any) => {
+            if ( isScrolledIntoView(lessonModule)) {
+                let title = lessonModule.querySelector('.lesson__title').textContent;
+                currentMenuItem.textContent = title;
+                currentLesson = lessonModule;
+            }
+        });
+
+        if (currentLesson) {
+            let currentLessonNumber = $(currentLesson).data('lesson');
+            // TODO: throttle this.
+            // history.pushState({ lesson: currentLessonNumber }, 'Lesson ${currentLessonNumber}', `${location.origin}${location.pathname}#lesson-${currentLessonNumber}`);
+        }
+    }
+
     // fire once then listen
-
-    let lessonSections = nodelistToArray(document.querySelectorAll('.lesson-modules [data-lesson]'));
-
     handleScroll();
     window.addEventListener('scroll', throttle(handleScroll, 10));
 
-    function handleScroll() {
-        if (pageContent.getBoundingClientRect().top <= 0) {
-            pageContent.classList.add('is-scrolled');
-        } else {
-            pageContent.classList.remove('is-scrolled');
-        }
-        lessonSections.forEach( (lessonModule: any) => {
-            if ( isScrolledIntoView(lessonModule)) {
-                let inputOptions = nodelistToArray(document.querySelectorAll('.visualization-module__options [data-lesson]'));
-                inputOptions.forEach( (el: any) => {
-                    el.classList.remove('is-visible');
-                    el.classList.add('is-hidden');
-                });
-                let currentOption = document.querySelector(`.visualization-module__options [data-lesson="${lessonModule.dataset.lesson}"]`);
-                currentOption.classList.remove('is-hidden');
-                currentOption.classList.add('is-visible');
-            }
-        });
-    }
 }
 
 // To be called after DOMContentLoaded
 function clickEventHandling() {
-    let button = document.querySelector('#start');
-    button.addEventListener('click', () => {
-        scrollTo(getScrollOffset(document.querySelector('.lesson-modules')), 600);
+
+    $('#start').on('click', () => {
+        scrollTo(getScrollOffset($('.lesson-modules')[0]), 600);
     });
 
-    let nextLessonBtns = nodelistToArray(document.querySelectorAll('.button--next-lesson'));
-    nextLessonBtns.forEach((element: any) => {
-        element.addEventListener('click', () => {
-            scrollTo(getScrollOffset(element.parentElement.nextElementSibling), 600);
-            br.resetZoom();
-            br.rerenderBuilding({ size: 'large' });
-        })
+    $(".visualization-module__toggle").on('click', () => {
+        $(".visualization-module__outcomes").toggleClass('is-closed');
     });
+
+    $(".button--next-lesson").on('click', (e) => {
+        scrollTo(getScrollOffset(e.currentTarget.parentElement.nextElementSibling), 600);
+        br.resetZoom();
+        handleActiveRender();
+        $('.page-content').removeClass('has-interaction');
+    });
+
+    let toc = $('.table-of-contents');
+    $('.menu-toggle').on('click', (e) => {
+        toc.toggleClass('is-open');
+    });
+
+    $(".table-of-contents a").on('click', (e) => {
+        toc.removeClass("is-open");
+    });
+
 }
 
-function setOutcomes(outcomes: any) {
-    console.log(outcomes);
-    $(".visualization-module__outcomes").html(`
-        <p><strong>Total Units</strong> ${outcomes.totalUnits}</p>
-        <p><strong>Total Area</strong> ${outcomes.totalArea}m<sup>2</sup></p>
-        <p><strong>Types of Units</strong> ${outcomes.types}</p>
-    `);
+
+function setOutcomes(s: any, lesson: number) {
+    let outcomeHTML = outcomeTemplating(s, lesson);
+
+    $(".visualization-module__quick-outcome").html(outcomeHTML.summary);
+    $(".visualization-module__outcomes-content").html(outcomeHTML.full);
 }
 
 function initThree() {
+    let animateTimer: any;
     let vizSpace = <HTMLElement>document.querySelector('.visualization-module__canvas')
+
     br = new BuildingRender(vizSpace);
     br.init();
 
-    // add axis to the scene
-    // let axis = new THREE.AxesHelper(10)
-    // scene.add(axis)
+
+    handleActiveRender = throttle(function () {
+        br.isAnimating = true;
+        br.animate();
+        if (animateTimer) {
+            window.clearTimeout(animateTimer);
+        }
+        animateTimer = window.setTimeout(() => {
+            br.isAnimating = false;
+        }, 1000);
+    }, 1000);
+
+    vizSpace.addEventListener('mousemove', handleActiveRender);
 
     // handle zoom buttons
-    let zoomIn = document.querySelector('.visualization-module__zoom-in');
-    let zoomOut = document.querySelector('.visualization-module__zoom-out');
-    zoomIn.addEventListener('click', () => {
+    let zoomIn = $('.visualization-module__zoom-in');
+    let zoomOut = $('.visualization-module__zoom-out');
+    zoomIn.on('click', () => {
         br.increaseZoom();
+        handleActiveRender();
     });
-    zoomOut.addEventListener("click", () => {
+    zoomOut.on('click', () => {
         br.decreaseZoom();
+        handleActiveRender();
     });
 
+    let renderOptionDefaults: any = {
+        type: 'Standard',
+        rentScenario: 'deepAffordability',
+        ratioParking: '0.0',
+        numFloors: '3',
+        numApts: '9'
+    };
+    let activeRenderOptions: any = {};
 
-    let $parkingSelect = $('select[name="Parking Ratio"]');
+    br.renderScenario(renderOptionDefaults);
 
-    $parkingSelect.on('change', (event) => {
-        let val = $(event.target).val();
-        let outcomes;
-        if (val === "0 parking") {
-            br.rerenderBuilding({ size: "large" });
-            outcomes = br.getOutcomes({ size: 'large' });
-        }
-        if (val === '0.5 parking') {
-            br.rerenderBuilding({ size: 'medium' });
-            outcomes = br.getOutcomes({ size: "medium" });
-        }
-        if (val === '1-1 parking') {
-            br.rerenderBuilding({ size: 'small' });
-            outcomes = br.getOutcomes({ size: "small" });
-        }
-        setOutcomes(outcomes);
-    });
+    let $option = $('.options__field[data-label] input');
+    $option.on('change', (event) => {
+        let val = $(event.currentTarget).val();
+        let dataLabel = $(event.currentTarget).closest('[data-label]').data('label');
+        let lesson = $(event.currentTarget).closest('[data-lesson]').data('lesson');
 
-    let $parkingRadio = $('input[name="parking-ratio"][type="radio"]');
+        activeRenderOptions[dataLabel] = val.toString();
 
-    $parkingRadio.on("change", event => {
-      let val = $(event.target).val();
-      let outcomes;
-      if (val === "0 parking") {
-        br.rerenderBuilding({ size: "large" });
-        outcomes = br.getOutcomes({ size: "large" });
-      }
-      if (val === "0.5 parking") {
-        br.rerenderBuilding({ size: "medium" });
-        outcomes = br.getOutcomes({ size: "medium" });
-      }
-      if (val === "1-1 parking") {
-        br.rerenderBuilding({ size: "small" });
-        outcomes = br.getOutcomes({ size: "small" });
-      }
-      setOutcomes(outcomes);
+        let options = Object.assign({},renderOptionDefaults, activeRenderOptions);
+        let outcomes = br.getOutcomes(options);
+
+        setOutcomes(outcomes, lesson);
+        br.renderScenario(options);
+
+        $('.page-content').addClass('has-interaction');
     });
 
 }
 
+
+
+// Page load initialization
 (function(){
 
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -164,10 +151,8 @@ function initThree() {
         scrollEventHandling();
         clickEventHandling();
         initThree();
-
-
+        handleActiveRender();
     });
-
 
 })();
 
