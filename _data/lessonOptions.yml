@@ -1,5 +1,7 @@
 1:
   title: 'What are the basics?'
+  defaultMassing: '16|4|0.5' # Display this scenario on page load
+  defaultRentScenario: ~
   fields:
     - type: radio
       label: 'Development Size'
@@ -32,6 +34,8 @@
 
 2:
   title: 'Balance the budget'
+  defaultMassing: '24|4|0.5' # Only cycle between rentScenarios for this massing-parking scenario 
+  defaultRentScenario: 'thirdThirdThird'
   fields:
     - type: radio
       label: 'Rent Mix'
@@ -49,6 +53,8 @@
           dataValue: 'deepAffordability'
 3:
   title: 'How does parking work?'
+  defaultMassing: '24|6|0.5' # I think 24@6stories is the clearest set of options for exploring parking
+  defaultRentScenario: 'idpAmiMix'
   fields:
     - type: radio
       description: 'Some description about parking options'
@@ -67,6 +73,8 @@
 
 4:
   title: 'Compact Living'
+  defaultMassing: '16|4|0.5' # This scenario immediately swaps between feasible & infeasible from standard to compact
+  defaultRentScenario: 'thirdThirdThird'
   fields:
     - type: radio
       label: 'Compact Units'
