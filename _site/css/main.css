@@ -392,7 +392,7 @@ h3 {
 h4 {
   font-size: 16px;
   line-height: 1.35;
-  letter-spacing: -.08rem; }
+  letter-spacing: -.01rem; }
 
 .button--next-lesson, .menu-toggle, .options__field > label, .button, .button--primary {
   font-size: 0.8rem;

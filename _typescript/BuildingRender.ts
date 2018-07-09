@@ -18,6 +18,7 @@ const busStop: any = require("./data/busStop.json");
 const streetLamps: any = require("./data/streetLamps.json");
 const streetMarkings: any = require("./data/streetMarkings.json");
 const trafficLights: any = require("./data/trafficLights.json");
+const parcels: any = require("./data/parcels.json");
 
 
 
@@ -270,6 +271,22 @@ export class BuildingRender {
             trafficlightMesh.receiveShadow = true;
             trafficlightMesh.rotation.x = -Math.PI * 0.5;
             group.add(trafficlightMesh);
+
+            let parcelsGeom = this.buildGeometry(parcels[0].geoms[0].geom);
+
+            // set up edges
+            let parcelsMat = new THREE.MeshStandardMaterial({
+                color: 0xcccccc
+            });
+            let parcelsMesh = new THREE.Mesh(parcelsGeom, parcelsMat);
+            parcelsMesh.castShadow = true;
+            parcelsMesh.receiveShadow = true;
+            parcelsMesh.rotation.x = -Math.PI * 0.5;
+            let parcelsEGeometry = new THREE.EdgesGeometry(parcelsMesh.geometry, 1);
+            let edges = new THREE.LineSegments(parcelsEGeometry, new THREE.LineBasicMaterial( { color: 0xffffff } ));
+            parcelsMesh.add(edges);
+            group.add(parcelsMesh);
+
 
 
             this.scene.add(group);

@@ -35,6 +35,7 @@ layout: default
 
 
     {% assign lessonOptions = site.data.lessonOptions[forloop.index]  %}
+    {% if lesson.isLesson %}
     <div class="options">
       <h2 class="options__title">{{lessonOptions.title}}</h2>
       <p class="message">Adjust the options below to view the impact.</p>
@@ -63,6 +64,7 @@ layout: default
       </div>
       {% endfor %}
     </div>
+    {% endif %}
 
 
 
@@ -73,7 +75,7 @@ layout: default
 
     {% if nextLesson %}
       <button class="button--next-lesson">
-        <span class="button__subtitle">Next Lesson</span>
+        <span class="button__subtitle">Next {% if nextLesson.isLesson %}Lesson {% endif %}</span>
         <span class="button__title">{{nextLesson.title}} {% include icon-down-arrow.svg %}</span>
       </button>
     {% endif %}
