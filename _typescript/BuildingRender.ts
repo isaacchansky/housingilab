@@ -13,6 +13,14 @@ const cores: any = require("./data/cores.json");
 const parking: any = require("./data/parking.json");
 const balconies: any = require("./data/balconies.json");
 
+
+const busStop: any = require("./data/busStop.json");
+const streetLamps: any = require("./data/streetLamps.json");
+const streetMarkings: any = require("./data/streetMarkings.json");
+const trafficLights: any = require("./data/trafficLights.json");
+
+
+
 const financialScenarios: any = require("./data/financialScenarios.json");
 
 
@@ -203,17 +211,66 @@ export class BuildingRender {
         addGround() {
             let group = new THREE.Group();
 
-            let geo = this.buildGeometry(ground.geoms[0].geom);
+            let groundGeom = this.buildGeometry(ground.geoms[0].geom);
 
             // set up edges
-            let mat = new THREE.MeshStandardMaterial({
-                color: 0x999999
+            let groundMat = new THREE.MeshStandardMaterial({
+                color: 0x666666
             });
-            let mesh = new THREE.Mesh(geo, mat);
-            mesh.castShadow = true;
-            mesh.receiveShadow = true;
-            mesh.rotation.x = -Math.PI * 0.5;
-            group.add(mesh);
+            let groundMesh = new THREE.Mesh(groundGeom, groundMat);
+            groundMesh.castShadow = true;
+            groundMesh.receiveShadow = true;
+            groundMesh.rotation.x = -Math.PI * 0.5;
+            group.add(groundMesh);
+
+            let busstopGeom = this.buildGeometry(busStop[0].geoms[0].geom);
+
+            // set up edges
+            let busstopMat = new THREE.MeshStandardMaterial({
+                color: 0xcccccc
+            });
+            let busstopMesh = new THREE.Mesh(busstopGeom, busstopMat);
+            busstopMesh.castShadow = true;
+            busstopMesh.receiveShadow = true;
+            busstopMesh.rotation.x = -Math.PI * 0.5;
+            group.add(busstopMesh);
+
+            let streetlampGeom = this.buildGeometry(streetLamps[0].geoms[0].geom);
+
+            // set up edges
+            let streetlampMat = new THREE.MeshStandardMaterial({
+                color: 0xcccccc
+            });
+            let streetlampMesh = new THREE.Mesh(streetlampGeom, streetlampMat);
+            streetlampMesh.castShadow = true;
+            streetlampMesh.receiveShadow = true;
+            streetlampMesh.rotation.x = -Math.PI * 0.5;
+            group.add(streetlampMesh);
+
+            let streetmarkingGeom = this.buildGeometry(streetMarkings[0].geoms[0].geom);
+
+            // set up edges
+            let streetmarkingMat = new THREE.MeshStandardMaterial({
+                color: 0xffffff
+            });
+            let streetmarkingMesh = new THREE.Mesh(streetmarkingGeom, streetmarkingMat);
+            streetmarkingMesh.castShadow = true;
+            streetmarkingMesh.receiveShadow = true;
+            streetmarkingMesh.rotation.x = -Math.PI * 0.5;
+            group.add(streetmarkingMesh);
+
+            let trafficlightGeom = this.buildGeometry(trafficLights[0].geoms[0].geom);
+
+            // set up edges
+            let trafficlightMat = new THREE.MeshStandardMaterial({
+                color: 0xcccccc
+            });
+            let trafficlightMesh = new THREE.Mesh(trafficlightGeom, trafficlightMat);
+            trafficlightMesh.castShadow = true;
+            trafficlightMesh.receiveShadow = true;
+            trafficlightMesh.rotation.x = -Math.PI * 0.5;
+            group.add(trafficlightMesh);
+
 
             this.scene.add(group);
         }
