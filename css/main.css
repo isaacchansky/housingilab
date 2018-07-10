@@ -782,7 +782,7 @@ a {
 .scale {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-end; }
   .scale .scale-right,
   .scale .scale-left {
@@ -790,7 +790,9 @@ a {
     flex-direction: column;
     width: calc(50% - 0.5rem);
     height: 18rem;
-    padding: 0.5rem; }
+    padding: 0.5rem;
+    border-radius: 2px;
+    max-width: 12rem; }
     .scale .scale-right.taller,
     .scale .scale-left.taller {
       height: 20rem; }
@@ -798,7 +800,8 @@ a {
     .scale .scale-left h4 {
       color: #FFFFFF;
       letter-spacing: 0.1px;
-      font-weight: 400; }
+      font-weight: 400;
+      margin-bottom: 0.5rem; }
     .scale .scale-right .block,
     .scale .scale-left .block {
       background: white;
@@ -808,11 +811,22 @@ a {
       padding: 0.25rem; }
   .scale .scale-left {
     background: #f3614f; }
+    .scale .scale-left .block {
+      color: #f3614f; }
   .scale .scale-right {
     background: #50a562; }
+    .scale .scale-right .block {
+      color: #50a562; }
   .scale .scale-base {
     width: 100%;
-    border-top: 5px solid #333333; }
+    height: 5rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center; }
+  .scale.left .scale-base {
+    background-image: url("/housingilab/images/scale-left.jpeg"); }
+  .scale.right .scale-base {
+    background-image: url("/housingilab/images/scale-right.jpeg"); }
 
 .page-content {
   position: relative; }
@@ -882,15 +896,20 @@ a {
   height: 100%; }
 
 .visualization-module__outcomes {
-  height: 90vh;
-  top: calc(50% - 45vh);
+  top: -4rem;
+  opacity: 0;
   width: calc(100% - 4rem);
   position: absolute;
   left: 2rem;
   z-index: 10;
-  transition: all 250ms ease;
-  box-shadow: 0 3px 20px rgba(33, 38, 45, 0.15), -1px 1px 10px rgba(0, 0, 0, 0.05); }
-  .visualization-module__outcomes.is-closed {
+  box-shadow: 0 3px 20px rgba(33, 38, 45, 0.15), -1px 1px 10px rgba(0, 0, 0, 0.05);
+  transition: all 250ms ease; }
+  .visualization-module__outcomes:not(.is-closed) {
+    height: 90vh; }
+  .has-interaction .visualization-module__outcomes {
+    top: calc(50% - 45vh);
+    opacity: 1; }
+  .has-interaction .visualization-module__outcomes.is-closed {
     top: 1rem;
     height: 2rem; }
 
