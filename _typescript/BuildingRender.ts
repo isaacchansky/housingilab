@@ -4,10 +4,6 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three-orbitcontrols-ts';
 
 
-const ground: any = require('./data/ground.json');
-const context: any = require('./data/context.json');
-const largeSixHalf: any = require('./data/large6half.json');
-
 const apts: any = require("./data/apts.json");
 const cores: any = require("./data/cores.json");
 const parking: any = require("./data/parking.json");
@@ -185,7 +181,7 @@ export class BuildingRender {
             // }
 
             for (let i = 2; i < vertices.length; i += 3) {
-                geo.vertices.push(new THREE.Vector3(vertices[i - 2], vertices[i - 1], vertices[i])); // Add offset to account for position in initial dataset
+                geo.vertices.push(new THREE.Vector3(vertices[i - 2], vertices[i - 1], vertices[i]));
             }
 
             if(faces) {
@@ -210,97 +206,49 @@ export class BuildingRender {
             return geo;
         }
 
-        addGround() {
+        createMesh(geom: any, meshOpts: any, edgeOpts: any) {
+            let g = this.buildGeometry(geom);
+            let mat = new THREE.MeshStandardMaterial(meshOpts);
+            let mesh = new THREE.Mesh(g, mat);
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+            mesh.rotation.x = -Math.PI * 0.5;
+
+            if (edgeOpts) {
+                let egeom = new THREE.EdgesGeometry(mesh.geometry, 1);
+                let edges = new THREE.LineSegments(egeom, new THREE.LineBasicMaterial(edgeOpts));
+                mesh.add(edges);
+            }
+            return mesh;
+        }
+
+        createLines(geom: any, lineOpts: any) {
+            let g = this.buildGeometry(geom);
+            let lines = new THREE.Line(g, new THREE.LineBasicMaterial(lineOpts));
+            lines.rotation.x = -Math.PI * 0.5;
+            return lines;
+        }
+
+        addGroundAndContext() {
             let group = new THREE.Group();
 
-            let groundbldgGeom = this.buildGeometry(contextGroundBldgs[0].geoms[0].geom);
-
-            // set up edges
-            let groundbldgMat = new THREE.MeshStandardMaterial({
-                color: 0x666666
-            });
-            let groundbldgMesh = new THREE.Mesh(groundbldgGeom, groundbldgMat);
-            groundbldgMesh.castShadow = true;
-            groundbldgMesh.receiveShadow = true;
-            groundbldgMesh.rotation.x = -Math.PI * 0.5;
-            let groundbldgEGeometry = new THREE.EdgesGeometry(groundbldgMesh.geometry, 1);
-            let groundbldgEdges = new THREE.LineSegments(groundbldgEGeometry, new THREE.LineBasicMaterial( { color: 0x222222 } ));
-            groundbldgMesh.add(groundbldgEdges);
+            let groundbldgMesh = this.createMesh(contextGroundBldgs[0].geoms[0].geom, { color: 0x666666}, { color: 0x222222});
             group.add(groundbldgMesh);
 
-
-            let busstopGeom = this.buildGeometry(busStop[0].geoms[0].geom);
-
-            // set up edges
-            let busstopMat = new THREE.MeshStandardMaterial({
-                color: 0xcccccc
-            });
-            let busstopMesh = new THREE.Mesh(busstopGeom, busstopMat);
-            busstopMesh.castShadow = true;
-            busstopMesh.receiveShadow = true;
-            busstopMesh.rotation.x = -Math.PI * 0.5;
-            let busstopEGeometry = new THREE.EdgesGeometry(busstopMesh.geometry, 1);
-            let busstopEdges = new THREE.LineSegments(busstopEGeometry, new THREE.LineBasicMaterial( { color: 0xeeeeee } ));
-            busstopMesh.add(busstopEdges);
+            let busstopMesh = this.createMesh(busStop[0].geoms[0].geom, { color: 0xCCCCCC }, { color: 0xEEEEEE });
             group.add(busstopMesh);
 
-            let streetlampGeom = this.buildGeometry(streetLamps[0].geoms[0].geom);
-
-            // set up edges
-            let streetlampMat = new THREE.MeshStandardMaterial({
-                color: 0x000000
-            });
-            let streetlampMesh = new THREE.Mesh(streetlampGeom, streetlampMat);
-            streetlampMesh.castShadow = true;
-            streetlampMesh.receiveShadow = true;
-            streetlampMesh.rotation.x = -Math.PI * 0.5;
+            let streetlampMesh = this.createMesh(streetLamps[0].geoms[0].geom, {color: 0x000000}, null);
             group.add(streetlampMesh);
 
-            let streetmarkingGeom = this.buildGeometry(streetMarkings[0].geoms[0].geom);
-
-            // set up edges
-            let streetmarkingMat = new THREE.MeshStandardMaterial({
-                color: 0xffffff
-            });
-            let streetmarkingMesh = new THREE.Mesh(streetmarkingGeom, streetmarkingMat);
-            streetmarkingMesh.castShadow = true;
-            streetmarkingMesh.receiveShadow = true;
-            streetmarkingMesh.rotation.x = -Math.PI * 0.5;
+            let streetmarkingMesh = this.createMesh(streetMarkings[0].geoms[0].geom, {color: 0xFFFFFF}, null);
             group.add(streetmarkingMesh);
 
-            let trafficlightGeom = this.buildGeometry(trafficLights[0].geoms[0].geom);
-
-            // set up edges
-            let trafficlightMat = new THREE.MeshStandardMaterial({
-                color: 0xcccccc
-            });
-            let trafficlightMesh = new THREE.Mesh(trafficlightGeom, trafficlightMat);
-            trafficlightMesh.castShadow = true;
-            trafficlightMesh.receiveShadow = true;
-            trafficlightMesh.rotation.x = -Math.PI * 0.5;
-            let trafficlightEGeometry = new THREE.EdgesGeometry(trafficlightMesh.geometry, 1);
-            let trafficlightEdges = new THREE.LineSegments(trafficlightEGeometry, new THREE.LineBasicMaterial( { color: 0xffffff } ));
-            trafficlightMesh.add(trafficlightEdges);
+            let trafficlightMesh = this.createMesh(trafficLights[0].geoms[0].geom, {color: 0xCCCCCC}, {color: 0xFFFFFF});
             group.add(trafficlightMesh);
 
-
-
-            let parcelsGeom = this.buildGeometry(parcels[0].geoms[0].geom);
-
-            // set up edges
-            let parcelsMat = new THREE.MeshStandardMaterial({
-                color: 0xcccccc
-            });
-            let parcelsMesh = new THREE.Mesh(parcelsGeom, parcelsMat);
-            parcelsMesh.castShadow = true;
-            parcelsMesh.receiveShadow = true;
-            parcelsMesh.rotation.x = -Math.PI * 0.5;
-            let parcelsEGeometry = new THREE.EdgesGeometry(parcelsMesh.geometry, 1);
-            let edges = new THREE.LineSegments(parcelsEGeometry, new THREE.LineBasicMaterial( { color: 0xffffff } ));
-            parcelsMesh.add(edges);
+            let parcelsMesh = this.createLines(parcels[0].geoms[0].geom, {color: 0xFFFFFF});
             group.add(parcelsMesh);
-
-
 
             this.scene.add(group);
         }
@@ -355,16 +303,17 @@ export class BuildingRender {
                 if (data.parking.geoms) {
                     data.parking.geoms.forEach((item: any) => {
                         if (item.geom && item.geom.type) {
-                            let geo = this.buildGeometry(item.geom);
-                            let mat = new THREE.MeshStandardMaterial(
-                                {
-                                    color: 0xff0000,
-                                    transparent: true,
-                                    opacity: 0.5
-                                }
-                            );
-                            mat.metalness = 0;
-                            if(geo && mat) {
+                            console.log(item.geom.type );
+                            if (item.geom.type === "Mesh") {
+                                let geo = this.buildGeometry(item.geom);
+                                let mat = new THREE.MeshStandardMaterial(
+                                    {
+                                        color: 0xcccccc,
+                                        transparent: true,
+                                        opacity: 0.5
+                                    }
+                                );
+                                mat.metalness = 0;
                                 let mesh = new THREE.Mesh(geo, mat);
                                 mesh.castShadow = true;
                                 mesh.receiveShadow = true;
@@ -372,7 +321,7 @@ export class BuildingRender {
                                 let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
                                 let eMaterial = new THREE.LineBasicMaterial(
                                   {
-                                    color: 0xff0000,
+                                    color: 0x000000,
                                     linewidth: 1
                                   }
                                 );
@@ -381,6 +330,13 @@ export class BuildingRender {
                                 mesh.rotation.x = -Math.PI * 0.5;
                                 group.add(mesh);
                             }
+                            if (item.geom.type === "Polyline") {
+                                let g = this.buildGeometry(item.geom);
+                                let lines = new THREE.Line(g, new THREE.LineBasicMaterial({color: 0x000000}));
+                                lines.rotation.x = -Math.PI * 0.5;
+                                group.add(lines);
+                            }
+
                         }
                     })
                 }
@@ -545,7 +501,7 @@ export class BuildingRender {
             this.createLights();
             this.createRenderer();
             this.createBackground();
-            this.addGround();
+            this.addGroundAndContext();
             this.composeScene();
             this.animate();
         }
