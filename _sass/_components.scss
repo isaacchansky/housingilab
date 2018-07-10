@@ -423,7 +423,7 @@ a {
 .scale {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: flex-end;
     .scale-right,
     .scale-left {
@@ -432,6 +432,8 @@ a {
         width: calc(50% - 0.5rem);
         height: 18rem;
         padding: 0.5rem;
+        border-radius: 2px;
+        max-width: 12rem;
 
         &.taller {
             height: 20rem;
@@ -440,6 +442,7 @@ a {
             color: $color_white;
             letter-spacing: 0.1px;
             font-weight: 400;
+            margin-bottom: 0.5rem;
         }
         .block {
             background: white;
@@ -451,12 +454,27 @@ a {
     }
     .scale-left {
         background: $color_red;
+        .block {
+            color: $color_red;
+        }
     }
     .scale-right {
         background: $color_green;
+        .block {
+            color: $color_green;
+        }
     }
     .scale-base {
         width: 100%;
-        border-top: 5px solid $color_black;
+        height: 5rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+    &.left .scale-base {
+        background-image: url('/housingilab/images/scale-left.jpeg');
+    }
+    &.right .scale-base {
+        background-image: url('/housingilab/images/scale-right.jpeg');
     }
 }

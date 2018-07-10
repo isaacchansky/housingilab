@@ -43,7 +43,7 @@ const lessonTemplate2Full = (opts: any) => {
         </h2>
 
         <h3>Budget Overview</h3>
-        <div class="scale">
+        <div class="scale ${totalUses > totalSources ? 'left' : 'right'}">
             <div class="scale-left ${totalUses > totalSources ? 'taller' : ''}">
                 <h4>Uses: $${formatCurrency(opts.developerFee + opts.landPrice + opts.softCosts + opts.constructionPrice)}</h4>
                 <div class="block" style="flex: ${opts.developerFee};">
@@ -95,7 +95,7 @@ const lessonTemplate2Full = (opts: any) => {
 
 const lessonTemplate3Summary = (opts: any) => {
     return `
-        <strong>${opts.margin > 0 ? 'Feasible': 'Not feasible'}</strong> parking: $${formatCurrency(opts.parkingPrice)}, ${opts.numApts} units, ${opts.numFloors} floors, ${opts.constructionType}, ${opts.type}
+        <strong>${opts.margin > 0 ? 'Feasible': 'Not feasible'}</strong> parking: $${formatCurrency(opts.parkingPrice)}, ${opts.numApts} units, ${opts.numFloors} floors
     `;
 }
 
@@ -128,7 +128,7 @@ const lessonTemplate3Full = (opts: any) => {
 
 const lessonTemplate4Summary = (opts: any) => {
     return `
-        <strong>${ opts.margin > 0 ? 'Feasible': 'Not feasible'} - cost per unit: $${formatCurrency(opts.tdcPerUnit)}</strong> parking: $${formatCurrency(opts.parkingPrice)}, ${opts.numApts} units, ${opts.numFloors} floors, ${opts.constructionType}, ${opts.type}
+        <strong>${ opts.margin > 0 ? 'Feasible': 'Not feasible'} - cost per unit: $${formatCurrency(opts.tdcPerUnit)}</strong> parking: $${formatCurrency(opts.parkingPrice)}, ${opts.type}
     `;
 }
 

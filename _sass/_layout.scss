@@ -86,16 +86,28 @@ body {
 }
 
 .visualization-module__outcomes {
-    height: 90vh;
-    top: calc(50% - 45vh);
+    // hidden initially
+    top: -4rem;
+    opacity: 0;
+
     width: calc(100% - 4rem);
     position: absolute;
     left: 2rem;
     z-index: 10;
-    transition: all 250ms ease;
     box-shadow: 0 3px 20px rgba(33,38,45,.15), -1px 1px 10px rgba(0,0,0,.05);
+    transition: all 250ms ease;
 
-    &.is-closed {
+    &:not(.is-closed) {
+        height: 90vh;
+
+    }
+
+    .has-interaction & {
+        top: calc(50% - 45vh);
+        opacity: 1;
+    }
+
+    .has-interaction &.is-closed {
         top: 1rem;
         height: 2rem;
     }
