@@ -62,7 +62,7 @@ const lessonTemplate2Full = (opts: any) => {
             <div class="scale-right ${totalUses < totalSources ? 'taller' : ''}">
                 <h4>Sources: $${formatCurrency(opts.debtAmt + opts.equityAmt)}</h4>
                 <div class="block" style="flex: ${opts.debtAmt};">
-                    <span>Construction Dept: $${formatCurrency(opts.debtAmt)}</span>
+                    <span>Construction Debt: $${formatCurrency(opts.debtAmt)}</span>
                 </div>
                 <div class="block" style="flex: ${opts.equityAmt};">
                     <span>Equity: $${formatCurrency(opts.equityAmt)}</span>
