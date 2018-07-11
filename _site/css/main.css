@@ -843,12 +843,11 @@ a {
 .page-content .lesson-modules {
   background: #FFFFFF;
   width: 36rem;
-  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
   box-shadow: 0 3px 20px rgba(33, 38, 45, 0.15), -1px 1px 10px rgba(0, 0, 0, 0.05);
   z-index: 1;
   position: relative;
-  overflow-x: hidden;
-  top: -2rem; }
+  overflow-x: hidden; }
 
 .page-content .visualization-module {
   position: absolute;
@@ -936,6 +935,9 @@ a {
   display: block; }
 
 .is-hidden {
+  display: none; }
+
+[data-lesson]:not([data-lesson="1"]) {
   display: none; }
 
 /*!

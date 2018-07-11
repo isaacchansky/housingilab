@@ -53,10 +53,16 @@ function clickEventHandling() {
     });
 
     $(".button--next-lesson").on('click', (e) => {
-        scrollTo(getScrollOffset(e.currentTarget.parentElement.nextElementSibling), 600);
         br.resetZoom();
         handleActiveRender();
         $('.page-content').removeClass('has-interaction');
+        let lesson = $(e.currentTarget).closest('[data-lesson]').data('lesson');
+        $(`[data-lesson="${lesson+1}"]`).show();
+        scrollTo(getScrollOffset(e.currentTarget.parentElement.nextElementSibling), 600);
+        // TODO: enable this when we think through 'previous lesson' buttons.
+        // setTimeout( () => {
+        //     $(`[data-lesson="${lesson}"]`).hide();
+        // }, 600);
     });
 
     let toc = $('.table-of-contents');
