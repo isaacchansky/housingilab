@@ -19,14 +19,14 @@ $color_yellow: #FFEB3B;
 $color_yellow-pale: #f9f5ce;
 $color_copper: #e09a3c;
 $color_blue: #00A8B5;
-$color_blue-pale: #00A8B5;
+$color_blue-pale: #b9e5e9;
 $color_green: #00A8B5;
 $color_red: #f3614f;
 $color_black: #333333;
 $color_white: #FFFFFF;
 $color_grey: #CCCCCC;
 $color_dark-grey: #797979;
-
+$color_gold: #FEC432;
 
 // BPDA colors
 $bpda-blue: #003b4f;
@@ -56,7 +56,11 @@ $bpda_red: #ff5a28;
         "base",
         "mixins",
         "elements",
-        "components",
         "layout",
+        "components",
+        "outcomes",
+        "visualization",
+        "lessons",
+        "hero",
         "animate"
 ;

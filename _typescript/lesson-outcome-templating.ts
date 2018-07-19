@@ -1,44 +1,25 @@
 import {formatCurrency} from './util';
 
-const lessonTemplate1Summary = (opts: any) => {
-    return `
-        ${opts.numApts} units, ${opts.numFloors} floors, ${opts.constructionType}, ${opts.type}
-    `;
-}
-
-const lessonTemplate1Full = (opts: any) => {
+const lessonTemplate1 = (opts: any) => {
     return `
 
-        <h2 class="outcome-description">
+        <h2 class="outcomes__description">
             We're looking at <span class="outcome-info-user" title="Based on your selection for 'Development Size'">${opts.numApts}</span> units total, in <span class="outcome-info-user" title="Based on your selection for 'Number of Floors'">${opts.numFloors}</span> floors, which means a <span class="outcome-info-machine" title="This type of construction is required based on the scenario. It is most influenced by the selection of '${opts.numFloors} floors'.">${opts.constructionType}</span> type of construction.
         </h2>
-
-        <table>
-            <tr>
-                <th>Apartments</th>
-                <td>${opts.calcNumApts}</td>
-            </tr>
-            <tr>
-                <th>Construction Type</th>
-                <td>${opts.constructionType}</td>
-            </tr>
-
-        </table>
+        <ul class="outcomes__list">
+            <li class="outcome__item" data-val="calcNumApts">${opts.calcNumApts} apartments</li>
+            <li class="outcome__item" data-val="numFloors">${opts.numFloors} floors</li>
+            <li class="outcome__item" data-val="constructionType">${opts.constructionType} construction</li>
+        </ul>
 
     `;
 }
 
-const lessonTemplate2Summary = (opts: any) => {
-    return `
-        <strong>${opts.margin > 0 ? 'Feasible': 'Not feasible'}</strong> ${opts.numApts} units, ${opts.numFloors} floors, ${opts.constructionType}, ${opts.type}
-    `;
-}
-
-const lessonTemplate2Full = (opts: any) => {
+const lessonTemplate2 = (opts: any) => {
     let totalSources = opts.debtAmt + opts.equityAmt;
     let totalUses = opts.developerFee + opts.landPrice + opts.softCosts + opts.constructionPrice;
     return `
-        <h2 class="outcome-description">
+        <h2 class="outcomes__description">
             Your selection makes this <span class="outcome-info-machine" title="Feasibility involves many factors, many of which are financial.">${opts.margin > 0 ? 'feasible': 'not feasible'}</span>.
         </h2>
 
@@ -93,13 +74,7 @@ const lessonTemplate2Full = (opts: any) => {
     `;
 }
 
-const lessonTemplate3Summary = (opts: any) => {
-    return `
-        <strong>${opts.margin > 0 ? 'Feasible': 'Not feasible'}</strong> parking: $${formatCurrency(opts.parkingPrice)}, ${opts.numApts} units, ${opts.numFloors} floors
-    `;
-}
-
-const lessonTemplate3Full = (opts: any) => {
+const lessonTemplate3 = (opts: any) => {
     return `
          <table>
             <tr>
@@ -126,13 +101,7 @@ const lessonTemplate3Full = (opts: any) => {
     `;
 }
 
-const lessonTemplate4Summary = (opts: any) => {
-    return `
-        <strong>${ opts.margin > 0 ? 'Feasible': 'Not feasible'} - cost per unit: $${formatCurrency(opts.tdcPerUnit)}</strong> parking: $${formatCurrency(opts.parkingPrice)}, ${opts.type}
-    `;
-}
-
-const lessonTemplate4Full = (opts: any) => {
+const lessonTemplate4 = (opts: any) => {
     return `
 
     <table>
@@ -229,29 +198,21 @@ const lessonTemplate4Full = (opts: any) => {
 
 
 export default function outcomeTemplating (options: any, lesson: number) {
-    let summary = '';
-    let full = '';
 
+    let tpl = '';
 
     if (lesson === 1) {
-        summary = lessonTemplate1Summary(options);
-        full = lessonTemplate1Full(options);
+        tpl = lessonTemplate1(options);
     }
     if (lesson === 2) {
-        summary = lessonTemplate2Summary(options);
-        full = lessonTemplate2Full(options);
+        tpl = lessonTemplate2(options);
     }
     if (lesson === 3) {
-        summary = lessonTemplate3Summary(options);
-        full = lessonTemplate3Full(options);
+        tpl = lessonTemplate3(options);
     }
     if (lesson === 4) {
-        summary = lessonTemplate4Summary(options);
-        full = lessonTemplate4Full(options);
+        tpl = lessonTemplate4(options);
     }
 
-    return {
-        summary,
-        full
-    }
+    return tpl;
 }

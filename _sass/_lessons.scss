@@ -1,0 +1,86 @@
+
+// Default hidden
+[data-lesson]:not([data-lesson="1"]) {
+    display: none;
+}
+
+
+.page-content .lesson-modules {
+    background: $color_white;
+    width: 36rem;
+    padding: 2rem 2rem 0 2rem;
+    box-shadow: 0 3px 20px rgba(33,38,45,.15), -1px 1px 10px rgba(0,0,0,.05);
+    z-index: 1;
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+
+.button--next-lesson {
+    @extend %t-button;
+    margin-top: 10rem;
+    width: calc(100% + 4rem);
+    margin: 0 -2rem 0;
+    border-radius: 0;
+    height: auto;
+    padding: 2rem 2rem;
+    text-align: left;
+    border: 0;
+    background: $color_blue;
+    color: $color_white;
+    box-shadow: none;
+
+    .button__subtitle {
+        display: block;
+        line-height: 2;
+        letter-spacing: 0.2em;
+        padding-left: 2px; // offset for type sizing
+    }
+    .button__title {
+        text-transform: none;
+        font-size: $base-font-size * $type-ratio * $type-ratio;
+        letter-spacing: 0;
+    }
+    svg {
+        height: 2.25rem;
+        width: 2.25rem;
+        margin-left: 2rem;
+        padding: 0.25rem;
+        background: $color_white;
+        stroke: $color_blue;
+        vertical-align:bottom;
+    }
+}
+
+
+.lesson,
+.lesson > * {
+    position: relative;
+}
+
+.lesson__indicator {
+    @extend %t-jumbo;
+    color: $color_blue-pale;
+    z-index: 0;
+}
+
+.lesson__title {
+    margin-bottom: 0;
+}
+
+.lesson__meta {
+    @extend %t-details;
+    margin-bottom: 2rem;
+}
+
+.lesson > *:not(.lesson__indicator) {
+    z-index: 1;
+}
+
+.lesson {
+    padding-top: 10rem;
+    h2 {
+        font-weight: 600;
+    }
+}

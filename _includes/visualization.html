@@ -3,27 +3,15 @@
     <div class="visualization-module__controls">
         <div class="visualization-module__control-content">
             <button class="visualization-module__zoom-in">
-                {% include icon-zoom-in.svg %}
+                {% include icons/zoom-in.svg %}
                 <span class="visually-hidden">zoom in</span>
             </button>
             <button class="visualization-module__zoom-out">
-                {% include icon-zoom-out.svg %}
+                {% include icons/zoom-out.svg %}
                 <span class="visually-hidden">zoom out</span>
             </button>
         </div>
     </div>
 
-    <div class="visualization-module__outcomes is-closed">
-        <h2 class="visualization-module__quick-outcome">
-        </h2>
-        <button class="visualization-module__toggle">
-            {% include icon-maximize.svg %}
-            {% include icon-minimize.svg %}
-            <div class="visually-hidden">toggle outcome details</div>
-        </button>
-        <div class="visualization-module__outcomes-content">
-
-        </div>
-
-    </div>
+    {% include outcomes.html %}
 </div>

@@ -48,8 +48,8 @@ function clickEventHandling() {
         scrollTo(getScrollOffset($('.lesson-modules')[0]), 600);
     });
 
-    $(".visualization-module__toggle").on('click', () => {
-        $(".visualization-module__outcomes").toggleClass('is-closed');
+    $(".outcomes__toggle").on('click', () => {
+        $(".outcomes").toggleClass('is-closed');
     });
 
     $(".button--next-lesson").on('click', (e) => {
@@ -79,9 +79,7 @@ function clickEventHandling() {
 
 function setOutcomes(s: any, lesson: number) {
     let outcomeHTML = outcomeTemplating(s, lesson);
-
-    $(".visualization-module__quick-outcome").html(outcomeHTML.summary);
-    $(".visualization-module__outcomes-content").html(outcomeHTML.full);
+    $(".outcomes__content").html(outcomeHTML);
 }
 
 function initThree() {

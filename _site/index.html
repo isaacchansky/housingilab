@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"> -->
 
 
   <title>Understanding Housing Development</title>
@@ -24,19 +24,28 @@
     <header class="site-header">
   <div class="hero">
     <div class="hero__container">
-      <h1 class="hero__title">
-        Understanding Housing Development:
-        <span>An Interactive Educational Toolkit</span>
-      </h1>
-      <p class="lead">
-        This website enables you to discover various scenarios for housing development. Through a series of lessons and interactive exercises, you will be able to visualize different planning options and their effects on things like affordability, building bulk, or whether the development would be financially feasible.
-        <br>
-        The tradeoffs between these outcomes are balanced every day by City Planners, Community Groups, and Development Teams — and have also been recorded in the Mayor’s Housing Plan and Imagine Boston 2030, where citizens had a role in shaping our overall vision for Boston’s growth.
-        <br>
-        After completing the lessons, we will provide suggestions on how you can get involved in shaping the vision for your neighborhood.
-      </p>
+      <div class="hero__primary">
+        <h1>Understanding <br>Housing <br>Development</h1>
+        <button id="start" class="button--primary">Start learning</button>
+      </div>
 
-      <button id="start" class="button--primary">Start learning!</button>
+      <div class="hero__secondary">
+        <h2>An Interactive Educational Toolkit</h2>
+        <p>This website enables you to discover various scenarios for housing development. Through a series of lessons and interactive exercises, you will be able to visualize different planning options and their effects on things like affordability, building bulk, or whether the development would be financially feasible.
+        </p>
+        <p>
+        The tradeoffs between these outcomes are balanced every day by City Planners, Community Groups, and Development Teams — and have also been recorded in the Mayor’s Housing Plan and Imagine Boston 2030, where citizens had a role in shaping our overall vision for Boston’s growth.
+        </p>
+        <p>
+        After completing the lessons, we will provide suggestions on how you can get involved in shaping the vision for your neighborhood.</p>
+        <div class="logos">
+          <img src="/housingilab/images/city-of-boston-logo.png" alt="City of Boston logo">
+          <img src="/housingilab/images/bpda-logo.png" alt="Boston Planning and Development Association logo">
+          <img src="/housingilab/images/hil-logo.png" alt="Housing Innovation Lab logo">
+        </div>
+      </div>
+
+
     </div>
   </div>
 </header>
@@ -49,7 +58,7 @@
   <nav class="table-of-contents">
     <div class="table-of-contents__bar">
       <button class="menu-toggle" aria-controls="">
-        LESSONS
+        Housing Toolkit
       </button>
       <span class="menu__current-item">Current Lesson</span>
     </div>
@@ -85,71 +94,77 @@
     <h2 class="lesson__title">
       What are the basics?
     </h2>
-    <div class="lesson__meta">Last updated: Feb 7, 2018</div>
+    <div class="lesson__meta">Last updated: 07/16/2018</div>
 
-    <h3 id="1a-what-is-zoning">1a. What is Zoning?</h3>
+    <p><em>(Note: this section needs introductory text)</em></p>
 
-<p>Boston’s Zoning Code is a set of rules that describe how a piece of land can be used. For example, the Zoning Code determines how tall a building can be and whether it can be used for housing, offices, retail, or industry.</p>
+<h3 id="a-what-is-zoning">A. What is Zoning?</h3>
 
-<p><img src="/housingilab/images/transect-01.jpg" alt="" /></p>
+<p>Zoning is a set of rules that describe how a piece of land can be used. For example, the Zoning Code determines how tall a building can be and whether it can be used for housing, offices, retail, or industry.</p>
+
+<p><img src="/housingilab/images/diagrams_zoning.jpg" alt="Different Land Uses and Zoning Types" title="Some different types of buildings and land-uses" /></p>
+
+<p><em>These are some different types of buildings and land-uses</em></p>
 
 <p>The zoning code is very specific about the purpose of a building. For example, there are many types of housing within the “residential” category: single family, multi-family, hotels, senior housing, etc. Each neighborhood may have different types of housing.</p>
 
 <p>As an example, South Boston is a neighborhood where most of the housing is “Multifamily Residential,” which means that you can build 4 or more units on each piece of land.</p>
 
-<p><img src="/housingilab/images/new-construction-south-boston.jpeg" alt="New construction in South Boston" /></p>
-
-<p>West Roxbury is a neighborhood that has mostly single-family homes.</p>
-
-<p><img src="/housingilab/images/new-construction-west-roxbury.jpeg" alt="New construction in West Roxbury" /></p>
-
 <p>You can find the zoning rules for your neighborhood online! <a href="http://maps.bostonredevelopmentauthority.org/zoningviewer/">Click here</a> and enter your address!</p>
 
-<h3 id="1b-density-defined">1b. Density Defined</h3>
+<h3 id="b-density-defined">B. Density Defined</h3>
 
-<p>The zoning rules describe how “dense” a parcel can be. This means that the rules determine how many units can be built on a piece of land, and how big they can be.</p>
+<p>The zoning rules describe how “dense” a piece of land can be developed. There are lots of ways to describe what density means in urban development, we are going to outline the main ones below:</p>
 
-<p>There are three parts to density:</p>
+<h4 id="1-amount-of-floor-space-or-floor-area-ratio-far">1. Amount of floor space, or “Floor Area Ratio (F.A.R.)”</h4>
+<p>The more floor space there is in a building, the more things can fit inside it. Planners conventionally use a metric called “Floor Area Ratio” (abbreviated to F.A.R.) to describe the ratio of floor area inside a building to the area of the land it sits on (its parcel area)</p>
 
-<ol>
-  <li>How bulky is the building?</li>
-  <li>How many units are in the building?</li>
-  <li>How many people live in each unit in the building?</li>
-</ol>
+<p><img src="/housingilab/images/diagrams_far.jpg" alt="Visualizing various FARs of a parcel" title="Some FARs of a parcel" />
+<em>Visualizing various FARs of a parcel</em></p>
 
-<h3 id="1-far--coverage">1. FAR + Coverage</h3>
+<h4 id="2-building-coverage">2. Building Coverage</h4>
+<p>You can organize the same amount of floor space within a parcel differently. For instance, you can lay it out all flat (so that it covers 100% of the parcel), or stack it high (sVarious o that it only covers a portion).</p>
 
-<p><img src="/housingilab/images/diagrams_far.jpg" alt="FAR Diagram" />
-<img src="/housingilab/images/diagrams_coverage.jpg" alt="Coverage" />
-<img src="/housingilab/images/diagrams_densityFabrics.jpg" alt="Density" /></p>
+<p><img src="/housingilab/images/diagrams_coverage.jpg" alt="Visualizing different coverages with the same FAR" title="Visualizing different coverages with the same FAR" />
+<em>Visualizing different coverages with the same FAR</em></p>
 
-<h3 id="dwelling-units">Dwelling Units</h3>
+<p>Different building coverages and FARs produce a variety of different urban development types, for example: low-rise attached housing (row houses), or high-rise towers. Each of these produce different neighborhood characters and outcomes.</p>
 
-<p><img src="/housingilab/images/diagrams_dwellingUnits.jpg" alt="Dwelling" /></p>
+<p><img src="/housingilab/images/diagrams_densityFabrics.jpg" alt="Visualizing different urban fabric types" title="A variety of urban fabric types with the same FAR density (from Mozas &amp; Per, Density: New Collective Housing (2006))" />
+<em>A variety of urban fabric types with the same FAR density (from Mozas &amp; Per, Density: New Collective Housing (2006))</em></p>
 
-<h3 id="population">Population</h3>
-<p><img src="/housingilab/images/diagrams_dwellingPop.jpg" alt="Population" /></p>
+<h4 id="3-apartment-size">3. Apartment Size</h4>
+<p>The amount of floor space each apartment has is also a measure of density: smaller units means more apartments can fit inside a building. Counting the number of apartments (or ‘dwellings’) per acre of land is a convention used by urban planners to describe density, called “dwellings per acre”.</p>
 
-<h3 id="1c-bostons-development-review-process">1c. Boston’s Development Review Process</h3>
+<p><img src="/housingilab/images/diagrams_dwellingUnits.jpg" alt="Visualizing different unit densities" title="Indicative diagram visualizing different apartment sizes &amp; unit densities" />
+<em>Indicative diagram visualizing different apartment sizes &amp; unit densities.</em></p>
 
-<p>There are many different people and government agencies that review a development project:</p>
+<h4 id="4-population-density">4. Population Density</h4>
+<p>Finally, we can also think of density in terms of population. The same apartment can house different numbers of people (for example, a single student, or a family of three). Many policies use metrics that calculate the average number of occupants per household.</p>
 
-<p>-<a href="https://www.boston.gov/departments/inspectional-services/zoning-board-appeal">The Zoning Board of Appeals (ZBA)</a></p>
+<p><img src="/housingilab/images/diagrams_dwellingPop.jpg" alt="Visualizing different population densities" title="Diagrams visualizing different population densities" />
+<em>Diagrams visualizing different population densities</em></p>
 
-<p>-<a href="http://www.bostonplans.org/">The Boston Planning and Development Agency (BPDA)</a></p>
+<h3 id="c-bostons-development-review-process">C. Boston’s Development Review Process</h3>
+<p>In order to build a building, a city will review and advise it through the course of its planning and construction. In the City of Boston, the overall process is described in the diagram below:</p>
 
-<p>-and others! (link?)</p>
+<p><img src="/housingilab/images/diagrams_process.jpg" alt="Simplified diagram of the Development Review Process" title="Simplified diagram of the Development Review Process" />
+<em>Simplified diagram of the Development Review Process</em></p>
 
-<p>For projects smaller than 15 units, the process is quite simple. There is one required community meeting. If the proposed project needs exceptions from the zoning rules, the <a href="https://www.boston.gov/departments/inspectional-services/zoning-board-appeal">zoning board of appeals</a> must review the proposal.</p>
+<p>There are many different people and government agencies that review a development project. The main agencies responsible for development permitting are:</p>
+<ul>
+  <li><a href="http://www.bostonplans.org/">The Boston Planning and Development Agency (BPDA)</a></li>
+  <li><a href="https://www.boston.gov/departments/inspectional-services/zoning-board-appeal">The Zoning Board of Appeals (ZBA)</a></li>
+  <li><a href="https://www.boston.gov/departments/inspectional-services">The Inspectional Services Department (ISD)</a></li>
+</ul>
 
-<p>The process is different for projects with at least 15 units or 20,000 square feet. For these larger developments, the BPDA (Boston Planning and Development Agency) created clear guidelines for the development review process. These guidelines are referred to as “Article 80.” If you want to learn more, the <a href="http://www.bostonplans.org/projects/development-review/what-is-article-80">Citizens Guide to Article 80 is available on the BPDA’s website</a>.</p>
+<p>For projects smaller than 15 units, the process is quite simple. There is one required community meeting. If the proposed project needs exceptions from the zoning rules, the Zoning Board of Appeals must review the proposal.</p>
 
-<h3 id="bpda-small-scale-development-review">BPDA Small-Scale Development Review</h3>
-<p><img src="/housingilab/images/diagrams_process.jpg" alt="Process" /></p>
+<p>The process is different for projects with at least 15 units or 20,000 square feet. For these larger developments, the BPDA created clear guidelines for the development review process. These guidelines are referred to as “Article 80.” If you want to learn more, the <a href="http://www.bostonredevelopmentauthority.org/documents/about-the-bra/development-review/a-citizen-s-guide-to-article-80-january-2013">Citizens Guide to Article 80</a> is available on the BPDA’s website.</p>
 
 <h3 id="resources-and-next-steps-for-development-basics">Resources and Next Steps for Development Basics:</h3>
-
-<p><a href="http://www.bostonplans.org/zoning">http://www.bostonplans.org/zoning</a></p>
+<p>More on FAR and density: <a href="http://densityatlas.org/">The Density Atlas</a><br />
+More on Boston’s Development Review: <a href="http://www.bostonplans.org/projects/development-review">BPDA Development Review</a></p>
 
 
 
@@ -157,110 +172,112 @@
     
     
     <div class="options">
-      <h2 class="options__title">What are the basics?</h2>
-      <p class="message">Adjust the options below to view the impact.</p>
+      <div class="options__container">
+        <h2 class="options__title">What are the basics?</h2>
+        <p class="message">Adjust the options below to view the impact.</p>
 
-      
         
-      <div class="options__field" data-label="numApts">
-        <label for="field-">
-          Development Size
-        </label>
-        <p class="options__field-description">
-          Some description about apartment options
-        </p>
+          
+        <div class="options__field" data-label="numApts">
+          <label for="field-">
+            Development Size
+          </label>
+          <p class="options__field-description">
+            Some description about apartment options
+          </p>
+          
+            <div class="options__field-input">
+              <input type="radio" id="1-field--development-size-9" name="development-size" value="9">
+              <label for="1-field--development-size-9">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">Low Urban</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="1-field--development-size-16" name="development-size" value="16">
+              <label for="1-field--development-size-16">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">Moderate Urban</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="1-field--development-size-24" name="development-size" value="24">
+              <label for="1-field--development-size-24">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">Mid-rise Urban</span>
+              </label>
+            </div>
+          
+        </div>
         
-          <div class="options__field-input">
-            <input type="radio" id="1-field--development-size-9" name="development-size" value="9">
-            <label for="1-field--development-size-9">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+          
+        <div class="options__field" data-label="numFloors">
+          <label for="field-">
+            Number of Floors
+          </label>
+          <p class="options__field-description">
+            Some description about floor options
+          </p>
+          
+            <div class="options__field-input">
+              <input type="radio" id="1-field--number-of-floors-3" name="number-of-floors" value="3">
+              <label for="1-field--number-of-floors-3">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">Low Urban</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="1-field--development-size-16" name="development-size" value="16">
-            <label for="1-field--development-size-16">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+                </span>
+                <span class="label-text">3</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="1-field--number-of-floors-4" name="number-of-floors" value="4">
+              <label for="1-field--number-of-floors-4">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">Moderate Urban</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="1-field--development-size-24" name="development-size" value="24">
-            <label for="1-field--development-size-24">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+                </span>
+                <span class="label-text">4</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="1-field--number-of-floors-6" name="number-of-floors" value="6">
+              <label for="1-field--number-of-floors-6">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">Mid-rise Urban</span>
-            </label>
-          </div>
+                </span>
+                <span class="label-text">6</span>
+              </label>
+            </div>
+          
+        </div>
         
       </div>
-      
-        
-      <div class="options__field" data-label="numFloors">
-        <label for="field-">
-          Number of Floors
-        </label>
-        <p class="options__field-description">
-          Some description about floor options
-        </p>
-        
-          <div class="options__field-input">
-            <input type="radio" id="1-field--number-of-floors-3" name="number-of-floors" value="3">
-            <label for="1-field--number-of-floors-3">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">3</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="1-field--number-of-floors-4" name="number-of-floors" value="4">
-            <label for="1-field--number-of-floors-4">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">4</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="1-field--number-of-floors-6" name="number-of-floors" value="6">
-            <label for="1-field--number-of-floors-6">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">6</span>
-            </label>
-          </div>
-        
-      </div>
-      
     </div>
     
 
@@ -285,22 +302,24 @@
     <h2 class="lesson__title">
       Balancing the Budget
     </h2>
-    <div class="lesson__meta">Last updated: Feb 7, 2018</div>
+    <div class="lesson__meta">Last updated: 07/17/2018</div>
 
-    <h3 id="2a-how-does-private-rental-housing-get-built">2a. How does Private Rental Housing Get Built?</h3>
+    <h2 id="a-how-does-housing-get-built">A. How does housing get built?</h2>
+<p>Housing development is undertaken by a development team (usually a developer, designer, engineer, and builder), that secures financing by demonstrating the development budget can be repaid by the income generated through renting or selling the apartments. In this exercise, we will only look at renting the apartments.</p>
 
-<h4 id="development-budget">Development Budget</h4>
+<h3 id="development-budget">Development Budget</h3>
 
-<p>Putting together the development budget is similar to the process for purchasing a home. You need:</p>
+<p>Putting together the development budget is similar to the process for purchasing a home. When buying a home you need:</p>
+
 <ul>
-  <li>A Downpayment - a small percentage of the price of the house, and</li>
-  <li>A Loan - also known as a mortgage.</li>
+  <li>A down-payment - a percentage of the price paid up-front, and</li>
+  <li>A loan - also known as a mortgage.</li>
 </ul>
 
-<p>When you are building new housing, the <strong>downpayment</strong> is called “equity”. Equity can either come from an investor, or from the developer’s own funds. Usually, the developer also needs to get a <strong>loan</strong> from a bank. When building new housing, this loan is called “debt”. The bank will decide how big this loan will be based on how much the future residents will pay in rent. This money from rent will be used to pay back the loan.</p>
+<p>When you are building new housing, the downpayment is called “equity.” Equity can either come from an investor, or from the developer’s own funds. Usually, the developer also needs to get a loan from a bank. When building new housing, this loan is called “debt.” The bank will decide how big this loan will be based on how much the future residents will pay in rent. This money from rent will be used to pay back the loan.</p>
 
-<p>Developers need to use both Equity and Debt to pay for all of the development and construction costs involved in building housing. Together, equity and debt are referred to as “Sources of Funds”.
-The costs for building a building are known as the Uses of Funds and these include:</p>
+<p>Developers need to use both equity and debt to pay for all of the development and construction costs involved in building housing. Together, equity and debt are referred to as “Sources of Funds.”
+The costs for building a building are known as the “Uses of Funds”. These include:</p>
 
 <ul>
   <li>Paying for labor and construction materials</li>
@@ -309,32 +328,32 @@ The costs for building a building are known as the Uses of Funds and these inclu
   <li>Developer’s administration fees</li>
 </ul>
 
-<p>If the cost for constructing a building (Uses of Funds) balances with the Sources of Funds (equity and debt) available to the developer, the project can go ahead.</p>
+<p>If the cost for constructing a building (Uses of Funds) balances with the Sources of Funds (equity and debt) available to the developer, the project is “feasible”, and can go ahead.</p>
 
-<h4 id="operating-budget">Operating Budget</h4>
-<p>In the operating budget, the Income and Expenses must balance.</p>
+<h3 id="operating-budget">Operating Budget</h3>
+<p>In order to determine how much debt a developer can take on, a bank examines the projected income from renting the apartments to calculate how much the property can repay over time. The operating budget has two components:</p>
 
-<p><strong>Income</strong> is mostly made up of money coming in from rent. When creating a budget, developers know that some apartments might be vacant, which means that no one will be paying rent from those units.</p>
+<ul>
+  <li>
+    <p>Income, which is mostly made up of money coming in from rent. When creating a budget, developers know that some apartments might be vacant, which means that no one will be paying rent from those units.</p>
+  </li>
+  <li>
+    <p>Expenses, which are mostly maintenance costs, property management fees, property taxes and paying back the debt (loan) on the property that was used to construct the building.</p>
+  </li>
+</ul>
 
-<p><strong>Expenses</strong> are mostly maintenance costs, property management fees, property taxes and paying back the debt (loan) on the property that was used to construct the building. The expenses to operate the building cannot be more than the income (i.e. rents) generated by the residents of the building. When the expenses are more than the income, it is called a “deficit of funds.” If there is a deficit, the owner of the building might not be able to pay for maintenance. They also might be at risk of foreclosure.</p>
+<p>In the operating budget, the expenses to operate the building cannot be more than the income (i.e. rents) generated by the residents of the building.</p>
 
-<p><img src="/housingilab/images/diagrams_budget.jpg" alt="" /></p>
+<p><img src="/housingilab/images/diagrams_budget.jpg" alt="Budget Diagram" title="A diagram of how the Development and Operating budgets must balance" />
+<em>Balancing the Development and Operating Budgets</em></p>
 
-<h3 id="2b-what-exactly-is-affordable-housing">2b. What exactly IS Affordable Housing?</h3>
+<h2 id="b-what-about-housing-affordability">B. What about housing affordability?</h2>
+<p>One thing that the City, development teams, and housing advocates consider is the affordability of newly-built housing. A rule of thumb is that housing is “affordable” if a household spends no more than 30% of their income on rent or mortgage.</p>
 
-<p>When developers, the City or residents talk about Affordable Housing, they often mean Income Restricted Housing. In order to serve diverse families with different incomes, we need a range of affordable housing options. These housing options need to have different income maximums and rent levels. The City sets these income and rent restrictions using something called the “Area Median Income” or AMI. The Department of Housing and Urban Development (HUD) calculates AMI by looking at all families who live in an area, ordering them up by income, and then reporting the income of the family in the middle. HUD uses the Boston-Cambridge-Quincy metropolitan statistical area to calculate the AMI for the Boston area.</p>
+<p>But 30% of $1 million is very different from 30% of $20,000. So When the government says “affordable housing”, it means affordable for households in the middle or at the lower end of the income scale. In order to determine what those incomes are, the City uses a measure called “Area Median Income” (AMI) that calculates the median income of households in a given area. For Boston, the Department of Housing and Development uses all households in the Boston-Cambridge-Quincy area, which means the median income for a household of three is $97,100. This is quite different from the median income for the same household within the City of Boston, which is $65,200.</p>
 
-<p>You might be thinking, the Boston-Cambridge-Quincy area is huge! And not only is it geographically large, it also includes a wide range of communities and incomes. Using such a large area for the calculation makes the AMI for the City of Boston seem higher than it actually is.  The City of Boston Median Income is <strong>$65,238</strong> (Household size of 2.8) while the Boston MSA region median family income is <strong>$97,100</strong> (for a household size of 3). That’s a BIG difference!</p>
-
-<h4 id="what-are-different-levels-of-affordability-in-boston">What are different levels of affordability in Boston?</h4>
-
-<p>The chart to the left shows the ranges of incomes as represented by AMI. The affordable rent for a two-bedroom apartment is defined as 30% of the income for that household.</p>
-
-<h3 id="2c-affordable-to-whom">2c. Affordable to whom?</h3>
-
-<h3 id="2d-profile-on-inclusionary-development-policy-idp">2d. Profile on Inclusionary Development Policy (IDP)</h3>
-
-<p>In 2000, the City implemented an Inclusionary Development Policy (IDP), which applies to all privately developed projects. This policy requires that all new developments contribute to the production of new affordable housing in the City. Developers can meet this requirement in three different ways:</p>
+<h2 id="c-what-is-the-inclusionary-development-policy-idp">C. What is the Inclusionary Development Policy (IDP)?</h2>
+<p>In 2000, the City implemented the Inclusionary Development Policy (IDP), which applies to all privately developed projects. This policy requires that all new developments contribute to the production of new affordable housing in the City. Developers can meet this requirement in three different ways:</p>
 
 <ol>
   <li>Include affordable units within their developments (on-site),</li>
@@ -342,17 +361,19 @@ The costs for building a building are known as the Uses of Funds and these inclu
   <li>Make a cash contribution towards the creation or preservation of affordable housing.</li>
 </ol>
 
+<p>IDP units generally target moderate-income and middle income households. IDP funds are used to support publicly-funded projects targeting low and very low-income families. The policy has enabled developers to directly create over 2,000 affordable units, and over $100 million in the IDP fund has helped to support the creation of 1,200 additional off-site affordable units.</p>
+
 <p>IDP units generally target moderate-income families and some middle income families. Ownership units are targeted to slightly higher income limits. IDP funds are used to support publicly-funded projects targeting low and very low-income families.</p>
 
-<p><strong>Huge Impact:</strong> Under IDP, developers directly created over <strong>2,000 affordable units</strong> and <strong>over $100 million</strong> in the IDP fund helped to support the creation of $1,200 additional affordable units. One thing to keep in mind however, the use of city funds to produce affordable housing is not infinite.</p>
-
 <h3 id="resources-and-next-steps-for-balancing-the-budget">Resources and Next Steps for Balancing the Budget:</h3>
+<p>City of Boston’s income limits for the current year: <a href="http://www.bostonplans.org/housing/income,-asset,-and-price-limits">Income, Asset, and Price Limits</a><br />
+To learn more about the available voucher programs, go to the Boston Housing Authority website: <a href="https://www.bostonhousing.org/en/For-Section-8-Leased-Housing/Voucher-Programs.aspx">BHA Voucher Programs</a>,<br />
+or the Metro Housing|Boston website: <a href="https://www.metrohousingboston.org">Metro Housing|Boston</a></p>
 
-<ul>
-  <li><a href="http://densityatlas.org/">More on FAR and density</a></li>
-  <li><a href="http://www.bostonplans.org/projects/development-review">More on Boston’s Development Review</a></li>
-  <li><a href="http://www.bostonplans.org/housing/income,-asset,-and-price-limits">All of Boston’s income limits for the current year</a></li>
-</ul>
+<p>To learn more about the rental financing programs:<br />
+<a href="https://www.boston.gov/community-preservation-act">Community Preservation Act</a><br />
+<a href="https://www.boston.gov/sites/default/files/nht_report_2014_160622_1110.pdf">Linkage Funds</a><br />
+<a href="http://www.bostonplans.org/housing/developers/key-documents">Inclusionary Development Policy</a></p>
 
 
 
@@ -360,60 +381,62 @@ The costs for building a building are known as the Uses of Funds and these inclu
     
     
     <div class="options">
-      <h2 class="options__title">Balance the budget</h2>
-      <p class="message">Adjust the options below to view the impact.</p>
+      <div class="options__container">
+        <h2 class="options__title">Balance the budget</h2>
+        <p class="message">Adjust the options below to view the impact.</p>
 
-      
         
-      <div class="options__field" data-label="rentScenario">
-        <label for="field-">
-          Rent Mix
-        </label>
-        <p class="options__field-description">
-          Some description about rent options
-        </p>
-        
-          <div class="options__field-input">
-            <input type="radio" id="2-field--rent-mix-idpAmiMix" name="rent-mix" value="idpAmiMix">
-            <label for="2-field--rent-mix-idpAmiMix">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+          
+        <div class="options__field" data-label="rentScenario">
+          <label for="field-">
+            Rent Mix
+          </label>
+          <p class="options__field-description">
+            Some description about rent options
+          </p>
+          
+            <div class="options__field-input">
+              <input type="radio" id="2-field--rent-mix-idpAmiMix" name="rent-mix" value="idpAmiMix">
+              <label for="2-field--rent-mix-idpAmiMix">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">Market Rate (Inclusionary Development Policy)</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="2-field--rent-mix-thirdThirdThird" name="rent-mix" value="thirdThirdThird">
-            <label for="2-field--rent-mix-thirdThirdThird">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+                </span>
+                <span class="label-text">Market Rate (Inclusionary Development Policy)</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="2-field--rent-mix-thirdThirdThird" name="rent-mix" value="thirdThirdThird">
+              <label for="2-field--rent-mix-thirdThirdThird">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">1/3 1/3 1/3</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="2-field--rent-mix-deepAffordability" name="rent-mix" value="deepAffordability">
-            <label for="2-field--rent-mix-deepAffordability">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+                </span>
+                <span class="label-text">1/3 1/3 1/3</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="2-field--rent-mix-deepAffordability" name="rent-mix" value="deepAffordability">
+              <label for="2-field--rent-mix-deepAffordability">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">Deep Affordability</span>
-            </label>
-          </div>
+                </span>
+                <span class="label-text">Deep Affordability</span>
+              </label>
+            </div>
+          
+        </div>
         
       </div>
-      
     </div>
     
 
@@ -438,11 +461,21 @@ The costs for building a building are known as the Uses of Funds and these inclu
     <h2 class="lesson__title">
       How does parking work?
     </h2>
-    <div class="lesson__meta">Last updated: Jun 5, 2018</div>
+    <div class="lesson__meta">Last updated: 07/16/2018</div>
 
-    <p>Parking is a key consideration of all new housing development. Different types of parking arrangements have different construction costs. These can make the building more expensive and require higher rents. The parking ratio of a development is the number of parking spaces available to each residential unit. Parking ratios are set by zoning. In some cases, the City is reviewing lower parking ratios for buildings that are constructed near public transportation because residents can use public transportation to meet their travel needs.</p>
+    <p>Parking is a key consideration of all new housing development. Different types of parking arrangements have different construction costs. These can make the building more expensive and require higher rents. The parking ratio of a development is the number of parking spaces available to each residential unit. Parking ratios are set by zoning. In some cases, the City is reviewing lower parking ratios for building that are constructed near public transportation because residents use public transportation to meet their travel needs.</p>
 
-<p><img src="/housingilab/images/diagrams_parkingStack.jpg" alt="" /></p>
+<p>It is important to keep in mind that every time a new building includes space for cars, it passes those costs on to the tenants. More parking doesn’t just mean higher rents- it means fewer units or potential ground floor commercial space because it takes up valuable space on the parcel.</p>
+
+<p><img src="/housingilab/images/diagrams_parking.jpg" alt="Space considerations with parking" title="Space considerations with parking" />
+<em>Space considerations with parking</em></p>
+
+<p><img src="/housingilab/images/diagrams_parkingStack.jpg" alt="Cost considerations with parking" title="Cost considerations with parking" />
+<em>Cost considerations with parking</em></p>
+
+<h3 id="resources-and-next-steps-for-development-basics">Resources and Next Steps for Development Basics:</h3>
+<p>Traditional measures of housing affordability ignore transportation costs, typically the second largest category in a household’s budget. The Center for Neighborhood Technology releases an annual Housing + Transportation Cost Index to track these costs. 
+To learn more go to <a href="https://htaindex.cnt.org/">the H+TIndex</a></p>
 
 
 
@@ -450,60 +483,62 @@ The costs for building a building are known as the Uses of Funds and these inclu
     
     
     <div class="options">
-      <h2 class="options__title">How does parking work?</h2>
-      <p class="message">Adjust the options below to view the impact.</p>
+      <div class="options__container">
+        <h2 class="options__title">How does parking work?</h2>
+        <p class="message">Adjust the options below to view the impact.</p>
 
-      
         
-      <div class="options__field" data-label="ratioParking">
-        <label for="field-">
-          Parking Ratio
-        </label>
-        <p class="options__field-description">
-          Some description about parking options
-        </p>
-        
-          <div class="options__field-input">
-            <input type="radio" id="3-field--parking-ratio-0.0" name="parking-ratio" value="0.0">
-            <label for="3-field--parking-ratio-0.0">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+          
+        <div class="options__field" data-label="ratioParking">
+          <label for="field-">
+            Parking Ratio
+          </label>
+          <p class="options__field-description">
+            Some description about parking options
+          </p>
+          
+            <div class="options__field-input">
+              <input type="radio" id="3-field--parking-ratio-0.0" name="parking-ratio" value="0.0">
+              <label for="3-field--parking-ratio-0.0">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">0.0</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="3-field--parking-ratio-0.5" name="parking-ratio" value="0.5">
-            <label for="3-field--parking-ratio-0.5">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+                </span>
+                <span class="label-text">0.0</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="3-field--parking-ratio-0.5" name="parking-ratio" value="0.5">
+              <label for="3-field--parking-ratio-0.5">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">0.5</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="3-field--parking-ratio-1.0" name="parking-ratio" value="1.0">
-            <label for="3-field--parking-ratio-1.0">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+                </span>
+                <span class="label-text">0.5</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="3-field--parking-ratio-1.0" name="parking-ratio" value="1.0">
+              <label for="3-field--parking-ratio-1.0">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">1.0</span>
-            </label>
-          </div>
+                </span>
+                <span class="label-text">1.0</span>
+              </label>
+            </div>
+          
+        </div>
         
       </div>
-      
     </div>
     
 
@@ -528,57 +563,18 @@ The costs for building a building are known as the Uses of Funds and these inclu
     <h2 class="lesson__title">
       Compact Living Policy
     </h2>
-    <div class="lesson__meta">Last updated: Jun 3, 2018</div>
+    <div class="lesson__meta">Last updated: 07/17/2018</div>
 
-    <p>Compact living is a new type of residential development that uses well designed and efficient use of space paired with shared amenities to make housing more affordable. Compact units have smaller square footages than is currently allowed by zoning. Given the increasing cost of living and expected population growth, compact units offer a cost- and space-efficient way of building more units to accommodate growing demand for housing. There are three primary aspirations for Compact Living:</p>
-
-<ul>
-  <li>Increase housing affordability by reducing unit size which leads to more housing supply</li>
-  <li>Facilitate community-building and cohesion on a building and neighborhood scale through the shared common spaces</li>
-  <li>Encourage creativity and innovation in design to meet the needs of residents</li>
-</ul>
+    <p>Compact units are a promising model of development in Boston’s current housing context. Compact units have smaller square footages than is currently allowed by zoning. Given the increasing cost of living and expected population growth, compact units offer a cost- and space-efficient way of building more units to accommodate growing demand for housing. There are two primary goals for Compact Living, increased affordability and fostering community through common spaces that supplement smaller living quarters.</p>
 
 <p>Smaller unit sizes result in lower living costs because it means that developers can build more units for less. Because it costs less money to build these units, they can charge less rent. Because the units will be smaller, buildings with compact units will have more communal spaces. Examples of common spaces include a lounge, laundry room, fitness room, common kitchen and dining room, workspace, or outdoor spaces. The City has also proposed a Compact Policy Parking and Transportation Demand Management Plan to reduce parking requirements based on how far the building is from public transportation options.</p>
 
-<p>The size (in square feet) that the City is considering for the Compact Policy are below:</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>Proposed</td>
-      <td>Existing Minimum Square Footage-Metro Units</td>
-    </tr>
-    <tr>
-      <td>Studio 250-450 SF</td>
-      <td>450 SF</td>
-    </tr>
-    <tr>
-      <td>1 Bedroom 400-625 SF</td>
-      <td>625 SF</td>
-    </tr>
-    <tr>
-      <td>2 Bedroom 600-850 SF</td>
-      <td>850 SF</td>
-    </tr>
-    <tr>
-      <td>3 Bedroom 700-1,100 SF</td>
-      <td>n/a</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Example of a Two-Bedroom apartment</p>
-
-<p>Example of Shared Common Spaces</p>
-
-<h4 id="spotlight-uhu">Spotlight: UHU!</h4>
-
-<p>The City of Boston recently demonstrated what compact living could look like by creating an “Urban Housing Unit” (UHU) and touring it around the city.  The City received feedback on the UHU from over 2,000 community members. The City heard that residents are open to smaller living space in exchange for other things they value such as convenience of location and amenities. There is more information about the UHU in the Resources section.</p>
-
-<p><img src="/housingilab/images/uhu.png" alt="" /></p>
+<p>For more information, go to the Resources section to see sample floor plans of these compact unit apartment sizes.</p>
 
 <h3 id="resources-and-next-steps">Resources and Next Steps:</h3>
-<p>The City of Boston’s Compact Living policy is currently in draft form and under review. <a href="https://www.boston.gov/departments/new-urban-mechanics/urban-housing-unit-roadshow">Learn more about the Urban Housing Unit (UHU) demonstration project here.</a></p>
+
+<p>The City of Boston’s Compact Living policy is currently in draft form and under review.
+Learn more about the <a href="https://www.boston.gov/departments/new-urban-mechanics/urban-housing-unit-roadshow">Urban Housing Unit (UHU) Demonstration Project</a></p>
 
 
 
@@ -586,247 +582,249 @@ The costs for building a building are known as the Uses of Funds and these inclu
     
     
     <div class="options">
-      <h2 class="options__title">Compact Living</h2>
-      <p class="message">Adjust the options below to view the impact.</p>
+      <div class="options__container">
+        <h2 class="options__title">Compact Living</h2>
+        <p class="message">Adjust the options below to view the impact.</p>
 
-      
         
-      <div class="options__field" data-label="type">
-        <label for="field-">
-          Compact Units
-        </label>
-        <p class="options__field-description">
-          Some description about compact units options
-        </p>
-        
-          <div class="options__field-input">
-            <input type="radio" id="4-field--compact-units-Standard" name="compact-units" value="Standard">
-            <label for="4-field--compact-units-Standard">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">Standard Units</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="4-field--compact-units-Compact" name="compact-units" value="Compact">
-            <label for="4-field--compact-units-Compact">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">Compact Units</span>
-            </label>
-          </div>
-        
-      </div>
-      
-        
-      <div class="options__field" data-label="numApts">
-        <label for="field-">
-          Development Size
-        </label>
-        <p class="options__field-description">
-          Some description about apartment options
-        </p>
-        
-          <div class="options__field-input">
-            <input type="radio" id="4-field--development-size-9" name="development-size" value="9">
-            <label for="4-field--development-size-9">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">Low Urban</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="4-field--development-size-16" name="development-size" value="16">
-            <label for="4-field--development-size-16">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">Moderate Urban</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="4-field--development-size-24" name="development-size" value="24">
-            <label for="4-field--development-size-24">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">Mid-rise Urban</span>
-            </label>
-          </div>
-        
-      </div>
-      
-        
-      <div class="options__field" data-label="numFloors">
-        <label for="field-">
-          Number of Floors
-        </label>
-        <p class="options__field-description">
-          Some description about floor options
-        </p>
-        
-          <div class="options__field-input">
-            <input type="radio" id="4-field--number-of-floors-3" name="number-of-floors" value="3">
-            <label for="4-field--number-of-floors-3">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">3</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="4-field--number-of-floors-4" name="number-of-floors" value="4">
-            <label for="4-field--number-of-floors-4">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">4</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="4-field--number-of-floors-6" name="number-of-floors" value="6">
-            <label for="4-field--number-of-floors-6">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">6</span>
-            </label>
-          </div>
-        
-      </div>
-      
-        
-      <div class="options__field" data-label="rentScenario">
-        <label for="field-">
-          Rent Mix
-        </label>
-        <p class="options__field-description">
-          Some description about rent options
-        </p>
-        
-          <div class="options__field-input">
-            <input type="radio" id="4-field--rent-mix-idpAmiMix" name="rent-mix" value="idpAmiMix">
-            <label for="4-field--rent-mix-idpAmiMix">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">Market Rate (Inclusionary Development Policy)</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="4-field--rent-mix-thirdThirdThird" name="rent-mix" value="thirdThirdThird">
-            <label for="4-field--rent-mix-thirdThirdThird">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">1/3 1/3 1/3</span>
-            </label>
-          </div>
-        
-          <div class="options__field-input">
-            <input type="radio" id="4-field--rent-mix-deepAffordability" name="rent-mix" value="deepAffordability">
-            <label for="4-field--rent-mix-deepAffordability">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
-
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-
-              </span>
-              <span class="label-text">Deep Affordability</span>
-            </label>
-          </div>
-        
-      </div>
-      
-        
-      <div class="options__field" data-label="ratioParking">
-        <label for="field-">
-          Parking Ratio
-        </label>
-        <p class="options__field-description">
           
-        </p>
+        <div class="options__field" data-label="type">
+          <label for="field-">
+            Compact Units
+          </label>
+          <p class="options__field-description">
+            Some description about compact units options
+          </p>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--compact-units-Standard" name="compact-units" value="Standard">
+              <label for="4-field--compact-units-Standard">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">Standard Units</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--compact-units-Compact" name="compact-units" value="Compact">
+              <label for="4-field--compact-units-Compact">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">Compact Units</span>
+              </label>
+            </div>
+          
+        </div>
         
-          <div class="options__field-input">
-            <input type="radio" id="4-field--parking-ratio-0.0" name="parking-ratio" value="0.0">
-            <label for="4-field--parking-ratio-0.0">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+          
+        <div class="options__field" data-label="numApts">
+          <label for="field-">
+            Development Size
+          </label>
+          <p class="options__field-description">
+            Some description about apartment options
+          </p>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--development-size-9" name="development-size" value="9">
+              <label for="4-field--development-size-9">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">0.0</span>
-            </label>
-          </div>
+                </span>
+                <span class="label-text">Low Urban</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--development-size-16" name="development-size" value="16">
+              <label for="4-field--development-size-16">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">Moderate Urban</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--development-size-24" name="development-size" value="24">
+              <label for="4-field--development-size-24">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">Mid-rise Urban</span>
+              </label>
+            </div>
+          
+        </div>
         
-          <div class="options__field-input">
-            <input type="radio" id="4-field--parking-ratio-0.5" name="parking-ratio" value="0.5">
-            <label for="4-field--parking-ratio-0.5">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+          
+        <div class="options__field" data-label="numFloors">
+          <label for="field-">
+            Number of Floors
+          </label>
+          <p class="options__field-description">
+            Some description about floor options
+          </p>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--number-of-floors-3" name="number-of-floors" value="3">
+              <label for="4-field--number-of-floors-3">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">0.5</span>
-            </label>
-          </div>
+                </span>
+                <span class="label-text">3</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--number-of-floors-4" name="number-of-floors" value="4">
+              <label for="4-field--number-of-floors-4">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">4</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--number-of-floors-6" name="number-of-floors" value="6">
+              <label for="4-field--number-of-floors-6">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">6</span>
+              </label>
+            </div>
+          
+        </div>
         
-          <div class="options__field-input">
-            <input type="radio" id="4-field--parking-ratio-1.0" name="parking-ratio" value="1.0">
-            <label for="4-field--parking-ratio-1.0">
-              <span class="label-icon">
-                <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+          
+        <div class="options__field" data-label="rentScenario">
+          <label for="field-">
+            Rent Mix
+          </label>
+          <p class="options__field-description">
+            Some description about rent options
+          </p>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--rent-mix-idpAmiMix" name="rent-mix" value="idpAmiMix">
+              <label for="4-field--rent-mix-idpAmiMix">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
 
-                <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-              </span>
-              <span class="label-text">1.0</span>
-            </label>
-          </div>
+                </span>
+                <span class="label-text">Market Rate (Inclusionary Development Policy)</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--rent-mix-thirdThirdThird" name="rent-mix" value="thirdThirdThird">
+              <label for="4-field--rent-mix-thirdThirdThird">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">1/3 1/3 1/3</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--rent-mix-deepAffordability" name="rent-mix" value="deepAffordability">
+              <label for="4-field--rent-mix-deepAffordability">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">Deep Affordability</span>
+              </label>
+            </div>
+          
+        </div>
+        
+          
+        <div class="options__field" data-label="ratioParking">
+          <label for="field-">
+            Parking Ratio
+          </label>
+          <p class="options__field-description">
+            
+          </p>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--parking-ratio-0.0" name="parking-ratio" value="0.0">
+              <label for="4-field--parking-ratio-0.0">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">0.0</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--parking-ratio-0.5" name="parking-ratio" value="0.5">
+              <label for="4-field--parking-ratio-0.5">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">0.5</span>
+              </label>
+            </div>
+          
+            <div class="options__field-input">
+              <input type="radio" id="4-field--parking-ratio-1.0" name="parking-ratio" value="1.0">
+              <label for="4-field--parking-ratio-1.0">
+                <span class="label-icon">
+                  <svg class="feather feather-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+
+                  <svg class="feather feather-check-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+                </span>
+                <span class="label-text">1.0</span>
+              </label>
+            </div>
+          
+        </div>
         
       </div>
-      
     </div>
     
 
@@ -900,21 +898,19 @@ The costs for building a building are known as the Uses of Funds and these inclu
         </div>
     </div>
 
-    <div class="visualization-module__outcomes is-closed">
-        <h2 class="visualization-module__quick-outcome">
-        </h2>
-        <button class="visualization-module__toggle">
-            <svg class="feather feather-maximize" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+    <div class="outcomes is-closed">
+    <button class="outcomes__toggle">
+        <span class="outcomes__title">outcomes</span>
+        <svg class="feather feather-chevron-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-reactid="271"><polyline points="15 18 9 12 15 6"></polyline></svg>
 
-            <svg class="feather feather-minimize" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-
-            <div class="visually-hidden">toggle outcome details</div>
-        </button>
-        <div class="visualization-module__outcomes-content">
-
-        </div>
+        <span class="visually-hidden">toggle outcome details</span>
+    </button>
+    <div class="outcomes__content">
 
     </div>
+
+</div>
+
 </div>
 
 

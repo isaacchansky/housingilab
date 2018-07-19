@@ -1,0 +1,48 @@
+
+.hero {
+    .hero__container {
+        background: $color_white;
+        // width: calc(40% + 8rem);
+        min-height: calc(100vh - 4rem);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 4rem;
+    }
+
+    .hero__primary {
+        min-width: 35rem;
+        padding-right: 6rem;
+        text-align: right;
+
+        h1 {
+            color: $color_blue;
+            margin-bottom: 8rem;
+        }
+
+    }
+    .hero__secondary {
+        color: $color_dark-grey;
+        h2 {
+            font-weight: 300;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .logos {
+        img {
+            height: 5rem;
+        }
+    }
+}
+
+
+.hero__title {
+    @extend %t-headline-oversized;
+    max-width: 45rem;
+    span {
+        color: darken($color_blue, 4%);
+    }
+}

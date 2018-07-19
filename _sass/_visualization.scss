@@ -1,0 +1,57 @@
+
+.page-content .visualization-module {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% - 36rem);
+    height: 100vh;
+    background: #fefefe;
+    z-index: 0;
+}
+
+
+.page-content.is-scrolled .visualization-module {
+    position: fixed;
+    width: calc(100% - 37rem);
+}
+
+
+.visualization-module__controls {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+
+    .visualization-module__control-content {
+
+        button {
+            background: rgba(255,255,255,0.25);
+            border: 2px solid rgba(255,255,255,0.5);
+            display: inline;
+            margin: 0;
+            color: black;
+            letter-spacing: 1px;
+            box-shadow: none;
+            text-transform: none;
+            letter-spacing: 0;
+            padding: 0.25rem;
+            line-height: 0;
+            svg {
+                height: 1.25rem;
+            }
+        }
+    }
+}
+
+
+
+.visualization-module__canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    canvas {
+        position: absolute;
+        right: 0;
+    }
+}
