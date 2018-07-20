@@ -1,4 +1,3 @@
-
 .hero {
     .hero__container {
         background: $color_white;
@@ -34,6 +33,17 @@
     .logos {
         img {
             height: 5rem;
+        }
+    }
+
+    .beta {
+        position: relative;
+        svg {
+            position: absolute;
+            top: -2rem;
+            left: 4rem;
+            height: 3rem;
+            width: 3rem;
         }
     }
 }

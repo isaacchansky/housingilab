@@ -263,11 +263,11 @@ export class BuildingRender {
             let key = `${opts.numApts}|${opts.numFloors}|${opts.ratioParking}`;
             let data = renderData[key];
 
-
+            console.log(data);
             if (data) {
                 let group = new THREE.Group();
 
-                if (data.apts.geoms) {
+                if (data.apts && data.apts.geoms) {
                     data.apts.geoms.forEach( (item: any) => {
                         if(item.geom && item.geom.type) {
                             let geo = this.buildGeometry(item.geom);
@@ -300,7 +300,7 @@ export class BuildingRender {
                         }
                     });
                 }
-                if (data.parking.geoms) {
+                if (data.parking && data.parking.geoms) {
                     data.parking.geoms.forEach((item: any) => {
                         if (item.geom && item.geom.type) {
                             console.log(item.geom.type );
@@ -340,7 +340,7 @@ export class BuildingRender {
                         }
                     })
                 }
-                if (data.cores.geoms) {
+                if (data.cores && data.cores.geoms) {
                     console.log('rendering cores');
                     data.cores.geoms.forEach((item: any) => {
                         console.log(item);
@@ -375,7 +375,7 @@ export class BuildingRender {
                         }
                     })
                 }
-                if (data.balconies.geoms) {
+                if (data.balconies && data.balconies.geoms) {
                     data.balconies.geoms.forEach((item: any) => {
                         if (item.geom && item.geom.type) {
                             let geo = this.buildGeometry(item.geom);
@@ -430,6 +430,7 @@ export class BuildingRender {
             console.log({renderOptions});
             let data = renderData[`${renderOptions.numApts}|${renderOptions.numFloors}|${renderOptions.ratioParking}`];
             let selectedScenario = {};
+            console.log({data});
             data.scenarios.forEach( (s: any) => {
                 if (s.type === renderOptions.type && s.rentScenario === renderOptions.rentScenario) {
                     selectedScenario = s;

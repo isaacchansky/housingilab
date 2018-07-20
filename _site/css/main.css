@@ -568,6 +568,11 @@ img {
     left: 1rem;
     width: 36rem; }
 
+.table-of-contents__bar .menu__current-item:before,
+.table-of-contents__bar .menu__current-item-section:before {
+  content: '›';
+  padding: 0 0.5rem; }
+
 .menu-toggle {
   box-shadow: none;
   border: none;
@@ -702,6 +707,8 @@ table .t-financial {
   background-color: #00A8B5;
   border: none;
   padding: 1rem 2rem; }
+  .button--primary svg {
+    stroke: #FFFFFF; }
   .button--primary:active, .button--primary:focus, .button--primary:hover {
     background: #0095a1;
     color: #FFFFFF; }
@@ -718,47 +725,64 @@ a {
   align-items: flex-end; }
   .scale .scale-right,
   .scale .scale-left {
+    border-radius: 2px 2px 0 0;
     display: flex;
     flex-direction: column;
     width: calc(50% - 0.5rem);
     height: 18rem;
-    padding: 0.5rem;
+    padding: 0.25rem;
     border-radius: 2px;
     max-width: 12rem; }
     .scale .scale-right.taller,
     .scale .scale-left.taller {
       height: 20rem; }
-    .scale .scale-right h4,
-    .scale .scale-left h4 {
-      color: #FFFFFF;
-      letter-spacing: 0.1px;
-      font-weight: 400;
-      margin-bottom: 0.5rem; }
     .scale .scale-right .block,
     .scale .scale-left .block {
-      background: white;
-      border-radius: 2px;
-      margin: 0.25rem 0;
+      background: #ccc;
       font-size: 0.8rem;
-      padding: 0.25rem; }
-  .scale .scale-left {
-    background: #f3614f; }
-    .scale .scale-left .block {
-      color: #f3614f; }
-  .scale .scale-right {
-    background: #00A8B5; }
-    .scale .scale-right .block {
-      color: #00A8B5; }
-  .scale .scale-base {
-    width: 100%;
-    height: 5rem;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center; }
-  .scale.left .scale-base {
-    background-image: url("/housingilab/images/scale-left.jpeg"); }
-  .scale.right .scale-base {
-    background-image: url("/housingilab/images/scale-right.jpeg"); }
+      position: relative; }
+      .scale .scale-right .block span,
+      .scale .scale-left .block span {
+        position: absolute;
+        padding: 0.25rem;
+        right: 0.5rem;
+        top: 0.5rem;
+        background: white;
+        width: 8rem;
+        font-size: 0.8rem;
+        position: absolute;
+        border: 1px solid #ccc;
+        opacity: 0;
+        transition: all 250ms ease-in-out;
+        z-index: -100; }
+      .scale .scale-right .block:hover span,
+      .scale .scale-left .block:hover span {
+        opacity: 1;
+        z-index: 1; }
+    .scale .scale-right .block + .block,
+    .scale .scale-left .block + .block {
+      background: #aaa; }
+    .scale .scale-right .block + .block + .block,
+    .scale .scale-left .block + .block + .block {
+      background: #888; }
+    .scale .scale-right .block + .block + .block + .block,
+    .scale .scale-left .block + .block + .block + .block {
+      background: #555; }
+    .scale .scale-right .block + .block + .block + .block + .block,
+    .scale .scale-left .block + .block + .block + .block + .block {
+      background: #333; }
+  .scale .scale-left .block {
+    color: #f3614f; }
+    .scale .scale-left .block:hover {
+      border: 1px solid #f3614f; }
+    .scale .scale-left .block span {
+      left: -0.5rem;
+      right: auto;
+      top: 0.5rem; }
+  .scale .scale-right .block {
+    color: #00A8B5; }
+    .scale .scale-right .block:hover {
+      border: 1px solid #00A8B5; }
 
 .outcomes {
   position: absolute;
@@ -778,14 +802,13 @@ a {
   background: #FEC432;
   color: #FFFFFF;
   border: none;
-  height: 3rem;
+  height: 2.5rem;
   display: block;
   width: 100%;
   margin: 0;
-  text-align: right; }
-  .outcomes__toggle > * {
-    display: inline-block;
-    vertical-align: center; }
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1rem; }
 
 .outcomes__content {
   padding: 0 1rem;
@@ -794,7 +817,7 @@ a {
 
 .outcomes.is-closed {
   width: 3rem;
-  height: 3rem; }
+  height: 2.5rem; }
   .outcomes.is-closed .outcomes__title {
     display: none; }
   .outcomes.is-closed .outcomes__toggle svg {
@@ -813,7 +836,8 @@ a {
 
 .outcomes__description {
   font-weight: 300;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  margin: 1rem 0; }
   .outcomes__description .outcome-info-user {
     color: #00A8B5;
     border-bottom: 1px dotted #00A8B5; }
@@ -824,6 +848,42 @@ a {
   .outcomes__description .outcome-info-user {
     position: relative; }
 
+.outcomes__list {
+  list-style: none; }
+  .outcomes__list .outcome__item {
+    font-size: 1rem;
+    position: relative;
+    padding-left: 2rem; }
+    .outcomes__list .outcome__item:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.2rem;
+      width: 1rem;
+      height: 1rem;
+      background-repeat: no-repeat;
+      background-size: contain; }
+  .outcomes__list [data-val="calcNumApts"]:before {
+    background-image: url("/housingilab/images/icons_numApts.svg"); }
+  .outcomes__list [data-val="numFloors"]:before {
+    background-image: url("/housingilab/images/icons_numFloors.svg"); }
+  .outcomes__list [data-val="constructionType"]:before {
+    background-image: url("/housingilab/images/icons_constructionType.svg"); }
+  .outcomes__list [data-val="numResidents"]:before {
+    background-image: url("/housingilab/images/icons_numResidents.svg"); }
+  .outcomes__list [data-val="far"]:before {
+    background-image: url("/housingilab/images/icons_far.svg"); }
+  .outcomes__list [data-val="coverageRatio"]:before {
+    background-image: url("/housingilab/images/icons_coverage.svg"); }
+  .outcomes__list [data-val="avgAptSize"]:before {
+    background-image: url("/housingilab/images/icons_size.svg"); }
+  .outcomes__list [data-val="permitProcess"]:before {
+    background-image: url("/housingilab/images/icons_permitting.svg"); }
+  .outcomes__list [data-val="numParking"]:before {
+    background-image: url("/housingilab/images/icons_parkingSpaces.svg"); }
+  .outcomes__list [data-val="parkingPrice"]:before {
+    background-image: url("/housingilab/images/icons_parkingCost.svg"); }
+
 .page-content .visualization-module {
   position: absolute;
   top: 0;
@@ -832,6 +892,13 @@ a {
   height: 100vh;
   background: #fefefe;
   z-index: 0; }
+  .page-content .visualization-module .beta svg {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+    height: 3rem;
+    width: 3rem; }
 
 .page-content.is-scrolled .visualization-module {
   position: fixed;
@@ -952,6 +1019,14 @@ a {
     margin-bottom: 1rem; }
 .hero .logos img {
   height: 5rem; }
+.hero .beta {
+  position: relative; }
+  .hero .beta svg {
+    position: absolute;
+    top: -2rem;
+    left: 4rem;
+    height: 3rem;
+    width: 3rem; }
 
 .hero__title {
   max-width: 45rem; }

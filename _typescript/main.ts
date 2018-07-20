@@ -12,6 +12,7 @@ let handleActiveRender: any;
 function scrollEventHandling() {
     let pageContent = $('.page-content');
     let currentMenuItem = document.querySelector(".menu__current-item");
+    let currentMenuSection = document.querySelector(".menu__current-item-section");
 
     function handleScroll() {
         let currentLesson = null;
@@ -23,7 +24,10 @@ function scrollEventHandling() {
         $('.lesson-modules [data-lesson]').each( (i, lessonModule: any) => {
             if ( isScrolledIntoView(lessonModule)) {
                 let title = lessonModule.querySelector('.lesson__title').textContent;
+                let isInOptions = isScrolledIntoView(lessonModule.querySelector('.options'));
+
                 currentMenuItem.textContent = title;
+                currentMenuSection.textContent = isInOptions ? 'Interactive' : 'Lesson';
                 currentLesson = lessonModule;
             }
         });
