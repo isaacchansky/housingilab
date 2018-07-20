@@ -174,6 +174,7 @@ export default function outcomeTemplating (options: any, lesson: number) {
         tpl = lessonTemplate2(options);
     }
     if (lesson === 3) {
+        console.log(options);
         tpl = lessonTemplate3(options);
     }
     if (lesson === 4) {

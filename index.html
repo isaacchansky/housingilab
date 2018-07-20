@@ -37,7 +37,7 @@ layout: default
 
     {% assign lessonOptions = site.data.lessonOptions[forloop.index]  %}
     {% if lesson.isLesson %}
-    <div class="options">
+    <div class="options" data-massing="{{lessonOptions.defaultMassing}}" data-rentScenario="{{lessonOptions.defaultRentScenario}}">
       <div class="options__container">
         <h2 class="options__title">{{lessonOptions.title}}</h2>
         <p class="message">Adjust the options below to view the impact.</p>

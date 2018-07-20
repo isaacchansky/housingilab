@@ -34,7 +34,7 @@
 
 2:
   title: 'Balance the budget'
-  defaultMassing: '24|4|0.5' # Only cycle between rentScenarios for this massing-parking scenario 
+  defaultMassing: '24|4|0.5' # Only cycle between rentScenarios for this massing-parking scenario
   defaultRentScenario: 'thirdThirdThird'
   fields:
     - type: radio

@@ -75,6 +75,8 @@ export class BuildingRender {
         controls: any;
         lights: any[] = [];
 
+        savedControls: any = {};
+
         activeBuildingGroup: any = new THREE.Group();
 
         cameraZoom: number = 25;
@@ -110,6 +112,10 @@ export class BuildingRender {
             this.controls = new OrbitControls(this.camera, this.containerEl);
             this.controls.maxPolarAngle = (0.9 * Math.PI) / 2;
             this.controls.enableZoom = true;
+
+            this.savedControls.position = this.camera.position.clone();
+            this.savedControls.rotation = this.camera.rotation.clone();
+            this.savedControls.controlCenter = this.controls.target.clone();
         }
 
         createLights() {
@@ -259,11 +265,11 @@ export class BuildingRender {
         //     apts: '16'
         // };
         renderScenario(opts: any) {
-            console.log({renderOpts: opts});
+            console.log('opts', {renderOpts: opts});
             let key = `${opts.numApts}|${opts.numFloors}|${opts.ratioParking}`;
             let data = renderData[key];
 
-            console.log(data);
+            console.log('data', data);
             if (data) {
                 let group = new THREE.Group();
 
@@ -427,10 +433,10 @@ export class BuildingRender {
         //     apts: '16'
         // };
         getOutcomes(renderOptions: any) {
-            console.log({renderOptions});
+            console.log('outcome opts', {renderOptions});
             let data = renderData[`${renderOptions.numApts}|${renderOptions.numFloors}|${renderOptions.ratioParking}`];
             let selectedScenario = {};
-            console.log({data});
+            console.log('outcome data', {data});
             data.scenarios.forEach( (s: any) => {
                 if (s.type === renderOptions.type && s.rentScenario === renderOptions.rentScenario) {
                     selectedScenario = s;
@@ -469,8 +475,17 @@ export class BuildingRender {
             this.nextCameraZoom = this.cameraZoom > 2 ? this.cameraZoom - 4 : this.cameraZoom;
         }
 
+        setFocusedZoom() {
+            this.nextCameraZoom = 20;
+        }
         resetZoom() {
-            this.nextCameraZoom = 25;
+            this.nextCameraZoom = 30;
+            // this.camera.position.set(this.savedControls.position.x, this.savedControls.position.y, this.savedControls.position.z);
+            // this.camera.rotation.set(this.savedControls.rotation.x, this.savedControls.rotation.y, this.savedControls.rotation.z);
+
+            // this.controls.target.set(this.savedControls.controlCenter.x, this.savedControls.controlCenter.y, this.savedControls.controlCenter.z);
+            // this.controls.update();
+
         }
 
         render() {

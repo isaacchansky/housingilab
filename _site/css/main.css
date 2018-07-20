@@ -643,7 +643,11 @@ img {
   padding: 5rem 2rem; }
 
 .options__field {
-  margin-bottom: 2rem; }
+  margin-bottom: 2rem;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: 0 0.25rem;
+  background-size: 1.25rem 1.25rem; }
   .options__field .options__field-description {
     margin-bottom: 0.5rem; }
   .options__field > label,
@@ -676,6 +680,24 @@ img {
         color: #00A8B5; }
     .options__field input[type=radio]:checked + label .feather-circle {
       display: none; }
+
+.options__field[data-label="numApts"] {
+  background-image: url("/housingilab/images/icons_numApts.svg"); }
+
+.options__field[data-label="numFloors"] {
+  background-image: url("/housingilab/images/icons_numFloors.svg"); }
+
+.options__field[data-label="ratioParking"] {
+  background-image: url("/housingilab/images/icons_parkingSpaces.svg"); }
+
+.options__field[data-label="type"] {
+  background-image: url("/housingilab/images/icons_compact.svg"); }
+
+.options__field[data-label="numFloors"] {
+  background-image: url("/housingilab/images/icons_numFloors.svg"); }
+
+.options__field[data-label="rentScenario"] {
+  background-image: url("/housingilab/images/icons_rent.svg"); }
 
 table tr:nth-child(odd) {
   background: #fafafa; }
@@ -789,7 +811,7 @@ a {
   top: 0;
   left: 0;
   background: #FFFFFF;
-  width: 14rem;
+  width: 18rem;
   height: 100%;
   display: none;
   box-shadow: 0 3px 20px rgba(33, 38, 45, 0.15), -1px 1px 10px rgba(0, 0, 0, 0.05);

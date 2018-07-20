@@ -6,7 +6,14 @@ import * as $ from 'jquery';
 
 let br: BuildingRender;
 let handleActiveRender: any;
-
+let defaultRenderOptionsByLesson: any = {};
+let renderOptionDefaults: any = {
+        type: 'Standard',
+        rentScenario: 'deepAffordability',
+        ratioParking: '0.0',
+        numFloors: '3',
+        numApts: '9'
+    };
 
 // To be called after DOMContentLoaded
 function scrollEventHandling() {
@@ -63,6 +70,8 @@ function clickEventHandling() {
         let lesson = $(e.currentTarget).closest('[data-lesson]').data('lesson');
         $(`[data-lesson="${lesson+1}"]`).show();
         scrollTo(getScrollOffset(e.currentTarget.parentElement.nextElementSibling), 600);
+
+        br.renderScenario( Object.assign({}, renderOptionDefaults, defaultRenderOptionsByLesson[lesson+1]));
         // TODO: enable this when we think through 'previous lesson' buttons.
         // setTimeout( () => {
         //     $(`[data-lesson="${lesson}"]`).hide();
@@ -119,13 +128,25 @@ function initThree() {
         handleActiveRender();
     });
 
-    let renderOptionDefaults: any = {
-        type: 'Standard',
-        rentScenario: 'deepAffordability',
-        ratioParking: '0.0',
-        numFloors: '3',
-        numApts: '9'
-    };
+    $('[data-lesson]').each((i, el) => {
+        let massing = $(el).find('[data-massing]').data('massing');
+        if (massing) {
+            massing = massing.split('|');
+            defaultRenderOptionsByLesson[$(el).data('lesson')] = {
+                numApt: massing[0],
+                numFloors: massing[1],
+                ratioParking: massing[2]
+            };
+            if ($(el).find('[data-rentscenario]').data('rentscenario')) {
+                defaultRenderOptionsByLesson[$(el).data('lesson')].rentScenario = $(el).find('[data-rentscenario]').data('rentscenario');
+            }
+        }
+    });
+
+
+
+    // default to first lesson configured values
+    renderOptionDefaults = Object.assign({}, renderOptionDefaults, defaultRenderOptionsByLesson[1]);
     let activeRenderOptions: any = {};
 
     br.renderScenario(renderOptionDefaults);
@@ -144,7 +165,12 @@ function initThree() {
         setOutcomes(outcomes, lesson);
         br.renderScenario(options);
 
-        $('.page-content').addClass('has-interaction');
+        if (!$('.page-content').hasClass('has-interaction')) {
+            br.setFocusedZoom();
+            handleActiveRender();
+            $('.page-content').addClass('has-interaction');
+        }
+
     });
 
 }

@@ -165,6 +165,11 @@
 
 .options__field {
     margin-bottom: 2rem;
+    position: relative;
+    // icon background setup
+    background-repeat: no-repeat;
+    background-position: 0 0.25rem;
+    background-size: 1.25rem 1.25rem;
 
     > label {
         @extend %t-button;
@@ -228,6 +233,30 @@
     }
 }
 
+.options__field[data-label="numApts"] {
+    background-image: url('/housingilab/images/icons_numApts.svg');
+}
+
+.options__field[data-label="numFloors"] {
+    background-image: url('/housingilab/images/icons_numFloors.svg');
+}
+
+.options__field[data-label="ratioParking"] {
+    background-image: url('/housingilab/images/icons_parkingSpaces.svg');
+}
+
+.options__field[data-label="type"] {
+    background-image: url('/housingilab/images/icons_compact.svg');
+}
+
+.options__field[data-label="numFloors"] {
+    background-image: url('/housingilab/images/icons_numFloors.svg');
+}
+
+
+.options__field[data-label="rentScenario"] {
+    background-image: url('/housingilab/images/icons_rent.svg');
+}
 
 
 table {
