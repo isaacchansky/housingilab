@@ -29,7 +29,7 @@ const lessonTemplate2 = (opts: any) => {
         </h2>
 
         <ul class="outcomes__list">
-            <li class="outcome__item" data-val="feasibility"><span>${opts.surplus > 0 ? 'feasible' : 'infeasible'}</span>
+            <li class="outcome__item" data-val="feasibility">Feasibility: <span class="t-${opts.surplus > 0 ? 'positive' : 'negative'}">${opts.surplus > 0 ? 'feasible' : 'infeasible'}</span>
                  <div class="scale ${totalUses > totalSources ? 'left' : 'right'}">
                     <div class="scale-left ${totalUses > totalSources ? 'taller' : ''}">
 
@@ -77,9 +77,9 @@ const lessonTemplate3 = (opts: any) => {
         <h2 class="outcomes__description">While there are no dedicated off-street parking spaces for residents, this development is near a bus stop and has partnered with a share-car service that utilizes four on-street reserved spaces. Doing so means it is financially feasible.</h2>
 
          <ul class="outcomes__list">
-            <li class="outcome__item" data-val="numParking">${opts.numParking}</li>
-            <li class="outcome__item" data-val="parkingPrice">$${opts.parkingPrice.toFixed(2)}</li>
-            <li class="outcome__item" data-val="feasibility"><span>${opts.surplus > 0 ? 'feasible' : 'infeasible'}</span>
+            <li class="outcome__item" data-val="numParking">${opts.numParking} Parking Spaces</li>
+            <li class="outcome__item" data-val="parkingPrice">$${opts.parkingPrice.toFixed(2)} Total Parking Construction Cost</li>
+            <li class="outcome__item" data-val="feasibility">Feasibility: <span class="t-${opts.surplus > 0 ? 'positive' : 'negative'}">${opts.surplus > 0 ? 'feasible' : 'infeasible'}
                  <div class="scale ${totalUses > totalSources ? 'left' : 'right'}">
                     <div class="scale-left ${totalUses > totalSources ? 'taller' : ''}">
 
@@ -126,7 +126,7 @@ const lessonTemplate4 = (opts: any) => {
             <li class="outcome__item" data-val="coverageRatio">${(opts.coverageRatio*100).toFixed(2)}% coverage</li>
             <li class="outcome__item" data-val="avgAptSize">${opts.avgAptSize} ft<sup>2</sup> per apartment</li>
             <li class="outcome__item" data-val="permitProcess">${opts.permitProcess}</li>
-            <li class="outcome__item" data-val="feasibility"><span>${opts.surplus > 0 ? 'feasible' : 'infeasible'}</span>
+            <li class="outcome__item" data-val="feasibility">Feasibility: <span class="t-${opts.surplus > 0 ? 'positive' : 'negative'}">${opts.surplus > 0 ? 'feasible' : 'infeasible'}
                  <div class="scale ${totalUses > totalSources ? 'left' : 'right'}">
                     <div class="scale-left ${totalUses > totalSources ? 'taller' : ''}">
 

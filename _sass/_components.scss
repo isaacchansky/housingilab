@@ -56,7 +56,17 @@
         position: fixed;
         top: 0;
         left: 1rem;
-        width: 36rem;
+        width: $lg-content-area + 1;
+        @include media-query($lg-break) {
+            width: $sm-content-area + 1;
+            left: 0rem;
+            .menu__current-item-section {
+                display: none;
+            }
+        }
+        @include media-query($sm-break) {
+            width: 100%;
+        }
     }
 }
 
@@ -137,6 +147,10 @@
         padding: 0.25rem 0.5rem;
         margin-right: 0.5rem;
     }
+
+    @include media-query($lg-break) {
+        font-size: 0.8rem;
+    }
 }
 
 
@@ -161,6 +175,30 @@
 
 .options__container {
     padding: 5rem 2rem;
+
+    @include media-query($sm-break) {
+        position: relative;
+        &:before {
+            content: '';
+            background: rgba(0,0,0,0.75);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: block;
+            z-index: 1;
+        }
+        &:after {
+            content: 'Please view this on a larger screen to see the full interactive experience.';
+            z-index: 1;
+            width: 80%;
+            color: #fff;
+            font-size: 1.25rem;
+            position: absolute;
+            top: 40%;
+        }
+    }
 }
 
 .options__field {
@@ -304,15 +342,21 @@ table {
     background-color: $color_blue;
     border: none;
     padding: 1rem 2rem;
-    svg {
-        stroke: $color_white;
-    }
     &:active,
     &:focus,
     &:hover {
         background: darken($color_blue, 4%);
         color: $color_white;
     }
+
+    svg {
+        stroke: $color_white;
+    }
+
+    > * {
+        vertical-align: middle;
+    }
+
 }
 
 
@@ -329,6 +373,8 @@ a {
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: flex-end;
+    margin-top: 1rem;
+
     .scale-right,
     .scale-left {
         border-radius: 2px 2px 0 0;
@@ -403,3 +449,4 @@ a {
         }
     }
 }
+

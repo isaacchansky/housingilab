@@ -70,8 +70,10 @@
 
 .outcomes__description {
     font-weight: 300;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin: 1rem 0;
+    line-height: 1.4;
+    letter-spacing: 0;
 
     .outcome-info-user {
         color: $color_blue;
@@ -105,6 +107,7 @@
 
 .outcomes__list {
     list-style: none;
+    margin-bottom: 4rem;
     .outcome__item {
         font-size: 1rem;
         position: relative;
@@ -118,6 +121,11 @@
             height: 1rem;
             background-repeat: no-repeat;
             background-size: contain;
+        }
+
+        .t-positive,
+        .t-negative {
+            margin-left: 1rem;
         }
     }
     [data-val="calcNumApts"]:before {
@@ -150,6 +158,20 @@
     [data-val="parkingPrice"]:before {
         background-image: url('/housingilab/images/icons_parkingCost.svg');
     }
-
+    [data-val="returnOnCost"]:before {
+        background-image: url('/housingilab/images/icons_percent.svg');
+    }
+    [data-val="expenses"]:before {
+        background-image: url('/housingilab/images/icons_expense.svg');
+    }
+    [data-val="netIncome"]:before {
+        background-image: url('/housingilab/images/icons_income.svg');
+    }
+    [data-val="tdcPerUnit"]:before {
+        background-image: url('/housingilab/images/icons_costPerApt.svg');
+    }
+    [data-val="feasibility"]:before {
+        background-image: url('/housingilab/images/icons_value.svg');
+    }
 
 }

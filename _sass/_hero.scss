@@ -7,16 +7,32 @@
         justify-content: center;
         align-items: flex-start;
         padding: 4rem;
+        @include media-query($sm-break) {
+            flex-direction: column;
+            padding: 4rem 2rem;
+        }
     }
 
     .hero__primary {
-        min-width: 35rem;
+        min-width: $lg-content-area;
         padding-right: 6rem;
         text-align: right;
+        @include media-query($lg-break) {
+            min-width: $sm-content-area;
+        }
+        @include media-query($sm-break) {
+            min-width: 0;
+            margin-bottom: 4rem;
+            padding-right: 0;
+            text-align: left;
+        }
 
         h1 {
             color: $color_blue;
             margin-bottom: 8rem;
+            @include media-query($sm-break) {
+                margin-bottom: 4rem;
+            }
         }
 
     }
@@ -31,10 +47,23 @@
     }
 
     .logos {
+        > * {
+            vertical-align: middle;
+        }
         img {
             height: 5rem;
         }
     }
+
+    .powered-by {
+        display: inline-block;
+        > * {
+            color: $color_blue;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+    }
+
 
     .beta {
         position: relative;
@@ -44,6 +73,14 @@
             left: 4rem;
             height: 3rem;
             width: 3rem;
+            @include media-query($lg-break) {
+                left: -2rem;
+            }
+            @include media-query($sm-break) {
+                top: -3rem;
+                right: -3rem;
+                left: auto;
+            }
         }
     }
 }

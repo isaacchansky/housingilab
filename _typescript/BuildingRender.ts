@@ -3,21 +3,21 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three-orbitcontrols-ts';
 
-
-const apts: any = require("./data/apts.json");
-const cores: any = require("./data/cores.json");
-const parking: any = require("./data/parking.json");
-const balconies: any = require("./data/balconies.json");
-
-
 const busStop: any = require("./data/busStop.json");
 const streetLamps: any = require("./data/streetLamps.json");
+const streetTrees: any = require("./data/streetTrees.json");
 const streetMarkings: any = require("./data/streetMarkings.json");
 const trafficLights: any = require("./data/trafficLights.json");
 const parcels: any = require("./data/parcels.json");
 const contextGroundBldgs: any = require("./data/contextGroundBldgs.json");
 
 
+
+const apts: any = require("./data/apts.json");
+const cores: any = require("./data/cores.json");
+const parking: any = require("./data/parking.json");
+const balconies: any = require("./data/balconies.json");
+const sidewalk: any = require("./data/sidewalk.json");
 
 const financialScenarios: any = require("./data/financialScenarios.json");
 
@@ -59,6 +59,13 @@ balconies.forEach((item: any) => {
         renderData[item.name] = {};
     }
     renderData[item.name].balconies = item;
+});
+
+sidewalk.forEach((item: any) => {
+    if (!renderData[item.name]) {
+        renderData[item.name] = {};
+    }
+    renderData[item.name].sidewalk = item;
 });
 
 
@@ -121,7 +128,7 @@ export class BuildingRender {
         createLights() {
             let ambient = new THREE.AmbientLight(0xffffff, 0.75);
 
-            let spotLight = new THREE.SpotLight(0xffffff, 0.15);
+            let spotLight = new THREE.SpotLight(0xffffff, 0.5);
             spotLight.position.set(0, 500, 100);
             spotLight.angle = 1;
             spotLight.penumbra = 0.05;
@@ -133,9 +140,24 @@ export class BuildingRender {
             spotLight.shadow.camera.near = 10;
             spotLight.shadow.camera.far = 1000;
 
+            let spotLight2 = new THREE.SpotLight(0xffffff, 0.25);
+            spotLight2.position.set(0, 100, 500);
+            spotLight2.angle = 1;
+            spotLight2.penumbra = 0.05;
+            spotLight2.decay = 3;
+            spotLight2.distance = 3000;
+            spotLight2.castShadow = true;
+            spotLight2.shadow.mapSize.width = 2000;
+            spotLight2.shadow.mapSize.height = 2000;
+            spotLight2.shadow.camera.near = 10;
+            spotLight2.shadow.camera.far = 1000;
+
             this.lights.push(ambient);
             this.lights.push(spotLight);
+            this.lights.push(spotLight2);
             // var spotLightHelper = new THREE.SpotLightHelper(spotLight);
+            // var spotLightHelper2 = new THREE.SpotLightHelper(spotLight2);
+            // this.scene.add(spotLightHelper2);
             // this.scene.add(spotLightHelper);
         }
 
@@ -238,7 +260,7 @@ export class BuildingRender {
         addGroundAndContext() {
             let group = new THREE.Group();
 
-            let groundbldgMesh = this.createMesh(contextGroundBldgs[0].geoms[0].geom, { color: 0x666666}, { color: 0x222222});
+            let groundbldgMesh = this.createMesh(contextGroundBldgs[0].geoms[0].geom, { color: 0x333333}, { color: 0x222222});
             group.add(groundbldgMesh);
 
             let busstopMesh = this.createMesh(busStop[0].geoms[0].geom, { color: 0xCCCCCC }, { color: 0xEEEEEE });
@@ -246,6 +268,9 @@ export class BuildingRender {
 
             let streetlampMesh = this.createMesh(streetLamps[0].geoms[0].geom, {color: 0x000000}, null);
             group.add(streetlampMesh);
+
+            let streettreeMesh = this.createMesh(streetTrees[0].geoms[0].geom, {color: 0x00b561}, null);
+            group.add(streettreeMesh);
 
             let streetmarkingMesh = this.createMesh(streetMarkings[0].geoms[0].geom, {color: 0xFFFFFF}, null);
             group.add(streetmarkingMesh);
@@ -356,6 +381,40 @@ export class BuildingRender {
                               {
                                 color: 0x999999,
                                 transparent: true,
+                                opacity: 1
+                              }
+                            );
+                            mat.metalness = 0;
+                            if (geo && mat) {
+                                let mesh = new THREE.Mesh(geo, mat);
+                                mesh.castShadow = true;
+                                mesh.receiveShadow = true;
+                                // set up edges
+                                let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
+                                let eMaterial = new THREE.LineBasicMaterial(
+                                    {
+                                        color: 0xeeeeee,
+                                        linewidth: 1
+                                    }
+                                );
+                                let edges = new THREE.LineSegments(eGeometry, eMaterial);
+                                mesh.add(edges);
+                                mesh.rotation.x = -Math.PI * 0.5;
+                                group.add(mesh);
+                            }
+
+                        }
+                    })
+                }
+                if (data.sidewalk && data.sidewalk.geoms) {
+                    console.log('rendering sidewalk');
+                    data.sidewalk.geoms.forEach((item: any) => {
+                        console.log(item);
+                        if (item.geom && item.geom.type) {
+                            let geo = this.buildGeometry(item.geom);
+                            let mat = new THREE.MeshStandardMaterial(
+                              {
+                                color: 0x999999,
                                 opacity: 1
                               }
                             );

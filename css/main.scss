@@ -15,12 +15,19 @@ $type-ratio: 1.4;
 
 $spacing-unit:     30px;
 
+$lg-content-area: 35rem;
+$sm-content-area: 25rem;
+
+$sm-break: 955px;
+
+$lg-break: 1200px;
+
 $color_yellow: #FFEB3B;
 $color_yellow-pale: #f9f5ce;
 $color_copper: #e09a3c;
 $color_blue: #00A8B5;
 $color_blue-pale: #b9e5e9;
-$color_green: #00A8B5;
+$color_green: #00b561;
 $color_red: #f3614f;
 $color_black: #333333;
 $color_white: #FFFFFF;
@@ -35,6 +42,8 @@ $bpda_teal-light: #4dc1cb;
 $bpda_gold: #ffc432;
 $bpda-green: #a5c739;
 $bpda_red: #ff5a28;
+
+
 
 // Use media queries like this:
 // @include media-query($on-palm) {

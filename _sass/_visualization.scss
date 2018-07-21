@@ -3,10 +3,17 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: calc(100% - 36rem);
     height: 100vh;
     background: #fefefe;
     z-index: 0;
+    width: calc(100% - #{$lg-content-area + 1});
+
+    @include media-query($lg-break) {
+        width: calc(100% - #{$sm-content-area + 1});
+    }
+    @include media-query($sm-break) {
+        display: none;
+    }
 
     .beta svg {
         position: absolute;
@@ -21,7 +28,14 @@
 
 .page-content.is-scrolled .visualization-module {
     position: fixed;
-    width: calc(100% - 37rem);
+    width: calc(100% - #{$lg-content-area + 2});
+
+    @include media-query($lg-break) {
+        width: calc(100% - #{$sm-content-area + 1});
+    }
+    @include media-query($sm-break) {
+        display: none;
+    }
 }
 
 

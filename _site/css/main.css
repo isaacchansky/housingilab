@@ -502,6 +502,12 @@ img {
   /* IE6, IE7 */
   clip: rect(1px, 1px, 1px, 1px); }
 
+.t-negative {
+  color: #f3614f; }
+
+.t-positive {
+  color: #00b561; }
+
 .page-content {
   position: relative; }
 
@@ -567,6 +573,15 @@ img {
     top: 0;
     left: 1rem;
     width: 36rem; }
+    @media screen and (max-width: 1200px) {
+      .is-scrolled .table-of-contents {
+        width: 26rem;
+        left: 0rem; }
+        .is-scrolled .table-of-contents .menu__current-item-section {
+          display: none; } }
+    @media screen and (max-width: 955px) {
+      .is-scrolled .table-of-contents {
+        width: 100%; } }
 
 .table-of-contents__bar .menu__current-item:before,
 .table-of-contents__bar .menu__current-item-section:before {
@@ -629,6 +644,9 @@ img {
     color: #FFFFFF;
     padding: 0.25rem 0.5rem;
     margin-right: 0.5rem; }
+  @media screen and (max-width: 1200px) {
+    .message {
+      font-size: 0.8rem; } }
 
 .options {
   background-color: whitesmoke;
@@ -641,6 +659,27 @@ img {
 
 .options__container {
   padding: 5rem 2rem; }
+  @media screen and (max-width: 955px) {
+    .options__container {
+      position: relative; }
+      .options__container:before {
+        content: '';
+        background: rgba(0, 0, 0, 0.75);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        z-index: 1; }
+      .options__container:after {
+        content: 'Please view this on a larger screen to see the full interactive experience.';
+        z-index: 1;
+        width: 80%;
+        color: #fff;
+        font-size: 1.25rem;
+        position: absolute;
+        top: 40%; } }
 
 .options__field {
   margin-bottom: 2rem;
@@ -729,11 +768,13 @@ table .t-financial {
   background-color: #00A8B5;
   border: none;
   padding: 1rem 2rem; }
-  .button--primary svg {
-    stroke: #FFFFFF; }
   .button--primary:active, .button--primary:focus, .button--primary:hover {
     background: #0095a1;
     color: #FFFFFF; }
+  .button--primary svg {
+    stroke: #FFFFFF; }
+  .button--primary > * {
+    vertical-align: middle; }
 
 a {
   color: #00A8B5; }
@@ -744,7 +785,8 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  align-items: flex-end; }
+  align-items: flex-end;
+  margin-top: 1rem; }
   .scale .scale-right,
   .scale .scale-left {
     border-radius: 2px 2px 0 0;
@@ -802,9 +844,9 @@ a {
       right: auto;
       top: 0.5rem; }
   .scale .scale-right .block {
-    color: #00A8B5; }
+    color: #00b561; }
     .scale .scale-right .block:hover {
-      border: 1px solid #00A8B5; }
+      border: 1px solid #00b561; }
 
 .outcomes {
   position: absolute;
@@ -858,8 +900,10 @@ a {
 
 .outcomes__description {
   font-weight: 300;
-  font-size: 1.5rem;
-  margin: 1rem 0; }
+  font-size: 1.25rem;
+  margin: 1rem 0;
+  line-height: 1.4;
+  letter-spacing: 0; }
   .outcomes__description .outcome-info-user {
     color: #00A8B5;
     border-bottom: 1px dotted #00A8B5; }
@@ -871,7 +915,8 @@ a {
     position: relative; }
 
 .outcomes__list {
-  list-style: none; }
+  list-style: none;
+  margin-bottom: 4rem; }
   .outcomes__list .outcome__item {
     font-size: 1rem;
     position: relative;
@@ -885,6 +930,9 @@ a {
       height: 1rem;
       background-repeat: no-repeat;
       background-size: contain; }
+    .outcomes__list .outcome__item .t-positive,
+    .outcomes__list .outcome__item .t-negative {
+      margin-left: 1rem; }
   .outcomes__list [data-val="calcNumApts"]:before {
     background-image: url("/housingilab/images/icons_numApts.svg"); }
   .outcomes__list [data-val="numFloors"]:before {
@@ -905,15 +953,31 @@ a {
     background-image: url("/housingilab/images/icons_parkingSpaces.svg"); }
   .outcomes__list [data-val="parkingPrice"]:before {
     background-image: url("/housingilab/images/icons_parkingCost.svg"); }
+  .outcomes__list [data-val="returnOnCost"]:before {
+    background-image: url("/housingilab/images/icons_percent.svg"); }
+  .outcomes__list [data-val="expenses"]:before {
+    background-image: url("/housingilab/images/icons_expense.svg"); }
+  .outcomes__list [data-val="netIncome"]:before {
+    background-image: url("/housingilab/images/icons_income.svg"); }
+  .outcomes__list [data-val="tdcPerUnit"]:before {
+    background-image: url("/housingilab/images/icons_costPerApt.svg"); }
+  .outcomes__list [data-val="feasibility"]:before {
+    background-image: url("/housingilab/images/icons_value.svg"); }
 
 .page-content .visualization-module {
   position: absolute;
   top: 0;
   right: 0;
-  width: calc(100% - 36rem);
   height: 100vh;
   background: #fefefe;
-  z-index: 0; }
+  z-index: 0;
+  width: calc(100% - 36rem); }
+  @media screen and (max-width: 1200px) {
+    .page-content .visualization-module {
+      width: calc(100% - 26rem); } }
+  @media screen and (max-width: 955px) {
+    .page-content .visualization-module {
+      display: none; } }
   .page-content .visualization-module .beta svg {
     position: absolute;
     top: 1rem;
@@ -925,6 +989,12 @@ a {
 .page-content.is-scrolled .visualization-module {
   position: fixed;
   width: calc(100% - 37rem); }
+  @media screen and (max-width: 1200px) {
+    .page-content.is-scrolled .visualization-module {
+      width: calc(100% - 26rem); } }
+  @media screen and (max-width: 955px) {
+    .page-content.is-scrolled .visualization-module {
+      display: none; } }
 
 .visualization-module__controls {
   position: absolute;
@@ -966,6 +1036,12 @@ a {
   z-index: 1;
   position: relative;
   overflow-x: hidden; }
+  @media screen and (max-width: 1200px) {
+    .page-content .lesson-modules {
+      width: 26rem; } }
+  @media screen and (max-width: 955px) {
+    .page-content .lesson-modules {
+      width: 100%; } }
 
 .button--next-lesson {
   margin-top: 10rem;
@@ -979,6 +1055,9 @@ a {
   background: #00A8B5;
   color: #FFFFFF;
   box-shadow: none; }
+  @media screen and (max-width: 1200px) {
+    .button--next-lesson svg {
+      display: none; } }
   .button--next-lesson .button__subtitle {
     display: block;
     line-height: 2;
@@ -1026,21 +1105,45 @@ a {
   justify-content: center;
   align-items: flex-start;
   padding: 4rem; }
+  @media screen and (max-width: 955px) {
+    .hero .hero__container {
+      flex-direction: column;
+      padding: 4rem 2rem; } }
 .hero .hero__primary {
   min-width: 35rem;
   padding-right: 6rem;
   text-align: right; }
+  @media screen and (max-width: 1200px) {
+    .hero .hero__primary {
+      min-width: 25rem; } }
+  @media screen and (max-width: 955px) {
+    .hero .hero__primary {
+      min-width: 0;
+      margin-bottom: 4rem;
+      padding-right: 0;
+      text-align: left; } }
   .hero .hero__primary h1 {
     color: #00A8B5;
     margin-bottom: 8rem; }
+    @media screen and (max-width: 955px) {
+      .hero .hero__primary h1 {
+        margin-bottom: 4rem; } }
 .hero .hero__secondary {
   color: #797979; }
   .hero .hero__secondary h2 {
     font-weight: 300; }
   .hero .hero__secondary p {
     margin-bottom: 1rem; }
+.hero .logos > * {
+  vertical-align: middle; }
 .hero .logos img {
   height: 5rem; }
+.hero .powered-by {
+  display: inline-block; }
+  .hero .powered-by > * {
+    color: #00A8B5;
+    font-weight: 600;
+    vertical-align: middle; }
 .hero .beta {
   position: relative; }
   .hero .beta svg {
@@ -1049,6 +1152,14 @@ a {
     left: 4rem;
     height: 3rem;
     width: 3rem; }
+    @media screen and (max-width: 1200px) {
+      .hero .beta svg {
+        left: -2rem; } }
+    @media screen and (max-width: 955px) {
+      .hero .beta svg {
+        top: -3rem;
+        right: -3rem;
+        left: auto; } }
 
 .hero__title {
   max-width: 45rem; }
