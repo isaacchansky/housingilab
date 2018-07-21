@@ -290,11 +290,11 @@ export class BuildingRender {
         //     apts: '16'
         // };
         renderScenario(opts: any) {
-            console.log('opts', {renderOpts: opts});
+            // console.log('opts', {renderOpts: opts});
             let key = `${opts.numApts}|${opts.numFloors}|${opts.ratioParking}`;
             let data = renderData[key];
 
-            console.log('data', data);
+            // console.log('data', data);
             if (data) {
                 let group = new THREE.Group();
 
@@ -334,7 +334,7 @@ export class BuildingRender {
                 if (data.parking && data.parking.geoms) {
                     data.parking.geoms.forEach((item: any) => {
                         if (item.geom && item.geom.type) {
-                            console.log(item.geom.type );
+                            // console.log(item.geom.type );
                             if (item.geom.type === "Mesh") {
                                 let geo = this.buildGeometry(item.geom);
                                 let mat = new THREE.MeshStandardMaterial(
@@ -372,9 +372,9 @@ export class BuildingRender {
                     })
                 }
                 if (data.cores && data.cores.geoms) {
-                    console.log('rendering cores');
+                    // console.log('rendering cores');
                     data.cores.geoms.forEach((item: any) => {
-                        console.log(item);
+                        // console.log(item);
                         if (item.geom && item.geom.type) {
                             let geo = this.buildGeometry(item.geom);
                             let mat = new THREE.MeshStandardMaterial(
@@ -407,9 +407,9 @@ export class BuildingRender {
                     })
                 }
                 if (data.sidewalk && data.sidewalk.geoms) {
-                    console.log('rendering sidewalk');
+                    // console.log('rendering sidewalk');
                     data.sidewalk.geoms.forEach((item: any) => {
-                        console.log(item);
+                        // console.log(item);
                         if (item.geom && item.geom.type) {
                             let geo = this.buildGeometry(item.geom);
                             let mat = new THREE.MeshStandardMaterial(
@@ -492,10 +492,10 @@ export class BuildingRender {
         //     apts: '16'
         // };
         getOutcomes(renderOptions: any) {
-            console.log('outcome opts', {renderOptions});
+            // console.log('outcome opts', {renderOptions});
             let data = renderData[`${renderOptions.numApts}|${renderOptions.numFloors}|${renderOptions.ratioParking}`];
             let selectedScenario = {};
-            console.log('outcome data', {data});
+            // console.log('outcome data', {data});
             data.scenarios.forEach( (s: any) => {
                 if (s.type === renderOptions.type && s.rentScenario === renderOptions.rentScenario) {
                     selectedScenario = s;

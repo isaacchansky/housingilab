@@ -15,6 +15,20 @@ let renderOptionDefaults: any = {
         numApts: '9'
     };
 
+
+ function buildMenu() {
+     // calculate menu
+    let menuStructure = $('[data-lesson]').map((i, el) => {
+        let lesson = $(el).data('lesson');
+        let sections = $(el).find('h3').map( (i,el) => {
+            return `<li><a data-menulink data-targetlesson="${lesson}" href="#${$(el).attr('id')}">${$(el).text()}</a></li>`;
+        }).toArray().join('');
+        return `<li><a data-menulink data-targetlesson="${lesson}" href="#${$(el).attr('id')}">${$(el).find('.lesson__title').text()}</a><ul>${sections}</ul></li>`;
+    }).toArray().join('');
+
+    $('.table-of-contents__list').append(menuStructure);
+ }
+
 // To be called after DOMContentLoaded
 function scrollEventHandling() {
     let pageContent = $('.page-content');
@@ -85,7 +99,12 @@ function clickEventHandling() {
 
     $(".table-of-contents a").on('click', (e) => {
         toc.removeClass("is-open");
+        let lesson = parseInt($(e.currentTarget).data('targetlesson'), 10);
+        for (let i=1; i <= lesson; i++) {
+            $(`[data-lesson="${i}"]`).show();
+        }
     });
+
 
 }
 
@@ -173,6 +192,8 @@ function initThree() {
 
     });
 
+
+
 }
 
 
@@ -181,7 +202,7 @@ function initThree() {
 (function(){
 
     document.addEventListener('DOMContentLoaded', (event) => {
-
+        buildMenu();
         scrollEventHandling();
         clickEventHandling();
         initThree();

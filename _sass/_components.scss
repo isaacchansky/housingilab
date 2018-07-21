@@ -39,9 +39,18 @@
                 color: lighten(black, 30%);
             }
         }
+
+        ul {
+            list-style: none;
+            margin: 0 0 0 2rem;
+            a {
+                font-size: 1.2rem;
+            }
+        }
     }
     &.is-open {
         height: 100vh;
+        overflow-y: scroll;
         .table-of-contents__list {
             z-index: 0;
             visibility: visible;

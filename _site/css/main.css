@@ -560,8 +560,14 @@ img {
       color: black; }
       .table-of-contents .table-of-contents__list a:hover {
         color: #4d4d4d; }
+    .table-of-contents .table-of-contents__list ul {
+      list-style: none;
+      margin: 0 0 0 2rem; }
+      .table-of-contents .table-of-contents__list ul a {
+        font-size: 1.2rem; }
   .table-of-contents.is-open {
-    height: 100vh; }
+    height: 100vh;
+    overflow-y: scroll; }
     .table-of-contents.is-open .table-of-contents__list {
       z-index: 0;
       visibility: visible;
