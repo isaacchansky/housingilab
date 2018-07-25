@@ -18,6 +18,7 @@ const cores: any = require("./data/cores.json");
 const parking: any = require("./data/parking.json");
 const balconies: any = require("./data/balconies.json");
 const sidewalk: any = require("./data/sidewalk.json");
+const openspace: any = require("./data/openspace.json");
 
 const financialScenarios: any = require("./data/financialScenarios.json");
 
@@ -38,7 +39,6 @@ apts.forEach( (item: any) => {
     }
     renderData[item.name].apts = item;
 });
-
 
 cores.forEach((item: any) => {
   if (!renderData[item.name]) {
@@ -66,6 +66,13 @@ sidewalk.forEach((item: any) => {
         renderData[item.name] = {};
     }
     renderData[item.name].sidewalk = item;
+});
+
+openspace.forEach((item: any) => {
+    if (!renderData[item.name]) {
+        renderData[item.name] = {};
+    }
+    renderData[item.name].openspace = item;
 });
 
 
@@ -266,10 +273,10 @@ export class BuildingRender {
             let busstopMesh = this.createMesh(busStop[0].geoms[0].geom, { color: 0xCCCCCC }, { color: 0xEEEEEE });
             group.add(busstopMesh);
 
-            let streetlampMesh = this.createMesh(streetLamps[0].geoms[0].geom, {color: 0x000000}, null);
+            let streetlampMesh = this.createMesh(streetLamps[0].geoms[0].geom, {color: 0xCCCCCC}, {color: 0xFFFFFF});
             group.add(streetlampMesh);
 
-            let streettreeMesh = this.createMesh(streetTrees[0].geoms[0].geom, {color: 0x00b561}, null);
+            let streettreeMesh = this.createMesh(streetTrees[0].geoms[0].geom, {color: 0X317734}, null);
             group.add(streettreeMesh);
 
             let streetmarkingMesh = this.createMesh(streetMarkings[0].geoms[0].geom, {color: 0xFFFFFF}, null);
@@ -339,7 +346,7 @@ export class BuildingRender {
                                 let geo = this.buildGeometry(item.geom);
                                 let mat = new THREE.MeshStandardMaterial(
                                     {
-                                        color: 0xcccccc,
+                                        color: 0x999999,
                                         transparent: true,
                                         opacity: 0.5
                                     }
@@ -379,7 +386,7 @@ export class BuildingRender {
                             let geo = this.buildGeometry(item.geom);
                             let mat = new THREE.MeshStandardMaterial(
                               {
-                                color: 0x999999,
+                                color: 0xCCCCCC,
                                 transparent: true,
                                 opacity: 1
                               }
@@ -415,6 +422,40 @@ export class BuildingRender {
                             let mat = new THREE.MeshStandardMaterial(
                               {
                                 color: 0x999999,
+                                opacity: 1
+                              }
+                            );
+                            mat.metalness = 0;
+                            if (geo && mat) {
+                                let mesh = new THREE.Mesh(geo, mat);
+                                mesh.castShadow = true;
+                                mesh.receiveShadow = true;
+                                // set up edges
+                                let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
+                                let eMaterial = new THREE.LineBasicMaterial(
+                                    {
+                                        color: 0xeeeeee,
+                                        linewidth: 1
+                                    }
+                                );
+                                let edges = new THREE.LineSegments(eGeometry, eMaterial);
+                                mesh.add(edges);
+                                mesh.rotation.x = -Math.PI * 0.5;
+                                group.add(mesh);
+                            }
+
+                        }
+                    })
+                }
+                if (data.openspace && data.openspace.geoms) {
+                    // console.log('rendering openspace');
+                    data.openspace.geoms.forEach((item: any) => {
+                        // console.log(item);
+                        if (item.geom && item.geom.type) {
+                            let geo = this.buildGeometry(item.geom);
+                            let mat = new THREE.MeshStandardMaterial(
+                              {
+                                color: 0X317734,
                                 opacity: 1
                               }
                             );
@@ -496,6 +537,10 @@ export class BuildingRender {
             let data = renderData[`${renderOptions.numApts}|${renderOptions.numFloors}|${renderOptions.ratioParking}`];
             let selectedScenario = {};
             // console.log('outcome data', {data});
+            if (!data.scenarios) {
+                debugger;
+
+            }
             data.scenarios.forEach( (s: any) => {
                 if (s.type === renderOptions.type && s.rentScenario === renderOptions.rentScenario) {
                     selectedScenario = s;

@@ -1,7 +1,7 @@
 {
   "financialScenarios": [
     {
-      "name": "9|3|1",
+      "name": "9|3|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -40,7 +40,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "9|3|1",
+      "name": "9|3|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -79,7 +79,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "9|3|1",
+      "name": "9|3|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -352,7 +352,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "9|4|1",
+      "name": "9|4|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -391,7 +391,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "9|4|1",
+      "name": "9|4|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -430,7 +430,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "9|4|1",
+      "name": "9|4|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -703,7 +703,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "9|6|1",
+      "name": "9|6|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -742,7 +742,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "9|6|1",
+      "name": "9|6|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -781,7 +781,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "9|6|1",
+      "name": "9|6|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -1405,7 +1405,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "16|4|1",
+      "name": "16|4|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -1444,7 +1444,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "16|4|1",
+      "name": "16|4|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -1483,7 +1483,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "16|4|1",
+      "name": "16|4|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -1756,7 +1756,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "16|6|1",
+      "name": "16|6|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -1795,7 +1795,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "16|6|1",
+      "name": "16|6|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -1834,7 +1834,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "16|6|1",
+      "name": "16|6|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -2107,7 +2107,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|3|1",
+      "name": "24|3|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -2146,7 +2146,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "24|3|1",
+      "name": "24|3|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -2185,7 +2185,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "24|3|1",
+      "name": "24|3|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -2458,7 +2458,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "24|4|1",
+      "name": "24|4|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -2497,7 +2497,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|4|1",
+      "name": "24|4|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -2536,7 +2536,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|4|1",
+      "name": "24|4|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -2809,7 +2809,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|6|1",
+      "name": "24|6|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -2848,7 +2848,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|6|1",
+      "name": "24|6|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -2887,7 +2887,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|6|1",
+      "name": "24|6|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -3160,7 +3160,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "9|3|1",
+      "name": "9|3|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -3199,7 +3199,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "9|3|1",
+      "name": "9|3|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -3238,7 +3238,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "9|3|1",
+      "name": "9|3|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -3511,7 +3511,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "9|4|1",
+      "name": "9|4|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -3550,7 +3550,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "9|4|1",
+      "name": "9|4|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -3589,7 +3589,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "9|4|1",
+      "name": "9|4|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -3862,7 +3862,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "9|6|1",
+      "name": "9|6|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -3901,7 +3901,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "9|6|1",
+      "name": "9|6|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -3940,7 +3940,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "9|6|1",
+      "name": "9|6|1.0",
       "numApts": 9,
       "numParking": 9,
       "ratioParking": 1.0,
@@ -4564,7 +4564,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "16|4|1",
+      "name": "16|4|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -4603,7 +4603,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "16|4|1",
+      "name": "16|4|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -4642,7 +4642,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "16|4|1",
+      "name": "16|4|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -4915,7 +4915,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "16|6|1",
+      "name": "16|6|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -4954,7 +4954,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "16|6|1",
+      "name": "16|6|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -4993,7 +4993,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "16|6|1",
+      "name": "16|6|1.0",
       "numApts": 16,
       "numParking": 16,
       "ratioParking": 1.0,
@@ -5266,7 +5266,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|3|1",
+      "name": "24|3|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -5305,7 +5305,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "24|3|1",
+      "name": "24|3|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -5344,7 +5344,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "24|3|1",
+      "name": "24|3|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -5617,7 +5617,7 @@
       "permitProcess": "Article 80 Small Project Review"
     },
     {
-      "name": "24|4|1",
+      "name": "24|4|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -5656,7 +5656,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|4|1",
+      "name": "24|4|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -5695,7 +5695,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|4|1",
+      "name": "24|4|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -5968,7 +5968,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|6|1",
+      "name": "24|6|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -6007,7 +6007,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|6|1",
+      "name": "24|6|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
@@ -6046,7 +6046,7 @@
       "permitProcess": "Community Meeting (ZBA if required)"
     },
     {
-      "name": "24|6|1",
+      "name": "24|6|1.0",
       "numApts": 24,
       "numParking": 24,
       "ratioParking": 1.0,
