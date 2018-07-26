@@ -44,9 +44,9 @@ layout: default
           <label for="{{fieldID}}">
             {{field.label}}
           </label>
-          <p class="options__field-description">
-            {{field.description}}
-          </p>
+          <div class="options__field-description">
+            {{field.description | markdownify}}
+          </div>
           {% for option in field.options %}
             <div class="options__field-input">
               <input type="radio" id="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option.dataValue}}" name="{{field.label | slugify}}" value="{{option.dataValue}}">

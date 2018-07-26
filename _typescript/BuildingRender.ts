@@ -9,6 +9,7 @@ const streetTrees: any = require("./data/streetTrees.json");
 const streetMarkings: any = require("./data/streetMarkings.json");
 const trafficLights: any = require("./data/trafficLights.json");
 const parcels: any = require("./data/parcels.json");
+const sidewalks: any = require("./data/sidewalks.json");
 const contextGroundBldgs: any = require("./data/contextGroundBldgs.json");
 
 
@@ -241,12 +242,15 @@ export class BuildingRender {
             return geo;
         }
 
-        createMesh(geom: any, meshOpts: any, edgeOpts: any) {
+        createMesh(geom: any, meshOpts: any, edgeOpts: any, offset?: number) {
             let g = this.buildGeometry(geom);
             let mat = new THREE.MeshStandardMaterial(meshOpts);
             let mesh = new THREE.Mesh(g, mat);
             mesh.castShadow = true;
             mesh.receiveShadow = true;
+            if (offset) {
+                mesh.position.y = mesh.position.y + offset;
+            }
             mesh.rotation.x = -Math.PI * 0.5;
 
             if (edgeOpts) {
@@ -285,8 +289,11 @@ export class BuildingRender {
             let trafficlightMesh = this.createMesh(trafficLights[0].geoms[0].geom, {color: 0xCCCCCC}, {color: 0xFFFFFF});
             group.add(trafficlightMesh);
 
-            let parcelsMesh = this.createLines(parcels[0].geoms[0].geom, {color: 0xFFFFFF});
+            let parcelsMesh = this.createLines(parcels[0].geoms[0].geom, {color: 0xCCCCCC});
             group.add(parcelsMesh);
+
+            let sidewalksMesh = this.createMesh(sidewalks[0].geoms[0].geom, {color: 0x999999}, null, 1);
+            group.add(sidewalksMesh);
 
             this.scene.add(group);
         }
@@ -434,7 +441,7 @@ export class BuildingRender {
                                 let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
                                 let eMaterial = new THREE.LineBasicMaterial(
                                     {
-                                        color: 0xeeeeee,
+                                        color: 0x666666,
                                         linewidth: 1
                                     }
                                 );

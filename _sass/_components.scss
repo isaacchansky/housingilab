@@ -224,6 +224,16 @@
     .options__field-description {
         margin-bottom: 0.5rem;
         @extend %t-details;
+        p {
+            margin-bottom: 0.5rem;
+        }
+        ul {
+            padding-left: 0.5rem;
+            list-style-position: outside;
+        }
+        li {
+            margin-bottom: 0.25rem;
+        }
     }
 
     > label,
