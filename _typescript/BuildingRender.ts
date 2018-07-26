@@ -355,7 +355,7 @@ export class BuildingRender {
                                     {
                                         color: 0x999999,
                                         transparent: true,
-                                        opacity: 0.5
+                                        opacity: 1
                                     }
                                 );
                                 mat.metalness = 0;
