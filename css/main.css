@@ -695,6 +695,13 @@ img {
   background-size: 1.25rem 1.25rem; }
   .options__field .options__field-description {
     margin-bottom: 0.5rem; }
+    .options__field .options__field-description p {
+      margin-bottom: 0.5rem; }
+    .options__field .options__field-description ul {
+      padding-left: 0.5rem;
+      list-style-position: outside; }
+    .options__field .options__field-description li {
+      margin-bottom: 0.25rem; }
   .options__field > label,
   .options__field .options__field-description {
     margin-left: 2rem; }
