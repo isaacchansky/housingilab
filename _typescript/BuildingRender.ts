@@ -274,8 +274,8 @@ export class BuildingRender {
             let groundbldgMesh = this.createMesh(contextGroundBldgs[0].geoms[0].geom, { color: 0x333333}, { color: 0x222222});
             group.add(groundbldgMesh);
 
-            let busstopMesh = this.createMesh(busStop[0].geoms[0].geom, { color: 0xCCCCCC }, { color: 0xEEEEEE });
-            group.add(busstopMesh);
+            // let busstopMesh = this.createMesh(busStop[0].geoms[0].geom, { color: 0xCCCCCC }, { color: 0xEEEEEE });
+            // group.add(busstopMesh);
 
             let streetlampMesh = this.createMesh(streetLamps[0].geoms[0].geom, {color: 0xCCCCCC}, {color: 0xFFFFFF});
             group.add(streetlampMesh);
