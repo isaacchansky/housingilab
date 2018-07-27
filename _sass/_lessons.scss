@@ -1,9 +1,15 @@
 
 // Default hidden
-[data-lesson]:not([data-lesson="1"]) {
+[data-lesson]:not([data-lesson="0"]) {
     display: none;
 }
 
+// uniquely style intro
+[data-lesson="0"] {
+    .button--next-lesson {
+        margin-top: 8rem;
+    }
+}
 
 .page-content .lesson-modules {
     background: $color_white;
@@ -12,7 +18,11 @@
     box-shadow: 0 3px 20px rgba(33,38,45,.15), -1px 1px 10px rgba(0,0,0,.05);
     z-index: 1;
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
+    .is-scrolled & {
+        overflow: auto;
+        overflow-x: hidden;
+    }
     @include media-query($lg-break) {
         width: $sm-content-area + 1;
     }
@@ -90,6 +100,7 @@
 }
 
 .lesson {
+    min-height: 100vh;
     padding-top: 10rem;
     h2 {
         font-weight: 600;

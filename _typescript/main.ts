@@ -7,6 +7,9 @@ import * as $ from 'jquery';
 let br: BuildingRender;
 let handleActiveRender: any;
 let defaultRenderOptionsByLesson: any = {};
+let currentLesson:any = null;
+let previousLesson:any = null;
+
 let renderOptionDefaults: any = {
         type: 'Standard',
         rentScenario: 'deepAffordability',
@@ -29,6 +32,17 @@ let renderOptionDefaults: any = {
     $('.table-of-contents__list').append(menuStructure);
  }
 
+
+ function newSectionReset(lessonIndex: number) {
+     if (br) {
+        br.resetZoom();
+        handleActiveRender();
+        $('.page-content').removeClass('has-interaction');
+        $(`[data-lesson="${lessonIndex}"]`).show();
+        br.renderScenario( Object.assign({}, renderOptionDefaults, defaultRenderOptionsByLesson[lessonIndex]));
+     }
+ }
+
 // To be called after DOMContentLoaded
 function scrollEventHandling() {
     let pageContent = $('.page-content');
@@ -36,25 +50,42 @@ function scrollEventHandling() {
     let currentMenuSection = document.querySelector(".menu__current-item-section");
 
     function handleScroll() {
-        let currentLesson = null;
         if (pageContent[0].getBoundingClientRect().top <= 0) {
             pageContent.addClass('is-scrolled');
         } else {
             pageContent.removeClass('is-scrolled');
         }
         $('.lesson-modules [data-lesson]').each( (i, lessonModule: any) => {
-            if ( isScrolledIntoView(lessonModule)) {
+            if (isScrolledIntoView(lessonModule)) {
                 let title = lessonModule.querySelector('.lesson__title').textContent;
-                let isInOptions = isScrolledIntoView(lessonModule.querySelector('.options'));
+                let options = lessonModule.querySelector('.options');
+                let isInOptions;
+                if (options) {
+                    isInOptions = isScrolledIntoView(lessonModule.querySelector('.options'));
+                    currentMenuSection.textContent = isInOptions ? 'Interactive' : 'Lesson';
+                } else {
+                    currentMenuSection.textContent = '';
+                }
 
                 currentMenuItem.textContent = title;
-                currentMenuSection.textContent = isInOptions ? 'Interactive' : 'Lesson';
                 currentLesson = lessonModule;
             }
         });
 
+        if (previousLesson === null) {
+            // initially, set as the same
+            previousLesson = currentLesson;
+        }
+
         if (currentLesson) {
             let currentLessonNumber = $(currentLesson).data('lesson');
+            if (currentLesson !== previousLesson) {
+                if (currentLessonNumber) {
+                    currentLessonNumber = parseInt(currentLessonNumber, 10);
+                    newSectionReset(currentLessonNumber);
+                    previousLesson = currentLesson;
+                }
+            }
             // TODO: throttle this.
             // history.pushState({ lesson: currentLessonNumber }, 'Lesson ${currentLessonNumber}', `${location.origin}${location.pathname}#lesson-${currentLessonNumber}`);
         }
@@ -78,18 +109,13 @@ function clickEventHandling() {
     });
 
     $(".button--next-lesson").on('click', (e) => {
-        br.resetZoom();
-        handleActiveRender();
-        $('.page-content').removeClass('has-interaction');
         let lesson = $(e.currentTarget).closest('[data-lesson]').data('lesson');
-        $(`[data-lesson="${lesson+1}"]`).show();
-        scrollTo(getScrollOffset(e.currentTarget.parentElement.nextElementSibling), 600);
-
-        br.renderScenario( Object.assign({}, renderOptionDefaults, defaultRenderOptionsByLesson[lesson+1]));
-        // TODO: enable this when we think through 'previous lesson' buttons.
-        // setTimeout( () => {
-        //     $(`[data-lesson="${lesson}"]`).hide();
-        // }, 600);
+        if (lesson !== undefined) {
+            lesson = parseInt(lesson, 10);
+            // reset for next lesson
+            newSectionReset(lesson+1);
+            scrollTo(getScrollOffset(e.currentTarget.parentElement.nextElementSibling), 600);
+        }
     });
 
     let toc = $('.table-of-contents');
@@ -182,7 +208,7 @@ function initThree() {
         let outcomes = br.getOutcomes(options);
 
         setOutcomes(outcomes, lesson);
-        br.renderScenario(options);
+        br.renderScenario(options, outcomes);
 
         if (!$('.page-content').hasClass('has-interaction')) {
             br.setFocusedZoom();

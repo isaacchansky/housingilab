@@ -303,10 +303,15 @@ export class BuildingRender {
         //     floors: '6',
         //     apts: '16'
         // };
-        renderScenario(opts: any) {
+        renderScenario(opts: any, outcomes?: any) {
             // console.log('opts', {renderOpts: opts});
             let key = `${opts.numApts}|${opts.numFloors}|${opts.ratioParking}`;
             let data = renderData[key];
+            let buildingColor = 0xFFFFFF;
+            if (outcomes) {
+
+                buildingColor = outcomes.surplus > 0 ? 0x8cfbc7 : 0xfb8c8c;
+            }
 
             // console.log('data', data);
             if (data) {
@@ -318,7 +323,7 @@ export class BuildingRender {
                             let geo = this.buildGeometry(item.geom);
                             let mat = new THREE.MeshStandardMaterial(
                               {
-                                color: 0xffffff,
+                                color: buildingColor,
                                 transparent: true,
                                 opacity: 1
                               }
@@ -543,11 +548,7 @@ export class BuildingRender {
             // console.log('outcome opts', {renderOptions});
             let data = renderData[`${renderOptions.numApts}|${renderOptions.numFloors}|${renderOptions.ratioParking}`];
             let selectedScenario = {};
-            // console.log('outcome data', {data});
-            if (!data.scenarios) {
-                debugger;
 
-            }
             data.scenarios.forEach( (s: any) => {
                 if (s.type === renderOptions.type && s.rentScenario === renderOptions.rentScenario) {
                     selectedScenario = s;
