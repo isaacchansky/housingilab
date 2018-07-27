@@ -1038,8 +1038,11 @@ a {
     position: absolute;
     right: 0; }
 
-[data-lesson]:not([data-lesson="1"]) {
+[data-lesson]:not([data-lesson="0"]) {
   display: none; }
+
+[data-lesson="0"] .button--next-lesson {
+  margin-top: 8rem; }
 
 .page-content .lesson-modules {
   background: #FFFFFF;
@@ -1048,7 +1051,10 @@ a {
   box-shadow: 0 3px 20px rgba(33, 38, 45, 0.15), -1px 1px 10px rgba(0, 0, 0, 0.05);
   z-index: 1;
   position: relative;
-  overflow-x: hidden; }
+  overflow: hidden; }
+  .is-scrolled .page-content .lesson-modules {
+    overflow: auto;
+    overflow-x: hidden; }
   @media screen and (max-width: 1200px) {
     .page-content .lesson-modules {
       width: 26rem; } }
@@ -1107,6 +1113,7 @@ a {
   z-index: 1; }
 
 .lesson {
+  min-height: 100vh;
   padding-top: 10rem; }
   .lesson h2 {
     font-weight: 600; }
