@@ -1,12 +1,20 @@
 1:
   title: 'What are the basics?'
+  lessonDescription: 'This interactive module allows you to explore how different combinations of density (FAR) and coverage result in building types and arrangements. Choose from the following options to see their physical and quantitive outcomes.'
   defaultMassing: '16|4|0.5' # Display this scenario on page load
   defaultRentScenario: ~
   fields:
     - type: radio
       label: 'Development Size'
       dataLabel: 'numApts'
-      description: 'Some description about apartment options'
+      description: >
+        Choose the overall size of the development using the following options.
+
+        - "Low Urban" development has a reduced FAR and nine Standard-sized apartments.
+
+        - "Moderate Urban" development has a similar FAR to surrounding development and about 16 Standard-sized apartments.
+
+        - "Mid-rise Urban" development has a higher FAR and 24 Standard-sized apartments.
       options:
         -
           displayName: 'Low Urban'
@@ -20,7 +28,8 @@
     - type: radio
       label: 'Number of Floors'
       dataLabel: 'numFloors'
-      description: 'Some description about floor options'
+      description: >
+        The apartments in urban development can be arranged in different ways. Choose the number of floors this development will have.
       options:
         -
           displayName: '3'
@@ -34,13 +43,21 @@
 
 2:
   title: 'Balance the budget'
-  defaultMassing: '24|4|0.5' # Only cycle between rentScenarios for this massing-parking scenario 
+  lessonDescription: "This interactive module allows you to explore how different rent mixes for a 4-storey, Mid-rise (24-unit) building affects its financial feasibility. Choose from the following options to see the outcomes on the development's budget."
+  defaultMassing: '24|4|0.5' # Only cycle between rentScenarios for this massing-parking scenario
   defaultRentScenario: 'thirdThirdThird'
   fields:
     - type: radio
       label: 'Rent Mix'
       dataLabel: 'rentScenario'
-      description: 'Some description about rent options'
+      description: >
+        Choose the rental mix from the following options.
+
+        - The "Market Rate" mix is set according to the City of Boston's Inclusionary Development Policy, where 13% of apartments must be affordabel at 70% AMI. The rest of the apartments may have rents set at the prevailing market rates.
+
+        - "1/3 1/3 1/3" is a mix recommended by the City of Boston to achieve affordability and feasibility. This mix calls for one-third of apartments being affordable at 50% AMI, another third being affordable at 80% AMI, and the last third having market rate rents.
+
+        - Finally, "Deep Affordability" is a mix to achieve a very high amount of affordable apartments, with 10% of the apartments being affordable at 30% AMI, another 20% of apartments at 50% AMI, and the remaining 70% of apartments affordable at 60% AMI.
       options:
         -
           displayName: 'Market Rate (Inclusionary Development Policy)'
@@ -53,11 +70,13 @@
           dataValue: 'deepAffordability'
 3:
   title: 'How does parking work?'
+  lessonDescription: "This interactive module allows you to explore how different parking ratios affect the amount of outdoor space and the construction cost for a 6-storey, Mid-rise (24-unit) building. Choose from the following options to see the physical and quantitive outcomes."
   defaultMassing: '24|6|0.5' # I think 24@6stories is the clearest set of options for exploring parking
   defaultRentScenario: 'idpAmiMix'
   fields:
     - type: radio
-      description: 'Some description about parking options'
+      description: >
+        The ratio of parking spaces to the number of apartments is known as the parking ratio. A ratio of 1.0 means every apartment has one assigned parking space, while a ratio of 0.5 means half the apartments have a space. Choose the parking ratio for this development.
       label: 'Parking Ratio'
       dataLabel: 'ratioParking'
       options:
@@ -73,13 +92,15 @@
 
 4:
   title: 'Compact Living'
+  lessonDescription: "This interactive module allows you to explore the effect of utilizing the City of Boston's new Compact Living Policy on the development budget for a 4-storey Moderate Urban (16-unit) building. Choose between Compact and Standard Unit Sizes to see their effect on the development's budget."
   defaultMassing: '16|4|0.5' # This scenario immediately swaps between feasible & infeasible from standard to compact
   defaultRentScenario: 'thirdThirdThird'
   fields:
     - type: radio
       label: 'Compact Units'
       dataLabel: 'type'
-      description: 'Some description about compact units options'
+      description: >
+        Choose whether this development uses compact units and see if this has an impact on affordability.
       options:
         -
           displayName: 'Standard Units'
@@ -87,10 +108,24 @@
         -
           displayName: 'Compact Units'
           dataValue: 'Compact'
+
+5:
+  title: 'Full Interactive'
+  lessonDescription: "This module allows you to explore how all the different options surveyed in the previous lessons can be combined to form a development scenario of your choosing. Choose any of the below options to see how they affect the physical and quantitive outcomes on your development."
+  defaultMassing: '16|4|0.5' # This scenario immediately swaps between feasible & infeasible from standard to compact
+  defaultRentScenario: 'thirdThirdThird'
+  fields:
     - type: radio
       label: 'Development Size'
       dataLabel: 'numApts'
-      description: 'Some description about apartment options'
+      description: >
+        Choose the overall size of the development using the following options.
+
+        - "Low Urban" development has a reduced FAR and nine Standard-sized apartments.
+
+        - "Moderate Urban" development has a similar FAR to surrounding development and about 16 Standard-sized apartments.
+
+        - "Mid-rise Urban" development has a higher FAR and 24 Standard-sized apartments.
       options:
         -
           displayName: 'Low Urban'
@@ -104,7 +139,8 @@
     - type: radio
       label: 'Number of Floors'
       dataLabel: 'numFloors'
-      description: 'Some description about floor options'
+      description: >
+        The apartments in urban development can be arranged in different ways. Choose the number of floors this development will have.
       options:
         -
           displayName: '3'
@@ -118,7 +154,14 @@
     - type: radio
       label: 'Rent Mix'
       dataLabel: 'rentScenario'
-      description: 'Some description about rent options'
+      description: >
+        Choose the rental mix from the following options.
+
+        - The "Market Rate" mix is set according to the City of Boston's Inclusionary Development Policy, where 13% of apartments must be affordabel at 70% AMI. The rest of the apartments may have rents set at the prevailing market rates.
+
+        - "1/3 1/3 1/3" is a mix recommended by the City of Boston to achieve affordability and feasibility. This mix calls for one-third of apartments being affordable at 50% AMI, another third being affordable at 80% AMI, and the last third having market rate rents.
+
+        - Finally, "Deep Affordability" is a mix to achieve a very high amount of affordable apartments, with 10% of the apartments being affordable at 30% AMI, another 20% of apartments at 50% AMI, and the remaining 70% of apartments affordable at 60% AMI.
       options:
         -
           displayName: 'Market Rate (Inclusionary Development Policy)'
@@ -132,6 +175,8 @@
     - type: radio
       label: 'Parking Ratio'
       dataLabel: 'ratioParking'
+      description: >
+        The ratio of parking spaces to the number of apartments is known as the parking ratio. A ratio of 1.0 means every apartment has one assigned parking space, while a ratio of 0.5 means half the apartments have a space. Choose the parking ratio for this development.
       options:
         -
           displayName: '0.0'
@@ -142,3 +187,15 @@
         -
           displayName: '1.0'
           dataValue: '1.0'
+    - type: radio
+      label: 'Compact Units'
+      dataLabel: 'type'
+      description: >
+        Choose whether this development uses compact units and see if this has an impact on affordability.
+      options:
+        -
+          displayName: 'Standard Units'
+          dataValue: 'Standard'
+        -
+          displayName: 'Compact Units'
+          dataValue: 'Compact'
