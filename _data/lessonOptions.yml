@@ -71,8 +71,8 @@
 3:
   title: 'How does parking work?'
   lessonDescription: "This interactive module allows you to explore how different parking ratios affect the amount of outdoor space and the construction cost for a 6-storey, Mid-rise (24-unit) building. Choose from the following options to see the physical and quantitive outcomes."
-  defaultMassing: '24|6|0.5' # I think 24@6stories is the clearest set of options for exploring parking
-  defaultRentScenario: 'idpAmiMix'
+  defaultMassing: '24|6|0.5' # I think 24@6stories is the clearest set of options for exploring parking, and the budget is also highly variable on 1/3 1/3 1/3.
+  defaultRentScenario: 'thirdThirdThird'
   fields:
     - type: radio
       description: >
@@ -112,7 +112,7 @@
 5:
   title: 'Full Interactive'
   lessonDescription: "This module allows you to explore how all the different options surveyed in the previous lessons can be combined to form a development scenario of your choosing. Choose any of the below options to see how they affect the physical and quantitive outcomes on your development."
-  defaultMassing: '16|4|0.5' # This scenario immediately swaps between feasible & infeasible from standard to compact
+  defaultMassing: '16|3|1.0' # This one looks quite different to the rest as it's a row type... 
   defaultRentScenario: 'thirdThirdThird'
   fields:
     - type: radio
