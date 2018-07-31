@@ -503,10 +503,10 @@ img {
   clip: rect(1px, 1px, 1px, 1px); }
 
 .t-negative {
-  color: #f3614f; }
+  color: #db4437; }
 
 .t-positive {
-  color: #00b561; }
+  color: #a6c73a; }
 
 .page-content {
   position: relative; }
@@ -641,7 +641,8 @@ img {
   border: 1px solid #333333;
   color: #333333;
   display: inline-block;
-  padding-right: 1rem; }
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  position: relative; }
   .message:before {
     content: "i";
     font-family: 'Courier New', Courier, monospace;
@@ -649,7 +650,12 @@ img {
     background: #333333;
     color: #FFFFFF;
     padding: 0.25rem 0.5rem;
-    margin-right: 0.5rem; }
+    margin-right: 0.5rem;
+    width: 1rem;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0; }
   @media screen and (max-width: 1200px) {
     .message {
       font-size: 0.8rem; } }
@@ -797,27 +803,52 @@ a {
 .scale {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: flex-end;
-  margin-top: 1rem; }
+  margin-top: 1rem;
+  padding-bottom: 3rem;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 90%; }
+  .scale.right {
+    background-image: url(/housingilab/images/scale-right.jpeg); }
+  .scale.left {
+    background-image: url(/housingilab/images/scale-left.jpeg); }
+  .scale .scale-right .scale-title {
+    color: #a6c73a; }
+  .scale .scale-left .scale-title {
+    color: #db4437; }
   .scale .scale-right,
   .scale .scale-left {
+    position: relative;
     border-radius: 2px 2px 0 0;
     display: flex;
     flex-direction: column;
-    width: calc(50% - 0.5rem);
+    width: calc(50% - 1.5rem);
     height: 18rem;
     padding: 0.25rem;
     border-radius: 2px;
-    max-width: 12rem; }
+    max-width: 12rem;
+    padding-bottom: 2rem; }
     .scale .scale-right.taller,
     .scale .scale-left.taller {
       height: 20rem; }
+    .scale .scale-right .scale-title,
+    .scale .scale-left .scale-title {
+      position: absolute;
+      bottom: 0.5rem;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-weight: bold; }
     .scale .scale-right .block,
     .scale .scale-left .block {
       background: #ccc;
       font-size: 0.8rem;
-      position: relative; }
+      position: relative;
+      margin-bottom: 0.15rem;
+      border-radius: 2px;
+      border: 2px solid #FFFFFF; }
       .scale .scale-right .block span,
       .scale .scale-left .block span {
         position: absolute;
@@ -836,30 +867,34 @@ a {
       .scale .scale-left .block:hover span {
         opacity: 1;
         z-index: 1; }
-    .scale .scale-right .block + .block,
-    .scale .scale-left .block + .block {
-      background: #aaa; }
-    .scale .scale-right .block + .block + .block,
-    .scale .scale-left .block + .block + .block {
-      background: #888; }
-    .scale .scale-right .block + .block + .block + .block,
-    .scale .scale-left .block + .block + .block + .block {
-      background: #555; }
-    .scale .scale-right .block + .block + .block + .block + .block,
-    .scale .scale-left .block + .block + .block + .block + .block {
-      background: #333; }
   .scale .scale-left .block {
-    color: #f3614f; }
+    background: #db4437; }
     .scale .scale-left .block:hover {
-      border: 1px solid #f3614f; }
+      border: 2px solid #bd2e22; }
     .scale .scale-left .block span {
       left: -0.5rem;
       right: auto;
       top: 0.5rem; }
+  .scale .scale-left .block + .block {
+    background: rgba(219, 68, 55, 0.8); }
+  .scale .scale-left .block + .block + .block {
+    background: rgba(219, 68, 55, 0.6); }
+  .scale .scale-left .block + .block + .block + .block {
+    background: rgba(219, 68, 55, 0.5); }
+  .scale .scale-left .block + .block + .block + .block + .block {
+    background: rgba(219, 68, 55, 0.2); }
   .scale .scale-right .block {
-    color: #00b561; }
+    background: #a6c73a; }
     .scale .scale-right .block:hover {
-      border: 1px solid #00b561; }
+      border: 2px solid #86a02e; }
+  .scale .scale-right .block + .block {
+    background: rgba(166, 199, 58, 0.8); }
+  .scale .scale-right .block + .block + .block {
+    background: rgba(166, 199, 58, 0.6); }
+  .scale .scale-right .block + .block + .block + .block {
+    background: rgba(166, 199, 58, 0.5); }
+  .scale .scale-right .block + .block + .block + .block + .block {
+    background: rgba(166, 199, 58, 0.2); }
 
 .outcomes {
   position: absolute;
