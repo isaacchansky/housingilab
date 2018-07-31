@@ -3,7 +3,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three-orbitcontrols-ts';
 
-const busStop: any = require("./data/busStop.json");
 const streetLamps: any = require("./data/streetLamps.json");
 const streetTrees: any = require("./data/streetTrees.json");
 const streetMarkings: any = require("./data/streetMarkings.json");
@@ -274,8 +273,6 @@ export class BuildingRender {
             let groundbldgMesh = this.createMesh(contextGroundBldgs[0].geoms[0].geom, { color: 0x333333}, { color: 0x222222});
             group.add(groundbldgMesh);
 
-            // let busstopMesh = this.createMesh(busStop[0].geoms[0].geom, { color: 0xCCCCCC }, { color: 0xEEEEEE });
-            // group.add(busstopMesh);
 
             let streetlampMesh = this.createMesh(streetLamps[0].geoms[0].geom, {color: 0xCCCCCC}, {color: 0xFFFFFF});
             group.add(streetlampMesh);
@@ -310,7 +307,7 @@ export class BuildingRender {
             let buildingColor = 0xFFFFFF;
             if (outcomes) {
 
-                buildingColor = outcomes.surplus > 0 ? 0x8cfbc7 : 0xfb8c8c;
+                // buildingColor = outcomes.surplus > 0 ? 0x8cfbc7 : 0xfb8c8c;
             }
 
             // console.log('data', data);

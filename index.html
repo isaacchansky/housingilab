@@ -36,7 +36,7 @@ layout: default
     <div class="options" data-massing="{{lessonOptions.defaultMassing}}" data-rentScenario="{{lessonOptions.defaultRentScenario}}">
       <div class="options__container">
         <h2 class="options__title">{{lessonOptions.title}}</h2>
-        <p class="message">Adjust the options below to view the impact.</p>
+        <p class="message">{{lessonOptions.lessonDescription}}</p>
 
         {% for field in lessonOptions.fields %}
           {% assign fieldID = 'field-' +forloop.index %}
@@ -49,7 +49,7 @@ layout: default
           </div>
           {% for option in field.options %}
             <div class="options__field-input">
-              <input type="radio" id="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option.dataValue}}" name="{{field.label | slugify}}" value="{{option.dataValue}}">
+              <input type="radio" id="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option.dataValue}}" name="{{field.label | slugify}}" value="{{option.dataValue}}" {% if lessonOptions.defaultMassing contains option.dataValue %} checked {% endif %}>
               <label for="{{lesson.order}}-{{fieldID}}-{{field.label | slugify}}-{{option.dataValue}}">
                 <span class="label-icon">
                   {% include icons/circle.svg %}

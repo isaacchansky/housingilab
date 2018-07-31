@@ -8,6 +8,7 @@ function feasibilityScale(opts: any) {
     Feasibility: <span class="t-${opts.surplus > 0 ? 'positive' : 'negative'}">${opts.surplus > 0 ? 'feasible' : 'infeasible'}</span>
      <div class="scale ${totalUses > totalSources ? 'left' : 'right'}">
         <div class="scale-left ${totalUses > totalSources ? 'taller' : ''}">
+            <div class="scale-title">Uses</div>
 
             <div class="block" style="flex: ${opts.developerFee};">
                 <span>Developer's Fee: $${formatCurrency(opts.developerFee)}</span>
@@ -23,6 +24,7 @@ function feasibilityScale(opts: any) {
             </div>
         </div>
         <div class="scale-right ${totalUses < totalSources ? 'taller' : ''}">
+            <div class="scale-title">Sources</div>
             <div class="block" style="flex: ${opts.debtAmt};">
                 <span>Construction Debt: $${formatCurrency(opts.debtAmt)}</span>
             </div>
