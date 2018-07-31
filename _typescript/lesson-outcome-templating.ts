@@ -13,26 +13,26 @@ function feasibilityScale(opts: any) {
         <div class="scale-left ${totalUses > totalSources ? 'taller' : ''}">
             <div class="scale-title">Uses</div>
 
-            <div class="block" style="flex: ${opts.developerFee};">
-                <span>Developer's Fee: $${formatCurrency(opts.developerFee)}</span>
+            <div class="block" style="flex: ${opts.developerFeePerTDC};">
+                <span>Developer's Fee: ${opts.developerFeePerTDC}%</span>
             </div>
-            <div class="block" style="flex: ${opts.landPrice};">
-                <span>Land Acquisition Cost: $${formatCurrency(opts.landPrice)}</span>
+            <div class="block" style="flex: ${opts.landPricePerTDC};">
+                <span>Land Acquisition Cost: ${opts.landPricePerTDC}%</span>
             </div>
-            <div class="block" style="flex: ${opts.softCosts};">
-                <span>Design & Financing: $${formatCurrency(opts.softCosts)}</span>
+            <div class="block" style="flex: ${opts.softCostsPerTDC};">
+                <span>Design & Financing: ${opts.softCostsPerTDC}%</span>
             </div>
-            <div class="block" style="flex: ${opts.constructionPrice};">
-                <span>Construction Costs: $${formatCurrency(opts.constructionPrice)}</span>
+            <div class="block" style="flex: ${opts.constructionPricePerTDC};">
+                <span>Construction Costs: ${opts.constructionPricePerTDC}%</span>
             </div>
         </div>
         <div class="scale-right ${totalUses < totalSources ? 'taller' : ''}">
             <div class="scale-title">Sources</div>
-            <div class="block" style="flex: ${opts.debtAmt};">
-                <span>Construction Debt: $${formatCurrency(opts.debtAmt)}</span>
+            <div class="block" style="flex: ${opts.debtAmtPerTDC};">
+                <span>Construction Debt: ${opts.debtAmtPerTDC}%</span>
             </div>
-            <div class="block" style="flex: ${opts.equityAmt};">
-                <span>Equity: $${formatCurrency(opts.equityAmt)}</span>
+            <div class="block" style="flex: ${opts.equityAmtPerTDC};">
+                <span>Equity: ${opts.equityAmtPerTDC}%</span>
             </div>
         </div>
     </div>
