@@ -1,0 +1,486 @@
+-
+  scenario: "9|3|1.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "9|3|1.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "9|3|1.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "9|3|1.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "9|3|1.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "9|3|1.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "9|3|0.5|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "9|3|0.5|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "9|3|0.5|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "9|3|0.5|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "9|3|0.5|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "9|3|0.5|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "9|3|0.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "9|3|0.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "9|3|0.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "9|3|0.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "9|3|0.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "9|3|0.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "9|4|1.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "9|4|1.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "9|4|1.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "9|4|1.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "9|4|1.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "9|4|1.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "9|4|0.5|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "9|4|0.5|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "9|4|0.5|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "9|4|0.5|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "9|4|0.5|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "9|4|0.5|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "9|4|0.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "9|4|0.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "9|4|0.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "9|4|0.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "9|4|0.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "9|4|0.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "9|6|1.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "9|6|1.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "9|6|1.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "9|6|1.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "9|6|1.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "9|6|1.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "9|6|0.5|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "9|6|0.5|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "9|6|0.5|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "9|6|0.5|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "9|6|0.5|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "9|6|0.5|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "9|6|0.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "9|6|0.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "9|6|0.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "9|6|0.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "9|6|0.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "9|6|0.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "16|3|1.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "16|3|1.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "16|3|1.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "16|3|1.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "16|3|1.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "16|3|1.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "16|3|0.5|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "16|3|0.5|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "16|3|0.5|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "16|3|0.5|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "16|3|0.5|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "16|3|0.5|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "16|3|0.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "16|3|0.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "16|3|0.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "16|3|0.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "16|3|0.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "16|3|0.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "16|4|1.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "16|4|1.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "16|4|1.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "16|4|1.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "16|4|1.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "16|4|1.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "16|4|0.5|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "16|4|0.5|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "16|4|0.5|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "16|4|0.5|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "16|4|0.5|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "16|4|0.5|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "16|4|0.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "16|4|0.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "16|4|0.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "16|4|0.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "16|4|0.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "16|4|0.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "16|6|1.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "16|6|1.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "16|6|1.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "16|6|1.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "16|6|1.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "16|6|1.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "16|6|0.5|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "16|6|0.5|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "16|6|0.5|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "16|6|0.5|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "16|6|0.5|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "16|6|0.5|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "16|6|0.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "16|6|0.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "16|6|0.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "16|6|0.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "16|6|0.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "16|6|0.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "24|3|1.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "24|3|1.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "24|3|1.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "24|3|1.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "24|3|1.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "24|3|1.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "24|3|0.5|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "24|3|0.5|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "24|3|0.5|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "24|3|0.5|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "24|3|0.5|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "24|3|0.5|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "24|3|0.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "24|3|0.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "24|3|0.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "24|3|0.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "24|3|0.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "24|3|0.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "24|4|1.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "24|4|1.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "24|4|1.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "24|4|1.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "24|4|1.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "24|4|1.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "24|4|0.5|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "24|4|0.5|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "24|4|0.5|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "24|4|0.5|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "24|4|0.5|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "24|4|0.5|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "24|4|0.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "24|4|0.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "24|4|0.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "24|4|0.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "24|4|0.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "24|4|0.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "24|6|1.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "24|6|1.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "24|6|1.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "24|6|1.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "24|6|1.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "24|6|1.0|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "24|6|0.5|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "24|6|0.5|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "24|6|0.5|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "24|6|0.5|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "24|6|0.5|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "24|6|0.5|deepAffordability|Compact"
+  sentence: ''
+-
+  scenario: "24|6|0.0|idpAmiMix|Standard"
+  sentence: ''
+-
+  scenario: "24|6|0.0|thirdThirdThird|Standard"
+  sentence: ''
+-
+  scenario: "24|6|0.0|deepAffordability|Standard"
+  sentence: ''
+-
+  scenario: "24|6|0.0|idpAmiMix|Compact"
+  sentence: ''
+-
+  scenario: "24|6|0.0|thirdThirdThird|Compact"
+  sentence: ''
+-
+  scenario: "24|6|0.0|deepAffordability|Compact"
+  sentence: ''

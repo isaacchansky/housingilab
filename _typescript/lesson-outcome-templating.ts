@@ -1,11 +1,14 @@
 import {formatCurrency} from './util';
-
+(<any>window).EXPLANATIONS = (<any>window).EXPLANATIONS || []
+// EXPLANATIONS is a Window object defined via YAML in Jekyll which
+// has the structure of:
+// EXPLANATIONS: []< { scenario: <string - uninque key for financial data of the same name>, sentence: <string>} >
 
 function feasibilityScale(opts: any) {
     let totalSources = opts.debtAmt + opts.equityAmt;
     let totalUses = opts.developerFee + opts.landPrice + opts.softCosts + opts.constructionPrice;
     return `
-    Feasibility: <span class="t-${opts.surplus > 0 ? 'positive' : 'negative'}">${opts.surplus > 0 ? 'feasible' : 'infeasible'}</span>
+    Feasibility: <span class="t-${opts.surplus > 0 ? 'positive' : 'negative'}">${opts.surplus > 0 ? 'Feasible' : 'Infeasible'}</span>
      <div class="scale ${totalUses > totalSources ? 'left' : 'right'}">
         <div class="scale-left ${totalUses > totalSources ? 'taller' : ''}">
             <div class="scale-title">Uses</div>
@@ -36,12 +39,20 @@ function feasibilityScale(opts: any) {
     `;
 }
 
+function getDescription(opts: any) {
+    let description = (<any>window).EXPLANATIONS.filter((e: any) => e .scenario === opts.scenario)[0];
+    let descriptionHTML = '';
+    if (description && description.sentence) {
+        return `<h2 class="outcomes__description">${description.sentence}</h2>`;
+    } else {
+        return '';
+    }
+}
+
 
 const lessonTemplate1 = (opts: any) => {
     return `
-        <h2 class="outcomes__description">
-            There are multiple ways to arrange and organize apartments in an urban site.
-        </h2>
+        ${getDescription(opts)}
         <ul class="outcomes__list">
             <li class="outcome__item" data-val="calcNumApts">${opts.calcNumApts} apartments</li>
             <li class="outcome__item" data-val="numFloors">${opts.numFloors} floors</li>
@@ -59,10 +70,7 @@ const lessonTemplate1 = (opts: any) => {
 const lessonTemplate2 = (opts: any) => {
 
     return `
-        <h2 class="outcomes__description">
-            The amount of income this development generates through rents is not enough to support its construction. Subsidies will have to be sought through Government programs.
-        </h2>
-
+        ${getDescription(opts)}
         <ul class="outcomes__list">
             <li class="outcome__item" data-val="feasibility">
             ${feasibilityScale(opts)}
@@ -82,8 +90,7 @@ const lessonTemplate2 = (opts: any) => {
 
 const lessonTemplate3 = (opts: any) => {
     return `
-        <h2 class="outcomes__description">While there are no dedicated off-street parking spaces for residents, this development is near a bus stop and has partnered with a share-car service that utilizes four on-street reserved spaces. Doing so means it is financially feasible.</h2>
-
+        ${getDescription(opts)}
          <ul class="outcomes__list">
             <li class="outcome__item" data-val="numParking">${opts.numParking} Parking Spaces</li>
             <li class="outcome__item" data-val="parkingPrice">$${opts.parkingPrice.toFixed(2)} Total Parking Construction Cost</li>
@@ -97,6 +104,7 @@ const lessonTemplate3 = (opts: any) => {
 
 const lessonTemplate4 = (opts: any) => {
     return `
+        ${getDescription(opts)}
          <ul class="outcomes__list">
             <li class="outcome__item" data-val="calcNumApts">${opts.calcNumApts} apartments</li>
             <li class="outcome__item" data-val="numFloors">${opts.numFloors} floors</li>
