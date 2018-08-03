@@ -39,11 +39,11 @@ function feasibilityScale(opts: any) {
     `;
 }
 
-function getDescription(opts: any) {
+function getDescription(opts: any, lesson: string) {
     let description = (<any>window).EXPLANATIONS.filter((e: any) => e .scenario === opts.scenario)[0];
     let descriptionHTML = '';
     if (description && description.sentence) {
-        return `<h2 class="outcomes__description">${description.sentence}</h2>`;
+        return `<h2 class="outcomes__description">${ description[lesson] || description.sentence}</h2>`;
     } else {
         return '';
     }
@@ -52,7 +52,7 @@ function getDescription(opts: any) {
 
 const lessonTemplate1 = (opts: any) => {
     return `
-        ${getDescription(opts)}
+        ${getDescription(opts, '1')}
         <ul class="outcomes__list">
             <li class="outcome__item" data-val="calcNumApts">${opts.calcNumApts} apartments</li>
             <li class="outcome__item" data-val="numFloors">${opts.numFloors} floors</li>
@@ -70,7 +70,7 @@ const lessonTemplate1 = (opts: any) => {
 const lessonTemplate2 = (opts: any) => {
 
     return `
-        ${getDescription(opts)}
+        ${getDescription(opts, '2')}
         <ul class="outcomes__list">
             <li class="outcome__item" data-val="feasibility">
             ${feasibilityScale(opts)}
@@ -90,7 +90,7 @@ const lessonTemplate2 = (opts: any) => {
 
 const lessonTemplate3 = (opts: any) => {
     return `
-        ${getDescription(opts)}
+        ${getDescription(opts, '3')}
          <ul class="outcomes__list">
             <li class="outcome__item" data-val="numParking">${opts.numParking} Parking Spaces</li>
             <li class="outcome__item" data-val="parkingPrice">$${opts.parkingPrice.toFixed(2)} Total Parking Construction Cost</li>
@@ -104,7 +104,7 @@ const lessonTemplate3 = (opts: any) => {
 
 const lessonTemplate4 = (opts: any) => {
     return `
-        ${getDescription(opts)}
+        ${getDescription(opts, '4')}
          <ul class="outcomes__list">
             <li class="outcome__item" data-val="calcNumApts">${opts.calcNumApts} apartments</li>
             <li class="outcome__item" data-val="numFloors">${opts.numFloors} floors</li>
@@ -138,7 +138,6 @@ export default function outcomeTemplating (options: any, lesson: number) {
         tpl = lessonTemplate2(options);
     }
     if (lesson === 3) {
-        console.log(options);
         tpl = lessonTemplate3(options);
     }
     if (lesson === 4) {
