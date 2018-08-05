@@ -1218,7 +1218,8 @@ a {
     font-weight: 600;
     vertical-align: middle; }
 .hero .beta {
-  position: relative; }
+  position: relative;
+  display: block; }
   .hero .beta svg {
     position: absolute;
     top: -2rem;
