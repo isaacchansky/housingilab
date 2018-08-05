@@ -54,14 +54,14 @@ const lessonTemplate1 = (opts: any) => {
     return `
         ${getDescription(opts, '1')}
         <ul class="outcomes__list">
-            <li class="outcome__item" data-val="calcNumApts">${opts.calcNumApts} apartments</li>
-            <li class="outcome__item" data-val="numFloors">${opts.numFloors} floors</li>
-            <li class="outcome__item" data-val="constructionType">${opts.constructionType} construction</li>
-            <li class="outcome__item" data-val="numResidents">${Math.floor(opts.numResidents)} residents</li>
+            <li class="outcome__item" data-val="calcNumApts">${opts.calcNumApts} Apartments</li>
+            <li class="outcome__item" data-val="numFloors">${opts.numFloors} Floors</li>
+            <li class="outcome__item" data-val="constructionType">${opts.constructionType} Construction</li>
+            <li class="outcome__item" data-val="numResidents">${Math.floor(opts.numResidents)} Residents</li>
             <li class="outcome__item" data-val="far">${opts.far} F.A.R</li>
-            <li class="outcome__item" data-val="coverageRatio">${(opts.coverageRatio*100).toFixed(2)}% coverage</li>
-            <li class="outcome__item" data-val="avgAptSize">${opts.avgAptSize} ft<sup>2</sup> per apartment</li>
-            <li class="outcome__item" data-val="permitProcess">${opts.permitProcess}</li>
+            <li class="outcome__item" data-val="coverageRatio">${(opts.coverageRatio*100).toFixed(2)}% Coverage</li>
+            <li class="outcome__item" data-val="avgAptSize">${opts.avgAptSize} ft<sup>2</sup> per Apartment</li>
+            <li class="outcome__item" data-val="permitProcess">Permitting Process: ${opts.permitProcess}</li>
         </ul>
 
     `;
@@ -75,13 +75,13 @@ const lessonTemplate2 = (opts: any) => {
             <li class="outcome__item" data-val="feasibility">
             ${feasibilityScale(opts)}
             </li>
-            <li class="outcome__item" data-val="returnOnCost">${opts.returnOnCost.toFixed(2)} % return on cost</li>
-            <li class="outcome__item" data-val="expenses">${opts.expensesPropofEGI} </li>
-            <li class="outcome__item" data-val="netIncome">${opts.noiPropOfEGI} </li>
+            <li class="outcome__item" data-val="returnOnCost">${opts.returnOnCost.toFixed(2)}% Return on Cost</li>
+            <li class="outcome__item" data-val="expenses">Expenses: ${opts.expensesPropofEGI}% of Effective Gross Income</li>
+            <li class="outcome__item" data-val="netIncome">Net Income: ${opts.noiPropOfEGI}% of Effective Gross Income </li>
             <li class="outcome__item" data-val="far">${opts.far} F.A.R</li>
-            <li class="outcome__item" data-val="tdcPerUnit">$${opts.tdcPerUnit.toFixed(2)}</li>
-            <li class="outcome__item" data-val="avgAptSize">${opts.avgAptSize} ft<sup>2</sup> per apartment</li>
-            <li class="outcome__item" data-val="permitProcess">${opts.permitProcess}</li>
+            <li class="outcome__item" data-val="tdcPerUnit">Total Development Cost per Apartment: $${opts.tdcPerUnit.toLocaleString()}</li>
+            <li class="outcome__item" data-val="avgAptSize">${opts.avgAptSize} ft<sup>2</sup> per Apartment</li>
+            <li class="outcome__item" data-val="permitProcess">Permitting Process: ${opts.permitProcess}</li>
         </ul>
 
 
@@ -93,7 +93,7 @@ const lessonTemplate3 = (opts: any) => {
         ${getDescription(opts, '3')}
          <ul class="outcomes__list">
             <li class="outcome__item" data-val="numParking">${opts.numParking} Parking Spaces</li>
-            <li class="outcome__item" data-val="parkingPrice">$${opts.parkingPrice.toFixed(2)} Total Parking Construction Cost</li>
+            <li class="outcome__item" data-val="parkingPrice">Total Parking Construction Cost: $${opts.parkingPrice.toFixed(2)}</li>
             <li class="outcome__item" data-val="feasibility">
                 ${feasibilityScale(opts)}
             </li>
@@ -106,20 +106,23 @@ const lessonTemplate4 = (opts: any) => {
     return `
         ${getDescription(opts, '4')}
          <ul class="outcomes__list">
-            <li class="outcome__item" data-val="calcNumApts">${opts.calcNumApts} apartments</li>
-            <li class="outcome__item" data-val="numFloors">${opts.numFloors} floors</li>
-            <li class="outcome__item" data-val="constructionType">${opts.constructionType} construction</li>
-            <li class="outcome__item" data-val="numResidents">${Math.floor(opts.numResidents)} residents</li>
+            <li class="outcome__item" data-val="calcNumApts">${opts.calcNumApts} Apartments</li>
+            <li class="outcome__item" data-val="numFloors">${opts.numFloors} Floors</li>
+            <li class="outcome__item" data-val="constructionType">${opts.constructionType} Construction</li>
+            <li class="outcome__item" data-val="numResidents">${Math.floor(opts.numResidents)} Residents</li>
             <li class="outcome__item" data-val="far">${opts.far} F.A.R</li>
-            <li class="outcome__item" data-val="coverageRatio">${(opts.coverageRatio*100).toFixed(2)}% coverage</li>
-            <li class="outcome__item" data-val="avgAptSize">${opts.avgAptSize} ft<sup>2</sup> per apartment</li>
-            <li class="outcome__item" data-val="permitProcess">${opts.permitProcess}</li>
+            <li class="outcome__item" data-val="tdcPerUnit">Total Development Cost per Apartment: $${opts.tdcPerUnit.toLocaleString()}</li>
+            <li class="outcome__item" data-val="coverageRatio">${(opts.coverageRatio*100).toFixed(2)}% Coverage</li>
+            <li class="outcome__item" data-val="avgAptSize">${opts.avgAptSize} ft<sup>2</sup> per Apartment</li>
+            <li class="outcome__item" data-val="permitProcess">Permitting Process: ${opts.permitProcess}</li>
             <li class="outcome__item" data-val="feasibility">
                 ${feasibilityScale(opts)}
             </li>
-            <li class="outcome__item" data-val="returnOnCost">${opts.returnOnCost.toFixed(2)} % return on cost</li>
-            <li class="outcome__item" data-val="expenses">${opts.expensesPropofEGI} </li>
-            <li class="outcome__item" data-val="netIncome">${opts.noiPropOfEGI} </li>
+            <li class="outcome__item" data-val="numParking">${opts.numParking} Parking Spaces</li>
+            <li class="outcome__item" data-val="parkingPrice">Total Parking Construction Cost: $${opts.parkingPrice.toFixed(2)}</li>
+            <li class="outcome__item" data-val="returnOnCost">${opts.returnOnCost.toFixed(2)}% return on cost</li>
+            <li class="outcome__item" data-val="expenses">Expenses: ${opts.expensesPropofEGI}% of Effective Gross Income</li>
+            <li class="outcome__item" data-val="netIncome">Net Income: ${opts.noiPropOfEGI}% of Effective Gross Income </li>
         </ul>
 
     `;

@@ -36,7 +36,8 @@ layout: default
     <div class="options" data-massing="{{lessonOptions.defaultMassing}}" data-rentScenario="{{lessonOptions.defaultRentScenario}}">
       <div class="options__container">
         <h2 class="options__title">{{lessonOptions.title}}</h2>
-        <p class="message">{{lessonOptions.lessonDescription}}</p>
+        <p class="options__subtitle">{{lessonOptions.lessonDescription}}</p>
+        <p class="message">Adjust the options below to view their impact!</p>
 
         {% for field in lessonOptions.fields %}
           {% assign fieldID = 'field-' +forloop.index %}

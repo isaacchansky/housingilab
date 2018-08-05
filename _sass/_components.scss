@@ -145,12 +145,14 @@
 .message {
     border: 1px solid $color_black;
     color: $color_black;
+    background: $color_white;
     display: inline-block;
     padding: 0.5rem 1rem 0.5rem 3rem;
     position: relative;
     &:before {
         content: "i";
         font-family: 'Courier New', Courier, monospace;
+        line-height: 2;
         display: inline-block;
         background: $color_black;
         color: $color_white;
@@ -161,6 +163,7 @@
         position: absolute;
         top: 0;
         left: 0;
+        bottom: 0;
 
     }
 
@@ -172,7 +175,7 @@
 
 .options {
     background-color: darken($color_white, 4%);
-    margin: 2rem -2rem 0;
+    margin: 8rem -2rem 0;
 
     &:before,
     &:after {
@@ -190,7 +193,8 @@
 }
 
 .options__container {
-    padding: 5rem 2rem;
+    padding: 8rem 2rem;
+    min-height: 100vh;
 
     @include media-query($sm-break) {
         position: relative;
@@ -215,6 +219,14 @@
             top: 40%;
         }
     }
+}
+
+.options__title {
+    margin-bottom: 1rem;
+}
+.options__subtitle {
+    color: lighten($color_black, 30%);
+    margin-bottom: 3rem;
 }
 
 .options__field {
@@ -452,13 +464,12 @@ a {
             span {
                 position: absolute;
                 padding: 0.25rem;
-                right: 0.5rem;
+                right: 3.5rem;
                 top: 0.5rem;
                 background: white;
                 width: 8rem;
                 font-size: 0.8rem;
                 position: absolute;
-                border: 1px solid #ccc;
                 opacity: 0;
                 transition: all 250ms ease-in-out;
                 z-index: -100;
@@ -478,9 +489,10 @@ a {
                 border: 2px solid darken($color_red, 10%);
             }
             span {
-                left: -0.5rem;
+                left: 2.5rem;
                 right: auto;
                 top: 0.5rem;
+                border: 2px solid darken($color_red, 10%);
             }
         }
         .block + .block {
@@ -501,6 +513,10 @@ a {
         .block {
             background: $color_green;
             &:hover {
+                border: 2px solid darken($color_green, 10%);
+            }
+
+            span {
                 border: 2px solid darken($color_green, 10%);
             }
         }

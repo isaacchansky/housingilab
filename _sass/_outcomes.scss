@@ -28,7 +28,7 @@
 }
 
 .outcomes__content {
-    padding: 0 1rem;
+    padding: 2rem 1rem;
     height: 100%;
     overflow: auto;
 }
@@ -129,7 +129,8 @@
         }
     }
     [data-val="calcNumApts"]:before {
-        background-image: url('/housingilab/images/icons_numApts.svg');
+        // background-image: url('/housingilab/images/icons_numApts.svg');
+        background-image: url('/housingilab/images/icons_size.svg');
     }
     [data-val="numFloors"]:before {
         background-image: url('/housingilab/images/icons_numFloors.svg');
@@ -147,7 +148,8 @@
         background-image: url('/housingilab/images/icons_coverage.svg');
     }
     [data-val="avgAptSize"]:before {
-        background-image: url('/housingilab/images/icons_size.svg');
+        // background-image: url('/housingilab/images/icons_size.svg');
+        background-image: url('/housingilab/images/icons_aptArea.svg');
     }
     [data-val="permitProcess"]:before {
         background-image: url('/housingilab/images/icons_permitting.svg');
