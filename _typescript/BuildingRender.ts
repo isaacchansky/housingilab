@@ -289,7 +289,7 @@ export class BuildingRender {
             let parcelsMesh = this.createLines(parcels[0].geoms[0].geom, {color: 0xCCCCCC});
             group.add(parcelsMesh);
 
-            let sidewalksMesh = this.createMesh(sidewalks[0].geoms[0].geom, {color: 0x999999}, null, 1);
+            let sidewalksMesh = this.createMesh(sidewalks[0].geoms[0].geom, {color: 0x999999}, null, 0);
             group.add(sidewalksMesh);
 
             this.scene.add(group);
