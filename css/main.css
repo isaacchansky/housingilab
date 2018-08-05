@@ -751,7 +751,7 @@ img {
       display: none; }
 
 .options__field[data-label="numApts"] {
-  background-image: url("/housingilab/images/icons_numApts.svg"); }
+  background-image: url("/housingilab/images/icons_size.svg"); }
 
 .options__field[data-label="numFloors"] {
   background-image: url("/housingilab/images/icons_numFloors.svg"); }
@@ -987,15 +987,15 @@ a {
       position: absolute;
       left: 0;
       top: 0.2rem;
-      width: 1rem;
-      height: 1rem;
+      width: 1.25rem;
+      height: 1.25rem;
       background-repeat: no-repeat;
       background-size: contain; }
     .outcomes__list .outcome__item .t-positive,
     .outcomes__list .outcome__item .t-negative {
       margin-left: 1rem; }
   .outcomes__list [data-val="calcNumApts"]:before {
-    background-image: url("/housingilab/images/icons_size.svg"); }
+    background-image: url("/housingilab/images/icons_numApts.svg"); }
   .outcomes__list [data-val="numFloors"]:before {
     background-image: url("/housingilab/images/icons_numFloors.svg"); }
   .outcomes__list [data-val="constructionType"]:before {
