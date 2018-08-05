@@ -117,8 +117,8 @@
             position: absolute;
             left: 0;
             top: 0.2rem;
-            width: 1rem;
-            height: 1rem;
+            width: 1.25rem;
+            height: 1.25rem;
             background-repeat: no-repeat;
             background-size: contain;
         }
@@ -129,8 +129,8 @@
         }
     }
     [data-val="calcNumApts"]:before {
-        // background-image: url('/housingilab/images/icons_numApts.svg');
-        background-image: url('/housingilab/images/icons_size.svg');
+        background-image: url('/housingilab/images/icons_numApts.svg');
+        // background-image: url('/housingilab/images/icons_size.svg');
     }
     [data-val="numFloors"]:before {
         background-image: url('/housingilab/images/icons_numFloors.svg');

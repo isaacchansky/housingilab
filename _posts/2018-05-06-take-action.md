@@ -2,7 +2,7 @@
     updated_at: 03/06/2018
     title: Take Action
     subtitle: ''
-    order: 5
+    order: 6
 ---
 
 ### How to get involved in your neighborhood

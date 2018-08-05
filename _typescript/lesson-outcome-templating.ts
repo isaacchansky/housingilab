@@ -56,10 +56,11 @@ const lessonTemplate1 = (opts: any) => {
         <ul class="outcomes__list">
             <li class="outcome__item" data-val="calcNumApts">${opts.calcNumApts} Apartments</li>
             <li class="outcome__item" data-val="numFloors">${opts.numFloors} Floors</li>
+            <li class="outcome__item" data-val="height">${opts.height} ft.</li>
             <li class="outcome__item" data-val="constructionType">${opts.constructionType} Construction</li>
             <li class="outcome__item" data-val="numResidents">${Math.floor(opts.numResidents)} Residents</li>
             <li class="outcome__item" data-val="far">${opts.far} F.A.R</li>
-            <li class="outcome__item" data-val="coverageRatio">${(opts.coverageRatio*100).toFixed(2)}% Coverage</li>
+            <li class="outcome__item" data-val="coverageRatio">${(opts.coverageRatio).toFixed(0)}% Coverage</li>
             <li class="outcome__item" data-val="avgAptSize">${opts.avgAptSize} ft<sup>2</sup> per Apartment</li>
             <li class="outcome__item" data-val="permitProcess">Permitting Process: ${opts.permitProcess}</li>
         </ul>
@@ -108,6 +109,7 @@ const lessonTemplate4 = (opts: any) => {
          <ul class="outcomes__list">
             <li class="outcome__item" data-val="calcNumApts">${opts.calcNumApts} Apartments</li>
             <li class="outcome__item" data-val="numFloors">${opts.numFloors} Floors</li>
+            <li class="outcome__item" data-val="height">${opts.height} ft.</li>
             <li class="outcome__item" data-val="constructionType">${opts.constructionType} Construction</li>
             <li class="outcome__item" data-val="numResidents">${Math.floor(opts.numResidents)} Residents</li>
             <li class="outcome__item" data-val="far">${opts.far} F.A.R</li>
