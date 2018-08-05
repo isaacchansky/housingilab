@@ -44,7 +44,7 @@
 2:
   title: 'Balance the budget'
   lessonDescription: "This interactive module allows you to explore how different rent mixes for a 4-storey, Mid-rise (24-unit) building affects its financial feasibility. Choose from the following options to see the outcomes on the development's budget."
-  defaultMassing: '24|4|0.5' # Only cycle between rentScenarios for this massing-parking scenario
+  defaultMassing: '16|3|0.5' # Only cycle between rentScenarios for this massing-parking scenario
   defaultRentScenario: 'thirdThirdThird'
   fields:
     - type: radio
@@ -93,7 +93,7 @@
 4:
   title: 'Compact Living'
   lessonDescription: "This interactive module allows you to explore the effect of utilizing the City of Boston's new Compact Living Policy on the development budget for a 4-storey Moderate Urban (16-unit) building. Choose between Compact and Standard Unit Sizes to see their effect on the development's budget."
-  defaultMassing: '16|4|0.5' # This scenario immediately swaps between feasible & infeasible from standard to compact
+  defaultMassing: '24|4|0.5' # This scenario immediately swaps between feasible & infeasible from standard to compact
   defaultRentScenario: 'thirdThirdThird'
   fields:
     - type: radio
@@ -112,7 +112,7 @@
 5:
   title: 'Full Interactive'
   lessonDescription: "This module allows you to explore how all the different options surveyed in the previous lessons can be combined to form a development scenario of your choosing. Choose any of the below options to see how they affect the physical and quantitive outcomes on your development."
-  defaultMassing: '16|3|1.0' # This one looks quite different to the rest as it's a row type... 
+  defaultMassing: '16|4|0.5' # Back to opening scenario
   defaultRentScenario: 'thirdThirdThird'
   fields:
     - type: radio
