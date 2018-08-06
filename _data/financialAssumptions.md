@@ -15,7 +15,7 @@ The site and land area has been generated manually, representing a generic devel
 ## Average Apartment Area (GSF) (Standard sizing)
 The average apartment area in gross square feet (construction area) is calculated using the method described in the City of Boston's JP/ROX Density Bonus Program Financial Analysis (September 2016).
 
-    value: "960 sqft"
+    value: 960 sqft
 
 It evaluates this by combining the apartment-type share and their respective net square footage, and divides this by the indsutry-standard assumption construction efficiency rate of 85%, which takes into account area outside of units like hallways and stairwells. The breakdown is as follows (modified to avoid rounding errors):
 
