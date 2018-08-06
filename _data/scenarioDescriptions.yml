@@ -1,3 +1,10 @@
+# This is a YAML that constains descriptions for selected scenarios displayed during lessons 01-04. 
+# A particular scenario is identified by its "scenario" field 
+# (matched to scenarios in /_typescript/data/financialScenarios.json),
+# and any descriptions are specified per lesson number in the "lessonDescriptions" field.
+# A scenario may have multiple descriptions depending on which lesson it is being displayed in;
+# these are specified by the lesson number key for each description.
+
 - 
   scenario: "9|3|0.5|idpAmiMix|Standard"
   lessonDescriptions:

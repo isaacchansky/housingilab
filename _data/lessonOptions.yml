@@ -1,19 +1,28 @@
+# This is a YAML that specifies options and related information that configure
+# the scenarios displayed in interactive modules in lessons 01-04.
+# Each set of options has:
+#   1. A title (usually the same as the lesson's title). This is displayed in H1
+#   2. Description text that follows the title, giving more detail on what the interactive module explores.
+#   3. A default scenario to display on loading the lesson
+#   4. A set of options the user may choose from that control which scenario to load in response that choice.
+#       Note: these controls only modify the default scenario by the chosen field.
+#       (i.e. choosing 'rentScenario: idpAmiMix on default '16|3|0.5|thirdThirdThird|Standard' will load scenario '16|3|0.5|idpAmiMix|Standard')
+
+
 1:
   title: 'What are the basics?'
   lessonDescription: 'This interactive module allows you to explore how different combinations of density (FAR) and coverage result in building types and arrangements. Choose from the following options to see their physical and quantitive outcomes.'
   defaultMassing: '16|4|0.5' # Display this scenario on page load
   defaultRentScenario: 'idpAmiMix'
+  # defaultScenario: '16|4|0.5|idpAmiMix|Standard'
   fields:
     - type: radio
       label: 'Development Size'
       dataLabel: 'numApts'
       description: >
         Choose the overall size of the development using the following options.
-
         - "Low Urban" development has a reduced FAR and nine Standard-sized apartments.
-
         - "Moderate Urban" development has a similar FAR to surrounding development and about 16 Standard-sized apartments.
-
         - "Mid-rise Urban" development has a higher FAR and 24 Standard-sized apartments.
       options:
         -
@@ -46,17 +55,15 @@
   lessonDescription: "This interactive module allows you to explore how different rent mixes for a 4-storey, Mid-rise (24-unit) building affects its financial feasibility. Choose from the following options to see the outcomes on the development's budget."
   defaultMassing: '16|3|0.5' # Only cycle between rentScenarios for this massing-parking scenario
   defaultRentScenario: 'thirdThirdThird'
+  # defaultScenario: '16|3|0.5|thirdThirdThird|Standard'
   fields:
     - type: radio
       label: 'Rent Mix'
       dataLabel: 'rentScenario'
       description: >
         Choose the rental mix from the following options.
-
         - The "Market Rate" mix is set according to the City of Boston's Inclusionary Development Policy, where 13% of apartments must be affordabel at 70% AMI. The rest of the apartments may have rents set at the prevailing market rates.
-
         - "1/3 1/3 1/3" is a mix recommended by the City of Boston to achieve affordability and feasibility. This mix calls for one-third of apartments being affordable at 50% AMI, another third being affordable at 80% AMI, and the last third having market rate rents.
-
         - Finally, "Deep Affordability" is a mix to achieve a very high amount of affordable apartments, with 10% of the apartments being affordable at 30% AMI, another 20% of apartments at 50% AMI, and the remaining 70% of apartments affordable at 60% AMI.
       options:
         -
@@ -120,11 +127,8 @@
       dataLabel: 'numApts'
       description: >
         Choose the overall size of the development using the following options.
-
         - "Low Urban" development has a reduced FAR and nine Standard-sized apartments.
-
         - "Moderate Urban" development has a similar FAR to surrounding development and about 16 Standard-sized apartments.
-
         - "Mid-rise Urban" development has a higher FAR and 24 Standard-sized apartments.
       options:
         -
@@ -156,11 +160,8 @@
       dataLabel: 'rentScenario'
       description: >
         Choose the rental mix from the following options.
-
         - The "Market Rate" mix is set according to the City of Boston's Inclusionary Development Policy, where 13% of apartments must be affordabel at 70% AMI. The rest of the apartments may have rents set at the prevailing market rates.
-
         - "1/3 1/3 1/3" is a mix recommended by the City of Boston to achieve affordability and feasibility. This mix calls for one-third of apartments being affordable at 50% AMI, another third being affordable at 80% AMI, and the last third having market rate rents.
-
         - Finally, "Deep Affordability" is a mix to achieve a very high amount of affordable apartments, with 10% of the apartments being affordable at 30% AMI, another 20% of apartments at 50% AMI, and the remaining 70% of apartments affordable at 60% AMI.
       options:
         -
