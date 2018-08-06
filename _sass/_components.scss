@@ -45,6 +45,7 @@
             margin: 0 0 0 2rem;
             a {
                 font-size: 1.2rem;
+                font-weight: normal;
             }
         }
     }
@@ -56,9 +57,13 @@
             visibility: visible;
             opacity: 1;
         }
-        .menu__current-item {
+        .menu__current-item-section,
+        .menu__current-item-section:before,
+        .menu__current-item,
+        .menu__current-item:before {
             opacity: 0;
         }
+
     }
 
     .is-scrolled & {
@@ -91,6 +96,7 @@
     @extend %t-button;
     box-shadow: none;
     border: none;
+    background: transparent;
     color: black;
     height: 2rem;
     line-height: 2rem;

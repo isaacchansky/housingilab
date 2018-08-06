@@ -126,6 +126,8 @@ export class BuildingRender {
             this.controls = new OrbitControls(this.camera, this.containerEl);
             this.controls.maxPolarAngle = (0.9 * Math.PI) / 2;
             this.controls.enableZoom = true;
+            this.controls.enableRotate = true;
+            this.controls.enablePan = true;
 
             this.savedControls.position = this.camera.position.clone();
             this.savedControls.rotation = this.camera.rotation.clone();
