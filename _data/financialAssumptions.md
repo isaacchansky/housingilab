@@ -17,7 +17,7 @@ The average apartment area in gross square feet (construction area) is calculate
 
     value: "960 sqft"
 
-### It evaluates this by combining the apartment-type share and their respective net square footage, and divides this by the indsutry-standard assumption construction efficiency rate of 85%, which takes into account area outside of units like hallways and stairwells. The breakdown is as follows (modified to avoid rounding errors):
+It evaluates this by combining the apartment-type share and their respective net square footage, and divides this by the indsutry-standard assumption construction efficiency rate of 85%, which takes into account area outside of units like hallways and stairwells. The breakdown is as follows (modified to avoid rounding errors):
 |   Unit Type  |   Share of Total  | NSF per Unit  |
 |--------------|-------------------|---------------|
 |    Studio    |    22%            |    500 sqft   |
