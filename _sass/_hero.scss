@@ -2,16 +2,25 @@
     .hero__container {
         background: $color_white;
         // width: calc(40% + 8rem);
-        min-height: calc(100vh - 4rem);
+        // min-height: calc(100vh - 4rem);
         display: flex;
         justify-content: flex-start;
-        align-items: center;
         padding: 4rem;
+        padding-bottom: 1rem;
+        flex-wrap: wrap;
+        margin-top: 4rem;
+
         @include media-query($sm-break) {
             align-items: flex-start;
             flex-direction: column;
             padding: 4rem 2rem;
         }
+    }
+
+    .hero__video {
+        max-width: $lg-content-area;
+        width: 80%;
+        margin: 1rem auto;
     }
 
     .hero__primary {
