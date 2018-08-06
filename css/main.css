@@ -564,7 +564,8 @@ img {
       list-style: none;
       margin: 0 0 0 2rem; }
       .table-of-contents .table-of-contents__list ul a {
-        font-size: 1.2rem; }
+        font-size: 1.2rem;
+        font-weight: normal; }
   .table-of-contents.is-open {
     height: 100vh;
     overflow-y: scroll; }
@@ -572,7 +573,10 @@ img {
       z-index: 0;
       visibility: visible;
       opacity: 1; }
-    .table-of-contents.is-open .menu__current-item {
+    .table-of-contents.is-open .menu__current-item-section,
+    .table-of-contents.is-open .menu__current-item-section:before,
+    .table-of-contents.is-open .menu__current-item,
+    .table-of-contents.is-open .menu__current-item:before {
       opacity: 0; }
   .is-scrolled .table-of-contents {
     position: fixed;
@@ -597,6 +601,7 @@ img {
 .menu-toggle {
   box-shadow: none;
   border: none;
+  background: transparent;
   color: black;
   height: 2rem;
   line-height: 2rem;
