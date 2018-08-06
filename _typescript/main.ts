@@ -9,6 +9,7 @@ let handleActiveRender: any;
 let defaultRenderOptionsByLesson: any = {};
 let currentLesson:any = null;
 let previousLesson:any = null;
+let activeRenderOptions: any = {};
 
 let renderOptionDefaults: any = {
         type: 'Standard',
@@ -39,6 +40,8 @@ let renderOptionDefaults: any = {
         handleActiveRender();
         $('.page-content').removeClass('has-interaction');
         $(`[data-lesson="${lessonIndex}"]`).show();
+        renderOptionDefaults = Object.assign({}, renderOptionDefaults, defaultRenderOptionsByLesson[lessonIndex]);
+        activeRenderOptions = {};
         br.renderScenario( Object.assign({}, renderOptionDefaults, defaultRenderOptionsByLesson[lessonIndex]));
      }
  }
@@ -178,7 +181,7 @@ function initThree() {
         if (massing) {
             massing = massing.split('|');
             defaultRenderOptionsByLesson[$(el).data('lesson')] = {
-                numApt: massing[0],
+                numApts: massing[0],
                 numFloors: massing[1],
                 ratioParking: massing[2]
             };
@@ -189,10 +192,8 @@ function initThree() {
     });
 
 
-
     // default to first lesson configured values
     renderOptionDefaults = Object.assign({}, renderOptionDefaults, defaultRenderOptionsByLesson[1]);
-    let activeRenderOptions: any = {};
 
     br.renderScenario(renderOptionDefaults);
 
@@ -204,7 +205,7 @@ function initThree() {
 
         activeRenderOptions[dataLabel] = val.toString();
 
-        let options = Object.assign({},renderOptionDefaults, activeRenderOptions);
+        let options = Object.assign({}, renderOptionDefaults, activeRenderOptions);
         let outcomes = br.getOutcomes(options);
 
         setOutcomes(outcomes, lesson);

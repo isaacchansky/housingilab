@@ -47,6 +47,8 @@ function feasibilityScale(opts: any) {
 
 function getDescription(opts: any, lesson: string) {
     let description = (<any>window).SCENARIO_DESCRIPTIONS.filter((e: any) => e.scenario === opts.scenario)[0];
+    console.log(opts.scenario);
+    console.log(description);
     if (description && description.lessonDescriptions[lesson]) {
         return `<h2 class="outcomes__description">${description.lessonDescriptions[lesson]}</h2>`;
     } else {

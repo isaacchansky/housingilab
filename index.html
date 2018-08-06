@@ -23,6 +23,9 @@ layout: default
   <section class="lesson" data-lesson="{{lesson.order}}" id="lesson-{{lesson.order}}">
     <span class="lesson__indicator">{{ lesson.subtitle }}</span>
     <h2 class="lesson__title">
+      {% if lesson.logo_name %}
+        {% include  lesson.logo_name %}
+      {% endif %}
       {{ lesson.title }}
     </h2>
     <div class="lesson__meta">Last updated: {{ lesson.updated_at | date: "%b %-d, %Y" }}</div>
