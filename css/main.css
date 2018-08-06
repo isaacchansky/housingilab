@@ -368,8 +368,8 @@ th {
   line-height: 0.5; }
 
 .options__field .options__field-description, .lesson__meta {
-  color: #666666;
-  font-size: 12.8px; }
+  color: #4d4d4d;
+  font-size: 14.4px; }
 
 .hero__title {
   font-size: 61.4656px; }
@@ -936,7 +936,7 @@ a {
   padding-left: 1rem; }
 
 .outcomes__content {
-  padding: 2rem 1rem;
+  padding: 1rem;
   height: 100%;
   overflow: auto; }
 
@@ -977,7 +977,8 @@ a {
 
 .outcomes__list {
   list-style: none;
-  margin-bottom: 4rem; }
+  margin-bottom: 4rem;
+  margin-top: 2rem; }
   .outcomes__list .outcome__item {
     font-size: 1rem;
     position: relative;
@@ -1024,6 +1025,28 @@ a {
     background-image: url("/housingilab/images/icons_costPerApt.svg"); }
   .outcomes__list [data-val="feasibility"]:before {
     background-image: url("/housingilab/images/icons_value.svg"); }
+  .outcomes__list [data-val="height"]:before {
+    background-image: url("/housingilab/images/icons_height.svg"); }
+  .outcomes__list [data-val="rentScenario"]:before,
+  .outcomes__list [data-val="softCostsPerTDC"]:before {
+    background-image: url("/housingilab/images/icons_rent.svg"); }
+  .outcomes__list [data-val="noiPerApt"]:before {
+    background-image: url("/housingilab/images/icons_costPerApt.svg"); }
+  .outcomes__list [data-val="tdcPerGSF"]:before,
+  .outcomes__list [data-val="landPricePerTDC"]:before {
+    background-image: url("/housingilab/images/icons_landCost.svg"); }
+  .outcomes__list [data-val="constructionPricePerTDC"]:before {
+    background-image: url("/housingilab/images/icons_constructionPrice.svg"); }
+  .outcomes__list [data-val="developerFeePerTDC"]:before {
+    background-image: url("/housingilab/images/icons_devFee.svg"); }
+  .outcomes__list [data-val="ratioParking"]:before {
+    background-image: url("/housingilab/images/icons_parkingRatio.svg"); }
+  .outcomes__list [data-val="numParkingAtGrade"]:before {
+    background-image: url("/housingilab/images/icons_parkingAtGrade.svg"); }
+  .outcomes__list [data-val="numParkingUnderground"]:before {
+    background-image: url("/housingilab/images/icons_parkingUnderground.svg"); }
+  .outcomes__list [data-val="parkingPricePerTDC"]:before {
+    background-image: url("/housingilab/images/icons_parkingCost.svg"); }
 
 .page-content .visualization-module {
   position: absolute;
@@ -1165,6 +1188,13 @@ a {
   padding-top: 10rem; }
   .lesson h2 {
     font-weight: 600; }
+  .lesson img + em {
+    text-align: center;
+    width: 100%;
+    display: block; }
+  .lesson ul {
+    list-style: circle outside;
+    margin-left: 1rem; }
 
 .hero .hero__container {
   background: #FFFFFF;
