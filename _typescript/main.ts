@@ -34,6 +34,13 @@ let renderOptionDefaults: any = {
  }
 
 
+
+function setOutcomes(s: any, lesson: number) {
+    let outcomeHTML = outcomeTemplating(s, lesson);
+    $(".outcomes__content").html(outcomeHTML);
+}
+
+
  function newSectionReset(lessonIndex: number) {
      if (br) {
         br.resetZoom();
@@ -138,11 +145,6 @@ function clickEventHandling() {
 }
 
 
-function setOutcomes(s: any, lesson: number) {
-    let outcomeHTML = outcomeTemplating(s, lesson);
-    $(".outcomes__content").html(outcomeHTML);
-}
-
 function initThree() {
     let animateTimer: any;
     let vizSpace = <HTMLElement>document.querySelector('.visualization-module__canvas')
@@ -176,6 +178,8 @@ function initThree() {
         handleActiveRender();
     });
 
+
+    // Set up default rendering options for each lesson
     $('[data-lesson]').each((i, el) => {
         let massing = $(el).find('[data-massing]').data('massing');
         if (massing) {
@@ -194,9 +198,9 @@ function initThree() {
 
     // default to first lesson configured values
     renderOptionDefaults = Object.assign({}, renderOptionDefaults, defaultRenderOptionsByLesson[1]);
-
     br.renderScenario(renderOptionDefaults);
 
+    // Handle option changes
     let $option = $('.options__field[data-label] input');
     $option.on('change', (event) => {
         let val = $(event.currentTarget).val();
