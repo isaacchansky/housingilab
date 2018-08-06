@@ -105,4 +105,15 @@
     h2 {
         font-weight: 600;
     }
+
+    img + em {
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+
+    ul {
+        list-style: circle outside;
+        margin-left: 1rem;
+    }
 }

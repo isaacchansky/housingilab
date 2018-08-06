@@ -434,7 +434,7 @@ export class BuildingRender {
                                 opacity: 1
                               }
                             );
-                            mat.metalness = 0;
+                            // mat.metalness = 0;
                             if (geo && mat) {
                                 let mesh = new THREE.Mesh(geo, mat);
                                 mesh.castShadow = true;
@@ -443,7 +443,7 @@ export class BuildingRender {
                                 let eGeometry = new THREE.EdgesGeometry(mesh.geometry, 1);
                                 let eMaterial = new THREE.LineBasicMaterial(
                                     {
-                                        color: 0x666666,
+                                        color: 0x999999,
                                         linewidth: 1
                                     }
                                 );

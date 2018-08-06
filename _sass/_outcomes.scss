@@ -28,7 +28,7 @@
 }
 
 .outcomes__content {
-    padding: 2rem 1rem;
+    padding: 1rem;
     height: 100%;
     overflow: auto;
 }
@@ -108,6 +108,7 @@
 .outcomes__list {
     list-style: none;
     margin-bottom: 4rem;
+    margin-top: 2rem;
     .outcome__item {
         font-size: 1rem;
         position: relative;
@@ -174,6 +175,38 @@
     }
     [data-val="feasibility"]:before {
         background-image: url('/housingilab/images/icons_value.svg');
+    }
+    [data-val="height"]:before {
+        background-image: url('/housingilab/images/icons_height.svg');
+    }
+    [data-val="rentScenario"]:before,
+    [data-val="softCostsPerTDC"]:before {
+        background-image: url('/housingilab/images/icons_rent.svg');
+    }
+    [data-val="noiPerApt"]:before {
+        background-image: url('/housingilab/images/icons_costPerApt.svg');
+    }
+    [data-val="tdcPerGSF"]:before,
+    [data-val="landPricePerTDC"]:before {
+        background-image: url('/housingilab/images/icons_landCost.svg');
+    }
+    [data-val="constructionPricePerTDC"]:before {
+        background-image: url('/housingilab/images/icons_constructionPrice.svg');
+    }
+    [data-val="developerFeePerTDC"]:before {
+        background-image: url('/housingilab/images/icons_devFee.svg');
+    }
+    [data-val="ratioParking"]:before {
+        background-image: url('/housingilab/images/icons_parkingRatio.svg');
+    }
+    [data-val="numParkingAtGrade"]:before {
+        background-image: url('/housingilab/images/icons_parkingAtGrade.svg');
+    }
+    [data-val="numParkingUnderground"]:before {
+        background-image: url('/housingilab/images/icons_parkingUnderground.svg');
+    }
+    [data-val="parkingPricePerTDC"]:before {
+        background-image: url('/housingilab/images/icons_parkingCost.svg');
     }
 
 }

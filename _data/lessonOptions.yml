@@ -2,7 +2,7 @@
   title: 'What are the basics?'
   lessonDescription: 'This interactive module allows you to explore how different combinations of density (FAR) and coverage result in building types and arrangements. Choose from the following options to see their physical and quantitive outcomes.'
   defaultMassing: '16|4|0.5' # Display this scenario on page load
-  defaultRentScenario: ~
+  defaultRentScenario: 'idpAmiMix'
   fields:
     - type: radio
       label: 'Development Size'
