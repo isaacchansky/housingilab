@@ -55,7 +55,7 @@ Paired with each lesson, are `lessonOptions`. This relies in `_data/lessonOption
 Various configuration items are stored in `_config.yml`. You can adjust these by changing the items and rebuilding the site.
 
 ### To swap out images
-You will see images linked within the markdown files for various lessons. These images are stored in the `images/` direcotry.
+You will see images linked within the markdown files for various lessons. These images are stored in the `images/` directory.
 For images within the 'lesson' content we want a maximum width of 1000px and run the images through something like [imageoptim](https://imageoptim.com/mac) to ensure they are optimized for web to load as fast as possible.
 
 
