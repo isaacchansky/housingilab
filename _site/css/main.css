@@ -394,7 +394,7 @@ h4 {
   line-height: 1.35;
   letter-spacing: -.01rem; }
 
-.menu-toggle, .options__field > label, .button, .button--primary, .button--next-lesson {
+.options__field > label, .button, .button--primary, .menu-toggle, .button--next-lesson {
   font-size: 0.8rem;
   font-weight: 600;
   line-height: 1rem;
@@ -531,116 +531,6 @@ img {
 
 .is-hidden {
   display: none; }
-
-.table-of-contents {
-  background: white;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  z-index: 10;
-  height: 2.5rem;
-  opacity: 0;
-  transition: all 250ms ease-in-out; }
-  .is-scrolled .table-of-contents {
-    opacity: 1; }
-  .table-of-contents .table-of-contents__list {
-    z-index: -1;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 250ms ease-in-out;
-    list-style: none;
-    padding: 2rem; }
-    .table-of-contents .table-of-contents__list a {
-      font-size: 1.5rem;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 1rem 0;
-      display: inline-block;
-      color: black; }
-      .table-of-contents .table-of-contents__list a:hover {
-        color: #4d4d4d; }
-    .table-of-contents .table-of-contents__list ul {
-      list-style: none;
-      margin: 0 0 0 2rem; }
-      .table-of-contents .table-of-contents__list ul a {
-        font-size: 1.2rem;
-        font-weight: normal; }
-  .table-of-contents.is-open {
-    height: 100vh;
-    overflow-y: scroll; }
-    .table-of-contents.is-open .table-of-contents__list {
-      z-index: 0;
-      visibility: visible;
-      opacity: 1; }
-    .table-of-contents.is-open .menu__current-item-section,
-    .table-of-contents.is-open .menu__current-item-section:before,
-    .table-of-contents.is-open .menu__current-item,
-    .table-of-contents.is-open .menu__current-item:before {
-      opacity: 0; }
-  .is-scrolled .table-of-contents {
-    position: fixed;
-    top: 0;
-    left: 1rem;
-    width: 36rem; }
-    @media screen and (max-width: 1200px) {
-      .is-scrolled .table-of-contents {
-        width: 26rem;
-        left: 0rem; }
-        .is-scrolled .table-of-contents .menu__current-item-section {
-          display: none; } }
-    @media screen and (max-width: 955px) {
-      .is-scrolled .table-of-contents {
-        width: 100%; } }
-
-.table-of-contents__bar .menu__current-item:before,
-.table-of-contents__bar .menu__current-item-section:before {
-  content: '›';
-  padding: 0 0.5rem; }
-
-.menu-toggle {
-  box-shadow: none;
-  border: none;
-  background: transparent;
-  color: black;
-  height: 2rem;
-  line-height: 2rem;
-  position: relative;
-  margin-left: 1rem;
-  padding-left: 2rem;
-  transition: all 250ms ease; }
-  .menu-toggle:before {
-    content: '';
-    width: 1rem;
-    height: 3px;
-    background: black;
-    display: inline-block;
-    position: absolute;
-    top: calc(50% - 1.5px);
-    left: 0;
-    transition: all 250ms ease; }
-  .menu-toggle:after {
-    content: '';
-    width: 1rem;
-    height: 9px;
-    display: inline-block;
-    position: absolute;
-    top: calc(50% - 0.45rem);
-    left: 0;
-    border-top: 3px solid black;
-    border-bottom: 3px solid black;
-    transition: all 250ms ease; }
-  .is-open .menu-toggle:before {
-    top: 45%;
-    transform: rotate(45deg); }
-  .is-open .menu-toggle:after {
-    border-top-color: transparent;
-    border-top: 0;
-    height: 0;
-    top: 45%;
-    transform: rotate(-45deg); }
-  .is-open .menu-toggle {
-    color: transparent; }
 
 .message {
   border: 1px solid #333333;
@@ -926,6 +816,173 @@ a {
     height: 100%;
     border: 0; }
 
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  z-index: -10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 250ms ease-in-out; }
+  .modal .modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.25); }
+  .modal .modal__content {
+    max-height: 80vh;
+    min-width: 40rem;
+    max-width: 90%;
+    background: #FFFFFF;
+    z-index: 1;
+    padding: 2rem;
+    overflow: scroll;
+    width: 60rem; }
+  .modal.is-open {
+    visibility: visible;
+    opacity: 1;
+    z-index: 100; }
+
+.table-of-contents {
+  background: white;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  height: 2.5rem;
+  opacity: 0;
+  transition: all 250ms ease-in-out; }
+  .is-scrolled .table-of-contents {
+    opacity: 1; }
+  .table-of-contents .table-of-contents__list {
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 250ms ease-in-out;
+    list-style: none;
+    padding: 2rem; }
+    .table-of-contents .table-of-contents__list a {
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 1rem 0;
+      display: inline-block;
+      color: black; }
+      .table-of-contents .table-of-contents__list a:hover {
+        color: #4d4d4d; }
+    .table-of-contents .table-of-contents__list ul {
+      list-style: none;
+      margin: 0 0 0 4rem; }
+      .table-of-contents .table-of-contents__list ul a {
+        font-size: 1.2rem;
+        font-weight: normal; }
+  .table-of-contents.is-open {
+    height: 100vh;
+    overflow-y: scroll; }
+    .table-of-contents.is-open .table-of-contents__list {
+      z-index: 0;
+      visibility: visible;
+      opacity: 1; }
+    .table-of-contents.is-open .menu__current-item-section,
+    .table-of-contents.is-open .menu__current-item-section:before,
+    .table-of-contents.is-open .menu__current-item,
+    .table-of-contents.is-open .menu__current-item:before {
+      opacity: 0; }
+  .is-scrolled .table-of-contents {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    width: 36rem; }
+    @media screen and (max-width: 1200px) {
+      .is-scrolled .table-of-contents {
+        width: 26rem;
+        left: 0rem; }
+        .is-scrolled .table-of-contents .menu__current-item-section {
+          display: none; } }
+    @media screen and (max-width: 955px) {
+      .is-scrolled .table-of-contents {
+        width: 100%; } }
+
+.table-of-contents__bar .menu__current-item:before,
+.table-of-contents__bar .menu__current-item-section:before {
+  content: '›';
+  padding: 0 0.5rem; }
+
+.menu-toggle {
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  color: black;
+  height: 2rem;
+  line-height: 2rem;
+  position: relative;
+  margin-left: 1rem;
+  padding-left: 2rem;
+  transition: all 250ms ease; }
+  .menu-toggle:before {
+    content: '';
+    width: 1rem;
+    height: 3px;
+    background: black;
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 1.5px);
+    left: 0;
+    transition: all 250ms ease; }
+  .menu-toggle:after {
+    content: '';
+    width: 1rem;
+    height: 9px;
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 0.45rem);
+    left: 0;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    transition: all 250ms ease; }
+  .is-open .menu-toggle:before {
+    top: 45%;
+    transform: rotate(45deg); }
+  .is-open .menu-toggle:after {
+    border-top-color: transparent;
+    border-top: 0;
+    height: 0;
+    top: 45%;
+    transform: rotate(-45deg); }
+  .is-open .menu-toggle {
+    color: transparent; }
+
+.table-of-contents__list > li > a[data-targetlesson]:before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-right: 1rem;
+  vertical-align: top; }
+
+.table-of-contents__list > li > a[data-targetlesson="0"]:before {
+  background-image: url("/housingilab/images/icons_info.svg"); }
+.table-of-contents__list > li > a[data-targetlesson="1"]:before {
+  background-image: url("/housingilab/images/icons_size.svg"); }
+.table-of-contents__list > li > a[data-targetlesson="2"]:before {
+  background-image: url("/housingilab/images/icons_value.svg"); }
+.table-of-contents__list > li > a[data-targetlesson="3"]:before {
+  background-image: url("/housingilab/images/icons_parkingSpaces.svg"); }
+.table-of-contents__list > li > a[data-targetlesson="4"]:before {
+  background-image: url("/housingilab/images/icons_aptArea.svg"); }
+.table-of-contents__list > li > a[data-targetlesson="5"]:before {
+  background-image: url("/housingilab/images/icons_sliders.svg"); }
+
 .outcomes {
   position: absolute;
   top: 0;
@@ -951,6 +1008,15 @@ a {
   display: flex;
   justify-content: space-between;
   padding-left: 1rem; }
+
+.outcomes [data-modal-open] {
+  height: 2.5rem;
+  background: #FFFFFF;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem; }
 
 .outcomes__content {
   padding: 1rem;

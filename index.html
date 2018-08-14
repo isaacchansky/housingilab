@@ -22,16 +22,10 @@ layout: default
 {% for lesson in lessons %}
   <section class="lesson" data-lesson="{{lesson.order}}" id="lesson-{{lesson.order}}">
     <span class="lesson__indicator">{{ lesson.subtitle }}</span>
-    <h2 class="lesson__title">
-      {% if lesson.logo_name %}
-        {% include  lesson.logo_name %}
-      {% endif %}
-      {{ lesson.title }}
-    </h2>
+    <h2 class="lesson__title">{{ lesson.title }}</h2>
     <div class="lesson__meta">Last updated: {{ lesson.updated_at | date: "%b %-d, %Y" }}</div>
 
     {{ lesson.content }}
-
 
 
     {% if lesson.isLesson %}
@@ -87,3 +81,16 @@ layout: default
 </div>
 
 {% include visualization.html %}
+
+
+<div class="modal" data-modal="assumptions" id="assumptions-modal">
+  <div class="modal__overlay" data-modal-dismiss="assumptions"></div>
+  <section class="modal__content">
+    <div class="modal__dismiss" data-modal-dismiss="assumptions">&times;</div>
+    <div class="modal__title">Assumptions</div>
+    <div class="modal__body">
+      {% capture assumptions %}{% include financialAssumptions.md %}{% endcapture %}
+      {{ assumptions | markdownify }}
+    </div>
+  </section>
+</div>

@@ -145,6 +145,23 @@ function clickEventHandling() {
 }
 
 
+function handleModals() {
+    $('[data-modal-open]').click( function(event: any) {
+        event.preventDefault();
+        let modalName = $(this).attr('data-modal-open');
+        console.log('targeting ', modalName);
+        $(`[data-modal="${modalName}"]`).addClass('is-open');
+    });
+
+    $('[data-modal-dismiss]').click( function(event: any) {
+        event.preventDefault();
+        let modalName = $(this).attr('data-modal-dismiss');
+        console.log('dismissing ', modalName);
+        $(`[data-modal="${modalName}"]`).removeClass('is-open');
+    });
+}
+
+
 function initThree() {
     let animateTimer: any;
     let vizSpace = <HTMLElement>document.querySelector('.visualization-module__canvas')
@@ -238,6 +255,7 @@ function initThree() {
         clickEventHandling();
         initThree();
         handleActiveRender();
+        handleModals();
     });
 
 })();

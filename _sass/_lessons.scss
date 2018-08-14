@@ -117,3 +117,44 @@
         margin-left: 1rem;
     }
 }
+
+
+
+// Lesson Specific Icons
+
+// [data-lesson] {
+//     .lesson__title {
+//         &:before {
+//             content: '';
+//             display: inline-block;
+//             width: 2rem;
+//             height: 2rem;
+//             background-repeat: no-repeat;
+//             background-size: contain;
+//             padding-right: 1rem;
+//             vertical-align: middle;
+//         }
+//     }
+//     .lesson__meta {
+//         margin-left: 3rem;
+//     }
+// }
+
+// [data-lesson="0"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_info.svg')
+// }
+// [data-lesson="1"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_size.svg')
+// }
+// [data-lesson="2"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_value.svg')
+// }
+// [data-lesson="3"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_parkingSpaces.svg')
+// }
+// [data-lesson="4"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_aptArea.svg')
+// }
+// [data-lesson="5"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_sliders.svg')
+// }

@@ -1,0 +1,178 @@
+.table-of-contents {
+    background: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    height: 2.5rem;
+    opacity: 0;
+    transition: all 250ms ease-in-out;
+
+    .is-scrolled & {
+        opacity: 1;
+    }
+
+    .table-of-contents__list {
+        z-index: -1;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 250ms ease-in-out;
+
+        list-style: none;
+        padding: 2rem;
+        a {
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 1rem 0;
+            display: inline-block;
+            color: black;
+            &:hover {
+                color: lighten(black, 30%);
+            }
+        }
+
+        ul {
+            list-style: none;
+            margin: 0 0 0 4rem;
+            a {
+                font-size: 1.2rem;
+                font-weight: normal;
+            }
+        }
+    }
+    &.is-open {
+        height: 100vh;
+        overflow-y: scroll;
+        .table-of-contents__list {
+            z-index: 0;
+            visibility: visible;
+            opacity: 1;
+        }
+        .menu__current-item-section,
+        .menu__current-item-section:before,
+        .menu__current-item,
+        .menu__current-item:before {
+            opacity: 0;
+        }
+
+    }
+
+    .is-scrolled & {
+        position: fixed;
+        top: 0;
+        left: 1rem;
+        width: $lg-content-area + 1;
+        @include media-query($lg-break) {
+            width: $sm-content-area + 1;
+            left: 0rem;
+            .menu__current-item-section {
+                display: none;
+            }
+        }
+        @include media-query($sm-break) {
+            width: 100%;
+        }
+    }
+}
+
+.table-of-contents__bar {
+    .menu__current-item:before,
+    .menu__current-item-section:before {
+        content: '›';
+        padding: 0 0.5rem;
+    }
+}
+
+.menu-toggle {
+    @extend %t-button;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    color: black;
+    height: 2rem;
+    line-height: 2rem;
+    position: relative;
+    margin-left: 1rem;
+    padding-left: 2rem;
+    transition: all 250ms ease;
+
+    &:before {
+        content: '';
+        width: 1rem;
+        height: 3px;
+        background: black;
+        display: inline-block;
+        position: absolute;
+        top: calc(50% - 1.5px);
+        left: 0;
+        transition: all 250ms ease;
+    }
+    &:after {
+        content: '';
+        width: 1rem;
+        height: 9px;
+        display: inline-block;
+        position: absolute;
+        top: calc(50% - 0.45rem);
+        left: 0;
+        border-top: 3px solid black;
+        border-bottom: 3px solid black;
+        transition: all 250ms ease;
+    }
+    .is-open &:before {
+        top:45%;
+        transform: rotate(45deg);
+    }
+    .is-open &:after {
+        border-top-color: transparent;
+        border-top: 0;
+        height: 0;
+        top:45%;
+        transform: rotate(-45deg);
+    }
+
+    .is-open & {
+        color: transparent;
+    }
+}
+
+
+
+
+
+// Lesson Specific Icons
+
+.table-of-contents__list > li > a[data-targetlesson] {
+    &:before {
+        content: '';
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding-right: 1rem;
+        vertical-align: top;
+    }
+}
+.table-of-contents__list > li > a {
+    &[data-targetlesson="0"]:before {
+        background-image: url('/housingilab/images/icons_info.svg')
+    }
+    &[data-targetlesson="1"]:before {
+        background-image: url('/housingilab/images/icons_size.svg')
+    }
+    &[data-targetlesson="2"]:before {
+        background-image: url('/housingilab/images/icons_value.svg')
+    }
+    &[data-targetlesson="3"]:before {
+        background-image: url('/housingilab/images/icons_parkingSpaces.svg')
+    }
+    &[data-targetlesson="4"]:before {
+        background-image: url('/housingilab/images/icons_aptArea.svg')
+    }
+    &[data-targetlesson="5"]:before {
+        background-image: url('/housingilab/images/icons_sliders.svg')
+    }
+}
