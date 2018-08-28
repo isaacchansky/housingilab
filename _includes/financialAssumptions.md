@@ -1,9 +1,5 @@
 
-# Assumptions:
 
-Foo.
-
----
 
 ## Land Area:
 The site and land area has been generated manually, representing a generic development site in Boston.
@@ -11,7 +7,7 @@ The site and land area has been generated manually, representing a generic devel
     value: 12,800 sqft
 
 ---
-    
+
 ## Average Apartment Area (GSF) (Standard sizing)
 The average apartment area in gross square feet (construction area) is calculated using the method described in the City of Boston's JP/ROX Density Bonus Program Financial Analysis (September 2016).
 

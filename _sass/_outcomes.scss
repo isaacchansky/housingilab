@@ -27,7 +27,7 @@
     padding-left: 1rem;
 }
 
-.outcomes [data-modal-open] {
+.outcomes .outcomes__assumptions {
     height: 2.5rem;
     background: $color_white;
     position: absolute;
@@ -46,7 +46,8 @@
 .outcomes.is-closed {
     width: 3rem;
     height: 2.5rem;
-    .outcomes__title {
+    .outcomes__title,
+    .outcomes__assumptions {
         display: none;
     }
     .outcomes__toggle svg {

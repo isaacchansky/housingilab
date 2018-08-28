@@ -446,6 +446,14 @@ a {
         padding: 2rem;
         overflow: scroll;
         width: 60rem;
+        position: relative;
+    }
+
+    .modal__dismiss {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.5rem;
     }
 
 
