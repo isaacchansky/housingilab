@@ -844,7 +844,13 @@ a {
     z-index: 1;
     padding: 2rem;
     overflow: scroll;
-    width: 60rem; }
+    width: 60rem;
+    position: relative; }
+  .modal .modal__dismiss {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem; }
   .modal.is-open {
     visibility: visible;
     opacity: 1;
@@ -1009,7 +1015,7 @@ a {
   justify-content: space-between;
   padding-left: 1rem; }
 
-.outcomes [data-modal-open] {
+.outcomes .outcomes__assumptions {
   height: 2.5rem;
   background: #FFFFFF;
   position: absolute;
@@ -1026,7 +1032,8 @@ a {
 .outcomes.is-closed {
   width: 3rem;
   height: 2.5rem; }
-  .outcomes.is-closed .outcomes__title {
+  .outcomes.is-closed .outcomes__title,
+  .outcomes.is-closed .outcomes__assumptions {
     display: none; }
   .outcomes.is-closed .outcomes__toggle svg {
     transform: rotate(180deg); }
