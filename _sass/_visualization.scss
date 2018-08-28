@@ -39,6 +39,7 @@
 }
 
 
+
 .visualization-module__controls {
     position: absolute;
     bottom: 1rem;
@@ -77,5 +78,29 @@
         position: absolute;
         right: 0;
     }
+
+    &:before {
+        content: '';
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-image: url('/housingilab/images/3drotate.svg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 10rem;
+        background-color: Rgba(255,255,255,0.2);
+        opacity: 1;
+        transition: all 250ms ease-in-out;
+    }
+}
+
+.page-content.has-interaction .visualization-module__canvas:before,
+.page-content.has-moved .visualization-module__canvas:before,
+.visualization-module:hover .visualization-module__canvas:before {
+    opacity: 0;
+    z-index: -1;
 }
 

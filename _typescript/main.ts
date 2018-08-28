@@ -183,6 +183,10 @@ function initThree() {
 
     vizSpace.addEventListener('mousemove', handleActiveRender);
 
+    vizSpace.addEventListener('click', () => {
+        $('.page-content').addClass('has-moved');
+    });
+
     // handle zoom buttons
     let zoomIn = $('.visualization-module__zoom-in');
     let zoomOut = $('.visualization-module__zoom-out');

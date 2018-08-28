@@ -278,26 +278,38 @@ export class BuildingRender {
     addGroundAndContext() {
         let group = new THREE.Group();
 
-        let groundbldgMesh = this.buildMesh(contextGroundBldgs[0].geoms[0].geom, { color: 0x333333}, { color: 0x222222});
-        group.add(groundbldgMesh);
+        contextGroundBldgs[0].geoms.forEach( (g: any) => {
+            let groundbldgMesh = this.buildMesh(g.geom, { color: 0x333333}, { color: 0x222222});
+            group.add(groundbldgMesh);
+        })
+        streetLamps[0].geoms.forEach( (g: any) => {
+            let streetlampMesh = this.buildMesh(g.geom, {color: 0xCCCCCC}, {color: 0xFFFFFF});
+            group.add(streetlampMesh);
+        });
 
-        let streetlampMesh = this.buildMesh(streetLamps[0].geoms[0].geom, {color: 0xCCCCCC}, {color: 0xFFFFFF});
-        group.add(streetlampMesh);
+        streetTrees[0].geoms.forEach( (g: any) => {
+            let streettreeMesh = this.buildMesh(g.geom, {color: 0X317734}, null);
+            group.add(streettreeMesh);
+        });
+        streetMarkings[0].geoms.forEach( (g: any) => {
+            let streetmarkingMesh = this.buildMesh(g.geom, {color: 0xFFFFFF}, null);
+            group.add(streetmarkingMesh);
+        });
 
-        let streettreeMesh = this.buildMesh(streetTrees[0].geoms[0].geom, {color: 0X317734}, null);
-        group.add(streettreeMesh);
+        trafficLights[0].geoms.forEach( (g: any) => {
+            let trafficlightMesh = this.buildMesh(g.geom, {color: 0xCCCCCC}, {color: 0xFFFFFF});
+            group.add(trafficlightMesh);
+        });
 
-        let streetmarkingMesh = this.buildMesh(streetMarkings[0].geoms[0].geom, {color: 0xFFFFFF}, null);
-        group.add(streetmarkingMesh);
+        parcels[0].geoms.forEach( (g: any) => {
+            let parcelsMesh = this.buildLines(g.geom, {color: 0xCCCCCC});
+            group.add(parcelsMesh);
+        });
 
-        let trafficlightMesh = this.buildMesh(trafficLights[0].geoms[0].geom, {color: 0xCCCCCC}, {color: 0xFFFFFF});
-        group.add(trafficlightMesh);
-
-        let parcelsMesh = this.buildLines(parcels[0].geoms[0].geom, {color: 0xCCCCCC});
-        group.add(parcelsMesh);
-
-        let sidewalksMesh = this.buildMesh(sidewalks[0].geoms[0].geom, {color: 0x999999}, null, 0);
-        group.add(sidewalksMesh);
+        sidewalks[0].geoms.forEach( (g: any) => {
+            let sidewalksMesh = this.buildMesh(g.geom, {color: 0x999999}, null, 0);
+            group.add(sidewalksMesh);
+        });
 
         this.scene.add(group);
     }
@@ -332,7 +344,6 @@ export class BuildingRender {
             if (data.parking && data.parking.geoms) {
                 data.parking.geoms.forEach((item: any) => {
                     if (item.geom && item.geom.type) {
-                        // console.log(item.geom.type );
                         if (item.geom.type === "Mesh") {
                             let mesh = this.buildMesh(item.geom, { color: 0x999999 }, { color: 0x000000, linewidth: 1 });
                             group.add(mesh);
