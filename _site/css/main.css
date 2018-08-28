@@ -1283,10 +1283,9 @@ a {
   background: #FFFFFF;
   display: flex;
   justify-content: flex-start;
-  padding: 4rem;
+  padding: 5rem;
   padding-bottom: 1rem;
-  flex-wrap: wrap;
-  margin-top: 4rem; }
+  flex-wrap: wrap; }
   @media screen and (max-width: 955px) {
     .hero .hero__container {
       align-items: flex-start;
@@ -1297,51 +1296,61 @@ a {
   width: 80%;
   margin: 1rem auto; }
 .hero .hero__primary {
-  min-width: 35rem;
   padding-right: 6rem;
-  text-align: right; }
-  @media screen and (max-width: 1200px) {
-    .hero .hero__primary {
-      min-width: 25rem; } }
+  text-align: left;
+  width: 50%; }
   @media screen and (max-width: 955px) {
     .hero .hero__primary {
-      min-width: 0;
+      width: 100%;
       margin-bottom: 4rem;
-      padding-right: 0;
-      text-align: left; } }
+      padding-right: 0; } }
   .hero .hero__primary h1 {
     color: #00A8B5;
-    margin-bottom: 8rem; }
-    @media screen and (max-width: 955px) {
-      .hero .hero__primary h1 {
-        margin-bottom: 4rem; } }
-.hero .hero__secondary {
-  color: #797979;
-  max-width: 40rem; }
-  .hero .hero__secondary h2 {
-    font-weight: 300; }
-  .hero .hero__secondary p {
+    margin-bottom: 2rem; }
+  .hero .hero__primary h2 {
+    font-weight: 400;
+    color: #797979;
+    font-size: 1.5rem;
     margin-bottom: 1rem; }
-.hero .logos > * {
-  vertical-align: middle;
-  display: inline-block; }
-.hero .logos a {
-  text-decoration: none; }
-.hero .logos img {
-  height: 5rem; }
+  .hero .hero__primary p {
+    color: #797979;
+    font-size: 0.9rem;
+    margin-bottom: 1rem; }
+  .hero .hero__primary button {
+    margin-top: 2rem; }
+.hero .hero__secondary {
+  width: 50%;
+  padding-top: 4rem; }
+  @media screen and (max-width: 955px) {
+    .hero .hero__secondary {
+      width: 100%; } }
+.hero .responsive-video {
+  box-shadow: 0 3px 10px rgba(33, 38, 45, 0.14), -1px 1px 5px #f5eded; }
+.hero .logos {
+  margin-top: 2rem; }
+  .hero .logos > * {
+    vertical-align: middle;
+    display: inline-block; }
+  .hero .logos a {
+    text-decoration: none; }
+  .hero .logos img {
+    height: 4.5rem; }
 .hero .powered-by {
   display: inline-block; }
+  .hero .powered-by img {
+    padding-left: 0; }
   .hero .powered-by > * {
     color: #00A8B5;
     font-weight: 600;
+    font-size: 0.75rem;
     vertical-align: middle; }
 .hero .beta {
   position: relative;
   display: block; }
   .hero .beta svg {
     position: absolute;
-    top: -2rem;
-    left: 4rem;
+    top: -3rem;
+    left: -3rem;
     height: 3rem;
     width: 3rem; }
     @media screen and (max-width: 1200px) {
