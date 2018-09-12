@@ -1022,12 +1022,14 @@ a {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0.5rem; }
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem; }
 
 .outcomes__content {
   padding: 1rem;
   height: 100%;
-  overflow: auto; }
+  overflow: auto;
+  padding-bottom: 3rem; }
 
 .outcomes.is-closed {
   width: 3rem;
