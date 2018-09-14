@@ -36,11 +36,10 @@ const renderData: any = {};
 // =======================================================================
 
 financialScenarios.financialScenarios.forEach( (item: any) => {
-    if (!renderData[item.name]) {
-      renderData[item.name] = {};
-      renderData[item.name].scenarios = [];
+    if (!renderData[item.scenario]) {
+      renderData[item.scenario] = {};
     }
-    renderData[item.name].scenarios.push(item);
+    renderData[item.scenario].scenario = item.outcomes;
 });
 
 apts.forEach( (item: any) => {
@@ -86,6 +85,13 @@ openspace.forEach((item: any) => {
 });
 
 
+function getScenariokey(opts: any) {
+    return `${opts.numApts}|${opts.numFloors}|${opts.ratioParking}|${opts.rentScenario}|${opts.type}`;
+}
+
+function getNamekey(opts: any) {
+    return `${opts.numApts}|${opts.numFloors}|${opts.ratioParking}`;
+}
 
 
 
@@ -288,7 +294,7 @@ export class BuildingRender {
         });
 
         streetTrees[0].geoms.forEach( (g: any) => {
-            let streettreeMesh = this.buildMesh(g.geom, {color: 0X317734}, null);
+            let streettreeMesh = this.buildMesh(g.geom, { color: 0X225424}, null);
             group.add(streettreeMesh);
         });
         streetMarkings[0].geoms.forEach( (g: any) => {
@@ -321,8 +327,10 @@ export class BuildingRender {
     // };
     renderScenario(opts: any, outcomes?: any) {
         // console.log('opts', {renderOpts: opts});
-        let key = `${opts.numApts}|${opts.numFloors}|${opts.ratioParking}`;
+        // We use the name not scenario key here.
+        let key = getNamekey(opts);
         let data = renderData[key];
+
         let buildingColor = 0xFFFFFF;
         if (outcomes) {
 
@@ -384,7 +392,7 @@ export class BuildingRender {
                 data.openspace.geoms.forEach((item: any) => {
                     // console.log(item);
                     if (item.geom && item.geom.type) {
-                        let mesh = this.buildMesh(item.geom, { color: 0x317734 }, { color: 0xeeeeee, linewidth: 1 });
+                        let mesh = this.buildMesh(item.geom, { color: 0X225424 }, { color: 0xeeeeee, linewidth: 1 });
                         group.add(mesh);
                     }
                 })
@@ -417,16 +425,8 @@ export class BuildingRender {
     // };
     getOutcomes(renderOptions: any) {
         // console.log('outcome opts', {renderOptions});
-        let data = renderData[`${renderOptions.numApts}|${renderOptions.numFloors}|${renderOptions.ratioParking}`];
-        let selectedScenario = {};
-
-        data.scenarios.forEach( (s: any) => {
-            if (s.type === renderOptions.type && s.rentScenario === renderOptions.rentScenario) {
-                selectedScenario = s;
-            }
-        });
-
-        return selectedScenario;
+        let data = renderData[getScenariokey(renderOptions)];
+        return data.scenario;
     }
 
     composeScene() {

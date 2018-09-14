@@ -39,7 +39,7 @@
 }
 
 .outcomes__content {
-    padding: 1rem;
+    padding: 1rem 0;
     height: 100%;
     overflow: auto;
     padding-bottom: 3rem;
@@ -62,6 +62,84 @@
 }
 
 
+.outcomes__section-title {
+    width: 100%;
+    text-align: left;
+    border: none;
+    padding: 1rem 1rem 1.1rem 1rem;
+    padding-right: 2rem;
+    position: relative;
+    font-weight: bold;
+    margin-bottom: 0;
+    transition: all 250ms ease-in-out;
+    background: lighten($color_grey, 18%);
+    margin-bottom: 1rem;
+
+    &:hover {
+        background: lighten($color_grey, 15%);
+    }
+
+    &:after {
+        content: '›';
+        transform: rotate(90deg);
+        position: absolute;
+        top: calc(50% - 1.15rem);
+        right: 1rem;
+        font-size: 1.5rem;
+        transition: transform 250ms ease-in-out;
+    }
+}
+
+.outcomes__section-list {
+    overflow: hidden;
+    padding:0;
+    margin: 0;
+    max-height: 0;
+    list-style: none;
+    transition: max-height 250ms ease-in-out;
+    .outcome__item {
+        font-size: 0.9rem;
+        position: relative;
+
+        img {
+            height: 2.5rem;
+            padding-right: 1rem;
+            padding-left: 0rem;
+        }
+        label {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+        }
+        .outcome__item-value {
+            text-align: right;
+            margin-bottom: 1.25rem;
+            padding-left: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .t-positive,
+        .t-negative {
+            margin-left: 1rem;
+        }
+    }
+}
+
+.outcomes__section-title.is-expanded {
+    background: lighten($color_grey, 10%);
+
+    &:after {
+        transform: rotate(-90deg);
+    }
+}
+
+.outcomes__section-title.is-expanded + .outcomes__section-list {
+    max-height: 200vh;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
 
 
 
@@ -118,108 +196,7 @@
     }
 }
 
-.outcomes__list {
-    list-style: none;
-    margin-bottom: 4rem;
-    margin-top: 2rem;
-    .outcome__item {
-        font-size: 1rem;
-        position: relative;
-        padding-left: 2rem;
-        &:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.2rem;
-            width: 1.25rem;
-            height: 1.25rem;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
 
-        .t-positive,
-        .t-negative {
-            margin-left: 1rem;
-        }
-    }
-    [data-val="calcNumApts"]:before {
-        background-image: url('/housingilab/images/icons_numApts.svg');
-        // background-image: url('/housingilab/images/icons_size.svg');
-    }
-    [data-val="numFloors"]:before {
-        background-image: url('/housingilab/images/icons_numFloors.svg');
-    }
-    [data-val="constructionType"]:before {
-        background-image: url('/housingilab/images/icons_constructionType.svg');
-    }
-    [data-val="numResidents"]:before {
-        background-image: url('/housingilab/images/icons_numResidents.svg');
-    }
-    [data-val="far"]:before {
-        background-image: url('/housingilab/images/icons_far.svg');
-    }
-    [data-val="coverageRatio"]:before {
-        background-image: url('/housingilab/images/icons_coverage.svg');
-    }
-    [data-val="avgAptSize"]:before {
-        // background-image: url('/housingilab/images/icons_size.svg');
-        background-image: url('/housingilab/images/icons_aptArea.svg');
-    }
-    [data-val="permitProcess"]:before {
-        background-image: url('/housingilab/images/icons_permitting.svg');
-    }
-    [data-val="numParking"]:before {
-        background-image: url('/housingilab/images/icons_parkingSpaces.svg');
-    }
-    [data-val="parkingPrice"]:before {
-        background-image: url('/housingilab/images/icons_parkingCost.svg');
-    }
-    [data-val="returnOnCost"]:before {
-        background-image: url('/housingilab/images/icons_percent.svg');
-    }
-    [data-val="expenses"]:before {
-        background-image: url('/housingilab/images/icons_expense.svg');
-    }
-    [data-val="netIncome"]:before {
-        background-image: url('/housingilab/images/icons_income.svg');
-    }
-    [data-val="tdcPerUnit"]:before {
-        background-image: url('/housingilab/images/icons_costPerApt.svg');
-    }
-    [data-val="feasibility"]:before {
-        background-image: url('/housingilab/images/icons_value.svg');
-    }
-    [data-val="height"]:before {
-        background-image: url('/housingilab/images/icons_height.svg');
-    }
-    [data-val="rentScenario"]:before,
-    [data-val="softCostsPerTDC"]:before {
-        background-image: url('/housingilab/images/icons_rent.svg');
-    }
-    [data-val="noiPerApt"]:before {
-        background-image: url('/housingilab/images/icons_costPerApt.svg');
-    }
-    [data-val="tdcPerGSF"]:before,
-    [data-val="landPricePerTDC"]:before {
-        background-image: url('/housingilab/images/icons_landCost.svg');
-    }
-    [data-val="constructionPricePerTDC"]:before {
-        background-image: url('/housingilab/images/icons_constructionPrice.svg');
-    }
-    [data-val="developerFeePerTDC"]:before {
-        background-image: url('/housingilab/images/icons_devFee.svg');
-    }
-    [data-val="ratioParking"]:before {
-        background-image: url('/housingilab/images/icons_parkingRatio.svg');
-    }
-    [data-val="numParkingAtGrade"]:before {
-        background-image: url('/housingilab/images/icons_parkingAtGrade.svg');
-    }
-    [data-val="numParkingUnderground"]:before {
-        background-image: url('/housingilab/images/icons_parkingUnderground.svg');
-    }
-    [data-val="parkingPricePerTDC"]:before {
-        background-image: url('/housingilab/images/icons_parkingCost.svg');
-    }
-
+.feasibility-scale {
+    padding: 1rem;
 }

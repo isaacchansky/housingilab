@@ -118,6 +118,10 @@ function clickEventHandling() {
         $(".outcomes").toggleClass('is-closed');
     });
 
+    $(document).on('click', ".outcomes__section-title", (e) => {
+        $(e.currentTarget).toggleClass('is-expanded');
+    });
+
     $(".button--next-lesson").on('click', (e) => {
         let lesson = $(e.currentTarget).closest('[data-lesson]').data('lesson');
         if (lesson !== undefined) {
