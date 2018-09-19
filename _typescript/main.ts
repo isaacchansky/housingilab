@@ -35,8 +35,8 @@ let renderOptionDefaults: any = {
 
 
 
-function setOutcomes(s: any, lesson: number) {
-    let outcomeHTML = outcomeTemplating(s, lesson);
+function setOutcomes(s: any, lesson: number, scenarioKey: string) {
+    let outcomeHTML = outcomeTemplating(s, lesson, scenarioKey);
     $(".outcomes__content").html(outcomeHTML);
 }
 
@@ -56,8 +56,6 @@ function setOutcomes(s: any, lesson: number) {
 // To be called after DOMContentLoaded
 function scrollEventHandling() {
     let pageContent = $('.page-content');
-    let currentMenuItem = document.querySelector(".menu__current-item");
-    let currentMenuSection = document.querySelector(".menu__current-item-section");
 
     function handleScroll() {
         if (pageContent[0].getBoundingClientRect().top <= 0) {
@@ -70,14 +68,6 @@ function scrollEventHandling() {
                 let title = lessonModule.querySelector('.lesson__title').textContent;
                 let options = lessonModule.querySelector('.options');
                 let isInOptions;
-                if (options) {
-                    isInOptions = isScrolledIntoView(lessonModule.querySelector('.options'));
-                    currentMenuSection.textContent = isInOptions ? 'Interactive' : 'Lesson';
-                } else {
-                    currentMenuSection.textContent = '';
-                }
-
-                currentMenuItem.textContent = title;
                 currentLesson = lessonModule;
             }
         });
@@ -137,7 +127,7 @@ function clickEventHandling() {
         toc.toggleClass('is-open');
     });
 
-    $(".table-of-contents a").on('click', (e) => {
+    $("[data-targetlesson]").on('click', (e) => {
         toc.removeClass("is-open");
         let lesson = parseInt($(e.currentTarget).data('targetlesson'), 10);
         for (let i=1; i <= lesson; i++) {
@@ -237,7 +227,7 @@ function initThree() {
         let options = Object.assign({}, renderOptionDefaults, activeRenderOptions);
         let outcomes = br.getOutcomes(options);
 
-        setOutcomes(outcomes, lesson);
+        setOutcomes(outcomes, lesson, `${options.numApts}|${options.numFloors}|${options.ratioParking}|${options.rentScenario}|${options.type}`);
         br.renderScenario(options, outcomes);
 
         if (!$('.page-content').hasClass('has-interaction')) {

@@ -1,3 +1,68 @@
+.inline-lesson-links {
+    display: flex;
+    margin-left: 2rem;
+    margin-right: 1rem;
+    justify-content: space-around;
+    width: 100%;
+
+    [data-targetlesson] {
+        position: relative;
+        &:after {
+            content: '';
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            padding: 0 0.5rem;
+            position: relative;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        &:before {
+            content: attr(data-title);
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 200px;
+            min-width: 160px;
+            font-size: 0.9rem;
+            font-weight: 200;
+            text-align: center;
+            padding: 0.25rem;
+            pointer-events: none;
+            letter-spacing: 0.5px;
+            border-radius: 2px;
+            color: white;
+            background: rgba(0,0,0,0.6);
+            z-index: 10;
+            opacity: 0;
+            transition: all 250ms ease-in-out;
+        }
+        &:hover:before {
+            opacity: 1;
+            top: 100%;
+        }
+    }
+
+
+    [data-targetlesson="1"]:after {
+        background-image: url('/housingilab/images/icons_size.svg');
+    }
+    [data-targetlesson="2"]:after {
+        background-image: url('/housingilab/images/icons_value.svg');
+    }
+    [data-targetlesson="3"]:after {
+        background-image: url('/housingilab/images/icons_parkingSpaces.svg');
+    }
+    [data-targetlesson="4"]:after {
+        background-image: url('/housingilab/images/icons_aptArea.svg');
+    }
+    [data-targetlesson="5"]:after {
+        background-image: url('/housingilab/images/icons_sliders.svg');
+    }
+
+}
+
 .table-of-contents {
     background: white;
     position: absolute;
@@ -78,6 +143,10 @@
 }
 
 .table-of-contents__bar {
+    display: flex;
+    align-items: center;
+    margin: 0.25rem 2rem;
+
     .menu__current-item:before,
     .menu__current-item-section:before {
         content: '›';
@@ -94,8 +163,8 @@
     height: 2rem;
     line-height: 2rem;
     position: relative;
-    margin-left: 1rem;
     padding-left: 2rem;
+    margin: 0;
     transition: all 250ms ease;
 
     &:before {

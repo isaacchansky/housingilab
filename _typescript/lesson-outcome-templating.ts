@@ -53,8 +53,8 @@ function feasibilityScale(opts: any) {
     `;
 }
 
-function descriptionTemplate(opts: any, lesson: string) {
-    let description = (<any>window).SCENARIO_DESCRIPTIONS.filter((e: any) => e.scenario === opts.scenario)[0];
+function descriptionTemplate(lesson: string, scenarioKey: string) {
+    let description = (<any>window).SCENARIO_DESCRIPTIONS.filter((e: any) => e.scenario === scenarioKey)[0];
     if (description && description.lessonDescriptions[lesson]) {
         return `<h2 class="outcomes__description">${description.lessonDescriptions[lesson]}</h2>`;
     } else {
@@ -91,12 +91,12 @@ const sectionTemplate = (section: string, opts: any) => {
     `;
 };
 
-const lessonOutcomeTemplate = (groupedOpts: any, opts: any, lesson: string) => {
+const lessonOutcomeTemplate = (groupedOpts: any, opts: any, lesson: string, scenarioKey: string) => {
     const sections = Object.keys(groupedOpts).map( section => {
         return sectionTemplate(section, groupedOpts[section]);
     }).join('');
     return `
-        ${descriptionTemplate(groupedOpts, lesson)}
+        ${descriptionTemplate(lesson, scenarioKey)}
         ${sections}
         ${feasibilityScale(opts)}
     `;
@@ -111,12 +111,12 @@ function groupBy(xs: any, key: string) {
 };
 
 
-export default function outcomeTemplating (options: any, lesson: number) {
+export default function outcomeTemplating(outcomes: any, lesson: number, scenarioKey: string) {
     let tpl = '';
     // don't want to show certain items in the outcomes array
-    options = options.filter( (o:any) => {
-        return o.name !== 'feasibilityColor';
+    const filteredOutcomes = outcomes.filter( (o:any) => {
+        return o.name !== 'feasibilityColor' && o.lessons.includes(lesson);
     })
-    let groupedOptions = groupBy(options, 'section');
-    return lessonOutcomeTemplate(groupedOptions, options, lesson.toString());
+    let groupedOutcomes = groupBy(filteredOutcomes, 'section');
+    return lessonOutcomeTemplate(groupedOutcomes, outcomes, lesson.toString(), scenarioKey);
 }

@@ -10,8 +10,15 @@ layout: default
       <button class="menu-toggle" aria-controls="">
         MENU
       </button>
-      <span class="menu__current-item"></span>
-      <span class="menu__current-item-section"></span>
+      <div class="inline-lesson-links">
+        {% for lesson in lessons %}
+          {% if lesson.isLesson %}
+            <a href="#lesson-{{lesson.order}}" data-targetlesson="{{lesson.order}}" data-title="{{lesson.title}}">
+              <span class="visually-hidden">{{lesson.title}}</span>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
 
     <ul class="table-of-contents__list">

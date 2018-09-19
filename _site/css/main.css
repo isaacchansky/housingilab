@@ -730,6 +730,7 @@ a {
     border-radius: 2px 2px 0 0;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     width: calc(50% - 1.5rem);
     height: 18rem;
     padding: 0.25rem;
@@ -856,6 +857,57 @@ a {
     opacity: 1;
     z-index: 100; }
 
+.inline-lesson-links {
+  display: flex;
+  margin-left: 2rem;
+  margin-right: 1rem;
+  justify-content: space-around;
+  width: 100%; }
+  .inline-lesson-links [data-targetlesson] {
+    position: relative; }
+    .inline-lesson-links [data-targetlesson]:after {
+      content: '';
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      padding: 0 0.5rem;
+      position: relative;
+      background-size: contain;
+      background-repeat: no-repeat; }
+    .inline-lesson-links [data-targetlesson]:before {
+      content: attr(data-title);
+      position: absolute;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 200px;
+      min-width: 160px;
+      font-size: 0.9rem;
+      font-weight: 200;
+      text-align: center;
+      padding: 0.25rem;
+      pointer-events: none;
+      letter-spacing: 0.5px;
+      border-radius: 2px;
+      color: white;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 10;
+      opacity: 0;
+      transition: all 250ms ease-in-out; }
+    .inline-lesson-links [data-targetlesson]:hover:before {
+      opacity: 1;
+      top: 100%; }
+  .inline-lesson-links [data-targetlesson="1"]:after {
+    background-image: url("/housingilab/images/icons_size.svg"); }
+  .inline-lesson-links [data-targetlesson="2"]:after {
+    background-image: url("/housingilab/images/icons_value.svg"); }
+  .inline-lesson-links [data-targetlesson="3"]:after {
+    background-image: url("/housingilab/images/icons_parkingSpaces.svg"); }
+  .inline-lesson-links [data-targetlesson="4"]:after {
+    background-image: url("/housingilab/images/icons_aptArea.svg"); }
+  .inline-lesson-links [data-targetlesson="5"]:after {
+    background-image: url("/housingilab/images/icons_sliders.svg"); }
+
 .table-of-contents {
   background: white;
   position: absolute;
@@ -917,10 +969,14 @@ a {
       .is-scrolled .table-of-contents {
         width: 100%; } }
 
-.table-of-contents__bar .menu__current-item:before,
-.table-of-contents__bar .menu__current-item-section:before {
-  content: '›';
-  padding: 0 0.5rem; }
+.table-of-contents__bar {
+  display: flex;
+  align-items: center;
+  margin: 0.25rem 2rem; }
+  .table-of-contents__bar .menu__current-item:before,
+  .table-of-contents__bar .menu__current-item-section:before {
+    content: '›';
+    padding: 0 0.5rem; }
 
 .menu-toggle {
   box-shadow: none;
@@ -930,8 +986,8 @@ a {
   height: 2rem;
   line-height: 2rem;
   position: relative;
-  margin-left: 1rem;
   padding-left: 2rem;
+  margin: 0;
   transition: all 250ms ease; }
   .menu-toggle:before {
     content: '';
@@ -1076,9 +1132,8 @@ a {
     font-size: 0.9rem;
     position: relative; }
     .outcomes__section-list .outcome__item img {
-      height: 2.5rem;
-      padding-right: 1rem;
-      padding-left: 0rem; }
+      height: 1.5rem;
+      padding: 0 1rem 0 0; }
     .outcomes__section-list .outcome__item label {
       display: flex;
       align-items: center;
@@ -1116,7 +1171,7 @@ a {
 .outcomes__description {
   font-weight: 300;
   font-size: 1.25rem;
-  margin: 1rem 0;
+  margin: 1rem;
   line-height: 1.4;
   letter-spacing: 0; }
   .outcomes__description .outcome-info-user {

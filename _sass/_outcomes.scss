@@ -102,9 +102,8 @@
         position: relative;
 
         img {
-            height: 2.5rem;
-            padding-right: 1rem;
-            padding-left: 0rem;
+            height: 1.5rem;
+            padding: 0 1rem 0 0;
         }
         label {
             display: flex;
@@ -162,7 +161,7 @@
 .outcomes__description {
     font-weight: 300;
     font-size: 1.25rem;
-    margin: 1rem 0;
+    margin: 1rem;
     line-height: 1.4;
     letter-spacing: 0;
 
