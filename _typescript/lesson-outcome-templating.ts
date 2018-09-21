@@ -16,10 +16,11 @@ function feasibilityScale(opts: any) {
     let totalSources = optsObj.debtProp + optsObj.equityProp;
     let totalUses = optsObj.devFeeProp + optsObj.landProp + optsObj.softProp + optsObj.constructionProp;
     let smallerHeight = totalSources > totalUses ? (baseHeight * (totalUses/totalSources)) : (baseHeight * (totalSources/totalUses));
+    console.log(optsObj);
     return `
     <div class="feasibility-scale">
         Feasibility: <span class="t-${optsObj.surplus > 0 ? 'positive' : 'negative'}">${optsObj.surplus > 0 ? 'Feasible' : 'Infeasible'}</span>
-        <div class="scale">
+        <div class="scale ${optsObj.surplus > 0 ? 'right' : 'left'}">
             <div class="scale-left" style="height: ${totalUses > totalSources ? baseHeight : smallerHeight}rem">
                 <div class="scale-title">Uses</div>
 
@@ -98,7 +99,7 @@ const lessonOutcomeTemplate = (groupedOpts: any, opts: any, lesson: string, scen
     return `
         ${descriptionTemplate(lesson, scenarioKey)}
         ${sections}
-        ${feasibilityScale(opts)}
+        ${ lesson !== '1' ? feasibilityScale(opts) : ''}
     `;
 };
 
