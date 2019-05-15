@@ -98,6 +98,7 @@ form {
   margin-bottom: 2.5rem; }
 
 
+
 img {
   max-width: 100%;
   padding: 0.5rem;
@@ -115,4 +116,13 @@ img {
     overflow: hidden;
     clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
     clip: rect(1px, 1px, 1px, 1px);
+}
+
+
+.t-negative {
+  color: $color_red;
+}
+
+.t-positive {
+  color: $color_green;
 }

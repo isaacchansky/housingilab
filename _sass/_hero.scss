@@ -1,0 +1,123 @@
+.hero {
+    .hero__container {
+        background: $color_white;
+        display: flex;
+        justify-content: flex-start;
+        padding: 5rem;
+        padding-bottom: 1rem;
+        flex-wrap: wrap;
+
+        @include media-query($sm-break) {
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 4rem 2rem;
+        }
+    }
+
+    .hero__video {
+        max-width: $lg-content-area;
+        width: 80%;
+        margin: 1rem auto;
+    }
+
+    .hero__primary {
+        padding-right: 6rem;
+        text-align: left;
+        width: 50%;
+        @include media-query($sm-break) {
+            width: 100%;
+            margin-bottom: 4rem;
+            padding-right: 0;
+        }
+
+        h1 {
+            color: $color_blue;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-weight: 400;
+            color: $color_dark-grey;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: $color_dark-grey;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            margin-top: 2rem;
+        }
+
+    }
+    .hero__secondary {
+        width: 50%;
+        padding-top: 4rem;
+        @include media-query($sm-break) {
+            width: 100%;
+        }
+    }
+
+    .responsive-video {
+        box-shadow: 0 3px 10px rgba(33, 38, 45, 0.14), -1px 1px 5px rgba(245, 237, 237, 1);
+    }
+
+    .logos {
+        margin-top: 2rem;
+        > * {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        a {
+            text-decoration: none;
+        }
+        img {
+            height: 4.5rem;
+        }
+    }
+
+    .powered-by {
+        display: inline-block;
+        img {
+            padding-left: 0;
+        }
+        > * {
+            color: $color_blue;
+            font-weight: 600;
+            font-size: 0.75rem;
+            vertical-align: middle;
+        }
+    }
+
+
+    .beta {
+        position: relative;
+        display: block;
+        svg {
+            position: absolute;
+            top: -3rem;
+            left: -3rem;
+            height: 3rem;
+            width: 3rem;
+            @include media-query($lg-break) {
+                left: -2rem;
+            }
+            @include media-query($sm-break) {
+                top: -3rem;
+                right: -3rem;
+                left: auto;
+            }
+        }
+    }
+}
+
+
+.hero__title {
+    @extend %t-headline-oversized;
+    max-width: 45rem;
+    span {
+        color: darken($color_blue, 4%);
+    }
+}

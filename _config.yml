@@ -14,6 +14,7 @@ url: "http://yourdomain.com" # the base hostname & protocol for your site
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'package.json', 'webpack.config.js', 'tsconfig.json', 'deploy-to-gh-pages.sh', 'node_modules', 'tsd.json']
 
+feedback_link: 'mailto:housingilab@boston.gov?subject=Housing%20Development%20Toolkit%20Feedback'
 
 # Build settings
 markdown: kramdown

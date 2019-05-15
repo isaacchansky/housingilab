@@ -1,17 +1,37 @@
 <header class="site-header">
   <div class="hero">
     <div class="hero__container">
-      <h1 class="hero__title">
-        Understanding Housing Development:
-        <span>A Toolkit</span>
-      </h1>
-      <p class="lead">
-        The city has taken many steps in recent years, including the Mayor’s Housing Plan and Imagine Boston 2030, to address the lack of housing supply and affordable housing. Citizens had a role in shaping the overall community/neighborhood vision.
-        <br>
-        In this online toolkit, you will find a series of [four] lesson modules and interactive exercises on housing development. You will be able to examine a variety of scenarios and analyze the tradeoffs that the City, community groups, advocates and developers take-on every day.  At the end of the session, we will provide you with suggestions on how you can get involved in shaping the vision for your neighborhood.
-      </p>
-
-      <button id="start" class="button--primary">Start learning</button>
+      <div class="hero__primary">
+        <a class="beta" href="{{site.feedback_link}}">
+          {% include icons/beta.svg %}
+        </a>
+        <h1>Understanding Housing Development</h1>
+        <h2>An Interactive Educational Toolkit</h2>
+        <p>This website enables you to discover various scenarios for housing development. Through a series of lessons and interactive exercises, you will be able to visualize different planning options and their effects on things like affordability, building bulk, or whether the development would be financially feasible.
+        </p>
+        <p>
+        The tradeoffs between these outcomes are balanced every day by City Planners, Community Groups, and Development Teams — and have also been recorded in the Mayor’s Housing Plan and Imagine Boston 2030, where citizens had a role in shaping our overall vision for Boston’s growth.
+        </p>
+        <p>
+        After completing the lessons, we will provide suggestions on how you can get involved in shaping the vision for your neighborhood.</p>
+        <button id="start" class="button--primary">
+          <span>Start learning</span> {% include icons/down-arrow.svg %}
+        </button>
+      </div>
+      <div class="hero__secondary">
+        <div class="responsive-video">
+          <iframe  src="https://www.youtube.com/embed/pN5TiTvm_Gw?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="logos">
+          <a href="https://www.boston.gov/"><img src="/housingilab/images/city-of-boston-logo.png" alt="City of Boston"></a>
+          <a href="http://www.bostonplans.org/"><img src="/housingilab/images/bpda-logo.png" alt="Boston Planning and Development Association"></a>
+          <a href="https://www.boston.gov/departments/new-urban-mechanics/housing-innovation-lab"><img src="/housingilab/images/hil-logo.png" alt="Housing Innovation Lab"></a>
+          <a href="https://www.placeful.io/" class="powered-by">
+            <span>Powered By</span>
+            <img src="/housingilab/images/placeful-logo.png" alt="Placeful">
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </header>

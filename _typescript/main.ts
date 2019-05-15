@@ -6,30 +6,86 @@ import * as $ from 'jquery';
 
 let br: BuildingRender;
 let handleActiveRender: any;
+let defaultRenderOptionsByLesson: any = {};
+let currentLesson:any = null;
+let previousLesson:any = null;
+let activeRenderOptions: any = {};
 
+let renderOptionDefaults: any = {
+        type: 'Standard',
+        rentScenario: 'deepAffordability',
+        ratioParking: '0.0',
+        numFloors: '3',
+        numApts: '9'
+    };
+
+
+ function buildMenu() {
+     // calculate menu
+    let menuStructure = $('[data-lesson]').map((i, el) => {
+        let lesson = $(el).data('lesson');
+        let sections = $(el).find('h3').map( (i,el) => {
+            return `<li><a data-menulink data-targetlesson="${lesson}" href="#${$(el).attr('id')}">${$(el).text()}</a></li>`;
+        }).toArray().join('');
+        return `<li><a data-menulink data-targetlesson="${lesson}" href="#${$(el).attr('id')}">${$(el).find('.lesson__title').text()}</a><ul>${sections}</ul></li>`;
+    }).toArray().join('');
+
+    $('.table-of-contents__list').append(menuStructure);
+ }
+
+
+
+function setOutcomes(s: any, lesson: number, scenarioKey: string) {
+    let outcomeHTML = outcomeTemplating(s, lesson, scenarioKey);
+    $(".outcomes__content").html(outcomeHTML);
+}
+
+
+ function newSectionReset(lessonIndex: number) {
+     if (br) {
+        br.resetZoom();
+        handleActiveRender();
+        $('.page-content').removeClass('has-interaction');
+        $(`[data-lesson="${lessonIndex}"]`).show();
+        renderOptionDefaults = Object.assign({}, renderOptionDefaults, defaultRenderOptionsByLesson[lessonIndex]);
+        activeRenderOptions = {};
+        br.renderScenario( Object.assign({}, renderOptionDefaults, defaultRenderOptionsByLesson[lessonIndex]));
+     }
+ }
 
 // To be called after DOMContentLoaded
 function scrollEventHandling() {
     let pageContent = $('.page-content');
-    let currentMenuItem = document.querySelector(".menu__current-item");
 
     function handleScroll() {
-        let currentLesson = null;
         if (pageContent[0].getBoundingClientRect().top <= 0) {
             pageContent.addClass('is-scrolled');
         } else {
             pageContent.removeClass('is-scrolled');
         }
         $('.lesson-modules [data-lesson]').each( (i, lessonModule: any) => {
-            if ( isScrolledIntoView(lessonModule)) {
+            if (isScrolledIntoView(lessonModule)) {
                 let title = lessonModule.querySelector('.lesson__title').textContent;
-                currentMenuItem.textContent = title;
+                let options = lessonModule.querySelector('.options');
+                let isInOptions;
                 currentLesson = lessonModule;
             }
         });
 
+        if (previousLesson === null) {
+            // initially, set as the same
+            previousLesson = currentLesson;
+        }
+
         if (currentLesson) {
             let currentLessonNumber = $(currentLesson).data('lesson');
+            if (currentLesson !== previousLesson) {
+                if (currentLessonNumber) {
+                    currentLessonNumber = parseInt(currentLessonNumber, 10);
+                    newSectionReset(currentLessonNumber);
+                    previousLesson = currentLesson;
+                }
+            }
             // TODO: throttle this.
             // history.pushState({ lesson: currentLessonNumber }, 'Lesson ${currentLessonNumber}', `${location.origin}${location.pathname}#lesson-${currentLessonNumber}`);
         }
@@ -48,15 +104,22 @@ function clickEventHandling() {
         scrollTo(getScrollOffset($('.lesson-modules')[0]), 600);
     });
 
-    $(".visualization-module__toggle").on('click', () => {
-        $(".visualization-module__outcomes").toggleClass('is-closed');
+    $(".outcomes__toggle").on('click', () => {
+        $(".outcomes").toggleClass('is-closed');
+    });
+
+    $(document).on('click', ".outcomes__section-title", (e) => {
+        $(e.currentTarget).toggleClass('is-expanded');
     });
 
     $(".button--next-lesson").on('click', (e) => {
-        scrollTo(getScrollOffset(e.currentTarget.parentElement.nextElementSibling), 600);
-        br.resetZoom();
-        handleActiveRender();
-        $('.page-content').removeClass('has-interaction');
+        let lesson = $(e.currentTarget).closest('[data-lesson]').data('lesson');
+        if (lesson !== undefined) {
+            lesson = parseInt(lesson, 10);
+            // reset for next lesson
+            newSectionReset(lesson+1);
+            scrollTo(getScrollOffset(e.currentTarget.parentElement.nextElementSibling), 600);
+        }
     });
 
     let toc = $('.table-of-contents');
@@ -64,19 +127,34 @@ function clickEventHandling() {
         toc.toggleClass('is-open');
     });
 
-    $(".table-of-contents a").on('click', (e) => {
+    $("[data-targetlesson]").on('click', (e) => {
         toc.removeClass("is-open");
+        let lesson = parseInt($(e.currentTarget).data('targetlesson'), 10);
+        for (let i=1; i <= lesson; i++) {
+            $(`[data-lesson="${i}"]`).show();
+        }
     });
 
+
 }
 
 
-function setOutcomes(s: any, lesson: number) {
-    let outcomeHTML = outcomeTemplating(s, lesson);
+function handleModals() {
+    $('[data-modal-open]').click( function(event: any) {
+        event.preventDefault();
+        let modalName = $(this).attr('data-modal-open');
+        console.log('targeting ', modalName);
+        $(`[data-modal="${modalName}"]`).addClass('is-open');
+    });
 
-    $(".visualization-module__quick-outcome").html(outcomeHTML.summary);
-    $(".visualization-module__outcomes-content").html(outcomeHTML.full);
+    $('[data-modal-dismiss]').click( function(event: any) {
+        event.preventDefault();
+        let modalName = $(this).attr('data-modal-dismiss');
+        console.log('dismissing ', modalName);
+        $(`[data-modal="${modalName}"]`).removeClass('is-open');
+    });
 }
+
 
 function initThree() {
     let animateTimer: any;
@@ -99,6 +177,10 @@ function initThree() {
 
     vizSpace.addEventListener('mousemove', handleActiveRender);
 
+    vizSpace.addEventListener('click', () => {
+        $('.page-content').addClass('has-moved');
+    });
+
     // handle zoom buttons
     let zoomIn = $('.visualization-module__zoom-in');
     let zoomOut = $('.visualization-module__zoom-out');
@@ -111,17 +193,29 @@ function initThree() {
         handleActiveRender();
     });
 
-    let renderOptionDefaults: any = {
-        type: 'Standard',
-        rentScenario: 'deepAffordability',
-        ratioParking: '0.0',
-        numFloors: '3',
-        numApts: '9'
-    };
-    let activeRenderOptions: any = {};
 
+    // Set up default rendering options for each lesson
+    $('[data-lesson]').each((i, el) => {
+        let massing = $(el).find('[data-massing]').data('massing');
+        if (massing) {
+            massing = massing.split('|');
+            defaultRenderOptionsByLesson[$(el).data('lesson')] = {
+                numApts: massing[0],
+                numFloors: massing[1],
+                ratioParking: massing[2]
+            };
+            if ($(el).find('[data-rentscenario]').data('rentscenario')) {
+                defaultRenderOptionsByLesson[$(el).data('lesson')].rentScenario = $(el).find('[data-rentscenario]').data('rentscenario');
+            }
+        }
+    });
+
+
+    // default to first lesson configured values
+    renderOptionDefaults = Object.assign({}, renderOptionDefaults, defaultRenderOptionsByLesson[1]);
     br.renderScenario(renderOptionDefaults);
 
+    // Handle option changes
     let $option = $('.options__field[data-label] input');
     $option.on('change', (event) => {
         let val = $(event.currentTarget).val();
@@ -130,14 +224,21 @@ function initThree() {
 
         activeRenderOptions[dataLabel] = val.toString();
 
-        let options = Object.assign({},renderOptionDefaults, activeRenderOptions);
+        let options = Object.assign({}, renderOptionDefaults, activeRenderOptions);
         let outcomes = br.getOutcomes(options);
 
-        setOutcomes(outcomes, lesson);
-        br.renderScenario(options);
+        setOutcomes(outcomes, lesson, `${options.numApts}|${options.numFloors}|${options.ratioParking}|${options.rentScenario}|${options.type}`);
+        br.renderScenario(options, outcomes);
 
-        $('.page-content').addClass('has-interaction');
+        if (!$('.page-content').hasClass('has-interaction')) {
+            br.setFocusedZoom();
+            handleActiveRender();
+            $('.page-content').addClass('has-interaction');
+        }
+
     });
+
+
 
 }
 
@@ -147,11 +248,12 @@ function initThree() {
 (function(){
 
     document.addEventListener('DOMContentLoaded', (event) => {
-
+        buildMenu();
         scrollEventHandling();
         clickEventHandling();
         initThree();
         handleActiveRender();
+        handleModals();
     });
 
 })();

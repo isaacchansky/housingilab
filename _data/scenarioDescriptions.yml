@@ -1,0 +1,80 @@
+# This is a YAML that constains descriptions for selected scenarios displayed during lessons 01-04. 
+# A particular scenario is identified by its "scenario" field 
+# (matched to scenarios in /_typescript/data/financialScenarios.json),
+# and any descriptions are specified per lesson number in the "lessonDescriptions" field.
+# A scenario may have multiple descriptions depending on which lesson it is being displayed in;
+# these are specified by the lesson number key for each description.
+
+- 
+  scenario: "9|3|0.5|idpAmiMix|Standard"
+  lessonDescriptions:
+    1: "This development is more compact as it's small FAR is contained within three storeys."
+-
+  scenario: "9|4|0.5|idpAmiMix|Standard"
+  lessonDescriptions:
+    1: "This is a smaller development and 4-storeys tall."
+- 
+  scenario: "9|6|0.5|idpAmiMix|Standard"
+  lessonDescriptions:
+    1: "This development is tall and slim as it has a small FAR distributed over 6 floors."
+- 
+  scenario: "16|3|0.5|idpAmiMix|Standard"
+  lessonDescriptions:
+    1: "This develpoment is called a row-house typology, because it stacks sets of three-storey walk-up apartments in rows."
+    2: "This development is financially feasible because its market-rate rents support its cost of construction, as well as having strong income projections that support its debt repayments."
+- 
+  scenario: "16|4|0.5|idpAmiMix|Standard"
+  lessonDescriptions:
+    1: "This develpoment is a conventional apartment block with a central core servicing 4-storeys of apartments."
+- 
+  scenario: "16|6|0.5|idpAmiMix|Standard"
+  lessonDescriptions:
+    1: "This develpoment is tall and slim as it's moderate FAR is distributed over 6 floors."
+- 
+  scenario: "24|3|0.5|idpAmiMix|Standard"
+  lessonDescriptions:
+    1: "This development doubles two three-storey buildings over the site to fit 24 apartments."
+- 
+  scenario: "24|4|0.5|idpAmiMix|Standard"
+  lessonDescriptions:
+    1: "This development inserts a slim three-storey row type in the rear of the site to a conventional 4-storey apartment block facing the street."
+- 
+  scenario: "24|6|0.5|idpAmiMix|Standard"
+  lessonDescriptions:
+    1: "This develpoment increases the height of a conventional apartment block by two stories to fit 24 apartments."
+- 
+  scenario: "24|6|0.5|idpAmiMix|Standard"
+  lessonDescriptions:
+    1: "This develpoment increases the height of a conventional apartment block by two stories to fit 24 apartments."
+- 
+  scenario: "16|3|0.5|deepAffordability|Standard"
+  lessonDescriptions:
+    2: "This develpoment is not financially feasible without support from govenment and agencies. This is because there is not enough income from its below market-rate rents to repay its debt and fund construction. Affordable Housing developers use subsidies to make up this shortfall."
+-
+  scenario: "16|3|0.5|thirdThirdThird|Standard"
+  lessonDescriptions:
+    2: "This development is narrowly feasible as its mix of rental income is enough to repay its construction debts. However its longer-term sustainability is inconclusive as its return-on-costs is lower than desired."
+-
+  scenario: "16|3|0.5|thirdThirdThird|Standard"
+  lessonDescriptions:
+    2: "This development is narrowly feasible as its mix of rental income is enough to repay its construction debts. However its longer-term sustainability is inconclusive as its return-on-costs is lower than desired."
+-
+  scenario: "24|6|0.0|thirdThirdThird|Standard"
+  lessonDescriptions:
+    3: "This development has no on-site parking and a large amount of open-space for its residents. It is located close to public transit and has a deal to assign several on-street parking spaces to a car-share provider like 'ZipCar'."
+-
+  scenario: "24|6|0.5|thirdThirdThird|Standard"
+  lessonDescriptions:
+    3: "This development has one parking space for every two apartments, taking up the open-space in the rear of the site. By cutting down on parking requirements and its cost, the development is financially feasible."
+-
+  scenario: "24|6|1.0|thirdThirdThird|Standard"
+  lessonDescriptions:
+    3: "This development has one parking space for every apartment, but in order to fit these on site it must build underground parking. This increases the cost of construction dramatically, and so the development is not financially feasbile."
+-
+  scenario: "24|4|0.5|thirdThirdThird|Compact"
+  lessonDescriptions:
+    4: "This development utilizes the Compact Living Policy. It increases the number of units in the development by four and includes common areas for utilities (like bike storage or laundry) and entertainment (like group dining). Since this spreads the construction cost across more apartments, they are both more affordable and the development is feasible."
+-
+  scenario: "24|4|0.5|thirdThirdThird|Standard"
+  lessonDescriptions:
+    4: "This development retains standard-sized apartments and does without common areas. Since the construction cost cannot be support by the fewer, but larger apartments, it is not financially feasible."

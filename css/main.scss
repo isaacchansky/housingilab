@@ -6,7 +6,7 @@
 
 
 // Our variables
-$base-font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
@@ -15,16 +15,25 @@ $type-ratio: 1.4;
 
 $spacing-unit:     30px;
 
+$lg-content-area: 35rem;
+$sm-content-area: 25rem;
+
+$sm-break: 955px;
+
+$lg-break: 1200px;
+
 $color_yellow: #FFEB3B;
 $color_yellow-pale: #f9f5ce;
 $color_copper: #e09a3c;
-$color_blue: #3A9ECD;
-$color_green: #50a562;
-$color_red: #f3614f;
+$color_blue: #00A8B5;
+$color_blue-pale: #b9e5e9;
+$color_green: #a6c73a;
+$color_red: #db4437;
 $color_black: #333333;
 $color_white: #FFFFFF;
 $color_grey: #CCCCCC;
-
+$color_dark-grey: #797979;
+$color_gold: #FEC432;
 
 // BPDA colors
 $bpda-blue: #003b4f;
@@ -33,6 +42,8 @@ $bpda_teal-light: #4dc1cb;
 $bpda_gold: #ffc432;
 $bpda-green: #a5c739;
 $bpda_red: #ff5a28;
+
+
 
 // Use media queries like this:
 // @include media-query($on-palm) {
@@ -54,7 +65,12 @@ $bpda_red: #ff5a28;
         "base",
         "mixins",
         "elements",
-        "components",
         "layout",
+        "components",
+        "table-of-contents",
+        "outcomes",
+        "visualization",
+        "lessons",
+        "hero",
         "animate"
 ;

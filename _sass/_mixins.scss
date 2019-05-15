@@ -7,8 +7,8 @@
 }
 
 %t-details {
-    color: lighten($color_black, 40%);
-    font-size: $base-font-size * 0.8;
+    color: lighten($color_black, 10%);
+    font-size: $base-font-size * 0.9;
 }
 
 
@@ -37,7 +37,7 @@
 %t-headline-4 {
     font-size: $base-font-size;
     line-height: 1.35;
-    letter-spacing: -.08rem;
+    letter-spacing: -.01rem;
 }
 
 

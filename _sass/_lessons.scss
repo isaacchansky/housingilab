@@ -1,0 +1,160 @@
+
+// Default hidden
+[data-lesson]:not([data-lesson="0"]) {
+    display: none;
+}
+
+// uniquely style intro
+[data-lesson="0"] {
+    .button--next-lesson {
+        margin-top: 8rem;
+    }
+}
+
+.page-content .lesson-modules {
+    background: $color_white;
+    width: $lg-content-area + 1;
+    padding: 2rem 2rem 0 2rem;
+    box-shadow: 0 3px 20px rgba(33,38,45,.15), -1px 1px 10px rgba(0,0,0,.05);
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+    .is-scrolled & {
+        overflow: auto;
+        overflow-x: hidden;
+    }
+    @include media-query($lg-break) {
+        width: $sm-content-area + 1;
+    }
+    @include media-query($sm-break) {
+        width: 100%
+    }
+}
+
+
+
+.button--next-lesson {
+    @extend %t-button;
+    margin-top: 10rem;
+    width: calc(100% + 4rem);
+    margin: 0 -2rem 0;
+    border-radius: 0;
+    height: auto;
+    padding: 2rem 2rem;
+    text-align: left;
+    border: 0;
+    background: $color_blue;
+    color: $color_white;
+    box-shadow: none;
+    @include media-query($lg-break) {
+        svg {
+            display: none;
+        }
+    }
+
+    .button__subtitle {
+        display: block;
+        line-height: 2;
+        letter-spacing: 0.2em;
+        padding-left: 2px; // offset for type sizing
+    }
+    .button__title {
+        text-transform: none;
+        font-size: $base-font-size * $type-ratio * $type-ratio;
+        letter-spacing: 0;
+    }
+    svg {
+        height: 2.25rem;
+        width: 2.25rem;
+        margin-left: 2rem;
+        padding: 0.25rem;
+        background: $color_white;
+        stroke: $color_blue;
+        vertical-align:bottom;
+    }
+}
+
+
+.lesson,
+.lesson > * {
+    position: relative;
+}
+
+.lesson__indicator {
+    @extend %t-jumbo;
+    color: $color_blue-pale;
+    z-index: 0;
+}
+
+.lesson__title {
+    margin-bottom: 0;
+}
+
+.lesson__meta {
+    @extend %t-details;
+    margin-bottom: 2rem;
+}
+
+.lesson > *:not(.lesson__indicator) {
+    z-index: 1;
+}
+
+.lesson {
+    min-height: 100vh;
+    padding-top: 10rem;
+    h2 {
+        font-weight: 600;
+    }
+
+    img + em {
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+
+    ul {
+        list-style: circle outside;
+        margin-left: 1rem;
+    }
+}
+
+
+
+// Lesson Specific Icons
+
+// [data-lesson] {
+//     .lesson__title {
+//         &:before {
+//             content: '';
+//             display: inline-block;
+//             width: 2rem;
+//             height: 2rem;
+//             background-repeat: no-repeat;
+//             background-size: contain;
+//             padding-right: 1rem;
+//             vertical-align: middle;
+//         }
+//     }
+//     .lesson__meta {
+//         margin-left: 3rem;
+//     }
+// }
+
+// [data-lesson="0"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_info.svg')
+// }
+// [data-lesson="1"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_size.svg')
+// }
+// [data-lesson="2"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_value.svg')
+// }
+// [data-lesson="3"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_parkingSpaces.svg')
+// }
+// [data-lesson="4"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_aptArea.svg')
+// }
+// [data-lesson="5"] .lesson__title:before {
+//     background-image: url('/housingilab/images/icons_sliders.svg')
+// }
