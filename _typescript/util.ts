@@ -39,12 +39,14 @@ const scrollTo = function (to: any, duration: number) {
                 element.scrollTop = to;
             }
         };
+        console.log(element, start, to, change);
     animateScroll();
 };
 
 
 const getScrollOffset = function (element: any) {
-    let scrolledAmt = document.documentElement.scrollTop;
+    let scrolledAmt = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
+    console.log(scrolledAmt, element, element.getBoundingClientRect());
     return scrolledAmt + element.getBoundingClientRect().top;
 }
 

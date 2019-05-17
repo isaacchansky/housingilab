@@ -84,7 +84,7 @@ const sectionTemplate = (section: string, opts: any) => {
     }).join('');
     return `
         <div class="outcomes__section">
-            <button class="outcomes__section-title">${section}</button>
+            <button class="outcomes__section-title is-expanded">${section}</button>
             <ul class="outcomes__section-list">
              ${items}
             </ul>
