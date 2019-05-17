@@ -5,7 +5,7 @@ import { OrbitControls } from 'three-orbitcontrols-ts';
 
 // Contextual Data
 const streetLamps: any = require("./data/streetLamps.json");
-const streetTrees: any = require("./data/streetTrees.json");
+// const streetTrees: any = require("./data/streetTrees.json");
 const streetMarkings: any = require("./data/streetMarkings.json");
 const trafficLights: any = require("./data/trafficLights.json");
 const parcels: any = require("./data/parcels.json");
@@ -16,7 +16,7 @@ const contextGroundBldgs: any = require("./data/contextGroundBldgs.json");
 const apts: any = require("./data/apts.json");
 const cores: any = require("./data/cores.json");
 const parking: any = require("./data/parking.json");
-const balconies: any = require("./data/balconies.json");
+// const balconies: any = require("./data/balconies.json");
 const sidewalk: any = require("./data/sidewalk.json");
 const openspace: any = require("./data/openspace.json");
 const financialScenarios: any = require("./data/financialScenarios.json");
@@ -63,12 +63,12 @@ parking.forEach((item: any) => {
     renderData[item.name].parking = item;
 });
 
-balconies.forEach((item: any) => {
-    if (!renderData[item.name]) {
-        renderData[item.name] = {};
-    }
-    renderData[item.name].balconies = item;
-});
+// balconies.forEach((item: any) => {
+//     if (!renderData[item.name]) {
+//         renderData[item.name] = {};
+//     }
+//     renderData[item.name].balconies = item;
+// });
 
 sidewalk.forEach((item: any) => {
     if (!renderData[item.name]) {
@@ -293,10 +293,10 @@ export class BuildingRender {
             group.add(streetlampMesh);
         });
 
-        streetTrees[0].geoms.forEach( (g: any) => {
-            let streettreeMesh = this.buildMesh(g.geom, { color: 0X225424}, null);
-            group.add(streettreeMesh);
-        });
+        // streetTrees[0].geoms.forEach( (g: any) => {
+        //     let streettreeMesh = this.buildMesh(g.geom, { color: 0X225424}, null);
+        //     group.add(streettreeMesh);
+        // });
         streetMarkings[0].geoms.forEach( (g: any) => {
             let streetmarkingMesh = this.buildMesh(g.geom, {color: 0xFFFFFF}, null);
             group.add(streetmarkingMesh);
@@ -397,14 +397,14 @@ export class BuildingRender {
                     }
                 })
             }
-            if (data.balconies && data.balconies.geoms) {
-                data.balconies.geoms.forEach((item: any) => {
-                    if (item.geom && item.geom.type) {
-                        let mesh = this.buildMesh(item.geom, { color: 0xDDDDDD }, null);
-                        group.add(mesh);
-                    }
-                })
-            }
+            // if (data.balconies && data.balconies.geoms) {
+            //     data.balconies.geoms.forEach((item: any) => {
+            //         if (item.geom && item.geom.type) {
+            //             let mesh = this.buildMesh(item.geom, { color: 0xDDDDDD }, null);
+            //             group.add(mesh);
+            //         }
+            //     })
+            // }
 
             this.scene.remove(this.activeBuildingGroup);
             this.scene.add(group);
