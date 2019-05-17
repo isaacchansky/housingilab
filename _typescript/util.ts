@@ -1,5 +1,5 @@
 
-const throttle = function (func: Function, limit: Number) {
+const throttle = function (func: Function, limit: number) {
     let inThrottle: boolean;
     return function () {
         const args = arguments

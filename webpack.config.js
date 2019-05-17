@@ -14,11 +14,12 @@ function getPlugin() {
 }
 
 config = {
+    mode: 'development',
     entry: {
         main: ['./_typescript/main.ts']
     },
     output: {
-        filename: '[name].js',
+        chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, './js/')
     },
     resolve: {
@@ -35,12 +36,6 @@ config = {
                 use: 'ts-loader'
             }
         ],
-        loaders: [
-            {
-                test: /\.json$/,
-                loader: 'json-loader'
-            }
-        ]
     },
     plugins: getPlugin()
 };
