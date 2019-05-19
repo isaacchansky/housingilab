@@ -5,7 +5,7 @@ import { OrbitControls } from 'three-orbitcontrols-ts';
 
 // Contextual Data
 const streetLamps: any = require("./data/streetLamps.json");
-// const streetTrees: any = require("./data/streetTrees.json");
+const streetTrees: any = require("./data/streetTrees.json");
 const streetMarkings: any = require("./data/streetMarkings.json");
 const trafficLights: any = require("./data/trafficLights.json");
 const parcels: any = require("./data/parcels.json");
@@ -16,7 +16,7 @@ const contextGroundBldgs: any = require("./data/contextGroundBldgs.json");
 const apts: any = require("./data/apts.json");
 const cores: any = require("./data/cores.json");
 const parking: any = require("./data/parking.json");
-// const balconies: any = require("./data/balconies.json");
+const balconies: any = require("./data/balconies.json");
 const sidewalk: any = require("./data/sidewalk.json");
 const openspace: any = require("./data/openspace.json");
 const financialScenarios: any = require("./data/financialScenarios.json");
@@ -63,12 +63,12 @@ parking.forEach((item: any) => {
     renderData[item.name].parking = item;
 });
 
-// balconies.forEach((item: any) => {
-//     if (!renderData[item.name]) {
-//         renderData[item.name] = {};
-//     }
-//     renderData[item.name].balconies = item;
-// });
+balconies.forEach((item: any) => {
+    if (!renderData[item.name]) {
+        renderData[item.name] = {};
+    }
+    renderData[item.name].balconies = item;
+});
 
 sidewalk.forEach((item: any) => {
     if (!renderData[item.name]) {
@@ -167,7 +167,7 @@ export class BuildingRender {
     }
 
     createLights() {
-        let ambient = new THREE.AmbientLight(0xffffff, 0.75);
+        let ambient = new THREE.AmbientLight(0xffffff, 0.5);
 
         let spotLight = new THREE.SpotLight(0xffffff, 0.5);
         spotLight.position.set(0, 500, 100);
@@ -199,10 +199,10 @@ export class BuildingRender {
     }
 
     createRenderer() {
-        this.renderer = new THREE.WebGLRenderer({ antialias: true });
+        this.renderer = new THREE.WebGLRenderer({ antialias: false });
         this.renderer.setPixelRatio(window.devicePixelRatio);
-        this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        this.renderer.shadowMap.enabled = false; // Appears to have a large impact on Perf.
+        // this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         this.renderer.gammaInput = true;
         this.renderer.gammaOutput = true;
         this.renderer.setSize(this.sceneWidth, this.sceneHeight);
@@ -293,10 +293,10 @@ export class BuildingRender {
             group.add(streetlampMesh);
         });
 
-        // streetTrees[0].geoms.forEach( (g: any) => {
-        //     let streettreeMesh = this.buildMesh(g.geom, { color: 0X225424}, null);
-        //     group.add(streettreeMesh);
-        // });
+        streetTrees[0].geoms.forEach( (g: any) => {
+            let streettreeMesh = this.buildMesh(g.geom, { color: 0X225424}, null);
+            group.add(streettreeMesh);
+        });
         streetMarkings[0].geoms.forEach( (g: any) => {
             let streetmarkingMesh = this.buildMesh(g.geom, {color: 0xFFFFFF}, null);
             group.add(streetmarkingMesh);
@@ -397,14 +397,14 @@ export class BuildingRender {
                     }
                 })
             }
-            // if (data.balconies && data.balconies.geoms) {
-            //     data.balconies.geoms.forEach((item: any) => {
-            //         if (item.geom && item.geom.type) {
-            //             let mesh = this.buildMesh(item.geom, { color: 0xDDDDDD }, null);
-            //             group.add(mesh);
-            //         }
-            //     })
-            // }
+            if (data.balconies && data.balconies.geoms) {
+                data.balconies.geoms.forEach((item: any) => {
+                    if (item.geom && item.geom.type) {
+                        let mesh = this.buildMesh(item.geom, { color: 0xDDDDDD }, null);
+                        group.add(mesh);
+                    }
+                })
+            }
 
             this.scene.remove(this.activeBuildingGroup);
             this.scene.add(group);
@@ -437,7 +437,7 @@ export class BuildingRender {
             }
         });
         this.containerEl.appendChild(this.renderer.domElement);
-        this.camera.position.x = 500;
+        this.camera.position.x = 750;
         this.camera.position.y = 500;
         this.camera.position.z = 500;
         this.camera.lookAt(this.scene.position);
@@ -482,6 +482,7 @@ export class BuildingRender {
         }
         this.camera.fov = this.cameraZoom;
         this.camera.updateProjectionMatrix();
+        this.controls.update();
         this.renderer.render(this.scene, this.camera);
     }
 
