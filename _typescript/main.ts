@@ -155,6 +155,20 @@ function handleModals() {
     });
 }
 
+function watchAndReload() {
+    const tenMinutes = 600000;
+    let timer = setTimeout(() => {
+        window.location.reload();
+    }, tenMinutes);
+
+    $(document).bind("click keydown keyup mousemove", () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            window.location.reload();
+        }, tenMinutes);
+    });
+}
+
 
 function initThree() {
     let animateTimer: any;
@@ -254,6 +268,7 @@ function initThree() {
         initThree();
         handleActiveRender();
         handleModals();
+        watchAndReload();
     });
 
 })();

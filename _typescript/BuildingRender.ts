@@ -167,7 +167,7 @@ export class BuildingRender {
     }
 
     createLights() {
-        let ambient = new THREE.AmbientLight(0xffffff, 0.75);
+        let ambient = new THREE.AmbientLight(0xffffff, 0.5);
 
         let spotLight = new THREE.SpotLight(0xffffff, 0.5);
         spotLight.position.set(0, 500, 100);
@@ -199,10 +199,10 @@ export class BuildingRender {
     }
 
     createRenderer() {
-        this.renderer = new THREE.WebGLRenderer({ antialias: true });
+        this.renderer = new THREE.WebGLRenderer({ antialias: false });
         this.renderer.setPixelRatio(window.devicePixelRatio);
-        this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        this.renderer.shadowMap.enabled = false; // Appears to have a large impact on Perf.
+        // this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         this.renderer.gammaInput = true;
         this.renderer.gammaOutput = true;
         this.renderer.setSize(this.sceneWidth, this.sceneHeight);
@@ -437,7 +437,7 @@ export class BuildingRender {
             }
         });
         this.containerEl.appendChild(this.renderer.domElement);
-        this.camera.position.x = 500;
+        this.camera.position.x = 750;
         this.camera.position.y = 500;
         this.camera.position.z = 500;
         this.camera.lookAt(this.scene.position);
@@ -482,6 +482,7 @@ export class BuildingRender {
         }
         this.camera.fov = this.cameraZoom;
         this.camera.updateProjectionMatrix();
+        this.controls.update();
         this.renderer.render(this.scene, this.camera);
     }
 
