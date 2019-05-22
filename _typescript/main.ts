@@ -190,6 +190,7 @@ function initThree() {
     }, 1000);
 
     vizSpace.addEventListener('mousemove', handleActiveRender);
+    vizSpace.addEventListener('touchstart', handleActiveRender);
 
     vizSpace.addEventListener('click', () => {
         $('.page-content').addClass('has-moved');
