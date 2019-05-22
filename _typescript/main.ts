@@ -179,14 +179,14 @@ function initThree() {
 
 
     handleActiveRender = throttle(function () {
-        br.isAnimating = true;
-        br.animate();
-        if (animateTimer) {
-            window.clearTimeout(animateTimer);
-        }
-        animateTimer = window.setTimeout(() => {
-            br.isAnimating = false;
-        }, 1000);
+        // br.isAnimating = true;
+        // br.animate();
+        // if (animateTimer) {
+        //     window.clearTimeout(animateTimer);
+        // }
+        // animateTimer = window.setTimeout(() => {
+        //     br.isAnimating = false;
+        // }, 1000);
     }, 1000);
 
     vizSpace.addEventListener('mousemove', handleActiveRender);

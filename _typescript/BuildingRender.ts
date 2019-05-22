@@ -133,7 +133,7 @@ export class BuildingRender {
     activeBuildingGroup: any = new THREE.Group();
     cameraZoom: number = 25;
     nextCameraZoom: number;
-    isAnimating: boolean = false;
+    isAnimating: boolean = true;
 
     constructor(element: HTMLElement) {
         this.containerEl = element;
