@@ -1,11 +1,12 @@
 /// <reference path="require.d.ts" />
 
 import * as THREE from 'three';
-import { OrbitControls } from 'three-orbitcontrols-ts';
+// import { OrbitControls } from 'three-orbitcontrols-ts';
+import { TrackballControls } from 'three-trackballcontrols-ts';
 
 // Contextual Data
 const streetLamps: any = require("./data/streetLamps.json");
-const streetTrees: any = require("./data/streetTrees.json");
+// const streetTrees: any = require("./data/streetTrees.json");
 const streetMarkings: any = require("./data/streetMarkings.json");
 const trafficLights: any = require("./data/trafficLights.json");
 const parcels: any = require("./data/parcels.json");
@@ -16,7 +17,7 @@ const contextGroundBldgs: any = require("./data/contextGroundBldgs.json");
 const apts: any = require("./data/apts.json");
 const cores: any = require("./data/cores.json");
 const parking: any = require("./data/parking.json");
-const balconies: any = require("./data/balconies.json");
+// const balconies: any = require("./data/balconies.json");
 const sidewalk: any = require("./data/sidewalk.json");
 const openspace: any = require("./data/openspace.json");
 const financialScenarios: any = require("./data/financialScenarios.json");
@@ -63,12 +64,12 @@ parking.forEach((item: any) => {
     renderData[item.name].parking = item;
 });
 
-balconies.forEach((item: any) => {
-    if (!renderData[item.name]) {
-        renderData[item.name] = {};
-    }
-    renderData[item.name].balconies = item;
-});
+// balconies.forEach((item: any) => {
+//     if (!renderData[item.name]) {
+//         renderData[item.name] = {};
+//     }
+//     renderData[item.name].balconies = item;
+// });
 
 sidewalk.forEach((item: any) => {
     if (!renderData[item.name]) {
@@ -155,11 +156,12 @@ export class BuildingRender {
 
     createControls() {
         // CONTROLS
-        this.controls = new OrbitControls(this.camera, this.containerEl);
-        this.controls.maxPolarAngle = (0.9 * Math.PI) / 2;
-        this.controls.enableZoom = true;
-        this.controls.enableRotate = true;
-        this.controls.enablePan = true;
+        this.controls = new TrackballControls(this.camera, this.containerEl);
+        // this.controls.noPan = true;
+        // this.controls.maxPolarAngle = (0.9 * Math.PI) / 2;
+        // this.controls.enableZoom = true;
+        // this.controls.enableRotate = true;
+        // this.controls.enablePan = true;
 
         this.savedControls.position = this.camera.position.clone();
         this.savedControls.rotation = this.camera.rotation.clone();
@@ -293,10 +295,10 @@ export class BuildingRender {
             group.add(streetlampMesh);
         });
 
-        streetTrees[0].geoms.forEach( (g: any) => {
-            let streettreeMesh = this.buildMesh(g.geom, { color: 0X225424}, null);
-            group.add(streettreeMesh);
-        });
+        // streetTrees[0].geoms.forEach( (g: any) => {
+        //     let streettreeMesh = this.buildMesh(g.geom, { color: 0X225424}, null);
+        //     group.add(streettreeMesh);
+        // });
         streetMarkings[0].geoms.forEach( (g: any) => {
             let streetmarkingMesh = this.buildMesh(g.geom, {color: 0xFFFFFF}, null);
             group.add(streetmarkingMesh);
@@ -397,14 +399,14 @@ export class BuildingRender {
                     }
                 })
             }
-            if (data.balconies && data.balconies.geoms) {
-                data.balconies.geoms.forEach((item: any) => {
-                    if (item.geom && item.geom.type) {
-                        let mesh = this.buildMesh(item.geom, { color: 0xDDDDDD }, null);
-                        group.add(mesh);
-                    }
-                })
-            }
+            // if (data.balconies && data.balconies.geoms) {
+            //     data.balconies.geoms.forEach((item: any) => {
+            //         if (item.geom && item.geom.type) {
+            //             let mesh = this.buildMesh(item.geom, { color: 0xDDDDDD }, null);
+            //             group.add(mesh);
+            //         }
+            //     })
+            // }
 
             this.scene.remove(this.activeBuildingGroup);
             this.scene.add(group);
@@ -437,7 +439,7 @@ export class BuildingRender {
             }
         });
         this.containerEl.appendChild(this.renderer.domElement);
-        this.camera.position.x = 750;
+        this.camera.position.x = 500;
         this.camera.position.y = 500;
         this.camera.position.z = 500;
         this.camera.lookAt(this.scene.position);
@@ -464,6 +466,10 @@ export class BuildingRender {
 
     resetZoom() {
         this.nextCameraZoom = 30;
+        // this.controls.position0.set(0, 0, 500); // set a new desired position
+        // this.controls.target0.set(0, 0, 0); // set a new target
+        // this.controls.up0.set(0, 1, 0); // set a new up vector
+        // this.controls.reset();
         // this.camera.position.set(this.savedControls.position.x, this.savedControls.position.y, this.savedControls.position.z);
         // this.camera.rotation.set(this.savedControls.rotation.x, this.savedControls.rotation.y, this.savedControls.rotation.z);
 
